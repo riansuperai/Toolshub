@@ -11,7 +11,7 @@ Volgt hetzelfde patroon als [hazenco-voorraad-tool](../../hazenco-voorraad-tool/
 
 - **VPS:** TransIP (`149.210.203.88`), Ubuntu, user `amiagung`
 - **Locatie op VPS:** `/opt/hazenco-toolshub/`
-- **Container poort:** 5054 (intern), proxied via Nginx
+- **Container poort:** 5056 (intern), proxied via Nginx
 - **URL:** `https://toolshub.hazenco.nl`
 - **Deploy-flow:** GitHub → `git pull` op VPS → `docker compose build` → restart
 
@@ -99,7 +99,7 @@ sudo docker compose logs --tail=30
 Controleer dat de container draait:
 ```bash
 sudo docker compose ps
-curl http://localhost:5054/health
+curl http://localhost:5056/health
 # verwacht: {"status":"ok","service":"hazenco-toolshub","timestamp":"..."}
 ```
 
@@ -140,7 +140,7 @@ server {
     client_max_body_size 25M;
 
     location / {
-        proxy_pass http://127.0.0.1:5054;
+        proxy_pass http://127.0.0.1:5056;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -216,7 +216,7 @@ sudo docker compose logs --tail=100
 
 Veelvoorkomende oorzaken:
 - `.env` mist of bevat verkeerde Supabase keys → check `cat .env`
-- Poort 5054 al in gebruik → `sudo lsof -i :5054` of `sudo netstat -tlnp | grep 5054`
+- Poort 5056 al in gebruik → `sudo lsof -i :5056` of `sudo netstat -tlnp | grep 5056`
 
 ### "502 Bad Gateway" via Nginx
 
@@ -244,7 +244,7 @@ Anders blokkeert Supabase CORS / OAuth-redirects.
 ## Veiligheid checklist (voor productie)
 
 - [ ] `.env` op VPS is `chmod 600`: `chmod 600 /opt/hazenco-toolshub/.env`
-- [ ] Firewall: `ufw allow 22,80,443/tcp` en blok 5054 van extern (alleen via Nginx)
+- [ ] Firewall: `ufw allow 22,80,443/tcp` en blok 5056 van extern (alleen via Nginx)
 - [ ] Supabase RLS-policies getest met live data (zie `supabase/schema.sql`)
 - [ ] Backup-strategie voor Supabase (Supabase doet automatisch dagelijks op betaalde tier)
 - [ ] Monitoring: in elk geval `docker compose ps` periodiek of een healthcheck-monitor (UptimeRobot is gratis)
