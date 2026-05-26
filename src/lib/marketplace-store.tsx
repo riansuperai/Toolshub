@@ -10,6 +10,8 @@ import {
   useState
 } from "react";
 import { createId, generateMockScreenshots, seedState, today } from "./marketplace-data";
+import { fetchCatalog } from "./supabase-queries";
+import { isSupabaseConfigured } from "./supabase";
 import type {
   Appointment,
   AppointmentStatus,
@@ -143,6 +145,26 @@ export function MarketplaceProvider({ children }: PropsWithChildren) {
     setState({ ...loaded, activeUserId: loaded.activeUserId ?? DEFAULT_VISITOR_ID });
     setHydrated(true);
   }, []);
+
+  // Hazenco Toolshub data-laag: vervang listings/sellers/categories met
+  // Supabase data zodra die binnen is. Cart, orders en sessie blijven
+  // voorlopig uit localStorage komen (zie tasks #15-#18).
+  useEffect(() => {
+    if (!hydrated || !isSupabaseConfigured) return;
+    let cancelled = false;
+    fetchCatalog().then((catalog) => {
+      if (cancelled || !catalog) return;
+      setState((prev) => ({
+        ...prev,
+        listings: catalog.listings,
+        sellers: catalog.sellers,
+        categories: catalog.categories
+      }));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [hydrated]);
 
   useEffect(() => {
     if (!hydrated) return;
