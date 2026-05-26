@@ -76,8 +76,7 @@ const HIGHLIGHTED_BRANCHES: Branche[] = [
   "marketing_media",
   "ict",
   "financial",
-  "healthcare",
-  "construction"
+  "healthcare"
 ];
 
 const SEARCH_SUGGESTIONS = ["n8n facturen", "Bol.com sync", "WhatsApp chatbot", "Stripe dashboard", "Notion CRM"];
@@ -202,6 +201,7 @@ export default function HomePage() {
               <h2>Werk je in...</h2>
               <p>Tools afgestemd op jouw sector.</p>
             </div>
+            <Link className="text-action" href="/catalogus">Alle branches <ArrowRight size={15} /></Link>
           </div>
           <div className="branche-pills">
             {HIGHLIGHTED_BRANCHES.map((branche) => {
