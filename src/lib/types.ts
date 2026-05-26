@@ -181,6 +181,7 @@ export type Listing = {
   useCases: UseCase[];
   branches: Branche[];
   heroImageUrl?: string;
+  screenshotUrls?: string[];
   priceCents: number;
   setupPriceCents: number;
   status: ListingStatus;

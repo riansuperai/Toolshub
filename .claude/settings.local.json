@@ -8,7 +8,13 @@
       "Bash(git remote *)",
       "Bash(git commit *)",
       "Bash(git push *)",
-      "WebFetch(domain:toolshub.hazenco.nl)"
+      "WebFetch(domain:toolshub.hazenco.nl)",
+      "Bash(rm -f *.zip)",
+      "Bash(curl -sLo dm-serif-display-regular.ttf \"https://cdn.jsdelivr.net/fontsource/fonts/dm-serif-display@latest/latin-400-normal.ttf\")",
+      "Bash(curl -sLo dm-sans-regular.ttf \"https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-400-normal.ttf\")",
+      "Bash(curl -sLo dm-sans-semibold.ttf \"https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-600-normal.ttf\")",
+      "Bash(curl -sLo dm-sans-bold.ttf \"https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-700-normal.ttf\")",
+      "Bash(python generate.py)"
     ]
   }
 }

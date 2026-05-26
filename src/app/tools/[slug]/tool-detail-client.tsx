@@ -31,6 +31,7 @@ import { ProductCard } from "@/components/product-card";
 import { ToolQA } from "@/components/tool-qa";
 import { LikeButton } from "@/components/like-button";
 import { PricingPlans } from "@/components/pricing-plans";
+import { ScreenshotGallery } from "@/components/screenshot-gallery";
 import {
   brancheLabels,
   deliveryModeLabels,
@@ -279,9 +280,28 @@ export function ToolDetailClient() {
                   <MockScreen variant={0} primary />
                   <div className="detail-gallery-tile-foot">
                     <p className="small">{listing.demo.instructions}</p>
-                    <a className="button secondary" href={listing.demo.url} target="_blank" rel="noreferrer">
-                      Bekijk demo <ExternalLink size={14} />
-                    </a>
+                    <div className="detail-gallery-cta-row">
+                      {(listing.screenshotUrls?.length ?? 0) > 0 ? (
+                        <a
+                          className="button secondary"
+                          href="#screenshots"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById("screenshots")?.scrollIntoView({
+                              behavior: "smooth",
+                              block: "start"
+                            });
+                          }}
+                        >
+                          Bekijk screenshots
+                        </a>
+                      ) : null}
+                      {listing.demo.url ? (
+                        <a className="button secondary" href={listing.demo.url} target="_blank" rel="noreferrer">
+                          Bekijk demo <ExternalLink size={14} />
+                        </a>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
                 {screenshots.slice(1).map((shot, index) => (
@@ -398,6 +418,11 @@ export function ToolDetailClient() {
                 </div>
               ) : null}
             </section>
+
+            <ScreenshotGallery
+              screenshots={listing.screenshotUrls ?? []}
+              toolTitle={listing.title}
+            />
 
             {seller ? (
               <section className="section-card">

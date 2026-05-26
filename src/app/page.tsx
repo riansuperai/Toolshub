@@ -98,7 +98,7 @@ export default function HomePage() {
     [published]
   );
   const newest = useMemo(
-    () => [...published].sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)).slice(0, 4),
+    () => [...published].sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)).slice(0, 6),
     [published]
   );
 
@@ -218,9 +218,23 @@ export default function HomePage() {
 
         {!mounted ? (
           <section className="home-section">
-            <SectionHeading eyebrow="Hazenco selectie" title="Uitgelichte tools voor snelle impact" actionHref="/catalogus" actionLabel="Bekijk alle uitgelicht" />
+            <SectionHeading eyebrow="Nieuw" title="Vers in de marketplace" actionHref="/catalogus?sort=newest" actionLabel="Bekijk nieuwste" />
             <div className="product-grid">
               {Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}
+            </div>
+          </section>
+        ) : null}
+
+        {mounted && newest.length > 0 ? (
+          <section className="home-section">
+            <SectionHeading
+              eyebrow="Nieuw"
+              title="Vers in de marketplace"
+              actionHref="/catalogus?sort=newest"
+              actionLabel="Bekijk nieuwste"
+            />
+            <div className="product-grid">
+              {newest.map((listing) => <ProductCard key={listing.id} listing={listing} />)}
             </div>
           </section>
         ) : null}
@@ -249,20 +263,6 @@ export default function HomePage() {
             />
             <div className="product-grid">
               {topDownloaded.map((listing) => <ProductCard key={listing.id} listing={listing} />)}
-            </div>
-          </section>
-        ) : null}
-
-        {mounted && newest.length > 0 ? (
-          <section className="home-section">
-            <SectionHeading
-              eyebrow="Nieuw"
-              title="Vers in de marketplace"
-              actionHref="/catalogus?sort=newest"
-              actionLabel="Bekijk nieuwste"
-            />
-            <div className="product-grid">
-              {newest.map((listing) => <ProductCard key={listing.id} listing={listing} />)}
             </div>
           </section>
         ) : null}

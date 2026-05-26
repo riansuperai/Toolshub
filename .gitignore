@@ -22,3 +22,7 @@ dev-server.err.log
 .idea/
 .DS_Store
 Thumbs.db
+
+# Thumbnail draft tooling (lokaal, niet in repo)
+.thumbnail-fonts/
+public/hazenco-thumbnails/
