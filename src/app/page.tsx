@@ -120,7 +120,7 @@ export default function HomePage() {
       <div className="page marketplace-home">
         <section className="home-hero">
           <div>
-            <span className="home-pill"><span className="dot" /> Hazenco Marketplace</span>
+            <span className="home-pill"><span className="dot" /> Hazenco Toolshub</span>
             <h1>
               Vind direct werkende <span className="accent">automation tools</span> voor je proces.
             </h1>

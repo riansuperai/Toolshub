@@ -17,8 +17,8 @@ const dmSerifDisplay = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Hazenco Marketplace",
-  description: "Nederlandse marketplace voor automation workflows, AI agents, plugins, extensies, skills en themes."
+  title: "Hazenco Toolshub",
+  description: "Hazenco's bibliotheek van werkende automation-tools: workflows, AI agents, plugins, extensies, skills en themes voor het Nederlandse MKB."
 };
 
 export default function RootLayout({

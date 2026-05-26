@@ -41,7 +41,7 @@ export function AppointmentActions({ appointment, request, perspective, onVideo,
   const listing = state.listings.find((l) => l.id === request.listingId);
   const ctx = {
     title: `Hazenco · ${listing?.title ?? "Support sessie"}`,
-    description: a.note ?? "Support afspraak via Hazenco Marketplace.",
+    description: a.note ?? "Support afspraak via Hazenco Toolshub.",
     location: "Online (videogesprek via Hazenco)"
   };
 

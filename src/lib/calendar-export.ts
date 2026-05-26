@@ -66,7 +66,7 @@ export function buildIcsContent(appointment: Appointment, ctx: ExportContext): s
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Hazenco Marketplace//Support afspraak//NL",
+    "PRODID:-//Hazenco Toolshub//Support afspraak//NL",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",

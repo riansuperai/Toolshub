@@ -45,11 +45,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <span>Testmodus actief: betalingen zijn veilig gesimuleerd</span>
         </div>
         <div className="header-inner">
-          <Link className="brand" href="/" aria-label="Hazenco Marketplace home">
+          <Link className="brand" href="/" aria-label="Hazenco Toolshub home">
             <span className="brand-mark">H</span>
             <span>
               <strong>Hazenco</strong>
-              <small>Marketplace</small>
+              <small>Toolshub</small>
             </span>
           </Link>
 
@@ -96,7 +96,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <span className="brand-mark">H</span>
             <span>
               <strong>Hazenco</strong>
-              <small>Marketplace</small>
+              <small>Toolshub</small>
             </span>
           </Link>
           <p>
