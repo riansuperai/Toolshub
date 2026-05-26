@@ -186,6 +186,16 @@ Health endpoint: https://toolshub.hazenco.nl/health
 
 ## Fase 4 — Latere updates
 
+### Wanneer wel/niet deployen
+
+| Type wijziging | Deploy nodig? | Welk script |
+|---|---|---|
+| Foto's, prijzen, tool-info via Supabase dashboard | ❌ nee | browser refresh |
+| Code: components, CSS, pages | ✅ ja | `bash deploy.sh` (snel, cached) |
+| package.json / Dockerfile / vreemd gedrag | ✅ ja | `bash deploy-fresh.sh` (volledig opnieuw) |
+
+### Normale code-update workflow
+
 Op je lokale machine:
 ```powershell
 cd "D:\sanitairsupershop Dropbox\Ami Agung\Agents\hazenco-marktplaats"
@@ -199,10 +209,21 @@ Op de VPS:
 ```bash
 ssh amiagung@149.210.203.88
 cd /opt/hazenco-toolshub
-bash deploy.sh
+bash deploy.sh        # ~10-30 sec, gebruikt Docker cache
 ```
 
-`deploy.sh` doet alles: `git pull` → `docker compose down/build/up` → healthcheck → `nginx reload`.
+Dit doet: `git pull` → `docker compose build` (cached) → `up -d` → healthcheck → `nginx reload`.
+
+### Volledige rebuild (als iets niet klopt)
+
+```bash
+bash deploy-fresh.sh  # ~80 sec, geen cache
+```
+
+Gebruik dit als:
+- `bash deploy.sh` iets vreemds geeft (cache-corruptie)
+- `package.json` of `Dockerfile` is gewijzigd
+- Je wil zeker weten dat alles vers gebouwd is
 
 ---
 

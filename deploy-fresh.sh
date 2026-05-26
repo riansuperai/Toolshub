@@ -2,10 +2,13 @@
 set -e
 
 echo "==================================="
-echo "Hazenco Toolshub - Deployment (cached)"
+echo "Hazenco Toolshub - Fresh deployment"
 echo "==================================="
-echo "Tip: dit script gebruikt Docker cache (~10-30 sec)."
-echo "Voor een volledige rebuild zonder cache: bash deploy-fresh.sh"
+echo "Gebruik dit alleen als:"
+echo "  - normale 'bash deploy.sh' iets vreemds geeft"
+echo "  - package.json of Dockerfile is gewijzigd"
+echo "  - je een schone build wilt forceren"
+echo "Verwachte tijd: ~80 sec (volledige rebuild zonder cache)."
 echo ""
 
 cd /opt/hazenco-toolshub
@@ -13,12 +16,13 @@ cd /opt/hazenco-toolshub
 echo "-> Git pull..."
 sudo git pull origin main
 
-echo "-> Docker build en herstart..."
-sudo docker compose build
+echo "-> Docker fresh build (no cache) en herstart..."
+sudo docker compose down
+sudo docker compose build --no-cache
 sudo docker compose up -d
 
 echo "-> Wacht tot app opgestart is..."
-sleep 8
+sleep 15
 
 echo "-> Health check..."
 HTTP_STATUS=$(curl -sL -o /dev/null -w "%{http_code}" \
@@ -37,6 +41,6 @@ echo "-> Nginx reload..."
 sudo systemctl reload nginx
 
 echo "==================================="
-echo "Deployment succesvol!"
+echo "Fresh deployment succesvol!"
 echo "https://toolshub.hazenco.nl"
 echo "==================================="
