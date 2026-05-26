@@ -19,7 +19,7 @@ echo "-> Wacht tot app opgestart is..."
 sleep 15
 
 echo "-> Health check..."
-HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+HTTP_STATUS=$(curl -sL -o /dev/null -w "%{http_code}" \
   http://localhost:5056/health)
 
 if [ "$HTTP_STATUS" = "200" ]; then
