@@ -16,19 +16,25 @@ export function ProductCard({ listing, compact = false }: { listing: Listing; co
   return (
     <article className={`product-card ${compact ? "compact" : ""}`}>
       <div className="product-visual" style={{ "--accent": category?.accent ?? "#F26B1D" } as React.CSSProperties}>
-        <div className="visual-toolbar">
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="visual-line wide" />
-        <div className="visual-line" />
-        <div className="visual-grid">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
+        {listing.heroImageUrl ? (
+          <img className="visual-image" src={listing.heroImageUrl} alt={listing.title} loading="lazy" />
+        ) : (
+          <>
+            <div className="visual-toolbar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="visual-line wide" />
+            <div className="visual-line" />
+            <div className="visual-grid">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </>
+        )}
       </div>
       <div className="product-content">
         <div className="product-topline">

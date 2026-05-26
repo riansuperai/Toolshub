@@ -180,6 +180,7 @@ export type Listing = {
   type: ProductType;
   useCases: UseCase[];
   branches: Branche[];
+  heroImageUrl?: string;
   priceCents: number;
   setupPriceCents: number;
   status: ListingStatus;

@@ -22,6 +22,7 @@ type ListingRow = {
   type: ProductType;
   use_cases: string[] | null;
   branches: Branche[] | null;
+  hero_image_url: string | null;
   price_cents: number;
   setup_price_cents: number | null;
   status: ListingStatus;
@@ -85,6 +86,7 @@ function mapListing(row: ListingRow): Listing {
     type: row.type,
     useCases: (row.use_cases ?? []) as UseCase[],
     branches: row.branches ?? [],
+    heroImageUrl: row.hero_image_url ?? undefined,
     priceCents: row.price_cents,
     setupPriceCents: row.setup_price_cents ?? 0,
     status: row.status,
