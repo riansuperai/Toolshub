@@ -8,14 +8,14 @@ services:
     container_name: hazenco-toolshub
     restart: always
     ports:
-      - "5052:5052"
+      - "5054:5054"
     env_file:
       - .env
     environment:
       - NODE_ENV=production
       - TZ=Europe/Amsterdam
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:5052/health || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://localhost:5054/health || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3

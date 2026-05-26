@@ -29,7 +29,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV PORT=5052
+ENV PORT=5054
 ENV HOSTNAME=0.0.0.0
 ENV TZ=Europe/Amsterdam
 
@@ -42,5 +42,5 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 USER nextjs
-EXPOSE 5052
+EXPOSE 5054
 CMD ["node", "server.js"]
