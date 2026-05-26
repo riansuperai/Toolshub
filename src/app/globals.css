@@ -1147,7 +1147,8 @@ p {
 
 .product-visual {
   position: relative;
-  min-height: 170px;
+  min-height: 220px;
+  aspect-ratio: 16 / 9;
   padding: 18px;
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, white), var(--green-50));
