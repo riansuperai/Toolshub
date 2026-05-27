@@ -5,47 +5,37 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 type Props = {
   text: string;
-  maxChars?: number;
+  /** Minimaal aantal characters voor we de toggle tonen. Korter = geen toggle. */
+  minCharsForToggle?: number;
 };
 
 /**
- * Toont een tekst met een "Lees meer" knop als de tekst langer is dan
- * maxChars. Behoudt regeleinden (\n) uit de oorspronkelijke tekst.
+ * Toont een tekst die collapsed wordt met een fade-out gradient onderaan
+ * en een ronde toggle-knop in het midden. Wanneer uitgeklapt: volledige
+ * tekst zonder fade. Bewaart regeleinden uit de originele tekst.
  */
-export function ExpandableText({ text, maxChars = 280 }: Props) {
+export function ExpandableText({ text, minCharsForToggle = 200 }: Props) {
   const [expanded, setExpanded] = useState(false);
   const trimmed = (text ?? "").trim();
-  const needsToggle = trimmed.length > maxChars;
 
-  if (!needsToggle) {
+  if (trimmed.length < minCharsForToggle) {
     return <p className="expandable-text">{trimmed}</p>;
   }
 
-  // Knip op laatste woord-grens binnen maxChars zodat we niet
-  // midden in een woord stoppen.
-  const sliceEnd = trimmed.lastIndexOf(" ", maxChars);
-  const preview = trimmed.slice(0, sliceEnd > 0 ? sliceEnd : maxChars).trimEnd();
-
   return (
-    <div className="expandable-text-wrap">
-      <p className="expandable-text">
-        {expanded ? trimmed : `${preview}…`}
-      </p>
+    <div className={`expandable-text-wrap${expanded ? " is-expanded" : ""}`}>
+      <div className="expandable-text-inner">
+        <p className="expandable-text">{trimmed}</p>
+      </div>
       <button
         type="button"
         className="expandable-text-toggle"
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
+        aria-label={expanded ? "Lees minder" : "Lees meer"}
+        title={expanded ? "Lees minder" : "Lees meer"}
       >
-        {expanded ? (
-          <>
-            Lees minder <ChevronUp size={14} />
-          </>
-        ) : (
-          <>
-            Lees meer <ChevronDown size={14} />
-          </>
-        )}
+        {expanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
       </button>
     </div>
   );

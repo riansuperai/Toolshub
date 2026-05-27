@@ -3148,8 +3148,6 @@ p {
 }
 
 .price-box {
-  position: sticky;
-  top: 132px;
   padding: 22px;
   background: var(--white);
   border: 1px solid var(--line);
@@ -7423,7 +7421,7 @@ p {
   background: var(--green-50);
 }
 
-.price-box {
+.detail-sidebar {
   position: sticky;
   top: 112px;
 }
@@ -16020,6 +16018,114 @@ p {
   flex-wrap: wrap;
 }
 
+/* Standalone hero image — geen panel-frame, geen browser-chrome,
+   alleen de afbeelding. Vervangt de mock voor tools met hero_image_url. */
+.detail-hero-standalone-wrap {
+  margin-top: 20px;
+  border-radius: 14px;
+  overflow: hidden;
+  line-height: 0; /* voorkomt extra ruimte onder de <img> */
+}
+
+.detail-hero-standalone {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Detail-sidebar — stack price-box + contact-box verticaal en blijf
+   samen aan de top plakken tijdens scrollen. Sticky verplaatst van
+   .price-box naar deze wrapper zodat beide panels samen meeschuiven. */
+.detail-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 132px;
+  align-self: start;
+}
+
+/* Contact-box — subtieler dan price-box, secundaire CTA */
+.contact-box {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-box h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--green-900);
+}
+
+.contact-box p {
+  margin: 0;
+  color: var(--green-500);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.contact-box-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green-900);
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-surface);
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.contact-link:hover {
+  border-color: var(--orange-600);
+  color: var(--orange-600);
+}
+
+.contact-link.whatsapp {
+  color: #25d366;
+  border-color: #25d366;
+}
+
+.contact-link.whatsapp:hover {
+  background: #25d366;
+  color: #ffffff;
+  border-color: #25d366;
+}
+
+/* Actions row onder hero — altijd zichtbaar voor zowel image- als mock-modus */
+.detail-hero-actions {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.detail-hero-actions .small {
+  color: var(--green-500);
+  margin: 0;
+  max-width: 60%;
+}
+
 .detail-gallery-cta-row a[aria-disabled="true"] {
   opacity: 0.55;
   cursor: not-allowed;
@@ -16039,12 +16145,22 @@ p {
   }
 }
 
-/* Expandable text (Lees meer / Lees minder) */
+/* Expandable text — fade-out gradient + ronde center button */
 .expandable-text-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
+  position: relative;
+}
+
+.expandable-text-inner {
+  position: relative;
+  overflow: hidden;
+  max-height: 130px;
+  transition: max-height 0.45s ease;
+}
+
+.expandable-text-wrap.is-expanded .expandable-text-inner {
+  /* Genoeg voor zelfs lange beschrijvingen. CSS animeert niet naar
+     auto, dus een ruime vaste waarde is de standaard truc. */
+  max-height: 2000px;
 }
 
 .expandable-text {
@@ -16052,22 +16168,60 @@ p {
   white-space: pre-line;
 }
 
+/* Fade overlay onderaan — verdwijnt bij expanded */
+.expandable-text-inner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70px;
+  background: linear-gradient(to bottom, transparent, var(--bg-surface));
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.expandable-text-wrap.is-expanded .expandable-text-inner::after {
+  opacity: 0;
+}
+
+/* Section-card BG is var(--white) in light, var(--bg-surface) in dark.
+   Light-mode override zodat de fade naar wit gaat, niet naar #fafdfb. */
+:root .expandable-text-inner::after {
+  background: linear-gradient(to bottom, transparent, var(--white));
+}
+
+[data-theme="dark"] .expandable-text-inner::after {
+  background: linear-gradient(to bottom, transparent, var(--bg-surface));
+}
+
+/* Ronde toggle-knop, gecentreerd onder de tekst */
 .expandable-text-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 0;
-  border: 0;
-  background: transparent;
-  color: var(--orange-600);
-  font-size: 13px;
-  font-weight: 700;
+  display: flex;
+  margin: 14px auto 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-surface);
+  color: var(--green-700);
   cursor: pointer;
-  transition: color 0.15s ease;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .expandable-text-toggle:hover {
-  color: var(--orange-700);
+  border-color: var(--orange-600);
+  color: var(--orange-600);
+  background: var(--bg-elevated);
+  transform: translateY(2px);
+}
+
+.expandable-text-wrap.is-expanded .expandable-text-toggle:hover {
+  transform: translateY(-2px);
 }
 
 .screenshots-section {

@@ -7,6 +7,7 @@ import { trackView } from "@/lib/recently-viewed";
 import { trackFunnel } from "@/lib/funnel-tracking";
 import {
   ArrowLeft,
+  ArrowRight,
   CalendarClock,
   CheckCircle2,
   Cloud,
@@ -15,10 +16,10 @@ import {
   FileText,
   Heart,
   LifeBuoy,
+  MessageCircle,
   Package,
   Plus,
   RefreshCw,
-  Share2,
   ShieldCheck,
   Star,
   Store,
@@ -29,7 +30,6 @@ import {
 import { Shell } from "@/components/shell";
 import { ProductCard } from "@/components/product-card";
 import { ToolQA } from "@/components/tool-qa";
-import { LikeButton } from "@/components/like-button";
 import { PricingPlans } from "@/components/pricing-plans";
 import { ScreenshotGallery } from "@/components/screenshot-gallery";
 import { ExpandableText } from "@/components/expandable-text";
@@ -42,6 +42,10 @@ import {
 } from "@/lib/marketplace-data";
 import { useMarketplace, userHasPurchased } from "@/lib/marketplace-store";
 import type { DeliveryMode } from "@/lib/types";
+
+// Hazenco WhatsApp Business — +31 6 43 07 43 03
+// Format: alleen cijfers, country code voorop, geen +, geen spaties.
+const HAZENCO_WHATSAPP = "31643074303";
 
 const deliveryDescription: Record<DeliveryMode, string> = {
   download: "Private bestanden en documentatie worden direct vrijgegeven na betaling.",
@@ -206,7 +210,7 @@ export function ToolDetailClient() {
   const purchased = userHasPurchased(state, activeUser.id, listing.id);
   const related = state.listings
     .filter((item) => item.status === "published" && item.id !== listing.id && item.categoryId === listing.categoryId)
-    .slice(0, 3);
+    .slice(0, 2);
   const allReviews = state.reviews.filter((review) => review.listingId === listing.id && review.approved);
   const reviewCount = allReviews.length;
   const averageRating = reviewCount
@@ -270,61 +274,78 @@ export function ToolDetailClient() {
                 <span className="stat"><CalendarClock size={15} /> Bijgewerkt {formatDate(listing.updatedAt)}</span>
               </div>
 
-              <div className="detail-gallery" data-count={screenshots.length || 1}>
-                <div className="detail-gallery-tile primary">
-                  <div className="detail-gallery-window">
-                    <div className="dots"><span /><span /><span /></div>
-                    <span className="url">{demoHost}</span>
-                  </div>
-                  <span className="eyebrow">Demo sandbox · scherm 1</span>
-                  <h3>{screenshots[0] ?? "Live voorbeeld"}</h3>
-                  <MockScreen variant={0} primary />
-                  <div className="detail-gallery-tile-foot">
-                    <p className="small">{listing.demo.instructions}</p>
-                    <div className="detail-gallery-cta-row">
-                      {(listing.screenshotUrls?.length ?? 0) > 0 ? (
-                        <a
-                          className="button secondary"
-                          href="#screenshots"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            document.getElementById("screenshots")?.scrollIntoView({
-                              behavior: "smooth",
-                              block: "start"
-                            });
-                          }}
-                        >
-                          Bekijk screenshots
-                        </a>
-                      ) : null}
-                      <a
-                        className="button secondary"
-                        href={listing.demo.url || "#"}
-                        target={listing.demo.url ? "_blank" : undefined}
-                        rel={listing.demo.url ? "noreferrer" : undefined}
-                        aria-disabled={!listing.demo.url}
-                        onClick={(e) => {
-                          if (!listing.demo.url) e.preventDefault();
-                        }}
-                      >
-                        Bekijk demo <ExternalLink size={14} />
-                      </a>
-                    </div>
-                  </div>
+              {listing.heroImageUrl ? (
+                /* Hero image standalone: geen panel, geen browser-chrome, alleen de afbeelding */
+                <div className="detail-hero-standalone-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className="detail-hero-standalone"
+                    src={listing.heroImageUrl}
+                    alt={listing.title}
+                  />
                 </div>
-                {screenshots.slice(1).map((shot, index) => (
-                  <div className="detail-gallery-tile" key={shot + index}>
+              ) : (
+                /* Fallback voor tools zonder hero image: oud panel met mock + sub-tiles */
+                <div className="detail-gallery" data-count={screenshots.length || 1}>
+                  <div className="detail-gallery-tile primary">
                     <div className="detail-gallery-window">
                       <div className="dots"><span /><span /><span /></div>
+                      <span className="url">{demoHost}</span>
                     </div>
-                    <h3>{shot}</h3>
-                    <MockScreen variant={index + 1} />
-                    <div className="detail-gallery-tile-foot">
-                      <span className="small">Onderdeel van de demo flow</span>
-                      <span className="detail-gallery-tile-step">{index + 2}</span>
-                    </div>
+                    <span className="eyebrow">Demo sandbox · scherm 1</span>
+                    <h3>{screenshots[0] ?? "Live voorbeeld"}</h3>
+                    <MockScreen variant={0} primary />
                   </div>
-                ))}
+                  {screenshots.slice(1).map((shot, index) => (
+                    <div className="detail-gallery-tile" key={shot + index}>
+                      <div className="detail-gallery-window">
+                        <div className="dots"><span /><span /><span /></div>
+                      </div>
+                      <h3>{shot}</h3>
+                      <MockScreen variant={index + 1} />
+                      <div className="detail-gallery-tile-foot">
+                        <span className="small">Onderdeel van de demo flow</span>
+                        <span className="detail-gallery-tile-step">{index + 2}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Actions row — altijd zichtbaar onder de afbeelding/mock */}
+              <div className="detail-hero-actions">
+                {listing.demo.instructions ? (
+                  <p className="small">{listing.demo.instructions}</p>
+                ) : <span />}
+                <div className="detail-gallery-cta-row">
+                  {(listing.screenshotUrls?.length ?? 0) > 0 ? (
+                    <a
+                      className="button secondary"
+                      href="#screenshots"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById("screenshots")?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start"
+                        });
+                      }}
+                    >
+                      Bekijk screenshots
+                    </a>
+                  ) : null}
+                  <a
+                    className="button secondary"
+                    href={listing.demo.url || "#"}
+                    target={listing.demo.url ? "_blank" : undefined}
+                    rel={listing.demo.url ? "noreferrer" : undefined}
+                    aria-disabled={!listing.demo.url}
+                    onClick={(e) => {
+                      if (!listing.demo.url) e.preventDefault();
+                    }}
+                  >
+                    Bekijk demo <ExternalLink size={14} />
+                  </a>
+                </div>
               </div>
             </section>
 
@@ -506,16 +527,17 @@ export function ToolDetailClient() {
             <ToolQA listingId={listing.id} sellerId={listing.sellerId} />
 
             {related.length > 0 ? (
-              <section>
+              <section style={{ marginTop: 44 }}>
                 <h2>Vergelijkbare tools</h2>
                 <div className="related-grid" style={{ marginTop: 16 }}>
-                  {related.map((item) => <ProductCard key={item.id} listing={item} compact />)}
+                  {related.map((item) => <ProductCard key={item.id} listing={item} />)}
                 </div>
               </section>
             ) : null}
           </div>
 
-          <aside className="price-box">
+          <aside className="detail-sidebar">
+            <div className="price-box">
             <span className="eyebrow">Prijs</span>
             <div className="price-row">
               <span className="price">{formatPrice(totalPrice)}</span>
@@ -552,22 +574,10 @@ export function ToolDetailClient() {
                 >
                   <Heart size={17} fill={saved ? "currentColor" : "none"} />
                 </button>
-                <LikeButton listingId={listing.id} size="lg" />
               </div>
               <Link className="button secondary" href="/winkelwagen">
                 Direct afrekenen
               </Link>
-              <button
-                className="button secondary"
-                type="button"
-                onClick={() => {
-                  if (typeof navigator !== "undefined" && navigator.clipboard) {
-                    navigator.clipboard.writeText(window.location.href).catch(() => {});
-                  }
-                }}
-              >
-                <Share2 size={16} /> Deel link
-              </button>
               {purchased ? (
                 <button
                   className="button dark"
@@ -592,6 +602,27 @@ export function ToolDetailClient() {
               <li><CheckCircle2 size={17} /> {listing.supportIncluded}</li>
               <li><CheckCircle2 size={17} /> Geverifieerde seller met reviews</li>
             </ul>
+            </div>
+
+            <div className="contact-box">
+              <h3>Niet helemaal zeker?</h3>
+              <p>Of wilt u maatwerk? Neem contact met ons op — we helpen graag.</p>
+              <div className="contact-box-actions">
+                <a
+                  className="contact-link whatsapp"
+                  href={`https://wa.me/${HAZENCO_WHATSAPP}?text=${encodeURIComponent(
+                    `Hallo Hazenco, ik heb interesse in "${listing.title}" en wil graag advies over maatwerk.`
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <MessageCircle size={14} /> WhatsApp
+                </a>
+                <Link className="contact-link" href="/contact">
+                  Contactpagina <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
           </aside>
         </div>
 
