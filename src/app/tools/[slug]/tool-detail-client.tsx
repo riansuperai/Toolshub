@@ -32,6 +32,7 @@ import { ToolQA } from "@/components/tool-qa";
 import { LikeButton } from "@/components/like-button";
 import { PricingPlans } from "@/components/pricing-plans";
 import { ScreenshotGallery } from "@/components/screenshot-gallery";
+import { ExpandableText } from "@/components/expandable-text";
 import {
   brancheLabels,
   deliveryModeLabels,
@@ -296,11 +297,18 @@ export function ToolDetailClient() {
                           Bekijk screenshots
                         </a>
                       ) : null}
-                      {listing.demo.url ? (
-                        <a className="button secondary" href={listing.demo.url} target="_blank" rel="noreferrer">
-                          Bekijk demo <ExternalLink size={14} />
-                        </a>
-                      ) : null}
+                      <a
+                        className="button secondary"
+                        href={listing.demo.url || "#"}
+                        target={listing.demo.url ? "_blank" : undefined}
+                        rel={listing.demo.url ? "noreferrer" : undefined}
+                        aria-disabled={!listing.demo.url}
+                        onClick={(e) => {
+                          if (!listing.demo.url) e.preventDefault();
+                        }}
+                      >
+                        Bekijk demo <ExternalLink size={14} />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -322,7 +330,7 @@ export function ToolDetailClient() {
 
             <section className="section-card">
               <h2>Wat doet deze tool?</h2>
-              <p>{listing.description}</p>
+              <ExpandableText text={listing.description} maxChars={280} />
               <div className="chip-row" style={{ marginTop: 14 }}>
                 {listing.tags.map((tag) => <span className="chip" key={tag}>{tag}</span>)}
               </div>
@@ -500,7 +508,7 @@ export function ToolDetailClient() {
             {related.length > 0 ? (
               <section>
                 <h2>Vergelijkbare tools</h2>
-                <div className="product-grid" style={{ marginTop: 16 }}>
+                <div className="related-grid" style={{ marginTop: 16 }}>
                   {related.map((item) => <ProductCard key={item.id} listing={item} compact />)}
                 </div>
               </section>

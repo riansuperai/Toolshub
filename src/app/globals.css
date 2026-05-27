@@ -16020,6 +16020,56 @@ p {
   flex-wrap: wrap;
 }
 
+.detail-gallery-cta-row a[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Vergelijkbare tools — 2 kolommen ipv standard 3, want detail-pagina
+   heeft een price-box sidebar die ruimte inneemt. */
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 720px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Expandable text (Lees meer / Lees minder) */
+.expandable-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.expandable-text {
+  margin: 0;
+  white-space: pre-line;
+}
+
+.expandable-text-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: var(--orange-600);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.expandable-text-toggle:hover {
+  color: var(--orange-700);
+}
+
 .screenshots-section {
   display: flex;
   flex-direction: column;
