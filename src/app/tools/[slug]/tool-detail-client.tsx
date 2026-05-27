@@ -351,7 +351,7 @@ export function ToolDetailClient() {
 
             <section className="section-card">
               <h2>Wat doet deze tool?</h2>
-              <ExpandableText text={listing.description} maxChars={280} />
+              <ExpandableText text={listing.description} />
               <div className="chip-row" style={{ marginTop: 14 }}>
                 {listing.tags.map((tag) => <span className="chip" key={tag}>{tag}</span>)}
               </div>
