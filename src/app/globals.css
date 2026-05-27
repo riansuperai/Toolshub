@@ -16145,6 +16145,115 @@ p {
   }
 }
 
+/* Markdown content (gerenderd door react-markdown) — gebruikt in
+   ExpandableText voor product descriptions. Scoped op .markdown-content
+   zodat het styling niet de hele app raakt. */
+.markdown-content > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-content > *:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+  margin: 22px 0 8px;
+  line-height: 1.25;
+  color: var(--green-900);
+}
+
+.markdown-content h1 { font-size: 22px; font-weight: 800; }
+.markdown-content h2 { font-size: 18px; font-weight: 800; }
+.markdown-content h3 { font-size: 16px; font-weight: 700; }
+.markdown-content h4 { font-size: 14.5px; font-weight: 700; }
+
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.markdown-content li {
+  margin-bottom: 4px;
+  line-height: 1.55;
+}
+
+.markdown-content li::marker {
+  color: var(--orange-600);
+}
+
+.markdown-content strong {
+  font-weight: 700;
+  color: var(--green-900);
+}
+
+.markdown-content em {
+  font-style: italic;
+}
+
+.markdown-content a {
+  color: var(--orange-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.markdown-content a:hover {
+  color: var(--orange-700);
+}
+
+.markdown-content blockquote {
+  margin: 14px 0;
+  padding: 8px 14px;
+  border-left: 3px solid var(--orange-600);
+  background: var(--bg-elevated);
+  color: var(--green-700);
+  font-style: italic;
+  border-radius: 0 6px 6px 0;
+}
+
+.markdown-content code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.9em;
+  padding: 1px 6px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--green-900);
+}
+
+.markdown-content pre {
+  margin: 14px 0;
+  padding: 12px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+}
+
+.markdown-content pre code {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  font-size: inherit;
+}
+
+.markdown-content hr {
+  margin: 18px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
 /* Expandable text — fade-out gradient + ronde center button */
 .expandable-text-wrap {
   position: relative;
@@ -16163,10 +16272,8 @@ p {
   max-height: 2000px;
 }
 
-.expandable-text {
-  margin: 0;
-  white-space: pre-line;
-}
+/* .expandable-text class niet meer in JSX; markdown rendert eigen elementen.
+   Behoud blok als no-op zodat eventuele lingering CSS selectors niks breken. */
 
 /* Fade overlay onderaan — verdwijnt bij expanded */
 .expandable-text-inner::after {

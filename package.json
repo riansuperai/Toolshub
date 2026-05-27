@@ -15,7 +15,8 @@
     "next": "latest",
     "postcss": "^8.5.10",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-markdown": "^10.1.0"
   },
   "overrides": {
     "postcss": "^8.5.10"
