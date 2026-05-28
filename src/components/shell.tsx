@@ -23,8 +23,7 @@ import { SiteBanner } from "@/components/site-banner";
 function buildNav() {
   return [
     { href: "/", label: "Home" },
-    { href: "/catalogus", label: "Catalogus" },
-    { href: "/creators", label: "Voor Creators" }
+    { href: "/catalogus", label: "Catalogus" }
   ];
 }
 
@@ -67,7 +66,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <ThemeToggle />
             <NotificationBell />
             {isVisitor ? (
-              <Link className="header-creator-cta" href="/onboarding">
+              <Link className="header-creator-cta" href="/creators">
                 <Rocket size={15} /> Creator worden?
               </Link>
             ) : null}

@@ -321,35 +321,46 @@ button {
 }
 
 .brand-mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 9px;
+  width: 48px;
+  height: 48px;
+  border-radius: 11px;
   display: grid;
   place-items: center;
   color: var(--green-950);
   background: var(--orange-600);
   box-shadow: inset -10px -10px 0 rgba(255, 255, 255, 0.18);
-  font-weight: 800;
-  font-size: 16px;
+  /* Serif-H voor premium gevoel, matcht onze heading-font */
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
 }
 
 .brand strong,
 .brand small {
   display: block;
-  line-height: 1.05;
+  line-height: 1.1;
+}
+
+.brand strong {
+  font-size: 17px;
+  font-weight: 800;
 }
 
 .brand small {
   color: var(--orange-600);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 6px;
-  flex: 1;
+  gap: 8px;
+  /* Geen flex:1 meer — nav neemt natuurlijke breedte. Search sits
+     in de tussenruimte naar de rechtergrouped actions (margin-left:auto). */
+  flex: 0 0 auto;
+  margin-left: 18px;
 }
 
 .main-nav a {
@@ -369,7 +380,9 @@ button {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  /* Duwt actions naar rechter rand. */
+  margin-left: auto;
 }
 
 .role-context {
@@ -635,7 +648,6 @@ button {
 
 .eyebrow {
   color: var(--orange-600);
-  text-transform: uppercase;
   font-weight: 800;
   font-size: 13px;
   letter-spacing: 0;
@@ -1185,7 +1197,7 @@ p {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 28px;
 }
 
 .product-card {
@@ -11395,8 +11407,8 @@ p {
 .header-search {
   position: relative;
   flex: 1;
-  max-width: 360px;
-  margin: 0 12px;
+  max-width: 480px;
+  margin: 0 32px;
 }
 
 .header-search-input {
