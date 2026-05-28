@@ -1288,9 +1288,20 @@ p {
   color: var(--green-700);
 }
 
+.product-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
 .meta-row {
   color: var(--green-500);
   font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
 }
 
 .meta-row span {

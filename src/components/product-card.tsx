@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Download, Eye, Heart, Plus, Star } from "lucide-react";
-import { deliveryModeShort, formatPrice, productTypeLabels } from "@/lib/marketplace-data";
+import { ArrowRight, Download, Eye, Plus, Star } from "lucide-react";
+import { formatPrice, productTypeLabels } from "@/lib/marketplace-data";
 import { useMarketplace } from "@/lib/marketplace-store";
 import { LikeButton } from "@/components/like-button";
 import type { Listing } from "@/lib/types";
 
 export function ProductCard({ listing, compact = false }: { listing: Listing; compact?: boolean }) {
-  const { state, activeUser, addToCart, toggleSavedListing } = useMarketplace();
+  const { state, addToCart } = useMarketplace();
   const category = state.categories.find((item) => item.id === listing.categoryId);
   const seller = state.sellers.find((item) => item.id === listing.sellerId);
-  const saved = activeUser.savedListings.includes(listing.id);
 
   return (
     <article className={`product-card ${compact ? "compact" : ""}`}>
@@ -38,7 +37,7 @@ export function ProductCard({ listing, compact = false }: { listing: Listing; co
       </div>
       <div className="product-content">
         <div className="product-topline">
-          <div>
+          <div className="product-badges">
             <span className="badge soft">{productTypeLabels[listing.type]}</span>
             {listing.featured && <span className="badge orange">Uitgelicht</span>}
           </div>
@@ -61,20 +60,10 @@ export function ProductCard({ listing, compact = false }: { listing: Listing; co
             </Link>
           ) : null}
         </div>
-        {!compact && (
-          <div className="chip-row">
-            {listing.deliveryModes.map((mode) => (
-              <span key={mode} className="chip">{deliveryModeShort[mode]}</span>
-            ))}
-          </div>
-        )}
         <div className="product-actions">
           <strong>{formatPrice(listing.priceCents)}</strong>
           <div>
-            <button className="icon-button" type="button" onClick={() => toggleSavedListing(listing.id)} title="Bewaren">
-              <Heart size={17} fill={saved ? "currentColor" : "none"} />
-            </button>
-            <button className="icon-button" type="button" onClick={() => addToCart(listing.id)} title="Toevoegen">
+            <button className="icon-button" type="button" onClick={() => addToCart(listing.id)} title="Toevoegen aan winkelwagen">
               <Plus size={18} />
             </button>
             <Link className="small-link" href={`/tools/${listing.slug}`}>
