@@ -29,7 +29,8 @@ import {
   Store,
   UserPlus,
   Users,
-  Workflow
+  Workflow,
+  Zap
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Shell } from "@/components/shell";
@@ -79,7 +80,6 @@ const HIGHLIGHTED_BRANCHES: Branche[] = [
   "healthcare"
 ];
 
-const SEARCH_SUGGESTIONS = ["n8n facturen", "Bol.com sync", "WhatsApp chatbot", "Stripe dashboard", "Notion CRM"];
 
 export default function HomePage() {
   const router = useRouter();
@@ -111,10 +111,6 @@ export default function HomePage() {
     return <RoleHome role={activeUser.role} />;
   }
 
-  const totalDownloads = published.reduce((sum, item) => sum + item.downloads, 0);
-  const totalSales = published.reduce((sum, item) => sum + item.sales, 0);
-  const verifiedSellers = state.sellers.filter((s) => s.verified).length;
-
   return (
     <Shell>
       <div className="page marketplace-home">
@@ -122,7 +118,8 @@ export default function HomePage() {
           <div>
             <span className="home-pill"><span className="dot" /> Hazenco Toolshub</span>
             <h1>
-              Vind direct werkende <span className="accent">automation tools</span> voor je proces.
+              Minder handmatig werk.<br />
+              <span className="accent">Meer tijd</span> voor wat telt.
             </h1>
             <p className="lead">
               Workflows, AI agents, plugins, themes en templates van Europese makers.
@@ -139,31 +136,22 @@ export default function HomePage() {
               </div>
               <button className="button" type="submit">Zoeken</button>
             </form>
-            <div className="home-suggestions">
-              <span style={{ color: "rgba(232, 240, 234, 0.7)", fontSize: 12, fontWeight: 700 }}>Populair:</span>
-              {SEARCH_SUGGESTIONS.map((suggestion) => (
-                <Link key={suggestion} href={`/catalogus?q=${encodeURIComponent(suggestion)}`}>
-                  {suggestion}
-                </Link>
-              ))}
+            <div className="home-hero-trust">
+              <span><ShieldCheck size={15} /> Door Hazenco gebouwd</span>
+              <span><Zap size={15} /> Direct beschikbaar</span>
+              <span><Star size={15} fill="currentColor" /> Live demo per tool</span>
             </div>
           </div>
-          <div className="home-hero-stats">
-            <div className="home-hero-stat">
-              <strong>{published.length}</strong>
-              <span>Gepubliceerde tools</span>
-            </div>
-            <div className="home-hero-stat">
-              <strong>{totalDownloads.toLocaleString("nl-NL")}</strong>
-              <span>Downloads</span>
-            </div>
-            <div className="home-hero-stat">
-              <strong>{totalSales.toLocaleString("nl-NL")}</strong>
-              <span>Verkocht</span>
-            </div>
-            <div className="home-hero-stat">
-              <strong>{verifiedSellers}</strong>
-              <span>Geverifieerde creators</span>
+          <div className="home-hero-figure">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/hero-creator.png"
+              alt="Hazenco gebruiker met laptop en duim omhoog"
+            />
+            <div className="hero-figure-badge">
+              <span className="hero-figure-badge-dot" />
+              <strong>{published.length}+ tools</strong>
+              <span>live nu</span>
             </div>
           </div>
         </section>
