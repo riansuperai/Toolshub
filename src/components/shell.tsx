@@ -2,15 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import {
   BadgeCheck,
   LayoutDashboard,
   LogIn,
+  Menu,
   Rocket,
   ShieldCheck,
   ShoppingBag,
   Store,
   User,
+  X,
   Zap
 } from "lucide-react";
 import { useMarketplace } from "@/lib/marketplace-store";
@@ -34,6 +37,23 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const nav = buildNav();
   const isVisitor = activeUser.role === "visitor";
   const accountHref = activeUser.role === "admin" ? "/admin" : activeUser.role === "seller" || activeUser.role === "seller_pending" ? "/seller" : "/account";
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Sluit mobile menu bij navigatie
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll wanneer drawer open is
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = original;
+      };
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <div className="app-shell">
@@ -83,8 +103,61 @@ export function Shell({ children }: { children: React.ReactNode }) {
               <ShoppingBag size={18} />
               <span>{cartCount}</span>
             </Link>
+            <button
+              type="button"
+              className="mobile-menu-toggle"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu-drawer"
+              aria-label={mobileMenuOpen ? "Sluit menu" : "Open menu"}
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile menu drawer — alleen zichtbaar < 980px (via CSS) */}
+        {mobileMenuOpen ? (
+          <>
+            <div
+              className="mobile-menu-backdrop"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+            <div id="mobile-menu-drawer" className="mobile-menu-drawer" role="dialog" aria-label="Menu">
+              <div className="mobile-menu-search">
+                <HeaderSearch />
+              </div>
+              <nav className="mobile-menu-nav" aria-label="Hoofdnavigatie">
+                {nav.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={pathname === item.href.split("#")[0] ? "active" : ""}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+              <div className="mobile-menu-actions">
+                {isVisitor ? (
+                  <Link className="header-creator-cta" href="/creators">
+                    <Rocket size={15} /> Creator worden?
+                  </Link>
+                ) : null}
+                {isVisitor ? (
+                  <Link className="header-account-link" href="/account">
+                    <LogIn size={15} /> Inloggen
+                  </Link>
+                ) : (
+                  <Link className="header-account-link" href={accountHref}>
+                    <User size={15} /> {activeUser.name.split(" ")[0]}
+                  </Link>
+                )}
+              </div>
+            </div>
+          </>
+        ) : null}
       </header>
 
       <main>{children}</main>
