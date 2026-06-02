@@ -91,12 +91,12 @@ export function Shell({ children }: { children: React.ReactNode }) {
               </Link>
             ) : null}
             {isVisitor ? (
-              <Link className="header-account-link" href="/account">
-                <LogIn size={15} /> Inloggen
+              <Link className="header-account-link" href="/account" aria-label="Inloggen">
+                <LogIn size={15} /> <span className="account-link-label">Inloggen</span>
               </Link>
             ) : (
-              <Link className="header-account-link" href={accountHref}>
-                <User size={15} /> {activeUser.name.split(" ")[0]}
+              <Link className="header-account-link" href={accountHref} aria-label={activeUser.name}>
+                <User size={15} /> <span className="account-link-label">{activeUser.name.split(" ")[0]}</span>
               </Link>
             )}
             <Link className="cart-button" href="/winkelwagen" aria-label="Winkelwagen">

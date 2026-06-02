@@ -8041,11 +8041,30 @@ p {
     display: none;
   }
 
-  /* Verberg alleen tekst-CTAs op mobile — die zitten in de drawer.
-     Theme toggle BLIJFT zichtbaar (naast cart op rij 2). */
+  /* Hide things we don't want on mobile header — die zitten in drawer */
   .header-inner > .header-actions .header-creator-cta,
-  .header-inner > .header-actions .header-account-link {
+  .header-inner > .header-actions .notification-bell {
     display: none;
+  }
+
+  /* Inloggen tekst weg op mobile, alleen icon. account-link wordt
+     vierkant button met alleen popetje. */
+  .account-link-label {
+    display: none;
+  }
+
+  .header-inner > .header-actions .header-account-link {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-items: center;
+    gap: 0;
+  }
+
+  .header-inner > .header-actions .header-account-link svg {
+    width: 18px;
+    height: 18px;
   }
 
   .mobile-menu-toggle {
@@ -8057,34 +8076,52 @@ p {
     display: flex;
   }
 
-  /* Mobile header layout: 2 rijen via grid.
-     Rij 1: brand | hamburger
-     Rij 2: actions (theme + cart) right-aligned */
+  /* Mobile header: 1 rij met 5 areas via display:contents trick.
+     Layout L->R: theme | burger | brand (center) | login | cart
+     display:contents op .header-actions zorgt dat z'n kinderen
+     direct grid-items van .header-inner worden. */
   .header-inner {
     display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "brand burger"
-      "actions actions";
-    gap: 10px 12px;
-    padding: 9px 15px;
+    grid-template-columns: auto auto 1fr auto auto;
+    grid-template-areas: "theme burger brand login cart";
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
   }
 
-  .header-inner > .brand {
-    grid-area: brand;
+  .header-inner > .header-actions {
+    display: contents;
+  }
+
+  .header-inner > .header-actions > .theme-toggle {
+    grid-area: theme;
   }
 
   .header-inner > .mobile-menu-toggle {
     grid-area: burger;
-    align-self: center;
-    justify-self: end;
   }
 
-  .header-inner > .header-actions {
-    grid-area: actions;
-    justify-content: flex-end;
-    margin-left: 0;
-    gap: 10px;
+  .header-inner > .brand {
+    grid-area: brand;
+    justify-self: center;
+    min-width: 0;
+  }
+
+  .header-inner > .header-actions > .header-account-link {
+    grid-area: login;
+  }
+
+  .header-inner > .header-actions > .cart-button {
+    grid-area: cart;
+  }
+
+  /* Brand mark kleiner op mobile zodat alles in 1 rij past op
+     375px viewport. Text labels verbergen onder 420px. */
+  .header-inner > .brand .brand-mark {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 9px;
   }
 
   .role-context {
@@ -8155,6 +8192,26 @@ p {
   .price-box,
   .dashboard-nav {
     position: static;
+  }
+}
+
+@media (max-width: 340px) {
+  /* Alleen op zeer kleine telefoons (< 340px) de tekst weg zodat
+     alles in 1 rij past. Op iPhone SE (375px) blijft Hazenco/Toolshub
+     tekst staan. */
+  .header-inner > .brand > span:not(.brand-mark) {
+    display: none;
+  }
+}
+
+/* Brand text op mobile iets compacter zodat het past naast de andere
+   header-items. */
+@media (max-width: 980px) {
+  .header-inner > .brand strong {
+    font-size: 15px;
+  }
+  .header-inner > .brand small {
+    font-size: 11px;
   }
 }
 
