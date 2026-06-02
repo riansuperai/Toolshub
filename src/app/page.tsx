@@ -86,6 +86,7 @@ export default function HomePage() {
   const { state, activeUser } = useMarketplace();
   const [query, setQuery] = useState("");
   const [mounted, setMounted] = useState(false);
+  const [finderTab, setFinderTab] = useState<"functie" | "branche">("functie");
   useEffect(() => setMounted(true), []);
   const published = state.listings.filter((listing) => listing.status === "published");
 
@@ -159,48 +160,63 @@ export default function HomePage() {
         <section className="home-section">
           <div className="home-section-head">
             <div>
-              <span className="eyebrow">Wat zoek je?</span>
-              <h2>Kies een categorie en start je zoektocht</h2>
-              <p>Veelgebruikte use-cases. Klik om de catalogus erop te filteren.</p>
+              <h2>Vind je tool</h2>
+              <p>Filter de catalogus op functie of jouw branche.</p>
             </div>
-            <Link className="text-action" href="/catalogus">Alle categorieën <ArrowRight size={15} /></Link>
+            <Link className="text-action" href="/catalogus">
+              Naar volledige catalogus <ArrowRight size={15} />
+            </Link>
           </div>
-          <div className="home-tiles">
-            {HIGHLIGHTED_USE_CASES.map((useCase) => {
-              const Icon = useCaseIcons[useCase] ?? Workflow;
-              const count = published.filter((listing) => (listing.useCases ?? []).includes(useCase)).length;
-              return (
-                <Link key={useCase} className="home-tile" href={`/catalogus?useCase=${useCase}`}>
-                  <span className="home-tile-icon"><Icon size={18} /></span>
-                  <div>
-                    <strong>{useCaseLabels[useCase]}</strong>
-                    <span>{count} {count === 1 ? "tool" : "tools"}</span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
 
-        <section className="home-section">
-          <div className="home-section-head">
-            <div>
-              <span className="eyebrow">Branche</span>
-              <h2>Werk je in...</h2>
-              <p>Tools afgestemd op jouw sector.</p>
-            </div>
-            <Link className="text-action" href="/catalogus">Alle branches <ArrowRight size={15} /></Link>
+          <div className="home-finder-tabs" role="tablist" aria-label="Filter tools">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={finderTab === "functie"}
+              className={finderTab === "functie" ? "active" : ""}
+              onClick={() => setFinderTab("functie")}
+            >
+              Op functie
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={finderTab === "branche"}
+              className={finderTab === "branche" ? "active" : ""}
+              onClick={() => setFinderTab("branche")}
+            >
+              Op branche
+            </button>
           </div>
-          <div className="branche-pills">
-            {HIGHLIGHTED_BRANCHES.map((branche) => {
-              const Icon = brancheIcons[branche];
-              return (
-                <Link key={branche} href={`/catalogus?branche=${branche}`}>
-                  <Icon size={15} />
-                  {brancheLabels[branche]}
-                </Link>
-              );
-            })}
+
+          <div className="home-tiles">
+            {finderTab === "functie"
+              ? HIGHLIGHTED_USE_CASES.slice(0, 6).map((useCase) => {
+                  const Icon = useCaseIcons[useCase] ?? Workflow;
+                  const count = published.filter((listing) => (listing.useCases ?? []).includes(useCase)).length;
+                  return (
+                    <Link key={useCase} className="home-tile" href={`/catalogus?useCase=${useCase}`}>
+                      <span className="home-tile-icon"><Icon size={18} /></span>
+                      <div>
+                        <strong>{useCaseLabels[useCase]}</strong>
+                        <span>{count} {count === 1 ? "tool" : "tools"}</span>
+                      </div>
+                    </Link>
+                  );
+                })
+              : HIGHLIGHTED_BRANCHES.slice(0, 6).map((branche) => {
+                  const Icon = brancheIcons[branche];
+                  const count = published.filter((listing) => (listing.branches ?? []).includes(branche)).length;
+                  return (
+                    <Link key={branche} className="home-tile" href={`/catalogus?branche=${branche}`}>
+                      <span className="home-tile-icon"><Icon size={18} /></span>
+                      <div>
+                        <strong>{brancheLabels[branche]}</strong>
+                        <span>{count} {count === 1 ? "tool" : "tools"}</span>
+                      </div>
+                    </Link>
+                  );
+                })}
           </div>
         </section>
 

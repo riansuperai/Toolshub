@@ -3707,6 +3707,40 @@ p {
   border: 1px solid rgba(232, 240, 234, 0.12);
 }
 
+/* "Vind je tool" finder — tab toggle tussen functie en branche */
+.home-finder-tabs {
+  display: inline-flex;
+  gap: 4px;
+  margin: 18px 0;
+  padding: 4px;
+  background: var(--green-100);
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.home-finder-tabs button {
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--green-700);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.home-finder-tabs button:hover:not(.active) {
+  color: var(--green-900);
+}
+
+.home-finder-tabs button.active {
+  background: var(--white);
+  color: var(--green-900);
+  box-shadow: 0 1px 3px rgba(16, 41, 31, 0.1);
+}
+
 /* Trust indicators rij — direct onder de hero-search. Vervangt
    de oude 'Populair: chip-row' voor een professionelere uitstraling. */
 .home-hero-trust {
