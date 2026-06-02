@@ -138,7 +138,7 @@ export default function HomePage() {
               <button className="button" type="submit">Zoeken</button>
             </form>
             <div className="home-hero-trust">
-              <span><ShieldCheck size={15} /> Door Hazenco gebouwd</span>
+              <span><ShieldCheck size={15} /> Maatwerk mogelijk</span>
               <span><Zap size={15} /> Direct beschikbaar</span>
               <span><Star size={15} fill="currentColor" /> Live demo per tool</span>
             </div>
@@ -149,10 +149,20 @@ export default function HomePage() {
               src="/hero-creator.png"
               alt="Hazenco gebruiker met laptop en duim omhoog"
             />
-            <div className="hero-figure-badge">
+            <div className="hero-figure-badge badge-top">
               <span className="hero-figure-badge-dot" />
-              <strong>{published.length}+ tools</strong>
-              <span>live nu</span>
+              <strong>Nieuwe prijzen</strong>
+              <span>bijgewerkt</span>
+            </div>
+            <div className="hero-figure-badge badge-middle">
+              <span className="hero-figure-badge-dot" />
+              <strong>Nieuwe blog</strong>
+              <span>is live</span>
+            </div>
+            <div className="hero-figure-badge badge-bottom">
+              <span className="hero-figure-badge-dot" />
+              <strong>Campagne</strong>
+              <span>verstuurd</span>
             </div>
           </div>
         </section>
