@@ -149,6 +149,20 @@ export default function HomePage() {
               src="/hero-creator.png"
               alt="Hazenco gebruiker met laptop en duim omhoog"
             />
+            {/* Network lines van de laptop naar elke badge — geeft 'real-time
+                activity feed' gevoel. SVG schaalt mee met de figure. */}
+            <svg
+              className="hero-figure-network"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <line x1="40" y1="74" x2="22" y2="22" />
+              <line x1="40" y1="74" x2="14" y2="52" />
+              <line x1="40" y1="74" x2="72" y2="80" />
+              {/* Kleine cirkel als 'hub' op de laptop */}
+              <circle cx="40" cy="74" r="1.2" />
+            </svg>
             <div className="hero-figure-badge badge-top">
               <span className="hero-figure-badge-dot" />
               <strong>Nieuwe prijzen</strong>
