@@ -145,11 +145,28 @@ function CatalogFallback() {
 function CatalogContent() {
   const searchParams = useSearchParams();
   const { state } = useMarketplace();
+
+  // Lees filter-params uit URL met enum-validatie. Anders zou TS de
+  // string ongecontroleerd accepteren en kan een rare ?branche=lol
+  // runtime issues geven in filter-vergelijkingen.
+  const initialBranche = (() => {
+    const v = searchParams.get("branche");
+    return v && v in brancheLabels ? (v as Branche) : "all";
+  })();
+  const initialUseCase = (() => {
+    const v = searchParams.get("useCase");
+    return v && v in useCaseLabels ? (v as UseCase) : "all";
+  })();
+  const initialDelivery = (() => {
+    const v = searchParams.get("delivery");
+    return v && v in deliveryModeLabels ? (v as DeliveryMode) : "all";
+  })();
+
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
-  const [branche, setBranche] = useState<Branche | "all">("all");
-  const [useCase, setUseCase] = useState<UseCase | "all">("all");
+  const [branche, setBranche] = useState<Branche | "all">(initialBranche);
+  const [useCase, setUseCase] = useState<UseCase | "all">(initialUseCase);
   const [sort, setSort] = useState(searchParams.get("sort") ?? "downloads");
-  const [delivery, setDelivery] = useState<DeliveryMode | "all">("all");
+  const [delivery, setDelivery] = useState<DeliveryMode | "all">(initialDelivery);
   const [platform, setPlatform] = useState<string>("all");
   const [price, setPrice] = useState<PriceBucket>("all");
   const [wizardOpen, setWizardOpen] = useState(false);
