@@ -103,17 +103,20 @@ export function Shell({ children }: { children: React.ReactNode }) {
               <ShoppingBag size={18} />
               <span>{cartCount}</span>
             </Link>
-            <button
-              type="button"
-              className="mobile-menu-toggle"
-              onClick={() => setMobileMenuOpen((v) => !v)}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-menu-drawer"
-              aria-label={mobileMenuOpen ? "Sluit menu" : "Open menu"}
-            >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
           </div>
+
+          {/* Hamburger als sibling van header-actions — op mobile zit deze
+              op rij 1 naast brand, header-actions wrappen naar rij 2 */}
+          <button
+            type="button"
+            className="mobile-menu-toggle"
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu-drawer"
+            aria-label={mobileMenuOpen ? "Sluit menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
 
         {/* Mobile menu drawer — alleen zichtbaar < 980px (via CSS) */}

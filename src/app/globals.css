@@ -4097,11 +4097,21 @@ p {
     display: none;
   }
 
-  /* Trust row: kleinere font + tightere gap op mobile */
+  /* Hero search bar: kleinere max-width + auto margin = centered op mobile */
+  .home-hero .home-search {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Trust row: kleinere font, gecentreerd onder search */
   .home-hero-trust {
     gap: 14px;
     margin-top: 14px;
-    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 320px;
+    justify-content: center;
   }
 
   .home-hero-trust span {
@@ -8031,8 +8041,8 @@ p {
     display: none;
   }
 
-  /* Verberg desktop search en sommige actie-knoppen — gaan naar drawer */
-  .header-inner > .header-actions .theme-toggle,
+  /* Verberg alleen tekst-CTAs op mobile — die zitten in de drawer.
+     Theme toggle BLIJFT zichtbaar (naast cart op rij 2). */
   .header-inner > .header-actions .header-creator-cta,
   .header-inner > .header-actions .header-account-link {
     display: none;
@@ -8047,14 +8057,34 @@ p {
     display: flex;
   }
 
-  .header-inner,
-  .header-actions {
-    gap: 10px;
+  /* Mobile header layout: 2 rijen via grid.
+     Rij 1: brand | hamburger
+     Rij 2: actions (theme + cart) right-aligned */
+  .header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand burger"
+      "actions actions";
+    gap: 10px 12px;
+    padding: 9px 15px;
   }
 
-  .header-inner {
-    padding: 9px 15px 7px;
-    flex-wrap: wrap;
+  .header-inner > .brand {
+    grid-area: brand;
+  }
+
+  .header-inner > .mobile-menu-toggle {
+    grid-area: burger;
+    align-self: center;
+    justify-self: end;
+  }
+
+  .header-inner > .header-actions {
+    grid-area: actions;
+    justify-content: flex-end;
+    margin-left: 0;
+    gap: 10px;
   }
 
   .role-context {
