@@ -2350,6 +2350,12 @@ p {
   align-items: start;
 }
 
+/* Grid children moeten min-width: 0 hebben anders forceren intrinsic
+   content sizes (zoals 2880px brede screenshots) de kolom te groeien. */
+.detail-layout > * {
+  min-width: 0;
+}
+
 .detail-back {
   display: inline-flex;
   align-items: center;
@@ -16828,6 +16834,16 @@ p {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  /* min-width: 0 verplicht voor grid-children met grote intrinsic
+     content (zoals 2880px wide screenshots). Anders forceren de
+     images de container te groeien voorbij grid-kolom breedte. */
+  min-width: 0;
+  max-width: 100%;
+}
+
+.screenshots-hero {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .screenshots-header {

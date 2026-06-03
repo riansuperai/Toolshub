@@ -49,12 +49,42 @@ def get_secret_key() -> str:
     key = os.environ.get("SUPABASE_SECRET_KEY")
     if not key:
         print("ERROR: SUPABASE_SECRET_KEY env var is niet gezet.")
-        print("Haal je secret key op via Supabase dashboard:")
-        print("  Project Settings -> API Keys -> Secret keys -> default")
+        print("")
+        print("BELANGRIJK: gebruik de LEGACY service_role JWT key, niet de")
+        print("nieuwe sb_secret_ key. De Supabase Storage API verwacht een")
+        print("JWT-formaat key (string begint met 'eyJ...').")
+        print("")
+        print("Haal hem op:")
+        print("  Supabase dashboard -> Project Settings -> API Keys")
+        print("  -> tab 'Legacy anon, service_role API keys'")
+        print("  -> kopieer de 'service_role' key (lange eyJ... JWT)")
+        print("")
         print("Set hem voor de sessie:")
-        print("  PowerShell: $env:SUPABASE_SECRET_KEY = 'sb_secret_xxxxx'")
-        print("  cmd:        set SUPABASE_SECRET_KEY=sb_secret_xxxxx")
+        print("  PowerShell: $env:SUPABASE_SECRET_KEY = 'eyJhbGci...'")
+        print("  cmd:        set SUPABASE_SECRET_KEY=eyJhbGci...")
         sys.exit(1)
+    if not key.startswith("eyJ"):
+        print("WARNING: SUPABASE_SECRET_KEY lijkt geen JWT te zijn (zou met")
+        print("'eyJ' moeten beginnen). Storage API geeft 'Invalid Compact JWS'")
+        print("op de sb_secret_* keys. Gebruik de legacy service_role JWT key.")
+        print("")
+    else:
+        # Decode JWT payload (zonder validatie — alleen om de role te checken)
+        try:
+            import base64
+            import json as _json
+            payload_b64 = key.split(".")[1]
+            payload_b64 += "=" * (4 - len(payload_b64) % 4)  # padding
+            payload = _json.loads(base64.urlsafe_b64decode(payload_b64))
+            role = payload.get("role")
+            if role != "service_role":
+                print(f"ERROR: Deze JWT heeft role='{role}', niet 'service_role'.")
+                print("De anon key respecteert RLS dus kan niet uploaden.")
+                print("Pak de service_role key uit dezelfde Legacy keys tab")
+                print("(de andere JWT eronder).")
+                sys.exit(1)
+        except Exception:
+            pass  # Decode mislukt, laat de API zelf maar klagen
     return key
 
 
