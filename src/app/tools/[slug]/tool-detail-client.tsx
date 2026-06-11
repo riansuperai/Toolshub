@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { trackView } from "@/lib/recently-viewed";
 import { trackFunnel } from "@/lib/funnel-tracking";
+import { trackEvent } from "@/lib/analytics";
 import {
   ArrowLeft,
   ArrowRight,
@@ -242,6 +243,13 @@ export function ToolDetailClient() {
   function handleAddToCart() {
     addToCart(listing!.id, withSetup);
     trackFunnel(listing!.id, "cart_add");
+    trackEvent("add_to_cart", {
+      tool_slug: listing!.slug,
+      tool_title: listing!.title,
+      with_setup: withSetup,
+      value: totalPrice,
+      currency: "EUR"
+    });
   }
 
   return (
@@ -340,7 +348,15 @@ export function ToolDetailClient() {
                     rel={listing.demo.url ? "noreferrer" : undefined}
                     aria-disabled={!listing.demo.url}
                     onClick={(e) => {
-                      if (!listing.demo.url) e.preventDefault();
+                      if (!listing.demo.url) {
+                        e.preventDefault();
+                        return;
+                      }
+                      trackEvent("demo_click", {
+                        tool_slug: listing.slug,
+                        tool_title: listing.title,
+                        demo_url: listing.demo.url
+                      });
                     }}
                   >
                     Bekijk demo <ExternalLink size={14} />
@@ -615,6 +631,13 @@ export function ToolDetailClient() {
                   )}`}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() =>
+                    trackEvent("whatsapp_click", {
+                      tool_slug: listing.slug,
+                      tool_title: listing.title,
+                      source: "tool_detail_sidebar"
+                    })
+                  }
                 >
                   <MessageCircle size={14} /> WhatsApp
                 </a>
