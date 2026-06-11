@@ -7917,7 +7917,9 @@ p {
 }
 
 .footer-brand {
-  color: var(--white);
+  /* Hardcoded — footer staat altijd op donkergroen, in dark mode inverteert
+     var(--white) naar donker en zou de tekst onzichtbaar maken. */
+  color: #ffffff;
 }
 
 .footer-brand .brand-mark {
@@ -7926,7 +7928,8 @@ p {
 }
 
 .site-footer h3 {
-  color: var(--white);
+  /* Hardcoded — zie .footer-brand voor uitleg. */
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
