@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   BadgeCheck,
+  ExternalLink,
   LayoutDashboard,
   LogIn,
   Menu,
@@ -190,6 +191,23 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <p><Store size={16} /> Brede catalogus</p>
             <p><LayoutDashboard size={16} /> Koper, creator en admin</p>
             <p><Zap size={16} /> Automatisering-eerst ervaring</p>
+          </div>
+          <div>
+            <h3>Over Hazenco</h3>
+            <p>
+              Toolshub is gebouwd door Hazenco — een team dat digitale tools
+              maakt voor het Nederlandse MKB.
+            </p>
+            <p>
+              <a
+                className="footer-external-link"
+                href="https://hazenco.nl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                hazenco.nl <ExternalLink size={14} />
+              </a>
+            </p>
           </div>
         </div>
       </footer>

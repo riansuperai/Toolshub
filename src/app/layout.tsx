@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import { Providers } from "./providers";
+import { GoogleAnalytics } from "@/components/google-analytics";
+import { CookieBanner } from "@/components/cookie-banner";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -17,8 +19,28 @@ const dmSerifDisplay = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Hazenco Toolshub",
-  description: "Hazenco's bibliotheek van werkende automation-tools: workflows, AI agents, plugins, extensies, skills en themes voor het Nederlandse MKB."
+  metadataBase: new URL("https://toolshub.hazenco.nl"),
+  title: {
+    default: "Hazenco Toolshub",
+    template: "%s | Hazenco Toolshub"
+  },
+  description:
+    "Hazenco's bibliotheek van werkende automation-tools: workflows, AI agents, plugins, extensies, skills en themes voor het Nederlandse MKB.",
+  openGraph: {
+    type: "website",
+    locale: "nl_NL",
+    siteName: "Hazenco Toolshub",
+    url: "https://toolshub.hazenco.nl",
+    title: "Hazenco Toolshub",
+    description:
+      "Door Hazenco gebouwde automation-tools voor het Nederlandse MKB."
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hazenco Toolshub",
+    description:
+      "Door Hazenco gebouwde automation-tools voor het Nederlandse MKB."
+  }
 };
 
 export default function RootLayout({
@@ -30,6 +52,8 @@ export default function RootLayout({
     <html lang="nl" className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>
       <body>
         <Providers>{children}</Providers>
+        <CookieBanner />
+        <GoogleAnalytics />
       </body>
     </html>
   );
