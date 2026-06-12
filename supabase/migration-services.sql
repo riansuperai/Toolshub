@@ -29,6 +29,9 @@ create index if not exists idx_listings_listing_kind on public.listings (listing
 -- ------------------------------------------------------------
 -- Seed: "Website laten maken" demo dienst-listing
 -- ------------------------------------------------------------
+-- listings.id en seller_id zijn UUID's. We gebruiken uuid_generate_v5 met
+-- dezelfde namespace als seed-hazenco-tools.sql zodat seller_hazenco
+-- hier exact dezelfde UUID krijgt als in andere Hazenco-tools.
 -- Verwijdert bestaande rij met dezelfde slug zodat opnieuw draaien werkt.
 delete from public.listings where slug = 'website-laten-maken';
 
@@ -42,8 +45,8 @@ insert into public.listings (
   support_included, created_at, updated_at,
   listing_kind, for_who, included, cases, service_pricing, service_meta
 ) values (
-  'listing_website_laten_maken',
-  'seller_hazenco',
+  uuid_generate_v5('d5b9f8a4-1c2e-4b3a-9f7d-6c0a8e1d2f44'::uuid, 'hazenco_website_laten_maken'),
+  uuid_generate_v5('d5b9f8a4-1c2e-4b3a-9f7d-6c0a8e1d2f44'::uuid, 'seller_hazenco'),
   'Website laten maken',
   'website-laten-maken',
   'Professionele website binnen weken, zonder gedoe en zonder verborgen kosten.',
