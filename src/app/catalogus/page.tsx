@@ -43,7 +43,7 @@ import {
 } from "@/lib/marketplace-data";
 import { brancheIcons } from "@/lib/branche-icons";
 import { useMarketplace } from "@/lib/marketplace-store";
-import type { Branche, DeliveryMode, Listing, UseCase } from "@/lib/types";
+import type { Branche, DeliveryMode, Listing, ListingKind, UseCase } from "@/lib/types";
 import { FilterPillGroup, type FilterPillOption } from "@/components/filter-pill-group";
 import { FilterTileGroup } from "@/components/filter-tile-group";
 import { FilterDropdown } from "@/components/filter-dropdown";
@@ -93,7 +93,9 @@ function bucketForPrice(cents: number): Exclude<PriceBucket, "all"> {
   return "gt100";
 }
 
-type FilterAxis = "branche" | "useCase" | "platform" | "price" | "delivery";
+type FilterAxis = "branche" | "useCase" | "platform" | "price" | "delivery" | "kind";
+
+type KindFilter = "all" | ListingKind;
 
 type ActiveFilters = {
   query: string;
@@ -102,7 +104,12 @@ type ActiveFilters = {
   platform: string;
   price: PriceBucket;
   delivery: DeliveryMode | "all";
+  kind: KindFilter;
 };
+
+function listingKindOf(listing: Listing): ListingKind {
+  return listing.listingKind ?? "tool";
+}
 
 function listingMatchesQuery(listing: Listing, q: string): boolean {
   if (!q) return true;
@@ -114,6 +121,7 @@ function listingMatchesQuery(listing: Listing, q: string): boolean {
 
 function listingMatches(listing: Listing, filters: ActiveFilters, exclude: FilterAxis | null = null): boolean {
   if (!listingMatchesQuery(listing, filters.query.toLowerCase().trim())) return false;
+  if (exclude !== "kind" && filters.kind !== "all" && listingKindOf(listing) !== filters.kind) return false;
   if (exclude !== "branche" && filters.branche !== "all" && !(listing.branches ?? []).includes(filters.branche)) return false;
   if (exclude !== "useCase" && filters.useCase !== "all" && !(listing.useCases ?? []).includes(filters.useCase)) return false;
   if (exclude !== "platform" && filters.platform !== "all" && !listing.compatibility.includes(filters.platform)) return false;
@@ -162,6 +170,11 @@ function CatalogContent() {
     return v && v in deliveryModeLabels ? (v as DeliveryMode) : "all";
   })();
 
+  const initialKind = ((): KindFilter => {
+    const v = searchParams.get("kind");
+    return v === "tool" || v === "service" ? v : "all";
+  })();
+
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
   const [branche, setBranche] = useState<Branche | "all">(initialBranche);
   const [useCase, setUseCase] = useState<UseCase | "all">(initialUseCase);
@@ -169,6 +182,7 @@ function CatalogContent() {
   const [delivery, setDelivery] = useState<DeliveryMode | "all">(initialDelivery);
   const [platform, setPlatform] = useState<string>("all");
   const [price, setPrice] = useState<PriceBucket>("all");
+  const [kind, setKind] = useState<KindFilter>(initialKind);
   const [wizardOpen, setWizardOpen] = useState(false);
   const [layout, setLayout] = useState<"stack" | "sidebar">("stack");
   const [compactSticky, setCompactSticky] = useState(false);
@@ -189,7 +203,7 @@ function CatalogContent() {
     return () => observer.disconnect();
   }, [layout]);
 
-  const filters: ActiveFilters = { query, branche, useCase, platform, price, delivery };
+  const filters: ActiveFilters = { query, branche, useCase, platform, price, delivery, kind };
 
   const published = useMemo(
     () => state.listings.filter((listing) => listing.status === "published"),
@@ -215,7 +229,7 @@ function CatalogContent() {
         return b.downloads - a.downloads;
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [published, query, branche, useCase, platform, price, delivery, sort]);
+  }, [published, query, branche, useCase, platform, price, delivery, kind, sort]);
 
   const activeFilterCount =
     (branche !== "all" ? 1 : 0) +
@@ -223,6 +237,7 @@ function CatalogContent() {
     (delivery !== "all" ? 1 : 0) +
     (platform !== "all" ? 1 : 0) +
     (price !== "all" ? 1 : 0) +
+    (kind !== "all" ? 1 : 0) +
     (query ? 1 : 0);
 
   function resetFilters() {
@@ -232,6 +247,7 @@ function CatalogContent() {
     setDelivery("all");
     setPlatform("all");
     setPrice("all");
+    setKind("all");
   }
 
   function applyWizard(selection: WizardSelection) {
@@ -319,6 +335,33 @@ function CatalogContent() {
           </button>
         </div>
 
+        <div className="catalog-kind-bar">
+          <button
+            type="button"
+            className={kind === "all" ? "active" : ""}
+            onClick={() => setKind("all")}
+          >
+            Alles
+            <span>{countFor("kind", () => true)}</span>
+          </button>
+          <button
+            type="button"
+            className={kind === "tool" ? "active" : ""}
+            onClick={() => setKind("tool")}
+          >
+            Tools
+            <span>{countFor("kind", (l) => listingKindOf(l) === "tool")}</span>
+          </button>
+          <button
+            type="button"
+            className={kind === "service" ? "active" : ""}
+            onClick={() => setKind("service")}
+          >
+            <Sparkles size={13} /> Diensten
+            <span>{countFor("kind", (l) => listingKindOf(l) === "service")}</span>
+          </button>
+        </div>
+
         <div className={`catalog-layout ${layout}`}>
         <div className="filter-panel" ref={filterPanelRef}>
           <div className="filter-toprow">
@@ -389,7 +432,21 @@ function CatalogContent() {
 
         <div className="results-column">
           <div className="status-row">
-            <strong>{filtered.length} tools gevonden</strong>
+            <strong>
+              {filtered.length}{" "}
+              {kind === "service"
+                ? filtered.length === 1
+                  ? "dienst"
+                  : "diensten"
+                : kind === "tool"
+                ? filtered.length === 1
+                  ? "tool"
+                  : "tools"
+                : filtered.length === 1
+                ? "resultaat"
+                : "resultaten"}{" "}
+              gevonden
+            </strong>
             <span className="badge soft"><Filter size={14} /> {activeFilterCount} actieve filter{activeFilterCount === 1 ? "" : "s"}</span>
           </div>
 

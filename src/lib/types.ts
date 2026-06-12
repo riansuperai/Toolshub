@@ -169,6 +169,56 @@ export type ListingVersion = {
   breaking?: boolean;
 };
 
+/**
+ * Onderscheid tussen een digitale tool (downloadbaar / SaaS) en een dienst
+ * (Hazenco bouwt iets voor je, checkout loopt via hazenco.nl). Stuurt welke
+ * detail-layout en welke sidebar getoond wordt. Defaults naar 'tool' als
+ * niet ingevuld — bestaande listings blijven onveranderd.
+ */
+export type ListingKind = "tool" | "service";
+
+export type ServiceIncludedItem = {
+  /** Tabler icon name zonder 'ti-' prefix, bv. 'shield-check', 'refresh'. */
+  icon: string;
+  title: string;
+  description: string;
+};
+
+export type ServiceCase = {
+  clientName: string;
+  benefit: string;
+  url?: string;
+  imageUrl?: string;
+};
+
+/**
+ * Twee-pakket sidebar voor diensten. Beide pakketten optioneel — een dienst
+ * met alleen abonnement of alleen eenmalig is geldig. externalUrl is verplicht
+ * want bij Optie B gaat de daadwerkelijke checkout via hazenco.nl.
+ */
+export type ServicePackagePricing = {
+  externalUrl: string;
+  oneTime?: {
+    priceCents: number;
+    originalPriceCents?: number;
+    description: string;
+  };
+  subscription?: {
+    priceCentsPerMonth: number;
+    originalPriceCentsPerMonth?: number;
+    minMonths: number;
+    description: string;
+  };
+  highlight?: "oneTime" | "subscription";
+  usps?: string[];
+};
+
+export type ServiceMeta = {
+  duration?: string;
+  revisions?: string;
+  supportPeriod?: string;
+};
+
 export type Listing = {
   id: string;
   sellerId: string;
@@ -201,6 +251,12 @@ export type Listing = {
   createdAt: string;
   updatedAt: string;
   supportIncluded: string;
+  listingKind?: ListingKind;
+  forWho?: string[];
+  included?: ServiceIncludedItem[];
+  cases?: ServiceCase[];
+  servicePricing?: ServicePackagePricing;
+  serviceMeta?: ServiceMeta;
 };
 
 export type CartItem = {

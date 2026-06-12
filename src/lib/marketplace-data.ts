@@ -1284,6 +1284,114 @@ export const listings: Listing[] = [
     createdAt: today(-70),
     updatedAt: today(-4),
     supportIncluded: "Community support"
+  },
+  {
+    id: "listing_website_laten_maken",
+    sellerId: "seller_hazenco",
+    title: "Website laten maken",
+    slug: "website-laten-maken",
+    tagline: "Professionele website binnen weken, zonder gedoe en zonder verborgen kosten.",
+    description:
+      "Een website die je bedrijf serieus laat ogen — door Hazenco ontworpen en gebouwd. Conversie-gericht, snel en klaar voor zoekmachines.\n\nGeschikt voor ZZP'ers, MKB-ondernemers en starters die niet zelf willen knutselen met builders, hosting, plugins en SEO.\n\nKies tussen een eenmalige investering of een All-in abonnement waarin alles is geregeld: hosting, updates, backups en support.",
+    categoryId: "cat_services",
+    type: "service_package",
+    useCases: ["marketing", "lead_generation"],
+    branches: ["general", "professional_services", "retail"],
+    heroImageUrl: "https://hazenco.nl/wp-content/uploads/2024/05/website-laten-maken.webp",
+    screenshotUrls: [],
+    priceCents: 142500,
+    setupPriceCents: 0,
+    status: "published",
+    featured: true,
+    compatibility: ["WordPress", "WooCommerce", "Elementor"],
+    tags: ["Website", "Webdesign", "Hosting", "SEO", "MKB"],
+    deliveryModes: ["custom"],
+    files: [],
+    demo: {
+      url: "",
+      screenshots: [],
+      instructions: "",
+      credentials: [],
+      sampleInput: ""
+    },
+    downloads: 0,
+    sales: 47,
+    rating: 4.9,
+    reviewCount: 18,
+    version: "",
+    createdAt: today(-180),
+    updatedAt: today(-7),
+    supportIncluded: "30 dagen nazorg + optioneel doorlopend",
+    listingKind: "service",
+    forWho: [
+      "ZZP'ers die professioneel willen ogen zonder zelf te bouwen",
+      "MKB-ondernemers met een verouderde site die niet meer converteert",
+      "Starters die snel live willen met een geloofwaardige basis"
+    ],
+    included: [
+      {
+        icon: "shield-check",
+        title: "Security & SSL",
+        description: "Veilige hosting met automatische SSL-certificaten."
+      },
+      {
+        icon: "database-export",
+        title: "Dagelijkse backups",
+        description: "Automatische backups, herstel binnen enkele klikken."
+      },
+      {
+        icon: "refresh",
+        title: "Updates & onderhoud",
+        description: "Plugin- en core-updates worden voor je geregeld."
+      },
+      {
+        icon: "headset",
+        title: "Direct support",
+        description: "Eén vast aanspreekpunt, snel antwoord per WhatsApp of mail."
+      }
+    ],
+    cases: [
+      {
+        clientName: "badkamerwandbekleding.nl",
+        benefit: "Volledig nieuwe webshop met 4× zoveel offerte-aanvragen in de eerste maand.",
+        url: "https://badkamerwandbekleding.nl"
+      },
+      {
+        clientName: "civitas-advies.nl",
+        benefit: "Conversie-gerichte corporate site met geïntegreerde planner en lead-formulieren.",
+        url: "https://civitas-advies.nl"
+      },
+      {
+        clientName: "magdatwelonline.nl",
+        benefit: "Nieuwe huisstijl en webshop, klaar voor groei en herhalingsverkeer.",
+        url: "https://magdatwelonline.nl"
+      }
+    ],
+    servicePricing: {
+      externalUrl: "https://hazenco.nl/website-laten-maken/",
+      oneTime: {
+        priceCents: 142500,
+        originalPriceCents: 229500,
+        description: "Eenmalige betaling, oplevering binnen weken. Hosting en onderhoud apart."
+      },
+      subscription: {
+        priceCentsPerMonth: 8900,
+        originalPriceCentsPerMonth: 12900,
+        minMonths: 24,
+        description: "Hosting, updates, backups, security en support inbegrepen."
+      },
+      highlight: "subscription",
+      usps: [
+        "1 vast aanspreekpunt",
+        "Geen verborgen kosten",
+        "Oplevering binnen enkele weken"
+      ]
+    },
+    serviceMeta: {
+      duration: "2–4 weken",
+      revisions: "3 ontwerprondes",
+      supportPeriod: "30 dagen nazorg"
+    }
   }
 ];
 

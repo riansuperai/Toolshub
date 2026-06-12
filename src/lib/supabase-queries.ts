@@ -4,10 +4,15 @@ import type {
   Category,
   DeliveryMode,
   Listing,
+  ListingKind,
   ListingStatus,
   ProductType,
   SellerProfile,
   SellerStatus,
+  ServiceCase,
+  ServiceIncludedItem,
+  ServiceMeta,
+  ServicePackagePricing,
   UseCase
 } from "./types";
 
@@ -44,6 +49,12 @@ type ListingRow = {
   support_included: string | null;
   created_at: string;
   updated_at: string;
+  listing_kind: ListingKind | null;
+  for_who: string[] | null;
+  included: ServiceIncludedItem[] | null;
+  cases: ServiceCase[] | null;
+  service_pricing: ServicePackagePricing | null;
+  service_meta: ServiceMeta | null;
 };
 
 type SellerRow = {
@@ -113,7 +124,13 @@ function mapListing(row: ListingRow): Listing {
     plans: [],
     createdAt: row.created_at,
     updatedAt: row.updated_at,
-    supportIncluded: row.support_included ?? ""
+    supportIncluded: row.support_included ?? "",
+    listingKind: row.listing_kind ?? undefined,
+    forWho: row.for_who ?? undefined,
+    included: row.included ?? undefined,
+    cases: row.cases ?? undefined,
+    servicePricing: row.service_pricing ?? undefined,
+    serviceMeta: row.service_meta ?? undefined
   };
 }
 

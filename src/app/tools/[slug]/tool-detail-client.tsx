@@ -34,6 +34,7 @@ import { ToolQA } from "@/components/tool-qa";
 import { PricingPlans } from "@/components/pricing-plans";
 import { ScreenshotGallery } from "@/components/screenshot-gallery";
 import { ExpandableText } from "@/components/expandable-text";
+import { ServiceDetailClient } from "./service-detail-client";
 import {
   brancheLabels,
   deliveryModeLabels,
@@ -203,6 +204,10 @@ export function ToolDetailClient() {
         </div>
       </Shell>
     );
+  }
+
+  if (listing.listingKind === "service") {
+    return <ServiceDetailClient listing={listing} />;
   }
 
   const category = state.categories.find((item) => item.id === listing.categoryId);

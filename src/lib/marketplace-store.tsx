@@ -154,12 +154,19 @@ export function MarketplaceProvider({ children }: PropsWithChildren) {
     let cancelled = false;
     fetchCatalog().then((catalog) => {
       if (cancelled || !catalog) return;
-      setState((prev) => ({
-        ...prev,
-        listings: catalog.listings,
-        sellers: catalog.sellers,
-        categories: catalog.categories
-      }));
+      setState((prev) => {
+        // Supabase wins voor gedeelde slugs, mock-only listings blijven zichtbaar
+        // tijdens overgang naar Supabase. Voorkomt dat nieuwe mock-listings
+        // (zoals "Website laten maken" pre-migratie) onzichtbaar worden.
+        const supabaseSlugs = new Set(catalog.listings.map((l) => l.slug));
+        const mockOnly = prev.listings.filter((l) => !supabaseSlugs.has(l.slug));
+        return {
+          ...prev,
+          listings: [...catalog.listings, ...mockOnly],
+          sellers: catalog.sellers,
+          categories: catalog.categories
+        };
+      });
     });
     return () => {
       cancelled = true;
