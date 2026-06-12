@@ -16745,9 +16745,11 @@ p {
   margin-top: 2px;
 }
 
-/* Tone: dark — premium / corporate */
+/* Tone: dark — premium / corporate
+   Hardcoded #1a3c2e omdat var(--green-900) in dark mode inverteert naar
+   lichter sage, en witte tekst dan onleesbaar wordt op het band. */
 .case-card.tone-dark .case-band {
-  background: var(--green-900);
+  background: #1a3c2e;
   color: #ffffff;
 }
 .case-card.tone-dark .case-label {
