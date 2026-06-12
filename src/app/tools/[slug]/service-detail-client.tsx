@@ -22,7 +22,7 @@ import { useEffect } from "react";
 import { Shell } from "@/components/shell";
 import { ExpandableText } from "@/components/expandable-text";
 import { useMarketplace } from "@/lib/marketplace-store";
-import { formatPrice } from "@/lib/marketplace-data";
+import { formatPrice, useCaseLabels } from "@/lib/marketplace-data";
 import { trackView } from "@/lib/recently-viewed";
 import { trackFunnel } from "@/lib/funnel-tracking";
 import { trackEvent } from "@/lib/analytics";
@@ -139,6 +139,7 @@ function PricingPackageCard({
 export function ServiceDetailClient({ listing }: { listing: Listing }) {
   const { state, toggleSavedListing, activeUser } = useMarketplace();
   const seller = state.sellers.find((item) => item.id === listing.sellerId);
+  const category = state.categories.find((item) => item.id === listing.categoryId);
   const saved = activeUser?.savedListings?.includes(listing.id) ?? false;
   const sp = listing.servicePricing;
   const meta = listing.serviceMeta;
@@ -158,31 +159,42 @@ export function ServiceDetailClient({ listing }: { listing: Listing }) {
           <ArrowLeft size={15} /> Terug naar catalogus
         </Link>
 
-        <div className="detail-layout service-layout" style={{ marginTop: 12 }}>
-          <div className="detail-main">
-            <section className="detail-hero">
-              <div className="detail-hero-visual">
-                {listing.heroImageUrl ? (
-                  <img src={listing.heroImageUrl} alt={listing.title} loading="eager" />
-                ) : (
-                  <div className="detail-hero-placeholder">
-                    <Sparkles size={28} />
-                  </div>
-                )}
-              </div>
-              <div className="detail-hero-copy">
+        <div className="detail-layout" style={{ marginTop: 12 }}>
+          <div className="stack">
+            <section className="detail-hero-card">
+              <div className="detail-hero-top">
                 <span className="badge service-chip">
                   <Sparkles size={12} /> Dienst
                 </span>
-                <h1>{listing.title}</h1>
-                <p className="lead-sm">{listing.tagline}</p>
-                {listing.cases && listing.cases.length > 0 ? (
-                  <div className="hero-actions">
+                {category ? <span className="badge soft">{category.name}</span> : null}
+                {listing.featured ? <span className="badge dark">Hazenco selectie</span> : null}
+                {listing.useCases?.slice(0, 2).map((useCase) => (
+                  <span className="badge soft" key={useCase}>{useCaseLabels[useCase]}</span>
+                ))}
+              </div>
+              <h1>{listing.title}</h1>
+              <p className="lead">{listing.tagline}</p>
+
+              {listing.heroImageUrl ? (
+                <div className="detail-hero-standalone-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className="detail-hero-standalone"
+                    src={listing.heroImageUrl}
+                    alt={listing.title}
+                  />
+                </div>
+              ) : null}
+
+              <div className="detail-hero-actions">
+                <span />
+                <div className="detail-gallery-cta-row">
+                  {listing.cases && listing.cases.length > 0 ? (
                     <a className="button secondary" href="#cases">
                       Bekijk portfolio
                     </a>
-                  </div>
-                ) : null}
+                  ) : null}
+                </div>
               </div>
             </section>
 
