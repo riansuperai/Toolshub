@@ -1352,18 +1352,45 @@ export const listings: Listing[] = [
     ],
     cases: [
       {
-        clientName: "badkamerwandbekleding.nl",
-        benefit: "Volledig nieuwe webshop met 4× zoveel offerte-aanvragen in de eerste maand.",
+        clientName: "Badkamerwandbekleding",
+        label: "Website All-in",
+        tag: "MKB · Website",
+        benefit:
+          "Stijlvolle website voor een leverancier van wandpanelen. Bezoekers kunnen het volledige assortiment bekijken en direct een afspraak inplannen voor montage aan huis.",
+        highlights: [
+          "Online afspraken inplannen — zonder bellen",
+          "Assortiment volledig zichtbaar op mobiel"
+        ],
+        tone: "dark",
+        imageUrl: "https://hazenco.nl/wp-content/uploads/2024/05/badkamerwandbekleding.webp",
         url: "https://badkamerwandbekleding.nl"
       },
       {
-        clientName: "civitas-advies.nl",
-        benefit: "Conversie-gerichte corporate site met geïntegreerde planner en lead-formulieren.",
+        clientName: "Civitas advies",
+        label: "Website All-in",
+        tag: "MKB · Website",
+        benefit:
+          "Professionele website voor een adviesbureau gespecialiseerd in infrastructuur en openbare ruimte. Van ruimtelijke ontwikkeling tot asset management — alles overzichtelijk gepresenteerd.",
+        highlights: [
+          "Werkgebieden en diensten helder in kaart",
+          "Portfolio direct vindbaar voor opdrachtgevers"
+        ],
+        tone: "light",
+        imageUrl: "https://hazenco.nl/wp-content/uploads/2024/05/civitas-advies.webp",
         url: "https://civitas-advies.nl"
       },
       {
-        clientName: "magdatwelonline.nl",
-        benefit: "Nieuwe huisstijl en webshop, klaar voor groei en herhalingsverkeer.",
+        clientName: "Magdatwel.nl",
+        label: "Website Blog",
+        tag: "MKB · Website",
+        benefit:
+          "Juridische blogwebsite waar mensen op een toegankelijke manier leren wat wel en niet mag. Weetjes, nieuws en actuele onderwerpen — begrijpelijk geschreven voor iedereen.",
+        highlights: [
+          "Juridische info zonder vakjargon",
+          "Volledig klaar voor zoekmachines — SEO-proof"
+        ],
+        tone: "peach",
+        imageUrl: "https://hazenco.nl/wp-content/uploads/2024/05/magdatwel.webp",
         url: "https://magdatwelonline.nl"
       }
     ],

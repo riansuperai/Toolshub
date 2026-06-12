@@ -242,19 +242,39 @@ export function ServiceDetailClient({ listing }: { listing: Listing }) {
                 <h2>Recente cases</h2>
                 <div className="cases-grid">
                   {listing.cases.map((c, idx) => (
-                    <article key={idx} className="case-card">
-                      {c.imageUrl ? <img src={c.imageUrl} alt={c.clientName} /> : null}
+                    <article
+                      key={idx}
+                      className={`case-card tone-${c.tone ?? "dark"}`}
+                    >
+                      {c.imageUrl ? (
+                        <div className="case-image">
+                          <img src={c.imageUrl} alt={c.clientName} loading="lazy" />
+                        </div>
+                      ) : null}
+                      <div className="case-band">
+                        {c.label ? <span className="case-label">{c.label}</span> : null}
+                        <strong className="case-title">{c.clientName}</strong>
+                        {c.tag ? <span className="case-tag">{c.tag}</span> : null}
+                      </div>
                       <div className="case-body">
-                        <strong>{c.clientName}</strong>
                         <p>{c.benefit}</p>
+                        {c.highlights && c.highlights.length > 0 ? (
+                          <ul className="case-highlights">
+                            {c.highlights.map((h, i) => (
+                              <li key={i}>
+                                <CheckCircle2 size={15} /> {h}
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
                         {c.url ? (
                           <a
-                            className="case-link"
+                            className="case-cta"
                             href={c.url}
                             target="_blank"
                             rel="noreferrer"
                           >
-                            Bekijk site <ExternalLink size={13} />
+                            Bekijk project <ExternalLink size={13} />
                           </a>
                         ) : null}
                       </div>

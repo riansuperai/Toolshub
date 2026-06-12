@@ -184,11 +184,28 @@ export type ServiceIncludedItem = {
   description: string;
 };
 
+/**
+ * Visuele toon voor de band in een portfolio case card.
+ * - 'dark'  : donker groen achtergrond, witte tekst (premium / corporate)
+ * - 'light' : zachte sage achtergrond, donkere tekst (clean / startup)
+ * - 'peach' : zachte oranje achtergrond, donkere tekst (warm / consumer)
+ */
+export type CaseTone = "dark" | "light" | "peach";
+
 export type ServiceCase = {
   clientName: string;
+  /** Hoofdomschrijving van het project (paragraph). */
   benefit: string;
   url?: string;
   imageUrl?: string;
+  /** Eyebrow boven titel, bv. "WEBSITE ALL-IN" of "WEBSITE BLOG". */
+  label?: string;
+  /** Kleine pill onder titel, bv. "MKB - Website". */
+  tag?: string;
+  /** 2-3 korte resultaat-bullets met check-icon. */
+  highlights?: string[];
+  /** Visuele toon van de titel-band, default 'dark'. */
+  tone?: CaseTone;
 };
 
 /**

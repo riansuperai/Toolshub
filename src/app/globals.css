@@ -16680,15 +16680,15 @@ p {
   color: rgba(230, 241, 236, 0.75);
 }
 
-/* Recente cases */
+/* Recente cases — portfolio-stijl met image + gekleurde band + body */
 .cases-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
 }
 
 .case-card {
-  background: var(--bg-elevated);
+  background: var(--bg-app);
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
@@ -16696,55 +16696,173 @@ p {
   flex-direction: column;
 }
 
-.case-card img {
+[data-theme="dark"] .case-card {
+  background: var(--bg-surface);
+}
+
+.case-image {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.case-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.case-body {
-  padding: 14px 16px 16px;
+.case-band {
+  padding: 16px 18px 14px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
-.case-body strong {
-  font-size: 14px;
+.case-label {
+  font-size: 11.5px;
   font-weight: 800;
-  color: var(--green-900);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-[data-theme="dark"] .case-body strong {
-  color: #e6f1ec;
+.case-title {
+  font-family: var(--font-heading), serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.case-tag {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* Tone: dark — premium / corporate */
+.case-card.tone-dark .case-band {
+  background: var(--green-900);
+  color: #ffffff;
+}
+.case-card.tone-dark .case-label {
+  color: rgba(255, 255, 255, 0.65);
+}
+.case-card.tone-dark .case-title {
+  color: #ffffff;
+}
+.case-card.tone-dark .case-tag {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* Tone: light — clean / startup */
+.case-card.tone-light .case-band {
+  background: #d3e4d3;
+  color: #1a3c2e;
+}
+.case-card.tone-light .case-label {
+  color: rgba(26, 60, 46, 0.7);
+}
+.case-card.tone-light .case-title {
+  color: #1a3c2e;
+}
+.case-card.tone-light .case-tag {
+  background: #1a3c2e;
+  color: #ffffff;
+}
+
+/* Tone: peach — warm / consumer */
+.case-card.tone-peach .case-band {
+  background: #fbe5ce;
+  color: #4a2812;
+}
+.case-card.tone-peach .case-label {
+  color: var(--orange-700, #b2510c);
+}
+.case-card.tone-peach .case-title {
+  color: #4a2812;
+}
+.case-card.tone-peach .case-tag {
+  background: #4a2812;
+  color: #fbe5ce;
+}
+
+.case-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .case-body p {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 13.5px;
+  line-height: 1.55;
   color: var(--green-700);
 }
 
 [data-theme="dark"] .case-body p {
-  color: rgba(230, 241, 236, 0.75);
+  color: rgba(230, 241, 236, 0.78);
 }
 
-.case-link {
+.case-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+}
+
+.case-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .case-highlights li {
+  color: #e6f1ec;
+}
+
+.case-highlights li svg {
+  color: var(--orange-600);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.case-cta {
   margin-top: 4px;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 12.5px;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  color: var(--green-900);
+  font-size: 13px;
   font-weight: 700;
-  color: var(--orange-600);
   text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
-.case-link:hover {
+[data-theme="dark"] .case-cta {
+  color: #e6f1ec;
+}
+
+.case-cta:hover {
+  border-color: var(--orange-600);
   color: var(--orange-700);
-  text-decoration: underline;
+  background: rgba(242, 107, 29, 0.05);
 }
 
 /* Service meta specs */
