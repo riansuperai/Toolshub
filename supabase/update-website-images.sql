@@ -7,7 +7,7 @@
 
 update public.listings
 set
-  hero_image_url = 'https://hazenco.nl/wp-content/uploads/2026/02/Website-laten-maken-300x200.png',
+  hero_image_url = 'https://hazenco.nl/wp-content/uploads/2026/02/Website-laten-maken.png',
   cases = '[
     {
       "clientName": "Badkamerwandbekleding",

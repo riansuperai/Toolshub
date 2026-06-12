@@ -55,7 +55,7 @@ insert into public.listings (
   'service_package',
   array['marketing', 'lead_generation']::text[],
   array['general', 'professional_services', 'retail']::branche[],
-  'https://hazenco.nl/wp-content/uploads/2026/02/Website-laten-maken-300x200.png',
+  'https://hazenco.nl/wp-content/uploads/2026/02/Website-laten-maken.png',
   array[]::text[],
   142500,
   0,

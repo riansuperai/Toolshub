@@ -1297,7 +1297,7 @@ export const listings: Listing[] = [
     type: "service_package",
     useCases: ["marketing", "lead_generation"],
     branches: ["general", "professional_services", "retail"],
-    heroImageUrl: "https://hazenco.nl/wp-content/uploads/2026/02/Website-laten-maken-300x200.png",
+    heroImageUrl: "https://hazenco.nl/wp-content/uploads/2026/02/Website-laten-maken.png",
     screenshotUrls: [],
     priceCents: 142500,
     setupPriceCents: 0,
