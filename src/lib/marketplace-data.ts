@@ -1292,12 +1292,12 @@ export const listings: Listing[] = [
     slug: "website-laten-maken",
     tagline: "Professionele website binnen weken, zonder gedoe en zonder verborgen kosten.",
     description:
-      "Een website die je bedrijf serieus laat ogen — door Hazenco ontworpen en gebouwd. Conversie-gericht, snel en klaar voor zoekmachines.\n\nGeschikt voor ZZP'ers, MKB-ondernemers en starters die niet zelf willen knutselen met builders, hosting, plugins en SEO.\n\nKies tussen een eenmalige investering of een All-in abonnement waarin alles is geregeld: hosting, updates, backups en support.",
+      "Een professionele website is in 2026 geen luxe meer — het is de basis van je vindbaarheid, je geloofwaardigheid en je conversie. Toch blijft het voor veel ondernemers een terugkerend hoofdpijndossier. Welke builder kies je? Wie verzorgt de hosting? Wat als de site op een vrijdagmiddag offline gaat? En wie houdt de plugins up-to-date?\n\nDaar komen wij in beeld. **Hazenco ontzorgt je volledig van A tot Z**, zodat jij je tijd en aandacht kan steken in waar je écht goed in bent: ondernemen.\n\n**Een website die je bedrijf laat opvallen**\n\nWe ontwerpen en bouwen websites die niet alleen mooi zijn, maar ook werken. Conversie-gericht, mobiel-vriendelijk, snel ladend en klaar voor zoekmachines. Geen standaard template-werk dat je tien keer eerder hebt gezien, maar een ontwerp dat past bij jouw merk, jouw doelgroep en jouw doelen. Of je nu een ZZP'er bent die professioneel wil ogen, een MKB-ondernemer met een verouderde site die niet meer presteert, of een starter die geloofwaardig live wil — wij maken het mogelijk.\n\n**Twee manieren om met ons aan de slag te gaan**\n\nBij Hazenco geloven we in transparantie. Daarom hebben we geen ingewikkelde offertes, geen verborgen kosten en geen kleine lettertjes. Je kiest tussen twee duidelijke pakketten.\n\nHet *Eenmalig*-pakket is voor ondernemers die liever in één keer afrekenen. Voor €1.425 krijg je een complete website opgeleverd binnen enkele weken, inclusief professioneel ontwerp, conversie-gerichte structuur, basis-SEO en een korte training zodat je zelf inhoud kunt aanpassen. Hosting en onderhoud regel je zelf of nemen we apart van je over.\n\nHet *All-in abonnement* is voor wie écht ontzorgd wil worden. Voor €89 per maand (vanaf 24 maanden) regelen wij álles: ontwerp, bouw, premium hosting, dagelijkse backups, SSL-certificaat, plugin- en core-updates, security monitoring en directe support. Geen onverwachte rekeningen, geen technische verrassingen, geen midnight-paniek over een gehackte site. Eén vast bedrag per maand en wij houden de zaak draaiend.\n\n**Wat ons anders maakt**\n\nWe zijn geen anonieme webbouwer met een ticketsysteem waar je vraag in de wachtrij verdwijnt. Bij Hazenco krijg je één vast aanspreekpunt — iemand die jou en je bedrijf kent. Een WhatsApp-bericht, een belletje of een mailtje: je hoort dezelfde dag iets terug, niet pas over twee weken.\n\nWe werken iteratief en betrekken je actief bij het proces. Je krijgt drie ontwerprondes om de site precies zo te krijgen als je voor je ziet. We praten in gewone taal, niet in jargon. En we leveren binnen weken — niet binnen maanden.\n\n**Snel, veilig en altijd up-to-date**\n\nEen website is geen statisch ding dat je eenmalig oplevert en vergeet. Plugins krijgen updates, security-patches komen uit, technologie verandert. Met het abonnement nemen we dat continu voor je over. Dagelijkse backups betekenen dat zelfs als er iets misgaat, we binnen minuten weer live zijn. Premium hosting betekent dat je site snel laadt — belangrijk voor zowel je bezoekers als Google.\n\n**Klaar om te starten?**\n\nOf je nu vandaag begint met je eerste website, of jouw bestaande site een tweede leven wil geven — we denken graag met je mee. Geen agressieve verkoop, geen lange verkoopgesprekken en geen verplichtingen vooraf. Je vertelt ons wat je nodig hebt, wij leggen uit wat past, jij kiest.\n\nEen professionele online aanwezigheid hoeft geen hoofdpijn te zijn. Met Hazenco regel je het in één keer goed — en hou je je hoofd vrij voor je echte werk.",
     categoryId: "cat_services",
     type: "service_package",
     useCases: ["marketing", "lead_generation"],
     branches: ["general", "professional_services", "retail"],
-    heroImageUrl: "https://hazenco.nl/wp-content/uploads/2024/05/website-laten-maken.webp",
+    heroImageUrl: "https://hazenco.nl/wp-content/uploads/2026/02/Website-laten-maken-300x200.png",
     screenshotUrls: [],
     priceCents: 142500,
     setupPriceCents: 0,
@@ -1362,7 +1362,7 @@ export const listings: Listing[] = [
           "Assortiment volledig zichtbaar op mobiel"
         ],
         tone: "dark",
-        imageUrl: "https://hazenco.nl/wp-content/uploads/2024/05/badkamerwandbekleding.webp",
+        imageUrl: "https://hazenco.nl/wp-content/uploads/2026/03/Oppervlakten-768x358.webp",
         url: "https://badkamerwandbekleding.nl"
       },
       {
@@ -1376,7 +1376,7 @@ export const listings: Listing[] = [
           "Portfolio direct vindbaar voor opdrachtgevers"
         ],
         tone: "light",
-        imageUrl: "https://hazenco.nl/wp-content/uploads/2024/05/civitas-advies.webp",
+        imageUrl: "https://hazenco.nl/wp-content/uploads/2026/03/infrastructure-urbaine-genie-routier-768x768.jpg.webp",
         url: "https://civitas-advies.nl"
       },
       {
@@ -1390,7 +1390,7 @@ export const listings: Listing[] = [
           "Volledig klaar voor zoekmachines — SEO-proof"
         ],
         tone: "peach",
-        imageUrl: "https://hazenco.nl/wp-content/uploads/2024/05/magdatwel.webp",
+        imageUrl: "https://hazenco.nl/wp-content/uploads/2026/03/Screenshot-2026-03-21-190124-768x568.png.webp",
         url: "https://magdatwelonline.nl"
       }
     ],

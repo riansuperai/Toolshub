@@ -55,7 +55,7 @@ insert into public.listings (
   'service_package',
   array['marketing', 'lead_generation']::text[],
   array['general', 'professional_services', 'retail']::branche[],
-  'https://hazenco.nl/wp-content/uploads/2024/05/website-laten-maken.webp',
+  'https://hazenco.nl/wp-content/uploads/2026/02/Website-laten-maken-300x200.png',
   array[]::text[],
   142500,
   0,
@@ -93,7 +93,7 @@ insert into public.listings (
       "tone": "dark",
       "benefit": "Stijlvolle website voor een leverancier van wandpanelen. Bezoekers kunnen het volledige assortiment bekijken en direct een afspraak inplannen voor montage aan huis.",
       "highlights": ["Online afspraken inplannen — zonder bellen", "Assortiment volledig zichtbaar op mobiel"],
-      "imageUrl": "https://hazenco.nl/wp-content/uploads/2024/05/badkamerwandbekleding.webp",
+      "imageUrl": "https://hazenco.nl/wp-content/uploads/2026/03/Oppervlakten-768x358.webp",
       "url": "https://badkamerwandbekleding.nl"
     },
     {
@@ -103,7 +103,7 @@ insert into public.listings (
       "tone": "light",
       "benefit": "Professionele website voor een adviesbureau gespecialiseerd in infrastructuur en openbare ruimte. Van ruimtelijke ontwikkeling tot asset management — alles overzichtelijk gepresenteerd.",
       "highlights": ["Werkgebieden en diensten helder in kaart", "Portfolio direct vindbaar voor opdrachtgevers"],
-      "imageUrl": "https://hazenco.nl/wp-content/uploads/2024/05/civitas-advies.webp",
+      "imageUrl": "https://hazenco.nl/wp-content/uploads/2026/03/infrastructure-urbaine-genie-routier-768x768.jpg.webp",
       "url": "https://civitas-advies.nl"
     },
     {
@@ -113,7 +113,7 @@ insert into public.listings (
       "tone": "peach",
       "benefit": "Juridische blogwebsite waar mensen op een toegankelijke manier leren wat wel en niet mag. Weetjes, nieuws en actuele onderwerpen — begrijpelijk geschreven voor iedereen.",
       "highlights": ["Juridische info zonder vakjargon", "Volledig klaar voor zoekmachines — SEO-proof"],
-      "imageUrl": "https://hazenco.nl/wp-content/uploads/2024/05/magdatwel.webp",
+      "imageUrl": "https://hazenco.nl/wp-content/uploads/2026/03/Screenshot-2026-03-21-190124-768x568.png.webp",
       "url": "https://magdatwelonline.nl"
     }
   ]'::jsonb,

@@ -16550,7 +16550,8 @@ p {
   overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 0;
+  gap: 16px;
+  padding: 14px;
 }
 
 .detail-hero-visual {
@@ -16560,6 +16561,7 @@ p {
   display: grid;
   place-items: center;
   overflow: hidden;
+  border-radius: 14px;
 }
 
 .detail-hero-visual img {
@@ -16574,7 +16576,7 @@ p {
 }
 
 .detail-hero-copy {
-  padding: 26px 28px;
+  padding: 18px 20px 18px 8px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -17144,6 +17146,8 @@ p {
   }
   .detail-hero {
     grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 10px;
   }
   .detail-hero-visual {
     min-height: 200px;
@@ -17152,7 +17156,7 @@ p {
     font-size: 24px;
   }
   .detail-hero-copy {
-    padding: 20px 22px 22px;
+    padding: 10px 14px 14px;
   }
 }
 

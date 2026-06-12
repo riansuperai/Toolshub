@@ -176,27 +176,11 @@ export function ServiceDetailClient({ listing }: { listing: Listing }) {
                 </span>
                 <h1>{listing.title}</h1>
                 <p className="lead-sm">{listing.tagline}</p>
-                {sp ? (
+                {listing.cases && listing.cases.length > 0 ? (
                   <div className="hero-actions">
-                    <a
-                      className="button"
-                      href={sp.externalUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={() =>
-                        trackEvent("service_hero_cta_click", {
-                          tool_slug: listing.slug,
-                          tool_title: listing.title
-                        })
-                      }
-                    >
-                      Bekijk op hazenco.nl <ExternalLink size={14} />
+                    <a className="button secondary" href="#cases">
+                      Bekijk portfolio
                     </a>
-                    {listing.cases && listing.cases.length > 0 ? (
-                      <a className="button secondary" href="#cases">
-                        Bekijk portfolio
-                      </a>
-                    ) : null}
                   </div>
                 ) : null}
               </div>
