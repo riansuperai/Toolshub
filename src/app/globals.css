@@ -8022,6 +8022,11 @@ p {
   flex-shrink: 0;
 }
 
+/* hazenco.nl externe link onder Contact-rij krijgt extra lucht boven */
+.footer-col .footer-external-link {
+  margin-top: 18px;
+}
+
 /* Copyright bar onderaan de footer */
 .footer-bottom-bar {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
