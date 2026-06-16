@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Shell } from "@/components/shell";
+import { InfoSidebar } from "@/components/info-sidebar";
 
 export const metadata: Metadata = {
   title: "Algemene voorwaarden",
@@ -11,13 +12,15 @@ export const metadata: Metadata = {
 export default function AlgemeneVoorwaardenPage() {
   return (
     <Shell>
-      <div className="page" style={{ maxWidth: 760 }}>
-        <h1>Algemene voorwaarden</h1>
-        <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
-          Hieronder staan de algemene voorwaarden voor het gebruik van
-          Hazenco Toolshub en de aankoop van tools en diensten via dit
-          platform.
-        </p>
+      <div className="page info-page">
+        <div className="info-layout">
+          <div className="info-main">
+            <h1>Algemene voorwaarden</h1>
+            <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
+              Hieronder staan de algemene voorwaarden voor het gebruik van
+              Hazenco Toolshub en de aankoop van tools en diensten via dit
+              platform.
+            </p>
 
         <section className="section-card">
           <h2>1. Wie zijn wij</h2>
@@ -96,6 +99,9 @@ export default function AlgemeneVoorwaardenPage() {
             Nederland.
           </p>
         </section>
+          </div>
+          <InfoSidebar />
+        </div>
       </div>
     </Shell>
   );

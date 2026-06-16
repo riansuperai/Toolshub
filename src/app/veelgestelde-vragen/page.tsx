@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Shell } from "@/components/shell";
+import { InfoSidebar } from "@/components/info-sidebar";
 
 export const metadata: Metadata = {
   title: "Veelgestelde vragen",
@@ -11,11 +12,13 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <Shell>
-      <div className="page" style={{ maxWidth: 760 }}>
-        <h1>Veelgestelde vragen</h1>
-        <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
-          Vind je vraag niet terug? Neem contact met ons op — we helpen graag.
-        </p>
+      <div className="page info-page">
+        <div className="info-layout">
+          <div className="info-main">
+            <h1>Veelgestelde vragen</h1>
+            <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
+              Vind je vraag niet terug? Neem contact met ons op — we helpen graag.
+            </p>
 
         <section className="section-card">
           <h2>Hoe weet ik of een tool bij mijn bedrijf past?</h2>
@@ -71,6 +74,9 @@ export default function FaqPage() {
             reageren meestal binnen één werkdag.
           </p>
         </section>
+          </div>
+          <InfoSidebar />
+        </div>
       </div>
     </Shell>
   );

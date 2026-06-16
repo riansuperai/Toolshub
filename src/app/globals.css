@@ -16508,6 +16508,208 @@ p {
   font-size: 12.5px;
 }
 
+/* ====== Info-pages (over-ons, FAQ, privacy, algemene voorwaarden) ====
+   Twee-koloms layout: main content links, sidebar rechts met nav naar
+   andere info-pages en CTA-boxes. Vult de pagina visueel en stuurt
+   bezoekers door naar relevante vervolgstappen. */
+
+.info-page {
+  max-width: none;
+}
+
+.info-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 32px;
+  align-items: start;
+}
+
+.info-main {
+  min-width: 0;
+}
+
+.info-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 90px;
+}
+
+/* Nav-blok in sidebar */
+.info-nav {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+.info-nav h3 {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--green-700);
+  margin: 0 0 12px;
+}
+
+[data-theme="dark"] .info-nav h3 {
+  color: rgba(230, 241, 236, 0.65);
+}
+
+.info-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.info-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--green-900);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+[data-theme="dark"] .info-nav a {
+  color: #e6f1ec;
+}
+
+.info-nav a:hover {
+  background: var(--bg-app);
+  color: var(--orange-700);
+}
+
+[data-theme="dark"] .info-nav a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--orange-600);
+}
+
+.info-nav a.active {
+  background: var(--green-900);
+  color: #ffffff;
+  cursor: default;
+}
+
+.info-nav a.active:hover {
+  background: var(--green-900);
+  color: #ffffff;
+}
+
+.info-nav a svg {
+  color: var(--green-700);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .info-nav a svg {
+  color: rgba(230, 241, 236, 0.45);
+}
+
+/* Help-box (WhatsApp CTA) */
+.info-help-box,
+.info-creator-box {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+.info-help-box h3,
+.info-creator-box h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--green-900);
+  margin: 0 0 6px;
+}
+
+[data-theme="dark"] .info-help-box h3,
+[data-theme="dark"] .info-creator-box h3 {
+  color: #ffffff;
+}
+
+.info-help-box p,
+.info-creator-box p {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .info-help-box p,
+[data-theme="dark"] .info-creator-box p {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.info-help-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border-radius: 9px;
+  background: #25d366;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.info-help-cta:hover {
+  background: #1faa50;
+  color: #ffffff;
+}
+
+/* Creator-box met oranje accent */
+.info-creator-box {
+  background: linear-gradient(135deg, rgba(242, 107, 29, 0.08) 0%, var(--bg-elevated) 60%);
+  border-color: rgba(242, 107, 29, 0.25);
+}
+
+[data-theme="dark"] .info-creator-box {
+  background: linear-gradient(135deg, rgba(242, 107, 29, 0.12) 0%, var(--bg-surface) 70%);
+}
+
+.info-creator-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border-radius: 9px;
+  background: var(--orange-600);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.info-creator-cta:hover {
+  background: var(--orange-700);
+  color: #ffffff;
+}
+
+/* Mobile: sidebar onder de content */
+@media (max-width: 880px) {
+  .info-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .info-sidebar {
+    position: static;
+    top: auto;
+  }
+}
+
 /* ====== Dienst-listings (Optie B) ======================================
    Visuele afwijking t.o.v. tool-listings: type-chip op tegel + sidebar
    met 2 pakketten die naar hazenco.nl linken. Geen winkelwagen-CTA. */

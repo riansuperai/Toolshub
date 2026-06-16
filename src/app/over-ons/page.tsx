@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { Shell } from "@/components/shell";
+import { InfoSidebar } from "@/components/info-sidebar";
 
 export const metadata: Metadata = {
   title: "Over ons",
@@ -12,12 +13,14 @@ export const metadata: Metadata = {
 export default function OverOnsPage() {
   return (
     <Shell>
-      <div className="page" style={{ maxWidth: 760 }}>
-        <h1>Over ons</h1>
-        <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
-          Hazenco Toolshub is de marketplace waar Nederlandse ondernemers
-          kant-en-klare digitale tools en diensten vinden — zonder gedoe.
-        </p>
+      <div className="page info-page">
+        <div className="info-layout">
+          <div className="info-main">
+            <h1>Over ons</h1>
+            <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
+              Hazenco Toolshub is de marketplace waar Nederlandse ondernemers
+              kant-en-klare digitale tools en diensten vinden — zonder gedoe.
+            </p>
 
         <section className="section-card">
           <h2>Wat we doen</h2>
@@ -65,6 +68,9 @@ export default function OverOnsPage() {
             <Link href="/creators">creator wordt</Link>.
           </p>
         </section>
+          </div>
+          <InfoSidebar />
+        </div>
       </div>
     </Shell>
   );

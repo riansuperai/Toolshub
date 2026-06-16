@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Shell } from "@/components/shell";
+import { InfoSidebar } from "@/components/info-sidebar";
 
 export const metadata: Metadata = {
   title: "Privacy & cookies",
@@ -11,12 +12,14 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <Shell>
-      <div className="page" style={{ maxWidth: 760 }}>
-        <h1>Privacy & cookies</h1>
-        <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
-          Korte uitleg over welke gegevens we verzamelen op
-          toolshub.hazenco.nl en hoe je daar controle over hebt.
-        </p>
+      <div className="page info-page">
+        <div className="info-layout">
+          <div className="info-main">
+            <h1>Privacy &amp; cookies</h1>
+            <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
+              Korte uitleg over welke gegevens we verzamelen op
+              toolshub.hazenco.nl en hoe je daar controle over hebt.
+            </p>
 
         <section className="section-card">
           <h2>Wat we verzamelen</h2>
@@ -81,6 +84,9 @@ export default function PrivacyPage() {
             of mail naar het adres op onze hoofdwebsite.
           </p>
         </section>
+          </div>
+          <InfoSidebar />
+        </div>
       </div>
     </Shell>
   );
