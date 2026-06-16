@@ -380,7 +380,7 @@ button {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   /* Duwt actions naar rechter rand. */
   margin-left: auto;
 }
@@ -7910,11 +7910,18 @@ p {
   margin-top: auto;
   background: #122520;
   color: rgba(255, 255, 255, 0.78);
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
-  gap: 40px;
-  padding: 48px max(22px, calc((100vw - var(--max)) / 2 + 22px));
+  display: flex;
+  flex-direction: column;
+  padding: 48px max(22px, calc((100vw - var(--max)) / 2 + 22px)) 0;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-grid-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 36px;
 }
 
 .footer-brand-col {
@@ -8001,6 +8008,31 @@ p {
 
 .footer-contact-list a:hover {
   color: var(--orange-600);
+}
+
+/* Externe links in footer met een ExternalLink icoontje achter de label */
+.footer-link-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-link-list a svg {
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+/* Copyright bar onderaan de footer */
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 0;
+  margin-top: 4px;
+}
+
+.footer-bottom-bar p {
+  margin: 0;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .footer-brand {
@@ -8258,9 +8290,13 @@ p {
   .hero,
   .detail-layout,
   .dashboard-layout,
-  .about-band,
-  .site-footer {
+  .about-band {
     grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-grid-wrap {
+    grid-template-columns: 1fr 1fr;
     gap: 28px;
   }
 
@@ -8382,6 +8418,11 @@ p {
   .kpi-grid,
   .category-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-grid-wrap {
+    grid-template-columns: 1fr;
+    gap: 22px;
   }
 
   .marketplace-home .hero h1 {

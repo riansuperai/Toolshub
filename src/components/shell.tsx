@@ -156,61 +156,85 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <main>{children}</main>
 
       <footer className="site-footer">
-        <div className="footer-brand-col">
-          <Link className="brand footer-brand" href="/">
-            <span className="brand-mark">H</span>
-            <span>
-              <strong>Hazenco</strong>
-              <small>Toolshub</small>
-            </span>
-          </Link>
-          <p>
-            Een betrouwbare plek voor digitale tools, automatiseringen en
-            servicepakketten die ondernemers echt tijd besparen.
-          </p>
-          <Link className="footer-creator-cta" href="/creators">
-            <Rocket size={15} /> Creator worden?
-          </Link>
-          <a
-            className="footer-external-link"
-            href="https://hazenco.nl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            hazenco.nl <ExternalLink size={14} />
-          </a>
+        <div className="footer-grid-wrap">
+          <div className="footer-brand-col">
+            <Link className="brand footer-brand" href="/">
+              <span className="brand-mark">H</span>
+              <span>
+                <strong>Hazenco</strong>
+                <small>Toolshub</small>
+              </span>
+            </Link>
+            <p>
+              Een betrouwbare plek voor digitale tools, automatiseringen en
+              servicepakketten die ondernemers echt tijd besparen.
+            </p>
+            <Link className="footer-creator-cta" href="/creators">
+              <Rocket size={15} /> Creator worden?
+            </Link>
+          </div>
+
+          <div className="footer-col">
+            <h3>Informatie</h3>
+            <ul className="footer-link-list">
+              <li><Link href="/over-ons">Over ons</Link></li>
+              <li><Link href="/veelgestelde-vragen">Veelgestelde vragen</Link></li>
+              <li><Link href="/privacy">Privacy</Link></li>
+              <li><Link href="/algemene-voorwaarden">Algemene voorwaarden</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h3>Onze tools</h3>
+            <ul className="footer-link-list">
+              <li>
+                <a href="https://cep.hazenco.nl" target="_blank" rel="noreferrer">
+                  Customer Engagement <ExternalLink size={12} />
+                </a>
+              </li>
+              <li>
+                <a href="https://pricetool.hazenco.nl" target="_blank" rel="noreferrer">
+                  Price Tool <ExternalLink size={12} />
+                </a>
+              </li>
+              <li>
+                <a href="https://voorraad.hazenco.nl" target="_blank" rel="noreferrer">
+                  Voorraad Beheer <ExternalLink size={12} />
+                </a>
+              </li>
+              <li>
+                <a href="https://hazenco.nl" target="_blank" rel="noreferrer">
+                  Bekijk alles <ExternalLink size={12} />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h3>Contact</h3>
+            <ul className="footer-contact-list">
+              <li>
+                <Phone size={15} aria-hidden="true" />
+                <a href="tel:+31643074303">+31 6 4307403</a>
+              </li>
+              <li>
+                <Mail size={15} aria-hidden="true" />
+                <a href="mailto:info@hazenco.nl">info@hazenco.nl</a>
+              </li>
+              <li>
+                <Building2 size={15} aria-hidden="true" />
+                <span>KvK: 94215316</span>
+              </li>
+              <li>
+                <Clock size={15} aria-hidden="true" />
+                <span>Ma–Vr 09:00 – 17:00</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div className="footer-col">
-          <h3>Informatie</h3>
-          <ul className="footer-link-list">
-            <li><Link href="/over-ons">Over ons</Link></li>
-            <li><Link href="/veelgestelde-vragen">Veelgestelde vragen</Link></li>
-            <li><Link href="/privacy">Privacy</Link></li>
-            <li><Link href="/algemene-voorwaarden">Algemene voorwaarden</Link></li>
-          </ul>
-        </div>
-
-        <div className="footer-col">
-          <h3>Contact</h3>
-          <ul className="footer-contact-list">
-            <li>
-              <Phone size={15} />
-              <a href="tel:+31643074303">+31 6 4307403</a>
-            </li>
-            <li>
-              <Mail size={15} />
-              <a href="mailto:info@hazenco.nl">info@hazenco.nl</a>
-            </li>
-            <li>
-              <Building2 size={15} />
-              <span>KvK: 94215316</span>
-            </li>
-            <li>
-              <Clock size={15} />
-              <span>Ma–Vr 09:00 – 17:00</span>
-            </li>
-          </ul>
+        <div className="footer-bottom-bar">
+          <p>&copy; 2026 Hazenco. Alle rechten voorbehouden.</p>
         </div>
       </footer>
 
