@@ -187,26 +187,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <div className="footer-col">
             <h3>Onze tools</h3>
             <ul className="footer-link-list">
-              <li>
-                <a href="https://cep.hazenco.nl" target="_blank" rel="noreferrer">
-                  Customer Engagement <ExternalLink size={12} />
-                </a>
-              </li>
-              <li>
-                <a href="https://pricetool.hazenco.nl" target="_blank" rel="noreferrer">
-                  Price Tool <ExternalLink size={12} />
-                </a>
-              </li>
-              <li>
-                <a href="https://voorraad.hazenco.nl" target="_blank" rel="noreferrer">
-                  Voorraad Beheer <ExternalLink size={12} />
-                </a>
-              </li>
-              <li>
-                <a href="https://hazenco.nl" target="_blank" rel="noreferrer">
-                  Bekijk alles <ExternalLink size={12} />
-                </a>
-              </li>
+              <li><Link href="/tools/hazenco-cep">Customer Engagement</Link></li>
+              <li><Link href="/tools/hazenco-price-tool">Price Tool</Link></li>
+              <li><Link href="/tools/hazenco-voorraad-tool">Voorraad Beheer</Link></li>
+              <li><Link href="/creators/hazenco-studio">Bekijk alles</Link></li>
             </ul>
           </div>
 
@@ -230,6 +214,14 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 <span>Ma–Vr 09:00 – 17:00</span>
               </li>
             </ul>
+            <a
+              className="footer-external-link"
+              href="https://hazenco.nl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              hazenco.nl <ExternalLink size={14} />
+            </a>
           </div>
         </div>
 

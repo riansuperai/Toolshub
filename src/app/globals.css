@@ -12024,7 +12024,7 @@ p {
   position: relative;
   flex: 1;
   max-width: 480px;
-  margin: 0 32px;
+  margin: 0 32px 0 72px;
 }
 
 .header-search-input {
