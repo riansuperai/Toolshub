@@ -4,18 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
-  BadgeCheck,
+  Building2,
+  Clock,
   ExternalLink,
-  LayoutDashboard,
   LogIn,
+  Mail,
   Menu,
+  Phone,
   Rocket,
-  ShieldCheck,
   ShoppingBag,
-  Store,
   User,
-  X,
-  Zap
+  X
 } from "lucide-react";
 import { useMarketplace } from "@/lib/marketplace-store";
 import { RoleSwitcher } from "@/components/role-switcher";
@@ -87,11 +86,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <ThemeToggle />
             <NotificationBell />
             {isVisitor ? (
-              <Link className="header-creator-cta" href="/creators">
-                <Rocket size={15} /> Creator worden?
-              </Link>
-            ) : null}
-            {isVisitor ? (
               <Link className="header-account-link" href="/account" aria-label="Inloggen">
                 <LogIn size={15} /> <span className="account-link-label">Inloggen</span>
               </Link>
@@ -145,11 +139,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
               </nav>
               <div className="mobile-menu-actions">
                 {isVisitor ? (
-                  <Link className="header-creator-cta" href="/creators">
-                    <Rocket size={15} /> Creator worden?
-                  </Link>
-                ) : null}
-                {isVisitor ? (
                   <Link className="header-account-link" href="/account">
                     <LogIn size={15} /> Inloggen
                   </Link>
@@ -167,7 +156,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <main>{children}</main>
 
       <footer className="site-footer">
-        <div>
+        <div className="footer-brand-col">
           <Link className="brand footer-brand" href="/">
             <span className="brand-mark">H</span>
             <span>
@@ -176,39 +165,52 @@ export function Shell({ children }: { children: React.ReactNode }) {
             </span>
           </Link>
           <p>
-            Een betrouwbare plek voor digitale tools, automatiseringen en servicepakketten die ondernemers echt tijd
-            besparen.
+            Een betrouwbare plek voor digitale tools, automatiseringen en
+            servicepakketten die ondernemers echt tijd besparen.
           </p>
+          <Link className="footer-creator-cta" href="/creators">
+            <Rocket size={15} /> Creator worden?
+          </Link>
+          <a
+            className="footer-external-link"
+            href="https://hazenco.nl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            hazenco.nl <ExternalLink size={14} />
+          </a>
         </div>
-        <div className="footer-grid">
-          <div>
-            <h3>Kwaliteit</h3>
-            <p><BadgeCheck size={16} /> Creator keuring</p>
-            <p><ShieldCheck size={16} /> Demo en review-flow</p>
-          </div>
-          <div>
-            <h3>Platform</h3>
-            <p><Store size={16} /> Brede catalogus</p>
-            <p><LayoutDashboard size={16} /> Koper, creator en admin</p>
-            <p><Zap size={16} /> Automatisering-eerst ervaring</p>
-          </div>
-          <div>
-            <h3>Over Hazenco</h3>
-            <p>
-              Toolshub is gebouwd door Hazenco — een team dat digitale tools
-              maakt voor het Nederlandse MKB.
-            </p>
-            <p>
-              <a
-                className="footer-external-link"
-                href="https://hazenco.nl"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                hazenco.nl <ExternalLink size={14} />
-              </a>
-            </p>
-          </div>
+
+        <div className="footer-col">
+          <h3>Informatie</h3>
+          <ul className="footer-link-list">
+            <li><Link href="/over-ons">Over ons</Link></li>
+            <li><Link href="/veelgestelde-vragen">Veelgestelde vragen</Link></li>
+            <li><Link href="/privacy">Privacy</Link></li>
+            <li><Link href="/algemene-voorwaarden">Algemene voorwaarden</Link></li>
+          </ul>
+        </div>
+
+        <div className="footer-col">
+          <h3>Contact</h3>
+          <ul className="footer-contact-list">
+            <li>
+              <Phone size={15} />
+              <a href="tel:+31643074303">+31 6 4307403</a>
+            </li>
+            <li>
+              <Mail size={15} />
+              <a href="mailto:info@hazenco.nl">info@hazenco.nl</a>
+            </li>
+            <li>
+              <Building2 size={15} />
+              <span>KvK: 94215316</span>
+            </li>
+            <li>
+              <Clock size={15} />
+              <span>Ma–Vr 09:00 – 17:00</span>
+            </li>
+          </ul>
         </div>
       </footer>
 
