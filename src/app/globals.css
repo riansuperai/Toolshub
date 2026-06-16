@@ -16513,10 +16513,6 @@ p {
    andere info-pages en CTA-boxes. Vult de pagina visueel en stuurt
    bezoekers door naar relevante vervolgstappen. */
 
-.info-page {
-  max-width: none;
-}
-
 .info-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
