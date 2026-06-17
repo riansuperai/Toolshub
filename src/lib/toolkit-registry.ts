@@ -33,7 +33,8 @@ export type ToolkitIcon =
   | "credit-card"
   | "search"
   | "scissors"
-  | "palette";
+  | "palette"
+  | "file-archive";
 
 export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
@@ -71,6 +72,15 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
     estimatedMinutes: 1,
     available: true,
     tags: ["beeld", "product"]
+  },
+  {
+    slug: "pdf-comprimeren",
+    title: "PDF comprimeren",
+    tagline: "Maak je PDF kleiner zonder zichtbaar kwaliteitsverlies — direct in je browser.",
+    iconName: "file-archive",
+    estimatedMinutes: 1,
+    available: true,
+    tags: ["pdf", "bestand"]
   }
 ];
 

@@ -18072,6 +18072,278 @@ p {
   }
 }
 
+/* ====== PDF Comprimeren ============================================= */
+
+.pdfcomp-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Geselecteerde-bestand kaart */
+.pdfcomp-file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-app);
+}
+
+[data-theme="dark"] .pdfcomp-file {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pdfcomp-file-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: rgba(242, 107, 29, 0.12);
+  color: var(--orange-600);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.pdfcomp-file-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pdfcomp-file-info strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--green-900);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .pdfcomp-file-info strong {
+  color: #ffffff;
+}
+
+.pdfcomp-file-info span {
+  font-size: 12.5px;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .pdfcomp-file-info span {
+  color: rgba(230, 241, 236, 0.6);
+}
+
+.pdfcomp-file-remove {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  color: var(--green-700);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .pdfcomp-file-remove {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.pdfcomp-file-remove:hover {
+  border-color: #d94747;
+  color: #d94747;
+}
+
+/* Compressie-niveau selector */
+.pdfcomp-levels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pdfcomp-levels-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .pdfcomp-levels-label {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.pdfcomp-levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.pdfcomp-level {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--bg-elevated);
+  color: var(--green-900);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+[data-theme="dark"] .pdfcomp-level {
+  color: #e6f1ec;
+}
+
+.pdfcomp-level:hover:not(.active) {
+  border-color: var(--orange-600);
+}
+
+.pdfcomp-level.active {
+  background: var(--green-900);
+  border-color: var(--green-900);
+  color: #ffffff;
+}
+
+.pdfcomp-level strong {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.pdfcomp-level span {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--green-700);
+  opacity: 0.9;
+}
+
+.pdfcomp-level.active span {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+[data-theme="dark"] .pdfcomp-level span {
+  color: rgba(230, 241, 236, 0.65);
+}
+
+.pdfcomp-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Resultaat: origineel → nieuw → reductie */
+.pdfcomp-result {
+  background: var(--bg-app);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+
+[data-theme="dark"] .pdfcomp-result {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pdfcomp-result-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.pdfcomp-result-cell {
+  flex: 1;
+  min-width: 110px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+}
+
+.pdfcomp-result-cell span {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--green-700);
+  margin-bottom: 4px;
+}
+
+[data-theme="dark"] .pdfcomp-result-cell span {
+  color: rgba(230, 241, 236, 0.6);
+}
+
+.pdfcomp-result-cell strong {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .pdfcomp-result-cell strong {
+  color: #ffffff;
+}
+
+.pdfcomp-result-cell.highlight {
+  background: var(--green-900);
+  border-color: var(--green-900);
+}
+
+.pdfcomp-result-cell.highlight span {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.pdfcomp-result-cell.highlight strong {
+  color: #ffffff;
+}
+
+.pdfcomp-result-cell.badge {
+  background: rgba(242, 107, 29, 0.1);
+  border-color: rgba(242, 107, 29, 0.3);
+  text-align: center;
+  flex: 0 0 auto;
+  min-width: 90px;
+}
+
+.pdfcomp-result-cell.badge span {
+  color: var(--orange-700);
+}
+
+.pdfcomp-result-cell.badge strong {
+  font-size: 22px;
+  color: var(--orange-600);
+}
+
+[data-theme="dark"] .pdfcomp-result-cell.badge span {
+  color: #ffb47a;
+}
+
+.pdfcomp-result-arrow {
+  font-size: 18px;
+  color: var(--green-700);
+  opacity: 0.5;
+  font-weight: 800;
+}
+
+[data-theme="dark"] .pdfcomp-result-arrow {
+  color: rgba(230, 241, 236, 0.4);
+}
+
+@media (max-width: 720px) {
+  .pdfcomp-result-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pdfcomp-result-arrow {
+    text-align: center;
+    transform: rotate(90deg);
+  }
+}
+
 /* ====== Info-pages (over-ons, FAQ, privacy, algemene voorwaarden) ====
    Twee-koloms layout: main content links, sidebar rechts met nav naar
    andere info-pages en CTA-boxes. Vult de pagina visueel en stuurt

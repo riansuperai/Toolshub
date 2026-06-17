@@ -15,6 +15,8 @@
     "jspdf": "^4.2.1",
     "lucide-react": "latest",
     "next": "latest",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.0.227",
     "postcss": "^8.5.10",
     "react": "latest",
     "react-dom": "latest",
