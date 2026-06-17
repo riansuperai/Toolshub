@@ -17297,6 +17297,547 @@ p {
   }
 }
 
+/* ====== BTW Calculator ============================================== */
+
+.btw-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.btw-direction-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px;
+  background: var(--bg-app);
+  align-self: flex-start;
+}
+
+[data-theme="dark"] .btw-direction-toggle {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.btw-direction-toggle button {
+  padding: 9px 16px;
+  border: 0;
+  background: transparent;
+  color: var(--green-700);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+[data-theme="dark"] .btw-direction-toggle button {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.btw-direction-toggle button:hover:not(.active) {
+  color: var(--orange-700);
+}
+
+.btw-direction-toggle button.active {
+  background: var(--green-900);
+  color: #ffffff;
+}
+
+.btw-direction-toggle .btw-swap {
+  padding: 9px 10px;
+  color: var(--green-700);
+}
+
+.btw-direction-toggle .btw-swap:hover {
+  color: var(--orange-700);
+}
+
+.btw-input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .btw-input-label {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.btw-input-row {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btw-input-row:focus-within {
+  border-color: var(--orange-600);
+  box-shadow: 0 0 0 3px rgba(242, 107, 29, 0.15);
+}
+
+.btw-input-currency {
+  padding: 0 14px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--green-700);
+  border-right: 1px solid var(--line);
+  background: var(--bg-app);
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+}
+
+[data-theme="dark"] .btw-input-currency {
+  color: rgba(230, 241, 236, 0.6);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.btw-input-row input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: 14px 16px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--green-900);
+  font-family: inherit;
+  min-width: 0;
+}
+
+[data-theme="dark"] .btw-input-row input {
+  color: #ffffff;
+}
+
+.btw-input-row input:focus {
+  outline: none;
+}
+
+.btw-tarief-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btw-tarief-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .btw-tarief-label {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.btw-tarief-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.btw-tarief-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  color: var(--green-900);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+[data-theme="dark"] .btw-tarief-btn {
+  color: #e6f1ec;
+}
+
+.btw-tarief-btn:hover:not(.active) {
+  border-color: var(--orange-600);
+}
+
+.btw-tarief-btn.active {
+  background: var(--green-900);
+  border-color: var(--green-900);
+  color: #ffffff;
+}
+
+.btw-tarief-btn strong {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.btw-tarief-btn span {
+  font-size: 12px;
+  color: var(--green-700);
+  opacity: 0.85;
+}
+
+.btw-tarief-btn.active span {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+[data-theme="dark"] .btw-tarief-btn span {
+  color: rgba(230, 241, 236, 0.6);
+}
+
+/* Resultaat */
+.btw-result {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-app);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+[data-theme="dark"] .btw-result {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.btw-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 9px;
+  flex-wrap: wrap;
+}
+
+.btw-result-row.highlight {
+  background: var(--green-900);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .btw-result-row.highlight {
+  background: #1a3c2e;
+}
+
+.btw-result-row.accent .btw-result-value {
+  color: var(--orange-600);
+}
+
+.btw-result-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .btw-result-label {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.btw-result-row.highlight .btw-result-label {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.btw-result-value-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btw-result-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .btw-result-value {
+  color: #ffffff;
+}
+
+.btw-result-row.highlight .btw-result-value {
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.btw-result-row.muted .btw-result-value {
+  font-weight: 700;
+}
+
+.btw-result-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  color: var(--green-700);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+[data-theme="dark"] .btw-result-copy {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.btw-result-copy:hover {
+  border-color: var(--orange-600);
+  color: var(--orange-700);
+}
+
+.btw-result-row.highlight .btw-result-copy {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.btw-result-row.highlight .btw-result-copy:hover {
+  border-color: var(--orange-600);
+  color: var(--orange-600);
+}
+
+/* ====== IBAN Checker ================================================ */
+
+.iban-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.iban-input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .iban-input-label {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.iban-input-label input {
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  color: var(--green-900);
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-mono, ui-monospace, "SF Mono", monospace);
+  letter-spacing: 0.04em;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[data-theme="dark"] .iban-input-label input {
+  color: #ffffff;
+}
+
+.iban-input-label input:focus {
+  outline: none;
+  border-color: var(--orange-600);
+  box-shadow: 0 0 0 3px rgba(242, 107, 29, 0.15);
+}
+
+.iban-empty {
+  padding: 14px 16px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  color: var(--green-700);
+  font-size: 13px;
+  background: var(--bg-app);
+}
+
+[data-theme="dark"] .iban-empty {
+  color: rgba(230, 241, 236, 0.6);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.iban-status {
+  display: flex;
+  gap: 11px;
+  padding: 14px 16px;
+  border-radius: 11px;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  align-items: flex-start;
+}
+
+.iban-status.pending {
+  border-color: rgba(242, 107, 29, 0.25);
+  background: rgba(242, 107, 29, 0.06);
+  color: var(--orange-700);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .iban-status.pending {
+  color: #ffb47a;
+}
+
+.iban-status.valid {
+  border-color: #1d9e75;
+  background: rgba(29, 158, 117, 0.08);
+}
+
+.iban-status.valid svg {
+  color: #1d9e75;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.iban-status.invalid {
+  border-color: #d94747;
+  background: rgba(217, 71, 71, 0.06);
+}
+
+.iban-status.invalid svg {
+  color: #d94747;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.iban-status strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--green-900);
+  margin-bottom: 2px;
+}
+
+[data-theme="dark"] .iban-status strong {
+  color: #ffffff;
+}
+
+.iban-status p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .iban-status p {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.iban-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--bg-app);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 4px;
+}
+
+[data-theme="dark"] .iban-details {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.iban-details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 13.5px;
+}
+
+.iban-details-row > span:first-child {
+  color: var(--green-700);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .iban-details-row > span:first-child {
+  color: rgba(230, 241, 236, 0.65);
+}
+
+.iban-details-row strong {
+  color: var(--green-900);
+  font-weight: 800;
+  font-family: var(--font-mono, ui-monospace, "SF Mono", monospace);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .iban-details-row strong {
+  color: #ffffff;
+}
+
+.iban-details-value {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iban-bankcode {
+  font-weight: 500;
+  font-size: 12.5px;
+  color: var(--green-700);
+  opacity: 0.7;
+  font-family: inherit;
+  letter-spacing: 0;
+}
+
+[data-theme="dark"] .iban-bankcode {
+  color: rgba(230, 241, 236, 0.55);
+}
+
+.iban-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 9px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  color: var(--green-700);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+[data-theme="dark"] .iban-copy {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.iban-copy:hover {
+  border-color: var(--orange-600);
+  color: var(--orange-700);
+}
+
+/* Mobile fixes */
+@media (max-width: 720px) {
+  .btw-direction-toggle {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btw-result-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .iban-input-label input {
+    font-size: 18px;
+  }
+  .iban-details-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
 /* ====== Info-pages (over-ons, FAQ, privacy, algemene voorwaarden) ====
    Twee-koloms layout: main content links, sidebar rechts met nav naar
    andere info-pages en CTA-boxes. Vult de pagina visueel en stuurt

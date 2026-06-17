@@ -51,16 +51,16 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
     tagline: "Bereken snel het BTW-bedrag bij een prijs (21%, 9% of 0%).",
     iconName: "calculator",
     estimatedMinutes: 1,
-    available: false,
+    available: true,
     tags: ["facturatie", "boekhouding"]
   },
   {
     slug: "iban-checker",
     title: "IBAN checker",
-    tagline: "Controleer of een Nederlands IBAN-nummer geldig is.",
+    tagline: "Controleer of een Nederlands of internationaal IBAN-nummer geldig is.",
     iconName: "credit-card",
     estimatedMinutes: 1,
-    available: false,
+    available: true,
     tags: ["betaling"]
   },
   {
