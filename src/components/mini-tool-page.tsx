@@ -7,6 +7,7 @@ import {
   CreditCard,
   FileArchive,
   FileText,
+  Images,
   ImageOff,
   Lock,
   Palette,
@@ -31,7 +32,8 @@ const ICON_MAP: Record<ToolkitIcon, LucideIcon> = {
   search: Search,
   scissors: Scissors,
   palette: Palette,
-  "file-archive": FileArchive
+  "file-archive": FileArchive,
+  images: Images
 };
 
 export function ToolkitIconRender({

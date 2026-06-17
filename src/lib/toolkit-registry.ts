@@ -34,7 +34,8 @@ export type ToolkitIcon =
   | "search"
   | "scissors"
   | "palette"
-  | "file-archive";
+  | "file-archive"
+  | "images";
 
 export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
@@ -81,6 +82,15 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
     estimatedMinutes: 1,
     available: true,
     tags: ["pdf", "bestand"]
+  },
+  {
+    slug: "afbeelding-comprimeren",
+    title: "Afbeelding comprimeren",
+    tagline: "Verklein JPG, PNG of WebP — tot 10 tegelijk, converteer formaat, download als ZIP.",
+    iconName: "images",
+    estimatedMinutes: 1,
+    available: true,
+    tags: ["beeld", "bestand"]
   }
 ];
 
