@@ -167,7 +167,10 @@ export function PdfComprimerenClient() {
       }
 
       const newBytes = await newPdf.save({ useObjectStreams: true });
-      const blob = new Blob([newBytes], { type: "application/pdf" });
+      // Cast naar BlobPart — pdf-lib geeft Uint8Array<ArrayBufferLike>, wat
+      // runtime een geldige BlobPart is maar in strict TS niet matched omdat
+      // ArrayBufferLike breder is dan ArrayBuffer.
+      const blob = new Blob([newBytes as BlobPart], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       const baseName = file.name.replace(/\.pdf$/i, "");
       const filename = `${baseName}-gecomprimeerd.pdf`;
