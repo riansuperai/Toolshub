@@ -16718,6 +16718,62 @@ p {
   color: rgba(230, 241, 236, 0.8);
 }
 
+.mini-tool-howto {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.mini-tool-howto h2 {
+  font-size: 16px;
+  margin: 0 0 14px;
+  color: var(--green-900);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+[data-theme="dark"] .mini-tool-howto h2 {
+  color: #ffffff;
+}
+
+.mini-tool-howto ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.mini-tool-howto li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .mini-tool-howto li {
+  color: rgba(230, 241, 236, 0.8);
+}
+
+.mini-tool-howto-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--orange-600);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 12.5px;
+  font-weight: 800;
+  margin-top: 1px;
+}
+
 .mini-tool-body {
   background: var(--bg-elevated);
   border: 1px solid var(--line);

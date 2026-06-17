@@ -434,6 +434,11 @@ export function FactuurGeneratorClient() {
     <MiniToolPage
       slug="factuur-generator"
       privacyNote="Alles draait in je eigen browser. Wij ontvangen geen klant- of betaalgegevens."
+      howItWorks={[
+        "Vul je bedrijfsgegevens in (eenmalig). Klik op \"Onthoud in deze browser\" en je hoeft 't volgende keer niet opnieuw te typen.",
+        "Voeg de klant toe en factuurregels (omschrijving, aantal, prijs, BTW-tarief). Totalen worden live berekend, incl. BTW per tarief.",
+        "Klik op \"Download factuur als PDF\" — je factuur komt direct in je downloads-map, klaar om te versturen."
+      ]}
       crossSell={{
         heading: "Vaker dan eens per maand factureren?",
         body:

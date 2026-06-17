@@ -58,6 +58,8 @@ export type MiniToolPageProps = {
   privacyNote?: string;
   /** Conversie-block naar relevante Hazenco-dienst. */
   crossSell?: CrossSell;
+  /** Genummerde stappen die uitleggen hoe de tool werkt. 2-5 korte zinnen. */
+  howItWorks?: string[];
   children: React.ReactNode;
 };
 
@@ -73,6 +75,7 @@ export function MiniToolPage({
   eyebrow,
   privacyNote,
   crossSell,
+  howItWorks,
   children
 }: MiniToolPageProps) {
   const entry = TOOLKIT_REGISTRY.find((t) => t.slug === slug);
@@ -105,6 +108,20 @@ export function MiniToolPage({
             </div>
           </div>
         </section>
+
+        {howItWorks && howItWorks.length > 0 ? (
+          <section className="mini-tool-howto">
+            <h2>Hoe het werkt</h2>
+            <ol>
+              {howItWorks.map((step, idx) => (
+                <li key={idx}>
+                  <span className="mini-tool-howto-num">{idx + 1}</span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ) : null}
 
         <section className="mini-tool-body">{children}</section>
 
