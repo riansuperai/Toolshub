@@ -17346,6 +17346,12 @@ p {
   color: #ffffff;
 }
 
+[data-theme="dark"] .btw-direction-toggle button.active {
+  /* var(--green-900) inverteert naar licht in dark mode; hardcoded zodat
+     witte tekst leesbaar blijft op de actieve knop. */
+  background: #1a3c2e;
+}
+
 .btw-direction-toggle .btw-swap {
   padding: 9px 10px;
   color: var(--green-700);
@@ -17470,6 +17476,11 @@ p {
   background: var(--green-900);
   border-color: var(--green-900);
   color: #ffffff;
+}
+
+[data-theme="dark"] .btw-tarief-btn.active {
+  background: #1a3c2e;
+  border-color: #1a3c2e;
 }
 
 .btw-tarief-btn strong {
@@ -18210,6 +18221,11 @@ p {
   color: #ffffff;
 }
 
+[data-theme="dark"] .pdfcomp-level.active {
+  background: #1a3c2e;
+  border-color: #1a3c2e;
+}
+
 .pdfcomp-level strong {
   font-size: 15px;
   font-weight: 800;
@@ -18291,6 +18307,11 @@ p {
 .pdfcomp-result-cell.highlight {
   background: var(--green-900);
   border-color: var(--green-900);
+}
+
+[data-theme="dark"] .pdfcomp-result-cell.highlight {
+  background: #1a3c2e;
+  border-color: #1a3c2e;
 }
 
 .pdfcomp-result-cell.highlight span {
@@ -18493,6 +18514,11 @@ p {
   color: #ffffff;
 }
 
+[data-theme="dark"] .imgcomp-format.active {
+  background: #1a3c2e;
+  border-color: #1a3c2e;
+}
+
 /* Totalen-balk */
 .imgcomp-totals {
   display: flex;
@@ -18545,6 +18571,11 @@ p {
 .imgcomp-totals > div.highlight {
   background: var(--green-900);
   border-color: var(--green-900);
+}
+
+[data-theme="dark"] .imgcomp-totals > div.highlight {
+  background: #1a3c2e;
+  border-color: #1a3c2e;
 }
 
 .imgcomp-totals > div.highlight span {
