@@ -66,10 +66,10 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "achtergrond-verwijderen",
     title: "Achtergrond verwijderen",
-    tagline: "Verwijder de achtergrond van een product- of profielfoto.",
+    tagline: "Verwijder de achtergrond van een product- of profielfoto met AI — gewoon in je browser.",
     iconName: "image-off",
     estimatedMinutes: 1,
-    available: false,
+    available: true,
     tags: ["beeld", "product"]
   }
 ];

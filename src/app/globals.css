@@ -17838,6 +17838,240 @@ p {
   }
 }
 
+/* ====== Achtergrond verwijderen (background remove) ================== */
+
+.bgremove-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Drop zone — upload via klik OF drag-drop */
+.bgremove-dropzone {
+  display: block;
+  position: relative;
+  border: 2px dashed var(--line);
+  border-radius: 14px;
+  background: var(--bg-app);
+  padding: 36px 24px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+[data-theme="dark"] .bgremove-dropzone {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.bgremove-dropzone:hover,
+.bgremove-dropzone.dragging {
+  border-color: var(--orange-600);
+  background: rgba(242, 107, 29, 0.04);
+}
+
+.bgremove-dropzone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.bgremove-dropzone-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.bgremove-dropzone-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(242, 107, 29, 0.12);
+  color: var(--orange-600);
+  display: grid;
+  place-items: center;
+}
+
+.bgremove-dropzone-inner strong {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .bgremove-dropzone-inner strong {
+  color: #e6f1ec;
+}
+
+.bgremove-dropzone-inner p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .bgremove-dropzone-inner p {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+/* Status (loading / processing / error) */
+.bgremove-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 32px 24px;
+  text-align: center;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg-app);
+}
+
+[data-theme="dark"] .bgremove-status {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.bgremove-status.error {
+  border-color: #d94747;
+  background: rgba(217, 71, 71, 0.06);
+}
+
+.bgremove-status-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(242, 107, 29, 0.12);
+  color: var(--orange-600);
+  display: grid;
+  place-items: center;
+}
+
+.bgremove-status.error .bgremove-status-icon {
+  background: rgba(217, 71, 71, 0.12);
+  color: #d94747;
+}
+
+.bgremove-status-icon.spinning {
+  animation: bgremoveSpin 1.5s linear infinite;
+}
+
+@keyframes bgremoveSpin {
+  to { transform: rotate(360deg); }
+}
+
+.bgremove-status strong {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .bgremove-status strong {
+  color: #ffffff;
+}
+
+.bgremove-status p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--green-700);
+  max-width: 460px;
+}
+
+[data-theme="dark"] .bgremove-status p {
+  color: rgba(230, 241, 236, 0.75);
+}
+
+.bgremove-progress {
+  margin-top: 12px;
+  width: 100%;
+  max-width: 320px;
+  height: 6px;
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.bgremove-progress-bar {
+  height: 100%;
+  background: var(--orange-600);
+  transition: width 0.3s ease;
+  border-radius: 999px;
+}
+
+/* Compare-view — origineel naast resultaat */
+.bgremove-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.bgremove-compare-pane {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+}
+
+.bgremove-compare-pane.checker {
+  /* Schaakbord-patroon om transparantie zichtbaar te maken */
+  background-image: linear-gradient(45deg, #d8d8d8 25%, transparent 25%),
+    linear-gradient(-45deg, #d8d8d8 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #d8d8d8 75%),
+    linear-gradient(-45deg, transparent 75%, #d8d8d8 75%);
+  background-size: 18px 18px;
+  background-position: 0 0, 0 9px, 9px -9px, -9px 0;
+  background-color: #f0f0f0;
+}
+
+[data-theme="dark"] .bgremove-compare-pane.checker {
+  background-image: linear-gradient(45deg, #2a3a32 25%, transparent 25%),
+    linear-gradient(-45deg, #2a3a32 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #2a3a32 75%),
+    linear-gradient(-45deg, transparent 75%, #2a3a32 75%);
+  background-color: #1a2620;
+}
+
+.bgremove-compare-pane img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.bgremove-pane-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 999px;
+  z-index: 1;
+}
+
+.bgremove-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 720px) {
+  .bgremove-compare {
+    grid-template-columns: 1fr;
+  }
+  .bgremove-compare-pane {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 /* ====== Info-pages (over-ons, FAQ, privacy, algemene voorwaarden) ====
    Twee-koloms layout: main content links, sidebar rechts met nav naar
    andere info-pages en CTA-boxes. Vult de pagina visueel en stuurt
