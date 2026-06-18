@@ -36,7 +36,8 @@ export type ToolkitIcon =
   | "palette"
   | "file-archive"
   | "images"
-  | "wallet";
+  | "wallet"
+  | "combine";
 
 export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
@@ -101,6 +102,15 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
     estimatedMinutes: 1,
     available: true,
     tags: ["salaris", "belasting", "mkb"]
+  },
+  {
+    slug: "pdf-samenvoegen",
+    title: "PDF samenvoegen",
+    tagline: "Voeg meerdere PDF-bestanden samen tot één document — in de volgorde die jij kiest.",
+    iconName: "combine",
+    estimatedMinutes: 1,
+    available: true,
+    tags: ["pdf", "bestand"]
   }
 ];
 

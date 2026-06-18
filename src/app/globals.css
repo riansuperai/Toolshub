@@ -19049,6 +19049,204 @@ p {
   }
 }
 
+/* ====== PDF samenvoegen ============================================= */
+
+.pdfmerge-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pdfmerge-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pdfmerge-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--bg-app);
+}
+
+[data-theme="dark"] .pdfmerge-row {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pdfmerge-index {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--orange-600);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 12.5px;
+  font-weight: 800;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.pdfmerge-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: rgba(242, 107, 29, 0.12);
+  color: var(--orange-600);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.pdfmerge-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pdfmerge-info strong {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--green-900);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+
+[data-theme="dark"] .pdfmerge-info strong {
+  color: #e6f1ec;
+}
+
+.pdfmerge-info span {
+  font-size: 12px;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .pdfmerge-info span {
+  color: rgba(230, 241, 236, 0.6);
+}
+
+.pdfmerge-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.pdfmerge-actions button {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  color: var(--green-700);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-family: inherit;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+[data-theme="dark"] .pdfmerge-actions button {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.pdfmerge-actions button:hover:not(:disabled) {
+  border-color: var(--orange-600);
+  color: var(--orange-700);
+}
+
+.pdfmerge-actions button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pdfmerge-actions button.pdfmerge-remove:hover:not(:disabled) {
+  border-color: #d94747;
+  color: #d94747;
+}
+
+/* Summary + main action */
+.pdfmerge-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-app);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .pdfmerge-summary {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pdfmerge-summary-text strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--green-900);
+  margin-bottom: 2px;
+}
+
+[data-theme="dark"] .pdfmerge-summary-text strong {
+  color: #ffffff;
+}
+
+.pdfmerge-summary-text span {
+  font-size: 12.5px;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .pdfmerge-summary-text span {
+  color: rgba(230, 241, 236, 0.65);
+}
+
+/* Resultaat */
+.pdfmerge-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  background: var(--green-900);
+  border-radius: 12px;
+  color: #ffffff;
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .pdfmerge-result {
+  background: #1a3c2e;
+}
+
+.pdfmerge-result-info strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.pdfmerge-result-info span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 720px) {
+  .pdfmerge-result {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pdfmerge-actions button {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 /* ====== Info-pages (over-ons, FAQ, privacy, algemene voorwaarden) ====
    Twee-koloms layout: main content links, sidebar rechts met nav naar
    andere info-pages en CTA-boxes. Vult de pagina visueel en stuurt

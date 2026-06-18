@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   Calculator,
+  Combine,
   CreditCard,
   FileArchive,
   FileText,
@@ -35,7 +36,8 @@ const ICON_MAP: Record<ToolkitIcon, LucideIcon> = {
   palette: Palette,
   "file-archive": FileArchive,
   images: Images,
-  wallet: Wallet
+  wallet: Wallet,
+  combine: Combine
 };
 
 export function ToolkitIconRender({
