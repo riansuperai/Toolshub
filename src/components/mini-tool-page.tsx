@@ -16,6 +16,7 @@ import {
   Mail,
   MessageCircle,
   Palette,
+  QrCode,
   Scissors,
   Search,
   ShieldCheck,
@@ -42,7 +43,8 @@ const ICON_MAP: Record<ToolkitIcon, LucideIcon> = {
   "file-archive": FileArchive,
   images: Images,
   wallet: Wallet,
-  combine: Combine
+  combine: Combine,
+  "qr-code": QrCode
 };
 
 export function ToolkitIconRender({

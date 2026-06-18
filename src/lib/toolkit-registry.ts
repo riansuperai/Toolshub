@@ -37,7 +37,8 @@ export type ToolkitIcon =
   | "file-archive"
   | "images"
   | "wallet"
-  | "combine";
+  | "combine"
+  | "qr-code";
 
 export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
@@ -111,6 +112,15 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
     estimatedMinutes: 1,
     available: true,
     tags: ["pdf", "bestand"]
+  },
+  {
+    slug: "qr-code-generator",
+    title: "QR-code generator",
+    tagline: "Maak een QR-code voor een URL, tekst, e-mail of telefoonnummer — download als PNG of SVG.",
+    iconName: "qr-code",
+    estimatedMinutes: 1,
+    available: true,
+    tags: ["beeld", "marketing"]
   }
 ];
 
