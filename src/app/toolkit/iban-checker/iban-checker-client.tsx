@@ -157,7 +157,7 @@ export function IbanCheckerClient() {
         body:
           "Hazenco zet SEPA incasso op via Mollie of Stripe — facturen worden automatisch geïnd, klanten houden controle.",
         cta: "Plan een gesprek",
-        href: "/tools/website-laten-maken"
+        href: "https://hazenco.nl/contact/"
       }}
     >
       <div className="iban-tool">

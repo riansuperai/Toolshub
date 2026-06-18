@@ -15,33 +15,49 @@ const MODEL_ID = "briaai/RMBG-1.4";
 const MAX_INPUT_SIZE = 8 * 1024 * 1024; // 8MB cap, anders te zwaar voor browser
 
 /**
- * Cache van de transformers.js pipeline. Eenmaal geladen, hergebruiken
- * voor volgende afbeeldingen. Promise zodat parallelle calls dezelfde
- * load delen.
+ * Cache van het model + processor. Eenmaal geladen, hergebruiken voor
+ * volgende afbeeldingen. RMBG-1.4 wordt niet door de standaard
+ * 'image-segmentation' pipeline ondersteund (Segformer-architectuur),
+ * dus we gebruiken AutoModel + AutoProcessor direct.
  */
-let pipelinePromise: Promise<unknown> | null = null;
+type LoadedModel = {
+  model: { (input: { input: unknown }): Promise<{ output: { data: Float32Array; dims: number[] } | unknown }>; new?: never };
+  processor: (image: unknown) => Promise<{ pixel_values?: unknown; input_image?: unknown }>;
+  RawImage: { fromURL: (url: string) => Promise<unknown> };
+};
 
-async function loadPipeline(onProgress: (progress: number) => void) {
-  if (!pipelinePromise) {
-    pipelinePromise = (async () => {
+let modelPromise: Promise<LoadedModel> | null = null;
+
+async function loadModel(onProgress: (progress: number) => void) {
+  if (!modelPromise) {
+    modelPromise = (async () => {
       const transformers = await import("@huggingface/transformers");
-      // Configure: geen lokale modellen, browser cache aan
       transformers.env.allowLocalModels = false;
-      // Geen WASM-paths verstellen, gewoon default cdn
-      // useBrowserCache property bestaat niet in v3, IndexedDB cache is by default aan
-      const pipeline = await transformers.pipeline("image-segmentation", MODEL_ID, {
-        // Probeer WebGPU eerst, transformers.js valt terug op WASM
-        device: hasWebGpu() ? "webgpu" : "wasm",
-        progress_callback: (data: { status: string; progress?: number }) => {
-          if (data?.status === "progress" && typeof data.progress === "number") {
-            onProgress(data.progress);
-          }
+
+      const progress_callback = (data: { status: string; progress?: number }) => {
+        if (data?.status === "progress" && typeof data.progress === "number") {
+          onProgress(data.progress);
         }
-      });
-      return pipeline;
+      };
+
+      const [model, processor] = await Promise.all([
+        transformers.AutoModel.from_pretrained(MODEL_ID, {
+          device: hasWebGpu() ? "webgpu" : "wasm",
+          progress_callback
+        } as Parameters<typeof transformers.AutoModel.from_pretrained>[1]),
+        transformers.AutoProcessor.from_pretrained(MODEL_ID, {
+          progress_callback
+        } as Parameters<typeof transformers.AutoProcessor.from_pretrained>[1])
+      ]);
+
+      return {
+        model: model as unknown as LoadedModel["model"],
+        processor: processor as unknown as LoadedModel["processor"],
+        RawImage: transformers.RawImage as unknown as LoadedModel["RawImage"]
+      };
     })();
   }
-  return pipelinePromise;
+  return modelPromise;
 }
 
 function hasWebGpu(): boolean {
@@ -69,26 +85,44 @@ export function AchtergrondVerwijderenClient() {
 
     const originalUrl = URL.createObjectURL(file);
 
-    // Stap 1: model laden (eerste keer ~80MB download, daarna gecached)
+    // Stap 1: model laden (eerste keer ~44MB download, daarna gecached)
     setStage({ kind: "loading-model", progress: 0 });
 
     try {
-      const pipe = (await loadPipeline((p) => {
+      const { model, processor, RawImage } = await loadModel((p) => {
         setStage({ kind: "loading-model", progress: p });
-      })) as (input: string) => Promise<Array<{ mask: { data: Uint8Array; width: number; height: number } }>>;
+      });
 
       // Stap 2: afbeelding door het model
       setStage({ kind: "processing" });
 
-      const segmentationResult = await pipe(originalUrl);
-      const mask = segmentationResult?.[0]?.mask;
-      if (!mask) {
-        throw new Error("Geen segmentatie-masker terug van model.");
+      const image = await RawImage.fromURL(originalUrl);
+      const processed = await processor(image);
+      // RMBG-1.4 verwacht input onder de key 'input'. Sommige builds geven
+      // pixel_values terug, anderen input_image — beide hieronder afgevangen.
+      const pixelValues =
+        (processed as { pixel_values?: unknown; input_image?: unknown }).pixel_values ??
+        (processed as { pixel_values?: unknown; input_image?: unknown }).input_image;
+      if (!pixelValues) throw new Error("Processor gaf geen pixel-data terug.");
+
+      const result = (await model({ input: pixelValues })) as {
+        output: { data: Float32Array; dims: number[] };
+      };
+      const tensor = result.output;
+      if (!tensor?.data || !tensor?.dims) {
+        throw new Error("Model gaf geen tensor terug.");
       }
+      // dims is typisch [1, 1, H, W]
+      const maskH = tensor.dims[tensor.dims.length - 2];
+      const maskW = tensor.dims[tensor.dims.length - 1];
 
       // Stap 3: maak transparante PNG door het masker op de originele
       // afbeelding als alpha-channel toe te passen
-      const resultBlob = await applyMask(originalUrl, mask);
+      const resultBlob = await applyMask(originalUrl, {
+        data: tensor.data,
+        width: maskW,
+        height: maskH
+      });
       const resultUrl = URL.createObjectURL(resultBlob);
 
       setStage({ kind: "ready", resultUrl, originalUrl, resultBlob });
@@ -138,7 +172,7 @@ export function AchtergrondVerwijderenClient() {
         body:
           "Hazenco zet automation op voor je webshop — productfoto's worden bij upload automatisch geprocest, formaten aangepast en geoptimaliseerd.",
         cta: "Plan een gesprek",
-        href: "/tools/website-laten-maken"
+        href: "https://hazenco.nl/contact/"
       }}
     >
       <div className="bgremove-tool">
@@ -249,10 +283,14 @@ export function AchtergrondVerwijderenClient() {
 /**
  * Past het segmentatie-masker toe op de originele afbeelding via een canvas
  * en levert een PNG-blob met transparante achtergrond.
+ *
+ * RMBG-1.4 geeft een Float32Array tensor met waarden 0..1 (1 = voorgrond).
+ * Het masker is in de modelresolutie (meestal 1024x1024) — we schalen mee
+ * door indices te interpoleren naar de target-resolutie via nearest-neighbor.
  */
 async function applyMask(
   imageUrl: string,
-  mask: { data: Uint8Array; width: number; height: number }
+  mask: { data: Float32Array; width: number; height: number }
 ): Promise<Blob> {
   const image = await loadImage(imageUrl);
   const canvas = document.createElement("canvas");
@@ -264,19 +302,16 @@ async function applyMask(
   ctx.drawImage(image, 0, 0);
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-  // Mask is een Uint8Array met grayscale waarden 0-255.
-  // Het masker is in de modelresolutie (meestal 1024x1024) — we schalen mee
-  // door indices te interpoleren naar de target-resolutie. Simpele nearest
-  // neighbor is genoeg voor alpha.
   const scaleX = mask.width / canvas.width;
   const scaleY = mask.height / canvas.height;
   for (let y = 0; y < canvas.height; y++) {
     const my = Math.min(mask.height - 1, Math.floor(y * scaleY));
     for (let x = 0; x < canvas.width; x++) {
       const mx = Math.min(mask.width - 1, Math.floor(x * scaleX));
-      const maskValue = mask.data[my * mask.width + mx];
+      // Float 0..1 → 0..255 alpha
+      const alpha = Math.round(mask.data[my * mask.width + mx] * 255);
       const pixelIdx = (y * canvas.width + x) * 4;
-      imageData.data[pixelIdx + 3] = maskValue;
+      imageData.data[pixelIdx + 3] = Math.max(0, Math.min(255, alpha));
     }
   }
 

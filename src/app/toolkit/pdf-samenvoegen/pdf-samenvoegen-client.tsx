@@ -192,7 +192,7 @@ export function PdfSamenvoegenClient() {
         body:
           "Hazenco automatiseert je document-pipeline — facturen bundelen, contracten samenvoegen, rapporten genereren in één flow.",
         cta: "Plan een gesprek",
-        href: "/tools/website-laten-maken"
+        href: "https://hazenco.nl/contact/"
       }}
     >
       <div className="pdfmerge-tool">

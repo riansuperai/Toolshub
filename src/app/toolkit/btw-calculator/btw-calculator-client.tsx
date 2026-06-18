@@ -77,7 +77,7 @@ export function BtwCalculatorClient() {
         body:
           "Hazenco koppelt jouw verkopen aan e-Boekhouden, Snelstart of Moneybird — facturen, BTW-aangifte en relatiebeheer in één.",
         cta: "Plan een gesprek",
-        href: "/tools/website-laten-maken"
+        href: "https://hazenco.nl/contact/"
       }}
     >
       <div className="btw-tool">

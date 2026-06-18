@@ -252,7 +252,7 @@ export function AfbeeldingComprimerenClient() {
         body:
           "Hazenco bouwt image-pipelines voor webshops — bij upload meteen comprimeren, formaten omzetten en in juiste formaten klaarzetten.",
         cta: "Plan een gesprek",
-        href: "/tools/website-laten-maken"
+        href: "https://hazenco.nl/contact/"
       }}
     >
       <div className="imgcomp-tool">

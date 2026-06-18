@@ -208,7 +208,7 @@ export function BrutoNettoClient() {
         body:
           "Hazenco automatiseert je salarisadministratie — loonstroken, aangiftes en koppeling met je boekhouding in één pakket.",
         cta: "Plan een gesprek",
-        href: "/tools/website-laten-maken"
+        href: "https://hazenco.nl/contact/"
       }}
     >
       <div className="brutonetto-tool">

@@ -226,7 +226,7 @@ export function PdfComprimerenClient() {
         body:
           "Hazenco bouwt automation voor je document-flow — facturen, contracten en rapporten verkleinen, taggen en archiveren in één pipeline.",
         cta: "Plan een gesprek",
-        href: "/tools/website-laten-maken"
+        href: "https://hazenco.nl/contact/"
       }}
     >
       <div className="pdfcomp-tool">

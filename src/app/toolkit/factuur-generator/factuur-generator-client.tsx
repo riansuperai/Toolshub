@@ -444,7 +444,7 @@ export function FactuurGeneratorClient() {
         body:
           "Hazenco automatiseert je facturatie en koppelt het aan e-Boekhouden, Snelstart of Moneybird — geen kopiëren meer.",
         cta: "Plan een gesprek",
-        href: "/tools/website-laten-maken"
+        href: "https://hazenco.nl/contact/"
       }}
     >
       <div className="factuur-tool">

@@ -145,9 +145,20 @@ export function MiniToolPage({
               <strong>{crossSell.heading}</strong>
               <p>{crossSell.body}</p>
             </div>
-            <Link className="button" href={crossSell.href}>
-              {crossSell.cta} <ArrowRight size={15} />
-            </Link>
+            {crossSell.href.startsWith("http") ? (
+              <a
+                className="button"
+                href={crossSell.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {crossSell.cta} <ArrowRight size={15} />
+              </a>
+            ) : (
+              <Link className="button" href={crossSell.href}>
+                {crossSell.cta} <ArrowRight size={15} />
+              </Link>
+            )}
           </section>
         ) : null}
 
