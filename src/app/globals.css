@@ -20428,6 +20428,186 @@ p {
   }
 }
 
+/* ====== PDF Splitsen ================================================ */
+
+.pdfsplit-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pdfsplit-modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pdfsplit-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--bg-elevated);
+  color: var(--green-900);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+[data-theme="dark"] .pdfsplit-mode {
+  color: #e6f1ec;
+}
+
+.pdfsplit-mode:hover:not(.active) {
+  border-color: var(--orange-600);
+}
+
+.pdfsplit-mode.active {
+  background: var(--green-900);
+  border-color: var(--green-900);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .pdfsplit-mode.active {
+  background: #1a3c2e;
+  border-color: #1a3c2e;
+}
+
+.pdfsplit-mode strong {
+  font-size: 14.5px;
+  font-weight: 800;
+}
+
+.pdfsplit-mode span {
+  font-size: 12.5px;
+  color: var(--green-700);
+  opacity: 0.9;
+}
+
+.pdfsplit-mode.active span {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+[data-theme="dark"] .pdfsplit-mode span {
+  color: rgba(230, 241, 236, 0.65);
+}
+
+/* Selection input */
+.pdfsplit-input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .pdfsplit-input-label {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.pdfsplit-input-label input {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  color: var(--green-900);
+  font-size: 14.5px;
+  font-weight: 500;
+  font-family: var(--font-mono, ui-monospace, "SF Mono", monospace);
+  letter-spacing: 0.02em;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[data-theme="dark"] .pdfsplit-input-label input {
+  color: #ffffff;
+}
+
+.pdfsplit-input-label input:focus {
+  outline: none;
+  border-color: var(--orange-600);
+  box-shadow: 0 0 0 3px rgba(242, 107, 29, 0.15);
+}
+
+.pdfsplit-input-label small {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--green-700);
+  opacity: 0.85;
+}
+
+[data-theme="dark"] .pdfsplit-input-label small {
+  color: rgba(230, 241, 236, 0.6);
+}
+
+/* Resultaat balk */
+.pdfsplit-result {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--green-900);
+  border-radius: 12px;
+  color: #ffffff;
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .pdfsplit-result {
+  background: #1a3c2e;
+}
+
+.pdfsplit-result-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.1);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.pdfsplit-result-info {
+  flex: 1;
+  min-width: 160px;
+}
+
+.pdfsplit-result-info strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.pdfsplit-result-info span {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pdfsplit-result .button {
+  background: var(--orange-600);
+  border-color: var(--orange-600);
+  color: #ffffff;
+}
+
+.pdfsplit-result .button:hover {
+  background: var(--orange-700);
+  border-color: var(--orange-700);
+}
+
+@media (max-width: 720px) {
+  .pdfsplit-modes {
+    grid-template-columns: 1fr;
+  }
+  .pdfsplit-result {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 /* ====== Info-pages (over-ons, FAQ, privacy, algemene voorwaarden) ====
    Twee-koloms layout: main content links, sidebar rechts met nav naar
    andere info-pages en CTA-boxes. Vult de pagina visueel en stuurt

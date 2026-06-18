@@ -121,6 +121,15 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
     estimatedMinutes: 1,
     available: true,
     tags: ["beeld", "marketing"]
+  },
+  {
+    slug: "pdf-splitsen",
+    title: "PDF splitsen",
+    tagline: "Splits een PDF in losse pagina's of pak een selectie eruit — direct in je browser.",
+    iconName: "scissors",
+    estimatedMinutes: 1,
+    available: true,
+    tags: ["pdf", "bestand"]
   }
 ];
 
