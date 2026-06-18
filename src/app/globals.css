@@ -16835,6 +16835,20 @@ p {
   flex-direction: column;
   align-items: center;
   padding: 0 12px;
+  position: relative;
+}
+
+/* Gestippelde verbindingslijn tussen circles 1-2 en 2-3 */
+.toolkit-howto-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 28px);
+  right: calc(-50% - 16px);
+  border-top: 3px dashed var(--orange-600);
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .toolkit-howto-num {
@@ -16848,6 +16862,8 @@ p {
   font-size: 15px;
   font-weight: 800;
   margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
 }
 
 .toolkit-howto-icon {
@@ -16895,6 +16911,9 @@ p {
   }
   .toolkit-howto-head h2 {
     font-size: 22px;
+  }
+  .toolkit-howto-steps li:not(:last-child)::after {
+    display: none;
   }
 }
 
