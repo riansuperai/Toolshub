@@ -16838,13 +16838,17 @@ p {
   position: relative;
 }
 
-/* Gestippelde verbindingslijn tussen circles 1-2 en 2-3 */
+/* Gestippelde verbindingslijn tussen circles 1-2 en 2-3.
+   Math: circle diameter 36px (radius 18), grid gap 24px.
+   - left: 50% + 18px = exact aan circle 1 rechter rand
+   - right: -50% - 6px = exact aan volgende circle linker rand
+     (24px gap - 18px radius = 6px) */
 .toolkit-howto-steps li:not(:last-child)::after {
   content: "";
   position: absolute;
   top: 18px;
-  left: calc(50% + 28px);
-  right: calc(-50% - 16px);
+  left: calc(50% + 18px);
+  right: calc(-50% - 6px);
   border-top: 3px dashed var(--orange-600);
   opacity: 0.7;
   z-index: 0;
