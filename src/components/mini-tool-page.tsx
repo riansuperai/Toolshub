@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -8,14 +9,18 @@ import {
   CreditCard,
   FileArchive,
   FileText,
+  HelpCircle,
   Images,
   ImageOff,
   Lock,
+  Mail,
+  MessageCircle,
   Palette,
   Scissors,
   Search,
   ShieldCheck,
-  Wallet
+  Wallet,
+  X
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Shell } from "@/components/shell";
@@ -78,6 +83,9 @@ export type MiniToolPageProps = {
  *
  * Tool-specifieke UI gaat als children door (in een eigen client component).
  */
+/** Hazenco WhatsApp — alleen cijfers, country code voorop. */
+const HAZENCO_WHATSAPP = "31643074303";
+
 export function MiniToolPage({
   slug,
   eyebrow,
@@ -88,12 +96,20 @@ export function MiniToolPage({
 }: MiniToolPageProps) {
   const entry = TOOLKIT_REGISTRY.find((t) => t.slug === slug);
   const related = relatedToolkitEntries(slug, 3);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
 
   const computedEyebrow =
     eyebrow ??
     (entry
       ? `GRATIS · ${entry.estimatedMinutes} MIN · GEEN ACCOUNT`
       : "GRATIS · GEEN ACCOUNT");
+
+  const toolLabel = entry?.title ?? slug;
+  const feedbackBody = `Hi Hazenco,\n\nIk gebruikte de tool "${toolLabel}" op toolshub.hazenco.nl en wil het volgende melden:\n\n[beschrijf hier wat er niet werkt of wat je mist]\n\nMet vriendelijke groet,`;
+  const waUrl = `https://wa.me/${HAZENCO_WHATSAPP}?text=${encodeURIComponent(feedbackBody)}`;
+  const mailUrl = `mailto:info@hazenco.nl?subject=${encodeURIComponent(
+    `Toolkit feedback: ${toolLabel}`
+  )}&body=${encodeURIComponent(feedbackBody)}`;
 
   return (
     <Shell>
@@ -133,11 +149,22 @@ export function MiniToolPage({
 
         <section className="mini-tool-body">{children}</section>
 
-        {privacyNote ? (
-          <p className="mini-tool-privacy">
-            <Lock size={13} /> {privacyNote}
-          </p>
-        ) : null}
+        <div className="mini-tool-meta-row">
+          {privacyNote ? (
+            <p className="mini-tool-privacy">
+              <Lock size={13} /> {privacyNote}
+            </p>
+          ) : (
+            <span />
+          )}
+          <button
+            type="button"
+            className="mini-tool-feedback-trigger"
+            onClick={() => setFeedbackOpen(true)}
+          >
+            <HelpCircle size={13} /> Werkt iets niet of mis je iets?
+          </button>
+        </div>
 
         {crossSell ? (
           <section className="mini-tool-crosssell">
@@ -183,6 +210,61 @@ export function MiniToolPage({
           </section>
         ) : null}
       </div>
+
+      {feedbackOpen ? (
+        <div
+          className="mini-tool-feedback-backdrop"
+          onClick={() => setFeedbackOpen(false)}
+          role="presentation"
+        >
+          <div
+            className="mini-tool-feedback-modal"
+            role="dialog"
+            aria-label="Feedback over deze tool"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="mini-tool-feedback-close"
+              onClick={() => setFeedbackOpen(false)}
+              aria-label="Sluit"
+            >
+              <X size={16} />
+            </button>
+            <div className="mini-tool-feedback-icon">
+              <HelpCircle size={22} />
+            </div>
+            <h3>Werkt iets niet of mis je iets?</h3>
+            <p>
+              We horen graag wat er mis ging in <strong>{toolLabel}</strong>{" "}
+              of welke tool je graag zou willen zien. Stuur ons een
+              bericht — meestal binnen één werkdag antwoord.
+            </p>
+            <div className="mini-tool-feedback-actions">
+              <a
+                className="mini-tool-feedback-wa"
+                href={waUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setFeedbackOpen(false)}
+              >
+                <MessageCircle size={15} /> WhatsApp
+              </a>
+              <a
+                className="mini-tool-feedback-mail"
+                href={mailUrl}
+                onClick={() => setFeedbackOpen(false)}
+              >
+                <Mail size={15} /> E-mail
+              </a>
+            </div>
+            <p className="mini-tool-feedback-foot">
+              Of mail direct naar{" "}
+              <a href="mailto:info@hazenco.nl">info@hazenco.nl</a>
+            </p>
+          </div>
+        </div>
+      ) : null}
     </Shell>
   );
 }

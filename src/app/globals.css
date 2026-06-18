@@ -16785,7 +16785,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 14px;
+  margin: 0;
   font-size: 12.5px;
   color: var(--green-700);
 }
@@ -16797,6 +16797,211 @@ p {
 .mini-tool-privacy svg {
   color: var(--orange-600);
   opacity: 0.85;
+}
+
+/* Meta-row: privacy-note links, feedback-trigger rechts */
+.mini-tool-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.mini-tool-feedback-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--green-700);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+[data-theme="dark"] .mini-tool-feedback-trigger {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.mini-tool-feedback-trigger:hover {
+  border-color: var(--orange-600);
+  color: var(--orange-700);
+  background: rgba(242, 107, 29, 0.05);
+}
+
+[data-theme="dark"] .mini-tool-feedback-trigger:hover {
+  color: var(--orange-600);
+}
+
+/* Modal */
+.mini-tool-feedback-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 24, 19, 0.65);
+  z-index: 950;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  animation: feedbackFade 0.18s ease;
+}
+
+@keyframes feedbackFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mini-tool-feedback-modal {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px 26px 22px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+}
+
+.mini-tool-feedback-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--green-700);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+[data-theme="dark"] .mini-tool-feedback-close {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.mini-tool-feedback-close:hover {
+  background: var(--bg-app);
+  color: var(--orange-700);
+}
+
+[data-theme="dark"] .mini-tool-feedback-close:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mini-tool-feedback-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(242, 107, 29, 0.12);
+  color: var(--orange-600);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 14px;
+}
+
+.mini-tool-feedback-modal h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .mini-tool-feedback-modal h3 {
+  color: #ffffff;
+}
+
+.mini-tool-feedback-modal > p {
+  margin: 0 0 18px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .mini-tool-feedback-modal > p {
+  color: rgba(230, 241, 236, 0.75);
+}
+
+.mini-tool-feedback-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.mini-tool-feedback-wa,
+.mini-tool-feedback-mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.mini-tool-feedback-wa {
+  background: #25d366;
+  color: #ffffff;
+  border: 1px solid #25d366;
+}
+
+.mini-tool-feedback-wa:hover {
+  background: #1faa50;
+  color: #ffffff;
+  border-color: #1faa50;
+}
+
+.mini-tool-feedback-mail {
+  background: transparent;
+  color: var(--green-900);
+  border: 1px solid var(--line);
+}
+
+[data-theme="dark"] .mini-tool-feedback-mail {
+  color: #e6f1ec;
+}
+
+.mini-tool-feedback-mail:hover {
+  border-color: var(--orange-600);
+  color: var(--orange-700);
+}
+
+[data-theme="dark"] .mini-tool-feedback-mail:hover {
+  color: var(--orange-600);
+}
+
+.mini-tool-feedback-foot {
+  margin: 0;
+  font-size: 12px;
+  color: var(--green-700);
+  opacity: 0.8;
+}
+
+[data-theme="dark"] .mini-tool-feedback-foot {
+  color: rgba(230, 241, 236, 0.55);
+}
+
+.mini-tool-feedback-foot a {
+  color: var(--orange-600);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mini-tool-feedback-foot a:hover {
+  color: var(--orange-700);
+  text-decoration: underline;
 }
 
 .mini-tool-crosssell {
