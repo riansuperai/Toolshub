@@ -38,7 +38,8 @@ export type ToolkitIcon =
   | "images"
   | "wallet"
   | "combine"
-  | "qr-code";
+  | "qr-code"
+  | "key-round";
 
 export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
@@ -130,6 +131,15 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
     estimatedMinutes: 1,
     available: true,
     tags: ["pdf", "bestand"]
+  },
+  {
+    slug: "wachtwoord-generator",
+    title: "Wachtwoord generator",
+    tagline: "Genereer veilige wachtwoorden met cryptografisch sterke random — geen tracking, geen logging.",
+    iconName: "key-round",
+    estimatedMinutes: 1,
+    available: true,
+    tags: ["security", "tech"]
   }
 ];
 

@@ -12,6 +12,7 @@ import {
   HelpCircle,
   Images,
   ImageOff,
+  KeyRound,
   Lock,
   Mail,
   MessageCircle,
@@ -44,7 +45,8 @@ const ICON_MAP: Record<ToolkitIcon, LucideIcon> = {
   images: Images,
   wallet: Wallet,
   combine: Combine,
-  "qr-code": QrCode
+  "qr-code": QrCode,
+  "key-round": KeyRound
 };
 
 export function ToolkitIconRender({
