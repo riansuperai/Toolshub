@@ -18775,6 +18775,280 @@ p {
   }
 }
 
+/* ====== Bruto-netto Loon Calculator ================================= */
+
+.brutonetto-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.brutonetto-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.brutonetto-option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brutonetto-option-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .brutonetto-option-label {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.brutonetto-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.brutonetto-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.brutonetto-toggle:hover {
+  border-color: var(--orange-600);
+}
+
+.brutonetto-toggle input[type="checkbox"] {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--orange-600);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.brutonetto-toggle span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brutonetto-toggle strong {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .brutonetto-toggle strong {
+  color: #e6f1ec;
+}
+
+.brutonetto-toggle small {
+  font-size: 11.5px;
+  color: var(--green-700);
+  opacity: 0.85;
+}
+
+[data-theme="dark"] .brutonetto-toggle small {
+  color: rgba(230, 241, 236, 0.6);
+}
+
+/* Resultaat */
+.brutonetto-result {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  background: var(--bg-app);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+[data-theme="dark"] .brutonetto-result {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.brutonetto-result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.brutonetto-cell {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brutonetto-cell span {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .brutonetto-cell span {
+  color: rgba(230, 241, 236, 0.6);
+}
+
+.brutonetto-cell strong {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--green-900);
+  font-variant-numeric: tabular-nums;
+}
+
+[data-theme="dark"] .brutonetto-cell strong {
+  color: #ffffff;
+}
+
+.brutonetto-cell.small strong {
+  font-size: 14px;
+}
+
+.brutonetto-cell.muted strong {
+  color: var(--green-700);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .brutonetto-cell.muted strong {
+  color: rgba(230, 241, 236, 0.75);
+}
+
+.brutonetto-cell.accent strong {
+  color: var(--orange-600);
+}
+
+.brutonetto-cell.highlight {
+  background: var(--green-900);
+  border-color: var(--green-900);
+}
+
+[data-theme="dark"] .brutonetto-cell.highlight {
+  background: #1a3c2e;
+  border-color: #1a3c2e;
+}
+
+.brutonetto-cell.highlight span {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.brutonetto-cell.highlight strong {
+  color: #ffffff;
+}
+
+.brutonetto-detail {
+  padding: 12px 14px;
+  background: rgba(242, 107, 29, 0.06);
+  border: 1px solid rgba(242, 107, 29, 0.2);
+  border-radius: 10px;
+  font-size: 12.5px;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .brutonetto-detail {
+  background: rgba(242, 107, 29, 0.1);
+  color: rgba(230, 241, 236, 0.75);
+}
+
+.brutonetto-detail > span {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .brutonetto-detail > span {
+  color: #e6f1ec;
+}
+
+.brutonetto-detail ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.brutonetto-detail li strong {
+  color: var(--green-900);
+  font-weight: 800;
+}
+
+[data-theme="dark"] .brutonetto-detail li strong {
+  color: #ffffff;
+}
+
+/* Disclaimer */
+.brutonetto-disclaimer {
+  display: flex;
+  gap: 11px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--bg-app);
+}
+
+[data-theme="dark"] .brutonetto-disclaimer {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.brutonetto-disclaimer > svg {
+  color: var(--orange-600);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.brutonetto-disclaimer strong {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--green-900);
+  margin-bottom: 4px;
+}
+
+[data-theme="dark"] .brutonetto-disclaimer strong {
+  color: #ffffff;
+}
+
+.brutonetto-disclaimer p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .brutonetto-disclaimer p {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+@media (max-width: 720px) {
+  .brutonetto-options {
+    grid-template-columns: 1fr;
+  }
+  .brutonetto-result-grid {
+    grid-template-columns: 1fr;
+  }
+  .brutonetto-cell strong {
+    font-size: 18px;
+  }
+}
+
 /* ====== Info-pages (over-ons, FAQ, privacy, algemene voorwaarden) ====
    Twee-koloms layout: main content links, sidebar rechts met nav naar
    andere info-pages en CTA-boxes. Vult de pagina visueel en stuurt

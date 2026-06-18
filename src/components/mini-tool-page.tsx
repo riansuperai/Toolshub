@@ -13,7 +13,8 @@ import {
   Palette,
   Scissors,
   Search,
-  ShieldCheck
+  ShieldCheck,
+  Wallet
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Shell } from "@/components/shell";
@@ -33,7 +34,8 @@ const ICON_MAP: Record<ToolkitIcon, LucideIcon> = {
   scissors: Scissors,
   palette: Palette,
   "file-archive": FileArchive,
-  images: Images
+  images: Images,
+  wallet: Wallet
 };
 
 export function ToolkitIconRender({

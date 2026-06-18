@@ -35,7 +35,8 @@ export type ToolkitIcon =
   | "scissors"
   | "palette"
   | "file-archive"
-  | "images";
+  | "images"
+  | "wallet";
 
 export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
@@ -91,6 +92,15 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
     estimatedMinutes: 1,
     available: true,
     tags: ["beeld", "bestand"]
+  },
+  {
+    slug: "bruto-netto",
+    title: "Bruto-netto loon",
+    tagline: "Reken bruto naar netto loon — Nederlandse loonbelasting met heffingskortingen.",
+    iconName: "wallet",
+    estimatedMinutes: 1,
+    available: true,
+    tags: ["salaris", "belasting", "mkb"]
   }
 ];
 
