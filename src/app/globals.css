@@ -16557,11 +16557,239 @@ p {
 /* ====== Toolkit (mini-tools) ==========================================
    Gratis browser-tools van Hazenco. Index + per-tool template. */
 
+/* Toolkit hero — split layout zoals homepage, met stat-card rechts */
+.toolkit-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: stretch;
+  padding: 32px;
+  margin-bottom: 28px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+}
+
+.toolkit-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+
+.toolkit-hero-copy .eyebrow {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange-600);
+}
+
+.toolkit-hero-copy h1 {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.05;
+  font-family: var(--font-heading), serif;
+  font-weight: 400;
+}
+
+.toolkit-hero-copy h1 .accent {
+  color: var(--orange-600);
+}
+
+.toolkit-hero-copy .lead {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--green-700);
+  max-width: 540px;
+}
+
+[data-theme="dark"] .toolkit-hero-copy .lead {
+  color: rgba(230, 241, 236, 0.78);
+}
+
+.toolkit-hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.toolkit-hero-trust > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .toolkit-hero-trust > div {
+  color: #e6f1ec;
+}
+
+.toolkit-hero-trust svg {
+  color: var(--orange-600);
+  flex-shrink: 0;
+}
+
+/* Right card */
+.toolkit-hero-card {
+  background: var(--bg-app);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+[data-theme="dark"] .toolkit-hero-card {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.toolkit-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.toolkit-hero-stats > div {
+  text-align: center;
+  padding: 12px 6px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.toolkit-hero-stats strong {
+  display: block;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--green-900);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-theme="dark"] .toolkit-hero-stats strong {
+  color: #ffffff;
+}
+
+.toolkit-hero-stats span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .toolkit-hero-stats span {
+  color: rgba(230, 241, 236, 0.6);
+}
+
+.toolkit-hero-card-label {
+  margin: 0;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .toolkit-hero-card-label {
+  color: rgba(230, 241, 236, 0.6);
+}
+
+.toolkit-hero-quick {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.toolkit-hero-quick a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  color: var(--green-900);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+[data-theme="dark"] .toolkit-hero-quick a {
+  color: #e6f1ec;
+}
+
+.toolkit-hero-quick a:hover {
+  border-color: var(--orange-600);
+  background: rgba(242, 107, 29, 0.04);
+}
+
+.toolkit-hero-quick-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(242, 107, 29, 0.12);
+  color: var(--orange-600);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.toolkit-hero-quick-label {
+  flex: 1;
+}
+
+.toolkit-hero-quick a svg:last-child {
+  color: var(--green-700);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.toolkit-hero-quick a:hover svg:last-child {
+  color: var(--orange-600);
+  opacity: 1;
+}
+
+.toolkit-grid-heading {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .toolkit-grid-heading {
+  color: #e6f1ec;
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .toolkit-hero {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 24px;
+  }
+  .toolkit-hero-copy h1 {
+    font-size: 32px;
+  }
+}
+
 .toolkit-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 14px;
-  margin-top: 20px;
+  margin-top: 12px;
 }
 
 .toolkit-card {
