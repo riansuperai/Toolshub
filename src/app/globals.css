@@ -16564,7 +16564,7 @@ p {
   gap: 32px;
   align-items: stretch;
   padding: 32px;
-  margin-bottom: 28px;
+  margin-bottom: 56px;
   background: var(--bg-elevated);
   border: 1px solid var(--line);
   border-radius: 22px;
@@ -16764,13 +16764,129 @@ p {
 
 .toolkit-grid-heading {
   margin: 0 0 14px;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--green-900);
+  font-family: var(--font-heading), serif;
+  font-weight: 400;
 }
 
 [data-theme="dark"] .toolkit-grid-heading {
   color: #e6f1ec;
+}
+
+/* Hoe het werkt — sectie onder de tools-grid */
+.toolkit-howto {
+  margin-top: 56px;
+  padding: 40px 32px 36px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+}
+
+.toolkit-howto-head {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.toolkit-howto-head h2 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  font-family: var(--font-heading), serif;
+  font-weight: 400;
+  color: var(--green-900);
+}
+
+[data-theme="dark"] .toolkit-howto-head h2 {
+  color: #ffffff;
+}
+
+.toolkit-howto-head p {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--green-700);
+}
+
+[data-theme="dark"] .toolkit-howto-head p {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+.toolkit-howto-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.toolkit-howto-steps li {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.toolkit-howto-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--orange-600);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.toolkit-howto-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(242, 107, 29, 0.12);
+  color: var(--orange-600);
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+}
+
+.toolkit-howto-steps strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--green-900);
+  margin-bottom: 8px;
+}
+
+[data-theme="dark"] .toolkit-howto-steps strong {
+  color: #e6f1ec;
+}
+
+.toolkit-howto-steps p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--green-700);
+  max-width: 280px;
+}
+
+[data-theme="dark"] .toolkit-howto-steps p {
+  color: rgba(230, 241, 236, 0.7);
+}
+
+@media (max-width: 720px) {
+  .toolkit-howto-steps {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .toolkit-howto {
+    padding: 28px 22px;
+  }
+  .toolkit-howto-head h2 {
+    font-size: 22px;
+  }
 }
 
 /* Mobile responsive */

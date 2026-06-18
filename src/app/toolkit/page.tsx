@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Lock, Zap } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  CheckCircle2,
+  LayoutGrid,
+  Lock,
+  Pencil,
+  Zap
+} from "lucide-react";
 import { Shell } from "@/components/shell";
 import { ToolkitIconRender } from "@/components/mini-tool-page";
 import { TOOLKIT_REGISTRY } from "@/lib/toolkit-registry";
@@ -88,7 +96,7 @@ export default function ToolkitIndexPage() {
           </aside>
         </section>
 
-        <h2 className="toolkit-grid-heading">Alle tools</h2>
+        <h2 className="toolkit-grid-heading">Meest gebruikte tools</h2>
         <div className="toolkit-grid">
           {TOOLKIT_REGISTRY.map((entry) => {
             const isAvailable = entry.available;
@@ -133,6 +141,49 @@ export default function ToolkitIndexPage() {
             );
           })}
         </div>
+
+        <section className="toolkit-howto">
+          <div className="toolkit-howto-head">
+            <h2>Hoe het werkt</h2>
+            <p>Drie stappen om je resultaat te krijgen.</p>
+          </div>
+          <ol className="toolkit-howto-steps">
+            <li>
+              <span className="toolkit-howto-num">1</span>
+              <div className="toolkit-howto-icon">
+                <LayoutGrid size={22} />
+              </div>
+              <strong>Kies een tool</strong>
+              <p>
+                Pick uit onze gratis browser-tools voor het Nederlandse
+                MKB — facturen, PDFs, calculaties en meer.
+              </p>
+            </li>
+            <li>
+              <span className="toolkit-howto-num">2</span>
+              <div className="toolkit-howto-icon">
+                <Pencil size={22} />
+              </div>
+              <strong>Vul je gegevens in</strong>
+              <p>
+                Plak tekst, upload een bestand of vul een formulier in.
+                Alles draait in je eigen browser — geen account, geen
+                upload naar servers.
+              </p>
+            </li>
+            <li>
+              <span className="toolkit-howto-num">3</span>
+              <div className="toolkit-howto-icon">
+                <CheckCircle2 size={22} />
+              </div>
+              <strong>Direct resultaat</strong>
+              <p>
+                Download, kopieer of gebruik het resultaat meteen.
+                Geen wachttijd, geen verborgen kosten.
+              </p>
+            </li>
+          </ol>
+        </section>
       </div>
     </Shell>
   );
