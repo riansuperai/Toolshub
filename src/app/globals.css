@@ -17031,6 +17031,12 @@ p {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Als de CTA-band de laatste sectie van de page is, verwijder de
+   page bottom-padding zodat de band naadloos in de footer overgaat. */
+.page:has(> .toolkit-cta:last-child) {
+  padding-bottom: 0;
+}
+
 .toolkit-cta .eyebrow {
   display: inline-block;
   font-size: 12px;
