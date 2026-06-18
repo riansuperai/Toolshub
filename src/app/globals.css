@@ -16775,13 +16775,22 @@ p {
   color: #e6f1ec;
 }
 
-/* Hoe het werkt — sectie onder de tools-grid */
+/* Hoe het werkt — full-bleed sectie onder de tools-grid.
+   Breekt uit de .page container met margin-inline negatief + width 100vw.
+   Padding-x compenseert zodat inner content aligned blijft met de rest. */
 .toolkit-howto {
-  margin-top: 56px;
-  padding: 40px 32px 36px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--line);
-  border-radius: 22px;
+  margin-top: 64px;
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  padding: 64px max(22px, calc((100vw - var(--max)) / 2 + 22px));
+  background: #eaf3ee;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+[data-theme="dark"] .toolkit-howto {
+  background: #0e1f1a;
+  border-color: rgba(255, 255, 255, 0.06);
 }
 
 .toolkit-howto-head {
