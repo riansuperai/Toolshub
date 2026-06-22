@@ -21701,6 +21701,18 @@ p {
   gap: 6px;
 }
 
+/* Gedeelde CTA-rij onder de pakket-cards (Plan een gesprek + Plan een demo) */
+.service-cta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 4px 0 2px;
+}
+.service-cta-stack .button {
+  width: 100%;
+  justify-content: center;
+}
+
 /* USP-bullets onder pricing */
 .pricing-usps {
   list-style: none;

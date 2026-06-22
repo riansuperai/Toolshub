@@ -83,16 +83,6 @@ function PricingPackageCard({
 }) {
   const sp = listing.servicePricing!;
   const isHighlight = sp.highlight === variant;
-  const ext = sp.externalUrl;
-
-  function handleClick() {
-    trackEvent("service_package_click", {
-      tool_slug: listing.slug,
-      tool_title: listing.title,
-      package: variant,
-      destination: ext
-    });
-  }
 
   if (variant === "oneTime" && sp.oneTime) {
     const { priceCents, originalPriceCents, description } = sp.oneTime;
@@ -107,15 +97,6 @@ function PricingPackageCard({
           ) : null}
         </div>
         <p className="package-desc">{description}</p>
-        <a
-          className="button"
-          href={ext}
-          target="_blank"
-          rel="noreferrer"
-          onClick={handleClick}
-        >
-          Plan een gesprek <ExternalLink size={14} />
-        </a>
       </div>
     );
   }
@@ -135,15 +116,6 @@ function PricingPackageCard({
         </div>
         <p className="package-meta">vanaf {minMonths} maanden</p>
         <p className="package-desc">{description}</p>
-        <a
-          className="button"
-          href={ext}
-          target="_blank"
-          rel="noreferrer"
-          onClick={handleClick}
-        >
-          Plan een gesprek <ExternalLink size={14} />
-        </a>
       </div>
     );
   }
@@ -355,6 +327,43 @@ export function ServiceDetailClient({ listing }: { listing: Listing }) {
                     />
                   ))
                 : null}
+
+              {sp ? (
+                <div className="service-cta-stack">
+                  <a
+                    className="button"
+                    href={sp.externalUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() =>
+                      trackEvent("service_cta_click", {
+                        tool_slug: listing.slug,
+                        tool_title: listing.title,
+                        kind: "gesprek",
+                        destination: sp.externalUrl
+                      })
+                    }
+                  >
+                    Plan een gesprek <ExternalLink size={14} />
+                  </a>
+                  <a
+                    className="button secondary"
+                    href={sp.externalUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() =>
+                      trackEvent("service_cta_click", {
+                        tool_slug: listing.slug,
+                        tool_title: listing.title,
+                        kind: "demo",
+                        destination: sp.externalUrl
+                      })
+                    }
+                  >
+                    Plan een demo <ExternalLink size={14} />
+                  </a>
+                </div>
+              ) : null}
 
               {sp?.usps && sp.usps.length > 0 ? (
                 <ul className="pricing-usps">
