@@ -1434,7 +1434,14 @@ export const listings: Listing[] = [
     useCases: ["customer_support", "lead_generation", "workflow_automation"],
     branches: ["healthcare", "professional_services", "retail", "horeca", "general"],
     heroImageUrl: "",
-    screenshotUrls: [],
+    screenshotUrls: [
+      "/demo-screenshots/ai-telefoonassistent/01-dashboard.png",
+      "/demo-screenshots/ai-telefoonassistent/02-gesprekken.png",
+      "/demo-screenshots/ai-telefoonassistent/03-transcript.png",
+      "/demo-screenshots/ai-telefoonassistent/04-agenda.png",
+      "/demo-screenshots/ai-telefoonassistent/05-kennisbank.png",
+      "/demo-screenshots/ai-telefoonassistent/06-inzichten.png"
+    ],
     priceCents: 14900,
     setupPriceCents: 99500,
     status: "published",

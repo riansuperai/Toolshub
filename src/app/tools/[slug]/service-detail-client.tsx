@@ -25,6 +25,7 @@ import {
 import { useEffect } from "react";
 import { Shell } from "@/components/shell";
 import { ExpandableText } from "@/components/expandable-text";
+import { ScreenshotGallery } from "@/components/screenshot-gallery";
 import { useMarketplace } from "@/lib/marketplace-store";
 import { formatPrice, useCaseLabels } from "@/lib/marketplace-data";
 import { trackView } from "@/lib/recently-viewed";
@@ -113,7 +114,7 @@ function PricingPackageCard({
           rel="noreferrer"
           onClick={handleClick}
         >
-          Bekijk op hazenco.nl <ExternalLink size={14} />
+          Plan een gesprek <ExternalLink size={14} />
         </a>
       </div>
     );
@@ -141,7 +142,7 @@ function PricingPackageCard({
           rel="noreferrer"
           onClick={handleClick}
         >
-          Bekijk op hazenco.nl <ExternalLink size={14} />
+          Plan een gesprek <ExternalLink size={14} />
         </a>
       </div>
     );
@@ -203,6 +204,11 @@ export function ServiceDetailClient({ listing }: { listing: Listing }) {
               <div className="detail-hero-actions">
                 <span />
                 <div className="detail-gallery-cta-row">
+                  {(listing.screenshotUrls?.length ?? 0) > 0 ? (
+                    <a className="button secondary" href="#screenshots">
+                      Bekijk demo
+                    </a>
+                  ) : null}
                   {listing.cases && listing.cases.length > 0 ? (
                     <a className="button secondary" href="#cases">
                       Bekijk portfolio
@@ -211,6 +217,13 @@ export function ServiceDetailClient({ listing }: { listing: Listing }) {
                 </div>
               </div>
             </section>
+
+            {(listing.screenshotUrls?.length ?? 0) > 0 ? (
+              <ScreenshotGallery
+                screenshots={listing.screenshotUrls ?? []}
+                toolTitle={listing.title}
+              />
+            ) : null}
 
             {listing.forWho && listing.forWho.length > 0 ? (
               <section className="section-card">
@@ -424,7 +437,7 @@ export function ServiceDetailClient({ listing }: { listing: Listing }) {
                 })
               }
             >
-              Bekijk op hazenco.nl <ExternalLink size={14} />
+              Plan een gesprek <ExternalLink size={14} />
             </a>
           </div>
         ) : null}
