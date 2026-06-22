@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
+  Calendar,
   CheckCircle2,
   Clock,
   DatabaseBackup,
@@ -11,12 +12,15 @@ import {
   Headphones,
   Heart,
   LifeBuoy,
+  Mail,
   MessageCircle,
+  Phone,
   RefreshCw,
   RotateCcw,
   ShieldCheck,
   Sparkles,
-  Users
+  Users,
+  Zap
 } from "lucide-react";
 import { useEffect } from "react";
 import { Shell } from "@/components/shell";
@@ -54,6 +58,16 @@ function IncludedIcon({ name, size = 22 }: { name: string; size?: number }) {
       return <Clock size={size} />;
     case "life-buoy":
       return <LifeBuoy size={size} />;
+    case "phone":
+      return <Phone size={size} />;
+    case "calendar":
+      return <Calendar size={size} />;
+    case "mail":
+      return <Mail size={size} />;
+    case "zap":
+      return <Zap size={size} />;
+    case "message-circle":
+      return <MessageCircle size={size} />;
     default:
       return <CheckCircle2 size={size} />;
   }
