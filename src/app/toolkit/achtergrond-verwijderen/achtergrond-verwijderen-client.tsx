@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Download, ImageOff, RefreshCw, Sparkles, Upload, X } from "lucide-react";
 import { MiniToolPage } from "@/components/mini-tool-page";
 
@@ -158,12 +158,36 @@ export function AchtergrondVerwijderenClient() {
     if (file) handleFile(file);
   }
 
+  // Plakken via Ctrl/Cmd+V — werkt vanaf screenshot-tools, browser-rechtsklik
+  // 'kopieer afbeelding', en file-managers. Alleen actief in idle/error-state
+  // zodat een geplakte URL of tekst in een ander gesprek hier niet stiekem een
+  // verwerking triggert.
+  useEffect(() => {
+    if (stage.kind !== "idle" && stage.kind !== "error") return;
+    function onPaste(e: ClipboardEvent) {
+      const items = e.clipboardData?.items;
+      if (!items) return;
+      for (const item of items) {
+        if (item.kind === "file" && item.type.startsWith("image/")) {
+          const file = item.getAsFile();
+          if (file) {
+            e.preventDefault();
+            handleFile(file);
+            return;
+          }
+        }
+      }
+    }
+    window.addEventListener("paste", onPaste);
+    return () => window.removeEventListener("paste", onPaste);
+  }, [stage.kind, handleFile]);
+
   return (
     <MiniToolPage
       slug="achtergrond-verwijderen"
       privacyNote="AI draait 100% in je browser. Je foto wordt nooit naar onze servers gestuurd."
       howItWorks={[
-        "Upload of sleep je foto (JPG, PNG of WebP, max 8 MB). Werkt voor producten, profielfoto's en logo's.",
+        "Upload, sleep of plak (Ctrl/⌘+V) je foto (JPG, PNG of WebP, max 8 MB). Werkt voor producten, profielfoto's en logo's.",
         "Eerste keer: het AI-model wordt naar je browser gedownload (~44 MB, ~10-30 seconden op WiFi). Volgende keer is dat niet meer nodig.",
         "Download het resultaat als transparante PNG. Klaar voor webshop, social media of presentaties."
       ]}
@@ -199,7 +223,7 @@ export function AchtergrondVerwijderenClient() {
               <div className="bgremove-dropzone-icon">
                 <Upload size={26} />
               </div>
-              <strong>Sleep een afbeelding hierheen of klik om te uploaden</strong>
+              <strong>Sleep, klik of plak (Ctrl/⌘+V) een afbeelding</strong>
               <p>JPG, PNG of WebP — max 8 MB</p>
             </div>
           </label>
