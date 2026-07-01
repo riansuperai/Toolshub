@@ -26,8 +26,6 @@ import {
   Share2,
   ShoppingCart,
   Sparkles,
-  Tag,
-  Truck,
   UserPlus,
   Users,
   Workflow,
@@ -278,25 +276,6 @@ function CatalogContent() {
     }))
   ];
 
-  const priceOptions: FilterPillOption[] = priceBuckets.map((bucket) => ({
-    id: bucket.id,
-    label: bucket.label,
-    count:
-      bucket.id === "all"
-        ? countFor("price", () => true)
-        : countFor("price", (l) => bucketForPrice(l.priceCents) === bucket.id)
-  }));
-
-  const deliveryOptions: FilterPillOption[] = [
-    { id: "all", label: "Alle leveringen", icon: Truck, count: countFor("delivery", () => true) },
-    ...(Object.entries(deliveryModeLabels) as [DeliveryMode, string][]).map(([key, label]) => ({
-      id: key,
-      label,
-      icon: deliveryIcons[key],
-      count: countFor("delivery", (l) => l.deliveryModes.includes(key))
-    }))
-  ];
-
   const currentSelection: WizardSelection = { branche, useCase, platform, price, delivery };
 
   const priceLabelMap = Object.fromEntries(priceBuckets.map((b) => [b.id, b.label]));
@@ -312,7 +291,7 @@ function CatalogContent() {
       <div className="page">
         <span className="eyebrow">Catalogus</span>
         <h1>Vind de juiste digitale tool voor je proces.</h1>
-        <p className="lead">Filter op branche, type, prijs en levering. Het aantal naast elke optie laat live zien hoeveel tools je krijgt.</p>
+        <p className="lead">Filter op branche en type. Het aantal naast elke optie laat live zien hoeveel tools je krijgt.</p>
 
         <div className="layout-switch" role="tablist" aria-label="Filters layout">
           <button
@@ -395,22 +374,6 @@ function CatalogContent() {
             collapsedCount={10}
           />
 
-          <FilterPillGroup
-            label="Prijs"
-            icon={Tag}
-            options={priceOptions}
-            value={price}
-            onChange={(id) => setPrice(id as PriceBucket)}
-          />
-
-          <FilterPillGroup
-            label="Levering"
-            icon={Truck}
-            options={deliveryOptions}
-            value={delivery}
-            onChange={(id) => setDelivery(id as DeliveryMode | "all")}
-          />
-
           <div className="filter-footer">
             <label className="sort-field">
               Sorteren op
@@ -489,20 +452,6 @@ function CatalogContent() {
                 options={typeOptions}
                 value={useCase}
                 onChange={(id) => setUseCase(id as UseCase | "all")}
-              />
-              <FilterDropdown
-                label="Prijs"
-                icon={Tag}
-                options={priceOptions}
-                value={price}
-                onChange={(id) => setPrice(id as PriceBucket)}
-              />
-              <FilterDropdown
-                label="Levering"
-                icon={Truck}
-                options={deliveryOptions}
-                value={delivery}
-                onChange={(id) => setDelivery(id as DeliveryMode | "all")}
               />
             </div>
             <div className="filter-sticky-meta">
