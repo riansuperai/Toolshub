@@ -360,8 +360,8 @@ button {
 
 .brand-hub {
   display: inline-block;
-  vertical-align: -3px;
-  margin-left: 4px;
+  vertical-align: -4px;
+  margin-left: 1px;
   opacity: 0.9;
 }
 
