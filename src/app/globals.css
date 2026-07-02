@@ -358,6 +358,13 @@ button {
   line-height: 0;
 }
 
+.brand-hub {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-left: 4px;
+  opacity: 0.9;
+}
+
 .main-nav {
   display: flex;
   align-items: center;

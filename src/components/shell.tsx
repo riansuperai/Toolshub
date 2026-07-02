@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { useMarketplace } from "@/lib/marketplace-store";
 import { RoleSwitcher } from "@/components/role-switcher";
-import { BrandMark } from "@/components/brand-mark";
+import { BrandMark, HubGlyph } from "@/components/brand-mark";
 import { HeaderSearch } from "@/components/header-search";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { NotificationBell } from "@/components/notification-bell";
@@ -70,7 +70,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <span className="brand-mark"><BrandMark /></span>
             <span>
               <strong>Hazenco<sup className="brand-tm">™</sup></strong>
-              <small>Toolshub</small>
+              <small>Toolshub <HubGlyph /></small>
             </span>
           </Link>
 
@@ -164,7 +164,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               <span className="brand-mark"><BrandMark /></span>
               <span>
                 <strong>Hazenco<sup className="brand-tm">™</sup></strong>
-                <small>Toolshub</small>
+                <small>Toolshub <HubGlyph /></small>
               </span>
             </Link>
             <p>
