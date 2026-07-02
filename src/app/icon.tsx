@@ -16,14 +16,14 @@ export default function Icon() {
           borderRadius: 6,
           display: "flex",
           flexWrap: "wrap",
-          padding: 2,
+          padding: 1,
           gap: 2
         }}
       >
-        <div style={{ background: orange, width: 13, height: 13, borderRadius: 2 }} />
-        <div style={{ background: darkGreen, width: 13, height: 13, borderRadius: 2 }} />
-        <div style={{ background: darkGreen, width: 13, height: 13, borderRadius: 2 }} />
-        <div style={{ background: orange, width: 13, height: 13, borderRadius: 2 }} />
+        <div style={{ background: orange, width: 14, height: 14, borderRadius: 2 }} />
+        <div style={{ background: darkGreen, width: 14, height: 14, borderRadius: 2 }} />
+        <div style={{ background: darkGreen, width: 14, height: 14, borderRadius: 2 }} />
+        <div style={{ background: orange, width: 14, height: 14, borderRadius: 2 }} />
       </div>
     ),
     { ...size }

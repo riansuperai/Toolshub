@@ -3,7 +3,7 @@
  * drie satelliet-knopen. Onderstreept het 'hub' concept. Kleur volgt
  * currentColor (erft van de omliggende .brand small = orange-600).
  */
-export function HubGlyph({ size = 14 }: { size?: number }) {
+export function HubGlyph({ size = 17 }: { size?: number }) {
   return (
     <svg
       width={size}
