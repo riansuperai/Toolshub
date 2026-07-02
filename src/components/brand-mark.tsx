@@ -5,8 +5,9 @@
  * hardcoded brand-kleuren; de omliggende .brand-mark container geeft
  * de cream/white achtergrond.
  */
-export function BrandMark({ size = 26 }: { size?: number }) {
-  const peach = "#f59e7c";
+export function BrandMark({ size = 38 }: { size?: number }) {
+  // Matched met var(--orange-600) — dezelfde tint als 'Toolshub' tekst
+  const orange = "#f26b1d";
   const darkGreen = "#1a3c2e";
   return (
     <svg
@@ -15,11 +16,11 @@ export function BrandMark({ size = 26 }: { size?: number }) {
       viewBox="0 0 44 44"
       aria-hidden="true"
     >
-      {/* 2×2 grid: cell 17×17, gap 2px, padding 4px rondom (strak) */}
-      <rect x="4" y="4" width="17" height="17" rx="2.5" fill={peach} />
-      <rect x="23" y="4" width="17" height="17" rx="2.5" fill={darkGreen} />
-      <rect x="4" y="23" width="17" height="17" rx="2.5" fill={darkGreen} />
-      <rect x="23" y="23" width="17" height="17" rx="2.5" fill={peach} />
+      {/* 2×2 grid: cell 19×19, gap 2px, padding 2px rondom (strak) */}
+      <rect x="2" y="2" width="19" height="19" rx="3" fill={orange} />
+      <rect x="23" y="2" width="19" height="19" rx="3" fill={darkGreen} />
+      <rect x="2" y="23" width="19" height="19" rx="3" fill={darkGreen} />
+      <rect x="23" y="23" width="19" height="19" rx="3" fill={orange} />
     </svg>
   );
 }

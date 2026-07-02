@@ -4,7 +4,7 @@ export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
 export default function Icon() {
-  const peach = "#f59e7c";
+  const orange = "#f26b1d";
   const darkGreen = "#1a3c2e";
   return new ImageResponse(
     (
@@ -16,14 +16,14 @@ export default function Icon() {
           borderRadius: 6,
           display: "flex",
           flexWrap: "wrap",
-          padding: 2,
+          padding: 1,
           gap: 2
         }}
       >
-        <div style={{ background: peach, width: 13, height: 13, borderRadius: 1.5 }} />
-        <div style={{ background: darkGreen, width: 13, height: 13, borderRadius: 1.5 }} />
-        <div style={{ background: darkGreen, width: 13, height: 13, borderRadius: 1.5 }} />
-        <div style={{ background: peach, width: 13, height: 13, borderRadius: 1.5 }} />
+        <div style={{ background: orange, width: 14, height: 14, borderRadius: 2 }} />
+        <div style={{ background: darkGreen, width: 14, height: 14, borderRadius: 2 }} />
+        <div style={{ background: darkGreen, width: 14, height: 14, borderRadius: 2 }} />
+        <div style={{ background: orange, width: 14, height: 14, borderRadius: 2 }} />
       </div>
     ),
     { ...size }
