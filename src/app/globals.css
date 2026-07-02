@@ -349,19 +349,10 @@ button {
   font-weight: 600;
 }
 
-.brand-tm {
-  font-size: 0.62em;
-  font-weight: 500;
-  margin-left: 2px;
-  vertical-align: top;
-  opacity: 0.75;
-  line-height: 0;
-}
-
 .brand-hub {
   display: inline-block;
   vertical-align: -4px;
-  margin-left: 1px;
+  margin-left: -2px;
   opacity: 0.9;
 }
 

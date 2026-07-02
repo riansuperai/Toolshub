@@ -111,7 +111,7 @@ export function SellerShell({ children }: { children: React.ReactNode }) {
         <Link href="/seller" className="dashboard-sidebar-brand">
           <span className="brand-mark"><BrandMark /></span>
           <div className="dashboard-sidebar-brand-text">
-            <strong>Hazenco<sup className="brand-tm">™</sup></strong>
+            <strong>Hazenco.</strong>
             <small>Creator workspace</small>
           </div>
         </Link>

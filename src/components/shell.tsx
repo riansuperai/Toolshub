@@ -69,7 +69,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <Link className="brand" href="/" aria-label="Hazenco Toolshub home">
             <span className="brand-mark"><BrandMark /></span>
             <span>
-              <strong>Hazenco<sup className="brand-tm">™</sup></strong>
+              <strong>Hazenco.</strong>
               <small>Toolshub <HubGlyph /></small>
             </span>
           </Link>
@@ -163,7 +163,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <Link className="brand footer-brand" href="/">
               <span className="brand-mark"><BrandMark /></span>
               <span>
-                <strong>Hazenco<sup className="brand-tm">™</sup></strong>
+                <strong>Hazenco.</strong>
                 <small>Toolshub <HubGlyph /></small>
               </span>
             </Link>
