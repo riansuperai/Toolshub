@@ -337,6 +337,11 @@ button {
   font-weight: 700;
 }
 
+.brand strong {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
 .brand small {
   color: var(--orange-600);
   font-weight: 600;
