@@ -16,11 +16,11 @@ export function BrandMark({ size = 38 }: { size?: number }) {
       viewBox="0 0 44 44"
       aria-hidden="true"
     >
-      {/* 2×2 grid: cell 19×19, gap 2px, padding 2px rondom (strak) */}
-      <rect x="2" y="2" width="19" height="19" rx="3" fill={orange} />
-      <rect x="23" y="2" width="19" height="19" rx="3" fill={darkGreen} />
-      <rect x="2" y="23" width="19" height="19" rx="3" fill={darkGreen} />
-      <rect x="23" y="23" width="19" height="19" rx="3" fill={orange} />
+      {/* 2×2 grid: cell 18×18, gap 2px, padding 3px rondom */}
+      <rect x="3" y="3" width="18" height="18" rx="3" fill={orange} />
+      <rect x="23" y="3" width="18" height="18" rx="3" fill={darkGreen} />
+      <rect x="3" y="23" width="18" height="18" rx="3" fill={darkGreen} />
+      <rect x="23" y="23" width="18" height="18" rx="3" fill={orange} />
     </svg>
   );
 }
