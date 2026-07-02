@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { useMarketplace } from "@/lib/marketplace-store";
 import { RoleSwitcher } from "@/components/role-switcher";
+import { BrandMark } from "@/components/brand-mark";
 import { HeaderSearch } from "@/components/header-search";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { NotificationBell } from "@/components/notification-bell";
@@ -66,7 +67,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
         </div>
         <div className="header-inner">
           <Link className="brand" href="/" aria-label="Hazenco Toolshub home">
-            <span className="brand-mark">H</span>
+            <span className="brand-mark"><BrandMark /></span>
             <span>
               <strong>Hazenco</strong>
               <small>Toolshub</small>
@@ -160,7 +161,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <div className="footer-grid-wrap">
           <div className="footer-brand-col">
             <Link className="brand footer-brand" href="/">
-              <span className="brand-mark">H</span>
+              <span className="brand-mark"><BrandMark /></span>
               <span>
                 <strong>Hazenco</strong>
                 <small>Toolshub</small>

@@ -26,6 +26,7 @@ import type { LucideIcon } from "lucide-react";
 import { useMarketplace } from "@/lib/marketplace-store";
 import { useSellerData } from "@/lib/seller-data";
 import { RoleSwitcher } from "@/components/role-switcher";
+import { BrandMark } from "@/components/brand-mark";
 import { NotificationBell } from "@/components/notification-bell";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -108,7 +109,7 @@ export function SellerShell({ children }: { children: React.ReactNode }) {
 
       <aside className="dashboard-sidebar">
         <Link href="/seller" className="dashboard-sidebar-brand">
-          <span className="brand-mark">H</span>
+          <span className="brand-mark"><BrandMark /></span>
           <div className="dashboard-sidebar-brand-text">
             <strong>Hazenco</strong>
             <small>Creator workspace</small>
