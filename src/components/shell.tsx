@@ -27,8 +27,11 @@ import { SiteBanner } from "@/components/site-banner";
 function buildNav() {
   return [
     { href: "/", label: "Home" },
-    { href: "/catalogus", label: "Catalogus" },
-    { href: "/toolkit", label: "Toolkit" }
+    { href: "/diensten", label: "Diensten" },
+    { href: "/cases", label: "Cases" },
+    { href: "/toolkit", label: "Toolkit" },
+    { href: "/blog", label: "Blog" },
+    { href: "/contact", label: "Contact" }
   ];
 }
 
