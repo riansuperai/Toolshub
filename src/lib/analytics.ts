@@ -1,5 +1,5 @@
 /**
- * Google Analytics 4 helpers — consent management + event tracking.
+ * Google Analytics 4 helpers, consent management + event tracking.
  *
  * Werkflow:
  *   1. Bezoeker komt op site, geen consent-status in localStorage.
@@ -17,7 +17,7 @@
 
 export const GA4_MEASUREMENT_ID = "G-GKRVBX66VT";
 
-/** Domeinen voor cross-domain linker — sessies blijven gekoppeld
+/** Domeinen voor cross-domain linker, sessies blijven gekoppeld
  *  als bezoeker tussen hazenco.nl en toolshub.hazenco.nl klikt. */
 export const CROSS_DOMAIN_LINKER = ["hazenco.nl", "toolshub.hazenco.nl"];
 
@@ -47,7 +47,7 @@ declare global {
 }
 
 /**
- * Stuur een event naar GA4. Veilig om altijd aan te roepen — als gtag
+ * Stuur een event naar GA4. Veilig om altijd aan te roepen, als gtag
  * niet beschikbaar is (geen consent / nog laden) gebeurt er niets.
  *
  * @example

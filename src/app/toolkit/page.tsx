@@ -18,7 +18,7 @@ import { TOOLKIT_REGISTRY } from "@/lib/toolkit-registry";
 export const metadata: Metadata = {
   title: "Toolkit",
   description:
-    "Gratis browser-tools van Hazenco voor Nederlandse ondernemers — factuur maken, BTW berekenen, IBAN checken en meer. Geen account, alles direct te gebruiken."
+    "Gratis browser-tools van Hazenco voor Nederlandse ondernemers, factuur maken, BTW berekenen, IBAN checken en meer. Geen account, alles direct te gebruiken."
 };
 
 // 4 tools voor de 'Snelle start'-lijst in de hero, in vaste volgorde
@@ -32,11 +32,11 @@ const QUICK_LAUNCH_SLUGS = [
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Zijn alle tools écht gratis?",
-    a: "Ja, alle tools in de toolkit zijn 100% gratis te gebruiken. Geen verborgen kosten, geen 'pro upgrade', geen trial die afloopt. We bouwen ze om Nederlandse ondernemers te helpen — en omdat ze in je browser draaien zijn de hostingkosten voor ons minimaal."
+    a: "Ja, alle tools in de toolkit zijn 100% gratis te gebruiken. Geen verborgen kosten, geen 'pro upgrade', geen trial die afloopt. We bouwen ze om Nederlandse ondernemers te helpen, en omdat ze in je browser draaien zijn de hostingkosten voor ons minimaal."
   },
   {
     q: "Heb ik een account nodig?",
-    a: "Nee. Je opent de tool, je gebruikt 'm, je sluit het tabblad. Geen registratie, geen e-mail, geen wachtwoord. Sommige tools onthouden optioneel je gegevens in je eigen browser (zoals factuur-bedrijfsgegevens) — dat blijft op jouw apparaat."
+    a: "Nee. Je opent de tool, je gebruikt 'm, je sluit het tabblad. Geen registratie, geen e-mail, geen wachtwoord. Sommige tools onthouden optioneel je gegevens in je eigen browser (zoals factuur-bedrijfsgegevens), dat blijft op jouw apparaat."
   },
   {
     q: "Is mijn data veilig? Slaan jullie iets op?",
@@ -48,19 +48,19 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Kan ik een tool voorstellen die ik mis?",
-    a: "Ja, graag zelfs. Op elke tool-pagina staat onderaan een 'Werkt iets niet of mis je iets?' knop — daar kan je via WhatsApp of e-mail je idee delen. Als meerdere mensen 'm vragen, bouwen we 'm."
+    a: "Ja, graag zelfs. Op elke tool-pagina staat onderaan een 'Werkt iets niet of mis je iets?' knop, daar kan je via WhatsApp of e-mail je idee delen. Als meerdere mensen 'm vragen, bouwen we 'm."
   },
   {
     q: "Waarom geen advertenties of pop-ups?",
-    a: "Omdat we 't ook irritant vinden. De toolkit is een visitekaartje van Hazenco — bezoekers die deze tools fijn vinden, kiezen later vaak voor onze betaalde diensten (website, automation, CRM-koppelingen). Dat is voldoende."
+    a: "Omdat we 't ook irritant vinden. De toolkit is een visitekaartje van Hazenco, bezoekers die deze tools fijn vinden, kiezen later vaak voor onze betaalde diensten (website, automation, CRM-koppelingen). Dat is voldoende."
   },
   {
     q: "Hoe vaak komen er nieuwe tools bij?",
     a: "Onregelmatig, gemiddeld 1-2 per maand. De toolkit is begonnen met een handvol en groeit op basis van wat bezoekers vragen of waar Hazenco zelf behoefte aan heeft. Volg ons op LinkedIn om updates te zien."
   },
   {
-    q: "Wie zit er achter Toolshub?",
-    a: "Toolshub is gebouwd door Hazenco — een Nederlands team dat zich richt op automation, webontwikkeling en MKB-tools. Meer over wie wij zijn vind je op hazenco.nl of via onze contactpagina."
+    q: "Wie zit er achter deze tools?",
+    a: "De toolkit is gebouwd door Hazenco, een Nederlands team dat zich richt op custom software, workflow-automatisering en AI-workflows voor het MKB. Meer over wie wij zijn vind je op de over-ons pagina of via contact."
   }
 ];
 
@@ -193,7 +193,7 @@ export default function ToolkitIndexPage() {
               <strong>Kies een tool</strong>
               <p>
                 Pick uit onze gratis browser-tools voor het Nederlandse
-                MKB — facturen, PDFs, calculaties en meer.
+                MKB, facturen, PDFs, calculaties en meer.
               </p>
             </li>
             <li>
@@ -204,7 +204,7 @@ export default function ToolkitIndexPage() {
               <strong>Vul je gegevens in</strong>
               <p>
                 Plak tekst, upload een bestand of vul een formulier in.
-                Alles draait in je eigen browser — geen account, geen
+                Alles draait in je eigen browser, geen account, geen
                 upload naar servers.
               </p>
             </li>
@@ -247,7 +247,7 @@ export default function ToolkitIndexPage() {
             Meer nodig dan een <span className="accent">quick tool</span>?
           </h2>
           <p>
-            Wij bouwen ook websites, automation en workflows op maat — geen
+            Wij bouwen ook websites, automation en workflows op maat, geen
             templates, geen workarounds. Hazenco-kwaliteit met een vast
             aanspreekpunt.
           </p>
@@ -271,7 +271,7 @@ export default function ToolkitIndexPage() {
           </div>
           <p className="toolkit-cta-foot">
             <MessageCircle size={14} />
-            Mis je een tool? Suggesties altijd welkom — stuur ons een{" "}
+            Mis je een tool? Suggesties altijd welkom, stuur ons een{" "}
             <a
               href="https://wa.me/31643074303?text=Hi%20Hazenco%2C%20ik%20mis%20een%20tool%20in%20de%20toolkit%3A%20"
               target="_blank"

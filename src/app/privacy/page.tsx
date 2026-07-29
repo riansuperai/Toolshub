@@ -6,7 +6,7 @@ import { InfoSidebar } from "@/components/info-sidebar";
 export const metadata: Metadata = {
   title: "Privacy & cookies",
   description:
-    "Welke gegevens Hazenco Toolshub verzamelt, hoe lang we ze bewaren en hoe je je toestemming intrekt."
+    "Welke gegevens Hazenco verzamelt, hoe lang we ze bewaren en hoe je je toestemming intrekt."
 };
 
 export default function PrivacyPage() {

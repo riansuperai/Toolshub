@@ -157,7 +157,7 @@ export function AfbeeldingComprimerenClient() {
     if (files.length === 0 || processing) return;
     setProcessing(true);
     try {
-      // Sequentieel verwerken — voorkomt memory-piek bij grote sets
+      // Sequentieel verwerken, voorkomt memory-piek bij grote sets
       for (const entry of files) {
         try {
           // Vorige run weggooien als bezoeker quality/format veranderde
@@ -243,20 +243,20 @@ export function AfbeeldingComprimerenClient() {
       slug="afbeelding-comprimeren"
       privacyNote="Compressie draait 100% in je browser. Jouw afbeeldingen blijven op je eigen apparaat."
       howItWorks={[
-        "Upload of sleep tot 10 afbeeldingen (JPG, PNG, WebP) naar het vak — max 50 MB per stuk.",
+        "Upload of sleep tot 10 afbeeldingen (JPG, PNG, WebP) naar het vak, max 50 MB per stuk.",
         "Kies kwaliteit (75% is een goede balans) en eventueel een ander uitvoerformaat (JPEG of WebP voor kleinere bestanden).",
         "Klik op \"Comprimeer alles\" en download afzonderlijk of alles tegelijk als ZIP."
       ]}
       crossSell={{
         heading: "Productfoto's automatisch optimaliseren?",
         body:
-          "Hazenco bouwt image-pipelines voor webshops — bij upload meteen comprimeren, formaten omzetten en in juiste formaten klaarzetten.",
+          "Hazenco bouwt image-pipelines voor webshops, bij upload meteen comprimeren, formaten omzetten en in juiste formaten klaarzetten.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}
     >
       <div className="imgcomp-tool">
-        {/* Dropzone — blijft altijd zichtbaar, tenzij MAX_FILES bereikt */}
+        {/* Dropzone, blijft altijd zichtbaar, tenzij MAX_FILES bereikt */}
         {files.length < MAX_FILES ? (
           <label
             className={`bgremove-dropzone${isDragging ? " dragging" : ""}`}
@@ -284,7 +284,7 @@ export function AfbeeldingComprimerenClient() {
                 Sleep afbeeldingen hierheen of klik om te uploaden
               </strong>
               <p>
-                JPG, PNG of WebP — max {MAX_FILES} tegelijk, 50 MB per stuk
+                JPG, PNG of WebP, max {MAX_FILES} tegelijk, 50 MB per stuk
                 {files.length > 0 ? ` (${files.length}/${MAX_FILES} toegevoegd)` : ""}
               </p>
             </div>
@@ -292,7 +292,7 @@ export function AfbeeldingComprimerenClient() {
         ) : (
           <div className="imgcomp-limit">
             <Images size={18} />
-            Maximum bereikt — {MAX_FILES} afbeeldingen. Verwijder er een om nieuwe toe te voegen.
+            Maximum bereikt, {MAX_FILES} afbeeldingen. Verwijder er een om nieuwe toe te voegen.
           </div>
         )}
 
@@ -341,7 +341,7 @@ export function AfbeeldingComprimerenClient() {
                 ))}
               </div>
               <p className="imgcomp-hint">
-                WebP geeft meestal de kleinste bestanden — ideaal voor websites.
+                WebP geeft meestal de kleinste bestanden, ideaal voor websites.
               </p>
             </div>
           </div>

@@ -10,11 +10,11 @@
  */
 export type ToolkitEntry = {
   slug: string;
-  /** Display title — kort en helder, geen overbodige woorden. */
+  /** Display title, kort en helder, geen overbodige woorden. */
   title: string;
   /** Eén zin die direct uitlegt wat de tool doet voor wie. */
   tagline: string;
-  /** Tabler/Lucide-style icon — hier alleen de string, het component
+  /** Tabler/Lucide-style icon, hier alleen de string, het component
    *  resolved 't naar een lucide-react export in de MiniToolPage. */
   iconName: ToolkitIcon;
   /** Geschatte tijd om de tool te gebruiken, voor de eyebrow-chip. */
@@ -45,7 +45,7 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "factuur-generator",
     title: "Factuur generator",
-    tagline: "Maak een professionele NL-factuur met BTW — in één minuut, geen account.",
+    tagline: "Maak een professionele NL-factuur met BTW, in één minuut, geen account.",
     iconName: "file-text",
     estimatedMinutes: 2,
     available: true,
@@ -72,7 +72,7 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "achtergrond-verwijderen",
     title: "Achtergrond verwijderen",
-    tagline: "Verwijder de achtergrond van een product- of profielfoto met AI — gewoon in je browser.",
+    tagline: "Verwijder de achtergrond van een product- of profielfoto met AI, gewoon in je browser.",
     iconName: "image-off",
     estimatedMinutes: 1,
     available: true,
@@ -81,7 +81,7 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "pdf-comprimeren",
     title: "PDF comprimeren",
-    tagline: "Maak je PDF kleiner zonder zichtbaar kwaliteitsverlies — direct in je browser.",
+    tagline: "Maak je PDF kleiner zonder zichtbaar kwaliteitsverlies, direct in je browser.",
     iconName: "file-archive",
     estimatedMinutes: 1,
     available: true,
@@ -90,7 +90,7 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "afbeelding-comprimeren",
     title: "Afbeelding comprimeren",
-    tagline: "Verklein JPG, PNG of WebP — tot 10 tegelijk, converteer formaat, download als ZIP.",
+    tagline: "Verklein JPG, PNG of WebP, tot 10 tegelijk, converteer formaat, download als ZIP.",
     iconName: "images",
     estimatedMinutes: 1,
     available: true,
@@ -99,7 +99,7 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "bruto-netto",
     title: "Bruto-netto loon",
-    tagline: "Reken bruto naar netto loon — Nederlandse loonbelasting met heffingskortingen.",
+    tagline: "Reken bruto naar netto loon, Nederlandse loonbelasting met heffingskortingen.",
     iconName: "wallet",
     estimatedMinutes: 1,
     available: true,
@@ -108,7 +108,7 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "pdf-samenvoegen",
     title: "PDF samenvoegen",
-    tagline: "Voeg meerdere PDF-bestanden samen tot één document — in de volgorde die jij kiest.",
+    tagline: "Voeg meerdere PDF-bestanden samen tot één document, in de volgorde die jij kiest.",
     iconName: "combine",
     estimatedMinutes: 1,
     available: true,
@@ -117,7 +117,7 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "qr-code-generator",
     title: "QR-code generator",
-    tagline: "Maak een QR-code voor een URL, tekst, e-mail of telefoonnummer — download als PNG of SVG.",
+    tagline: "Maak een QR-code voor een URL, tekst, e-mail of telefoonnummer, download als PNG of SVG.",
     iconName: "qr-code",
     estimatedMinutes: 1,
     available: true,
@@ -126,7 +126,7 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "pdf-splitsen",
     title: "PDF splitsen",
-    tagline: "Splits een PDF in losse pagina's of pak een selectie eruit — direct in je browser.",
+    tagline: "Splits een PDF in losse pagina's of pak een selectie eruit, direct in je browser.",
     iconName: "scissors",
     estimatedMinutes: 1,
     available: true,
@@ -135,7 +135,7 @@ export const TOOLKIT_REGISTRY: ToolkitEntry[] = [
   {
     slug: "wachtwoord-generator",
     title: "Wachtwoord generator",
-    tagline: "Genereer veilige wachtwoorden met cryptografisch sterke random — geen tracking, geen logging.",
+    tagline: "Genereer veilige wachtwoorden met cryptografisch sterke random, geen tracking, geen logging.",
     iconName: "key-round",
     estimatedMinutes: 1,
     available: true,

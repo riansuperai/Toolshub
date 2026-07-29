@@ -68,14 +68,14 @@ export function BtwCalculatorClient() {
       slug="btw-calculator"
       privacyNote="Berekening draait in je browser. Geen tracking, geen account."
       howItWorks={[
-        "Kies of je het bedrag exclusief of inclusief BTW invult — klik op de pijltjes om te wisselen.",
+        "Kies of je het bedrag exclusief of inclusief BTW invult, klik op de pijltjes om te wisselen.",
         "Selecteer het BTW-tarief (21% standaard, 9% verlaagd, 0% vrijgesteld/export).",
         "Lees direct het BTW-bedrag en de andere prijs af. Kopieer met één klik."
       ]}
       crossSell={{
         heading: "Boekhouding eronder automatiseren?",
         body:
-          "Hazenco koppelt jouw verkopen aan e-Boekhouden, Snelstart of Moneybird — facturen, BTW-aangifte en relatiebeheer in één.",
+          "Hazenco koppelt jouw verkopen aan e-Boekhouden, Snelstart of Moneybird, facturen, BTW-aangifte en relatiebeheer in één.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}

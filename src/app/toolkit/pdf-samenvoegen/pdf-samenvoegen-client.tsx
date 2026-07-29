@@ -72,7 +72,7 @@ export function PdfSamenvoegenClient() {
       return [...prev, ...accepted];
     });
 
-    // Pagina-aantal asynchroon ophalen via pdf-lib — niet blokkerend
+    // Pagina-aantal asynchroon ophalen via pdf-lib, niet blokkerend
     for (const f of arr) {
       if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf"))
         continue;
@@ -88,7 +88,7 @@ export function PdfSamenvoegenClient() {
           )
         );
       } catch {
-        // Pagina-telling lukt niet (encryptie etc.) — laat null staan,
+        // Pagina-telling lukt niet (encryptie etc.), laat null staan,
         // merge kan alsnog werken zolang pdf-lib het bestand kan inladen
       }
     }
@@ -184,13 +184,13 @@ export function PdfSamenvoegenClient() {
       privacyNote="PDFs worden in je eigen browser samengevoegd. Hazenco ontvangt geen bestanden."
       howItWorks={[
         "Sleep of upload 2 tot 20 PDF-bestanden (max 50 MB per stuk).",
-        "Zet ze in de juiste volgorde met de pijltjes — bovenste komt eerst, onderste komt laatst.",
+        "Zet ze in de juiste volgorde met de pijltjes, bovenste komt eerst, onderste komt laatst.",
         "Klik op \"PDFs samenvoegen\" en download het gecombineerde document."
       ]}
       crossSell={{
         heading: "Bulk PDF-workflow nodig?",
         body:
-          "Hazenco automatiseert je document-pipeline — facturen bundelen, contracten samenvoegen, rapporten genereren in één flow.",
+          "Hazenco automatiseert je document-pipeline, facturen bundelen, contracten samenvoegen, rapporten genereren in één flow.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}
@@ -221,7 +221,7 @@ export function PdfSamenvoegenClient() {
               </div>
               <strong>Sleep PDFs hierheen of klik om te uploaden</strong>
               <p>
-                PDF — max {MAX_FILES} tegelijk, 50 MB per stuk
+                PDF, max {MAX_FILES} tegelijk, 50 MB per stuk
                 {files.length > 0
                   ? ` (${files.length}/${MAX_FILES} toegevoegd)`
                   : ""}
@@ -231,7 +231,7 @@ export function PdfSamenvoegenClient() {
         ) : (
           <div className="imgcomp-limit">
             <FileText size={18} />
-            Maximum bereikt — {MAX_FILES} PDFs. Verwijder er één om door te gaan.
+            Maximum bereikt, {MAX_FILES} PDFs. Verwijder er één om door te gaan.
           </div>
         )}
 

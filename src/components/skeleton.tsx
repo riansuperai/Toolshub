@@ -24,7 +24,7 @@ export function Skeleton({ width = "100%", height = 14, circle, style, className
   );
 }
 
-/** Een hele card-skeleton — handig voor product/widget grids. */
+/** Een hele card-skeleton, handig voor product/widget grids. */
 export function SkeletonCard() {
   return (
     <div className="skeleton-card">

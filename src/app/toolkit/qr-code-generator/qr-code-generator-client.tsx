@@ -35,7 +35,7 @@ function buildContent(
   wifi: WifiState
 ): string {
   if (type === "wifi") {
-    // WIFI:T:WPA;S:<ssid>;P:<password>;H:true; — semicolons en ; escapen
+    // WIFI:T:WPA;S:<ssid>;P:<password>;H:true;, semicolons en ; escapen
     const esc = (v: string) =>
       v.replace(/([\\;,"':])/g, "\\$1");
     return `WIFI:T:${wifi.encryption};S:${esc(wifi.ssid)};P:${
@@ -165,7 +165,7 @@ export function QrCodeGeneratorClient() {
       crossSell={{
         heading: "QR-campagnes met tracking?",
         body:
-          "Hazenco bouwt slimme QR-flows met short-links en analytics — meet exact welke poster, sticker of menu wordt gescand.",
+          "Hazenco bouwt slimme QR-flows met short-links en analytics, meet exact welke poster, sticker of menu wordt gescand.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}
@@ -185,7 +185,7 @@ export function QrCodeGeneratorClient() {
           ))}
         </div>
 
-        {/* Input — verschillend per type */}
+        {/* Input, verschillend per type */}
         {type !== "wifi" ? (
           <label className="qr-input-label">
             <span>

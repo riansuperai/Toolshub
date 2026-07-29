@@ -173,7 +173,7 @@ export type ListingVersion = {
  * Onderscheid tussen een digitale tool (downloadbaar / SaaS) en een dienst
  * (Hazenco bouwt iets voor je, checkout loopt via hazenco.nl). Stuurt welke
  * detail-layout en welke sidebar getoond wordt. Defaults naar 'tool' als
- * niet ingevuld — bestaande listings blijven onveranderd.
+ * niet ingevuld, bestaande listings blijven onveranderd.
  */
 export type ListingKind = "tool" | "service";
 
@@ -209,7 +209,7 @@ export type ServiceCase = {
 };
 
 /**
- * Twee-pakket sidebar voor diensten. Beide pakketten optioneel — een dienst
+ * Twee-pakket sidebar voor diensten. Beide pakketten optioneel, een dienst
  * met alleen abonnement of alleen eenmalig is geldig. externalUrl is verplicht
  * want bij Optie B gaat de daadwerkelijke checkout via hazenco.nl.
  */

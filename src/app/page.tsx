@@ -1,415 +1,326 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
-  BarChart3,
-  Boxes,
-  ClipboardCheck,
-  ClipboardList,
-  CreditCard,
-  Database,
-  Download,
-  ExternalLink,
-  FileUp,
-  Headphones,
-  Heart,
-  Mail,
-  Megaphone,
-  MessageSquare,
-  PackageCheck,
-  Search,
-  Share2,
-  ShieldCheck,
-  ShoppingCart,
-  Sparkles,
-  Star,
-  Store,
-  UserPlus,
-  Users,
+  Globe,
   Workflow,
-  Zap
+  Sparkles,
+  Wrench,
+  Calculator,
+  Receipt,
+  Image as ImageIcon,
+  QrCode,
+  KeyRound,
+  Phone,
+  MessageSquare,
+  Star,
+  Calendar,
+  ShoppingBag
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { Shell } from "@/components/shell";
-import { ProductCard } from "@/components/product-card";
-import { SkeletonCard } from "@/components/skeleton";
-import { SectionHeading } from "@/components/sections";
-import { brancheLabels, formatPrice, useCaseLabels } from "@/lib/marketplace-data";
-import { brancheIcons } from "@/lib/branche-icons";
-import { useMarketplace } from "@/lib/marketplace-store";
-import type { Branche, UseCase } from "@/lib/types";
+import { listings as mockListings } from "@/lib/marketplace-data";
+import { fetchPublishedListings } from "@/lib/supabase-queries";
 
-const useCaseIcons: Partial<Record<UseCase, LucideIcon>> = {
-  crm: Users,
-  chatbot: MessageSquare,
-  ecommerce: ShoppingCart,
-  marketing: Megaphone,
-  data_integration: Database,
-  project_management: ClipboardList,
-  email_marketing: Mail,
-  analytics: BarChart3,
-  lead_generation: UserPlus,
-  customer_support: Headphones,
-  workflow_automation: Workflow,
-  payment_processing: CreditCard,
-  social_media: Share2,
-  inventory: Boxes
+export const metadata: Metadata = {
+  title: "Hazenco, Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
+  description:
+    "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows. Klein team, direct contact, done-for-you levering."
 };
 
-const HIGHLIGHTED_USE_CASES: UseCase[] = [
-  "workflow_automation",
-  "crm",
-  "ecommerce",
-  "chatbot",
-  "marketing",
-  "analytics",
-  "customer_support",
-  "email_marketing"
+const diensten = [
+  {
+    icon: Globe,
+    href: "/website-laten-maken",
+    title: "Webdesign",
+    text:
+      "Snelle, conversie-gerichte websites op maat. Hosting, onderhoud en support inbegrepen. Geen bouwers, geen plugin-drama."
+  },
+  {
+    icon: Workflow,
+    href: "/workflow-automatisering",
+    title: "Workflow-automatisering",
+    text:
+      "Van handmatig Excel-werk naar systemen die vanzelf lopen. Product-manager, cross-sell popups, calculators, meetbare tijdwinst."
+  },
+  {
+    icon: Sparkles,
+    href: "/ai-workflows",
+    title: "AI-workflows & integraties",
+    text:
+      "Slimme agents die met je klanten praten. Telefoonbot, WhatsApp-chatbot, reviews-responder, in jouw toon-of-voice, 24/7 aan."
+  }
 ];
 
-const HIGHLIGHTED_BRANCHES: Branche[] = [
-  "retail",
-  "horeca",
-  "professional_services",
-  "marketing_media",
-  "ict",
-  "financial",
-  "healthcare"
+// Oplossingen-teaser: 3 uitgelichte uit de bestaande service_package-listings
+const OPLOSSINGEN_HIGHLIGHT = [
+  "listing_ai_telefoonassistent",
+  "listing_online_afsprakensysteem",
+  "listing_magento_tile_calculator"
+] as const;
+
+const OPLOSSING_ICONS: Record<string, typeof Phone> = {
+  listing_ai_telefoonassistent: Phone,
+  listing_whatsapp_business_chatbot: MessageSquare,
+  listing_google_reviews_ai_responder: Star,
+  listing_online_afsprakensysteem: Calendar,
+  listing_magento_cart_popup: ShoppingBag,
+  listing_magento_tile_calculator: Calculator
+};
+
+const toolkitHighlights = [
+  { icon: Receipt, href: "/toolkit/factuur-generator", title: "Factuur generator", meta: "PDF factuur in 2 minuten" },
+  { icon: ImageIcon, href: "/toolkit/achtergrond-verwijderen", title: "Achtergrond verwijderen", meta: "AI, in je browser" },
+  { icon: QrCode, href: "/toolkit/qr-code-generator", title: "QR-code generator", meta: "Direct downloadbaar" },
+  { icon: KeyRound, href: "/toolkit/wachtwoord-generator", title: "Wachtwoord generator", meta: "Sterk & willekeurig" }
 ];
 
-
-export default function HomePage() {
-  const router = useRouter();
-  const { state, activeUser } = useMarketplace();
-  const [query, setQuery] = useState("");
-  const [mounted, setMounted] = useState(false);
-  const [finderTab, setFinderTab] = useState<"functie" | "branche">("functie");
-  useEffect(() => setMounted(true), []);
-  const published = state.listings.filter((listing) => listing.status === "published");
-
-  const topDownloaded = useMemo(
-    () => [...published].sort((a, b) => b.downloads - a.downloads).slice(0, 4),
-    [published]
-  );
-  const featured = useMemo(
-    () => published.filter((listing) => listing.featured).slice(0, 4),
-    [published]
-  );
-  const newest = useMemo(
-    () => [...published].sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)).slice(0, 6),
-    [published]
-  );
-
-  function submitSearch(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    router.push(`/catalogus${query ? `?q=${encodeURIComponent(query)}` : ""}`);
-  }
-
-  if (activeUser.role === "seller" || activeUser.role === "admin") {
-    return <RoleHome role={activeUser.role} />;
-  }
-
-  return (
-    <Shell>
-      <div className="page marketplace-home">
-        <section className="home-hero">
-          <div>
-            <span className="home-pill"><span className="dot" /> Hazenco Toolshub</span>
-            <h1>
-              Minder handmatig werk.<br />
-              <span className="accent">Meer tijd</span> voor wat telt.
-            </h1>
-            <p className="lead">
-              Workflows, AI agents, plugins, themes en templates van Europese makers.
-              Demo voor aankoop, directe download na betaling.
-            </p>
-            <form className="home-search" onSubmit={submitSearch}>
-              <div className="home-search-input">
-                <Search size={18} />
-                <input
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Zoek op tool, branche of platform (bv. n8n, facturen, horeca)"
-                />
-              </div>
-              <button className="button" type="submit">Zoeken</button>
-            </form>
-            <div className="home-hero-trust">
-              <span><ShieldCheck size={15} /> Maatwerk mogelijk</span>
-              <span><Zap size={15} /> Direct beschikbaar</span>
-              <span><Star size={15} fill="currentColor" /> Live demo per tool</span>
-            </div>
-          </div>
-          <div className="home-hero-figure">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/hero-creator.png"
-              alt="Hazenco gebruiker met laptop en duim omhoog"
-            />
-            {/* Network lines van de laptop naar elke badge — geeft 'real-time
-                activity feed' gevoel. SVG schaalt mee met de figure. */}
-            <svg
-              className="hero-figure-network"
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <line x1="40" y1="74" x2="22" y2="22" />
-              <line x1="40" y1="74" x2="14" y2="52" />
-              <line x1="40" y1="74" x2="72" y2="80" />
-              {/* Kleine cirkel als 'hub' op de laptop */}
-              <circle cx="40" cy="74" r="1.2" />
-            </svg>
-            <div className="hero-figure-badge badge-top">
-              <span className="hero-figure-badge-dot" />
-              <strong>Nieuwe prijzen</strong>
-              <span>bijgewerkt</span>
-            </div>
-            <div className="hero-figure-badge badge-middle">
-              <span className="hero-figure-badge-dot" />
-              <strong>Nieuwe blog</strong>
-              <span>is live</span>
-            </div>
-            <div className="hero-figure-badge badge-bottom">
-              <span className="hero-figure-badge-dot" />
-              <strong>Campagne</strong>
-              <span>verstuurd</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="home-section">
-          <div className="home-section-head">
-            <div>
-              <h2>Vind je tool</h2>
-              <p>Filter de catalogus op functie of jouw branche.</p>
-            </div>
-            <Link className="text-action" href="/catalogus">
-              Naar volledige catalogus <ArrowRight size={15} />
-            </Link>
-          </div>
-
-          <div className="home-finder-tabs" role="tablist" aria-label="Filter tools">
-            <button
-              type="button"
-              role="tab"
-              aria-selected={finderTab === "functie"}
-              className={finderTab === "functie" ? "active" : ""}
-              onClick={() => setFinderTab("functie")}
-            >
-              Op functie
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={finderTab === "branche"}
-              className={finderTab === "branche" ? "active" : ""}
-              onClick={() => setFinderTab("branche")}
-            >
-              Op branche
-            </button>
-          </div>
-
-          <div className="home-tiles">
-            {finderTab === "functie"
-              ? HIGHLIGHTED_USE_CASES.slice(0, 6).map((useCase) => {
-                  const Icon = useCaseIcons[useCase] ?? Workflow;
-                  const count = published.filter((listing) => (listing.useCases ?? []).includes(useCase)).length;
-                  return (
-                    <Link key={useCase} className="home-tile" href={`/catalogus?useCase=${useCase}`}>
-                      <span className="home-tile-icon"><Icon size={18} /></span>
-                      <div>
-                        <strong>{useCaseLabels[useCase]}</strong>
-                        <span>{count} {count === 1 ? "tool" : "tools"}</span>
-                      </div>
-                    </Link>
-                  );
-                })
-              : HIGHLIGHTED_BRANCHES.slice(0, 6).map((branche) => {
-                  const Icon = brancheIcons[branche];
-                  const count = published.filter((listing) => (listing.branches ?? []).includes(branche)).length;
-                  return (
-                    <Link key={branche} className="home-tile" href={`/catalogus?branche=${branche}`}>
-                      <span className="home-tile-icon"><Icon size={18} /></span>
-                      <div>
-                        <strong>{brancheLabels[branche]}</strong>
-                        <span>{count} {count === 1 ? "tool" : "tools"}</span>
-                      </div>
-                    </Link>
-                  );
-                })}
-          </div>
-        </section>
-
-        {!mounted ? (
-          <section className="home-section">
-            <SectionHeading eyebrow="Nieuw" title="Vers in de marketplace" actionHref="/catalogus?sort=newest" actionLabel="Bekijk nieuwste" />
-            <div className="product-grid">
-              {Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}
-            </div>
-          </section>
-        ) : null}
-
-        {mounted && newest.length > 0 ? (
-          <section className="home-section">
-            <SectionHeading
-              eyebrow="Nieuw"
-              title="Vers in de marketplace"
-              actionHref="/catalogus?sort=newest"
-              actionLabel="Bekijk nieuwste"
-            />
-            <div className="product-grid">
-              {newest.map((listing) => <ProductCard key={listing.id} listing={listing} />)}
-            </div>
-          </section>
-        ) : null}
-
-        {mounted && featured.length > 0 ? (
-          <section className="home-section">
-            <SectionHeading
-              eyebrow="Hazenco selectie"
-              title="Uitgelichte tools voor snelle impact"
-              actionHref="/catalogus"
-              actionLabel="Bekijk alle uitgelicht"
-            />
-            <div className="product-grid">
-              {featured.map((listing) => <ProductCard key={listing.id} listing={listing} />)}
-            </div>
-          </section>
-        ) : null}
-
-        {mounted && topDownloaded.length > 0 ? (
-          <section className="home-section">
-            <SectionHeading
-              eyebrow="Top downloads"
-              title="Wat ondernemers deze week kiezen"
-              actionHref="/catalogus?sort=downloads"
-              actionLabel="Meer top tools"
-            />
-            <div className="product-grid">
-              {topDownloaded.map((listing) => <ProductCard key={listing.id} listing={listing} />)}
-            </div>
-          </section>
-        ) : null}
-
-        <div className="home-trust">
-          <div className="home-trust-item">
-            <ShieldCheck size={24} style={{ color: "var(--orange-600)" }} />
-            <strong>Geverifieerd</strong>
-            <span>Creators en listings worden gecheckt voordat ze live gaan</span>
-          </div>
-          <div className="home-trust-item">
-            <PackageCheck size={24} style={{ color: "var(--orange-600)" }} />
-            <strong>Directe levering</strong>
-            <span>Bestanden, cloud-toegang of maatwerk service na betaling</span>
-          </div>
-          <div className="home-trust-item">
-            <Star size={24} style={{ color: "var(--orange-600)" }} />
-            <strong>Reviews met moderatie</strong>
-            <span>Eerlijke ervaringen van Nederlandse mkb-kopers</span>
-          </div>
-          <div className="home-trust-item">
-            <Sparkles size={24} style={{ color: "var(--orange-600)" }} />
-            <strong>Test demo voor aankoop</strong>
-            <span>Bekijk hoe een tool werkt voordat je 'm in je winkelwagen legt</span>
-          </div>
-        </div>
-
-        <section className="final-cta">
-          <div>
-            <span className="eyebrow">Klaar om te starten?</span>
-            <h2>Begin met de catalogus of laat onze wizard je gidsen.</h2>
-          </div>
-          <div className="hero-actions">
-            <Link className="button" href="/catalogus"><Sparkles size={17} /> Open catalogus</Link>
-            <Link className="button secondary" href="/account">
-              <Heart size={16} /> Mijn account
-            </Link>
-          </div>
-        </section>
-      </div>
-    </Shell>
-  );
+function formatSubscriptionPrice(cents: number) {
+  return `vanaf € ${Math.round(cents / 100)}/mnd`;
 }
 
-function RoleHome({ role }: { role: "seller" | "admin" }) {
-  const { state, activeUser } = useMarketplace();
-  const seller = state.sellers.find((item) => item.id === activeUser.sellerId);
-  const sellerListings = state.listings.filter((listing) => listing.sellerId === seller?.id);
-  const sellerOrders = state.orders.flatMap((order) =>
-    order.items.filter((item) => item.sellerId === seller?.id).map((item) => ({ order, item }))
-  );
-  const pendingApplications = state.sellerApplications.filter((item) => item.status === "pending");
-  const pendingListings = state.listings.filter((listing) => listing.status === "pending");
-  const pendingReviews = state.reviews.filter((review) => !review.approved);
+export const revalidate = 300;
 
-  if (role === "seller") {
-    const earnings = sellerOrders
-      .filter(({ order }) => order.status === "paid")
-      .reduce((sum, { item }) => sum + item.priceCents * item.quantity + item.serviceAddOnPriceCents, 0);
-    return (
-      <Shell>
-        <div className="page">
-          <span className="eyebrow">Creator werkruimte</span>
-          <h1>Welkom terug, {activeUser.name.split(" ")[0]}</h1>
-          <p className="lead">Beheer je listings, orders en setup-aanvragen op één plek.</p>
-          <div className="account-kpis">
-            <div className="account-kpi">
-              <div className="account-kpi-icon"><FileUp size={20} /></div>
-              <div><span>Listings</span><strong>{sellerListings.length}</strong></div>
-            </div>
-            <div className="account-kpi">
-              <div className="account-kpi-icon"><BarChart3 size={20} /></div>
-              <div><span>Orderregels</span><strong>{sellerOrders.length}</strong></div>
-            </div>
-            <div className="account-kpi">
-              <div className="account-kpi-icon"><Download size={20} /></div>
-              <div><span>Downloads</span><strong>{sellerListings.reduce((sum, item) => sum + item.downloads, 0)}</strong></div>
-            </div>
-            <div className="account-kpi">
-              <div className="account-kpi-icon"><CreditCard size={20} /></div>
-              <div><span>Betaalde omzet</span><strong>{formatPrice(earnings)}</strong></div>
-            </div>
-          </div>
-          <div className="hero-actions" style={{ marginTop: 16 }}>
-            <Link className="button" href="/seller#new"><FileUp size={17} /> Nieuwe listing</Link>
-            <Link className="button secondary" href="/seller"><ExternalLink size={16} /> Naar werkruimte</Link>
-          </div>
-        </div>
-      </Shell>
-    );
+export default async function HomePage() {
+  const supabaseListings = await fetchPublishedListings();
+  const sourceListings =
+    supabaseListings && supabaseListings.length > 0
+      ? supabaseListings
+      : mockListings.filter((l) => l.status === "published");
+
+  // Uitgelicht: eerst uit onze highlight-lijst, aanvullen tot 3 met eerste
+  // beschikbare listings. Deduplicate op id.
+  const seen = new Set<string>();
+  const oplossingen: typeof sourceListings = [];
+  for (const id of OPLOSSINGEN_HIGHLIGHT) {
+    const l = sourceListings.find((x) => x.id === id);
+    if (l && !seen.has(l.id)) {
+      seen.add(l.id);
+      oplossingen.push(l);
+    }
+  }
+  for (const l of sourceListings) {
+    if (oplossingen.length >= 3) break;
+    if (!seen.has(l.id)) {
+      seen.add(l.id);
+      oplossingen.push(l);
+    }
   }
 
   return (
     <Shell>
+      {/* HERO */}
+      <section className="hazenco-hero">
+        <div className="page">
+          <div className="hazenco-hero-inner">
+            <p className="eyebrow">Hazenco, B2B partner</p>
+            <h1>Wij automatiseren en bouwen<br />wat jouw bedrijf sneller maakt.</h1>
+            <p className="lead">
+              Custom software, workflow-automatisering en AI-workflows voor het Nederlandse MKB. Klein team, direct
+              contact, done-for-you levering, zonder softwarebureau-prijzen.
+            </p>
+            <div className="hazenco-hero-cta">
+              <Link href="/contact" className="button">
+                Plan een gesprek van 15 minuten <ArrowRight size={15} />
+              </Link>
+              <Link href="/diensten" className="button secondary">
+                Bekijk diensten
+              </Link>
+            </div>
+            <ul className="hazenco-hero-proof">
+              <li>Klein team, direct contact</li>
+              <li>Meestal binnen 1 werkdag antwoord</li>
+              <li>Reactie op je vraag ≠ verkooppraatje</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <div className="page">
-        <span className="eyebrow">Admin werkruimte</span>
-        <h1>Welkom terug, {activeUser.name.split(" ")[0]}</h1>
-        <p className="lead">Bekijk de wachtrijen voor sellers, listings en reviews.</p>
-        <div className="account-kpis">
-          <div className="account-kpi">
-            <div className="account-kpi-icon"><ShieldCheck size={20} /></div>
-            <div><span>Aanvragen creators</span><strong>{pendingApplications.length}</strong></div>
+        {/* DIENSTEN-BLOK */}
+        <section className="hazenco-section">
+          <header className="hazenco-section-head">
+            <p className="eyebrow">Diensten</p>
+            <h2>Drie manieren om je bedrijf sneller te laten lopen</h2>
+          </header>
+          <div className="hazenco-diensten-grid">
+            {diensten.map(({ icon: Icon, href, title, text }) => (
+              <Link key={href} href={href} className="hazenco-dienst-card">
+                <div className="hazenco-dienst-icon">
+                  <Icon size={22} />
+                </div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <span className="hazenco-dienst-link">
+                  Meer weten <ArrowRight size={13} />
+                </span>
+              </Link>
+            ))}
           </div>
-          <div className="account-kpi">
-            <div className="account-kpi-icon"><ClipboardCheck size={20} /></div>
-            <div><span>Listings in afwachting</span><strong>{pendingListings.length}</strong></div>
+        </section>
+
+        {/* OPLOSSINGEN-TEASER */}
+        <section className="hazenco-section">
+          <header className="hazenco-section-head">
+            <p className="eyebrow">Oplossingen</p>
+            <h2>Voorbeelden van wat we hebben gebouwd</h2>
+            <p className="hazenco-section-sub">
+              Productized oplossingen die je 1-op-1 kunt afnemen, of als startpunt voor iets op maat.
+            </p>
+          </header>
+          <div className="hazenco-oplossingen-grid">
+            {oplossingen.map((l) => {
+              const Icon = OPLOSSING_ICONS[l.id] ?? Sparkles;
+              const monthly = l.servicePricing?.subscription?.priceCentsPerMonth;
+              return (
+                <article key={l.id} className="hazenco-oplossing-card">
+                  {(() => {
+                    const thumb = l.heroImageUrl ?? l.screenshotUrls?.[0];
+                    if (!thumb) return null;
+                    return (
+                      <div className="hazenco-oplossing-media">
+                        <Image
+                          src={thumb}
+                          alt={l.title}
+                          width={720}
+                          height={452}
+                          style={{ width: "100%", height: "auto", display: "block" }}
+                        />
+                      </div>
+                    );
+                  })()}
+                  <div className="hazenco-oplossing-body">
+                    <div className="hazenco-oplossing-head">
+                      <div className="hazenco-oplossing-icon">
+                        <Icon size={16} />
+                      </div>
+                      <h3>{l.title}</h3>
+                    </div>
+                    <p>{l.tagline}</p>
+                    <div className="hazenco-oplossing-meta">
+                      {monthly ? <span className="badge soft">{formatSubscriptionPrice(monthly)}</span> : null}
+                      <Link href="/contact" className="hazenco-oplossing-cta">
+                        Boek een gesprek <ArrowRight size={13} />
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
-          <div className="account-kpi">
-            <div className="account-kpi-icon"><Star size={20} /></div>
-            <div><span>Reviews</span><strong>{pendingReviews.length}</strong></div>
+          <div className="hazenco-section-foot">
+            <Link href="/diensten" className="button secondary">
+              Alle oplossingen <ArrowRight size={15} />
+            </Link>
           </div>
-          <div className="account-kpi">
-            <div className="account-kpi-icon"><Store size={20} /></div>
-            <div><span>GMV demo</span><strong>{formatPrice(state.orders.filter((o) => o.status === "paid").reduce((s, o) => s + o.totalCents, 0))}</strong></div>
+        </section>
+
+        {/* TOOLKIT-TEASER */}
+        <section className="hazenco-section hazenco-toolkit-band">
+          <div className="hazenco-toolkit-inner">
+            <div className="hazenco-toolkit-copy">
+              <p className="eyebrow">Gratis toolkit</p>
+              <h2>Kleine tools die direct werken.<br />Zonder inloggen, in je browser.</h2>
+              <p>
+                Facturen maken, QR-codes, wachtwoorden, PDF's samenvoegen, achtergronden verwijderen. Elf hands-on
+                tools waar we zelf dagelijks mee werken.
+              </p>
+              <Link href="/toolkit" className="button">
+                Naar alle tools <ArrowRight size={15} />
+              </Link>
+            </div>
+            <div className="hazenco-toolkit-grid">
+              {toolkitHighlights.map(({ icon: Icon, href, title, meta }) => (
+                <Link key={href} href={href} className="hazenco-toolkit-tile">
+                  <div className="hazenco-toolkit-tile-icon">
+                    <Icon size={18} />
+                  </div>
+                  <strong>{title}</strong>
+                  <small>{meta}</small>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="hero-actions" style={{ marginTop: 16 }}>
-          <Link className="button" href="/admin"><ShieldCheck size={17} /> Open admin</Link>
-        </div>
+        </section>
+
+        {/* WAAROM HAZENCO, DOGFOODING */}
+        <section className="hazenco-section">
+          <header className="hazenco-section-head">
+            <p className="eyebrow">Waarom Hazenco</p>
+            <h2>Wij bouwen wat we ook zelf gebruiken</h2>
+            <p className="hazenco-section-sub">
+              Geen theoretische adviezen, alles wat we voor klanten bouwen draait ook bij onszelf. Dat is de reden dat
+              we weten wat werkt en wat het écht kost om te onderhouden.
+            </p>
+          </header>
+          <div className="hazenco-waarom-grid">
+            <article className="hazenco-waarom-card">
+              <div className="hazenco-waarom-icon"><Wrench size={22} /></div>
+              <h3>TechPanda draait op deze stack</h3>
+              <p>
+                Onze eigen B2C IT-webshop is gebouwd met dezelfde Next.js + Supabase stack die we voor jou opzetten.
+                Als iets bij ons breekt, weten we het als eerste.
+              </p>
+              <a href="https://techpanda.nl" target="_blank" rel="noreferrer" className="hazenco-waarom-link">
+                techpanda.nl <ArrowRight size={13} />
+              </a>
+            </article>
+            <article className="hazenco-waarom-card">
+              <div className="hazenco-waarom-icon"><Sparkles size={22} /></div>
+              <h3>Deze site is de showcase</h3>
+              <p>
+                Custom Next.js, geen builder, geen template. Dark mode, mobiel-optimalisatie, sub-100ms pagina-laden.
+                Wat je hier ziet is wat je kunt krijgen.
+              </p>
+              <span className="hazenco-waarom-link muted">Je kijkt er nu naar</span>
+            </article>
+            <article className="hazenco-waarom-card">
+              <div className="hazenco-waarom-icon"><Calculator size={22} /></div>
+              <h3>Onze toolkit gebruiken we intern</h3>
+              <p>
+                De 11 gratis tools zijn ontstaan uit ons eigen dagelijkse werk. Factuur-generator, PDF-samenvoegen,
+                achtergrond-verwijderaar, allemaal getest op onze eigen taken voordat ze publiek gingen.
+              </p>
+              <Link href="/toolkit" className="hazenco-waarom-link">
+                Bekijk de toolkit <ArrowRight size={13} />
+              </Link>
+            </article>
+          </div>
+        </section>
+
+        {/* BLOG-TEASER */}
+        <section className="hazenco-section">
+          <header className="hazenco-section-head">
+            <p className="eyebrow">Blog</p>
+            <h2>Praktische artikelen voor MKB-ondernemers</h2>
+            <p className="hazenco-section-sub">
+              De eerste posts komen binnenkort. Onderwerpen die op onze lijst staan: hoe je een AI-telefoonbot zonder
+              nachtmerrie opzet, wanneer een custom website loont vs. een template, en wat automatisering realistisch
+              oplevert in het eerste jaar.
+            </p>
+          </header>
+          <div className="hazenco-section-foot">
+            <Link href="/blog" className="button secondary">
+              Naar de blog <ArrowRight size={15} />
+            </Link>
+          </div>
+        </section>
+
+        {/* CONTACT-CTA */}
+        <section className="hazenco-contact-band">
+          <div className="hazenco-contact-inner">
+            <h2>Kort gesprek, concrete inschatting.</h2>
+            <p>
+              Vertel wat je zoekt, dan hoor je binnen 1 werkdag of we een fit zijn en wat het grofweg kost. Geen
+              verkoopgesprek, geen verplichtingen.
+            </p>
+            <div className="hazenco-contact-cta">
+              <Link href="/contact" className="button">
+                Plan een gesprek <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
     </Shell>
   );

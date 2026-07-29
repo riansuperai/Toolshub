@@ -5,13 +5,13 @@ import { ArrowLeftRight, Info } from "lucide-react";
 import { MiniToolPage } from "@/components/mini-tool-page";
 
 /**
- * Nederlandse loonbelasting tarieven 2025 — indicatief.
+ * Nederlandse loonbelasting tarieven 2025, indicatief.
  * Bij jaarwissel: pas hier de getallen aan voor 2026.
  * Bron: Belastingdienst.nl jaartarief box 1 + heffingskortingen.
  */
 const TARIEVEN_2025 = {
   jaar: 2025,
-  // Schijven box 1 — gecombineerd tarief (loonbelasting + premie volksverzekeringen)
+  // Schijven box 1, gecombineerd tarief (loonbelasting + premie volksverzekeringen)
   schijfGrenzen: {
     schijf1: 38_441,
     schijf2: 76_817
@@ -35,7 +35,7 @@ const TARIEVEN_2025 = {
     afbouwTempo: 0.06337
   },
   arbeidskorting: {
-    // 2025 — getrapt opbouwend, daarna afgebouwd. Approximatie binnen ~€20 nauwkeurig.
+    // 2025, getrapt opbouwend, daarna afgebouwd. Approximatie binnen ~€20 nauwkeurig.
     opbouw1Tot: 12_169,
     opbouw1Tarief: 0.08425,
     opbouw2Tot: 26_288,
@@ -199,14 +199,14 @@ export function BrutoNettoClient() {
       slug="bruto-netto"
       privacyNote="Berekening draait in je browser, niks wordt opgeslagen. Indicatief op basis van 2025-tarieven."
       howItWorks={[
-        "Vul je bruto bedrag in (per maand of per jaar) en kies de richting — bruto → netto of andersom.",
+        "Vul je bruto bedrag in (per maand of per jaar) en kies de richting, bruto → netto of andersom.",
         "Zet AOW-leeftijd aan als je AOW ontvangt (lager tarief schijf 1) en loonheffingskorting uit als je die niet toepast.",
         "Je netto loon wordt direct getoond, met daaronder de loonbelasting en heffingskortingen die we hebben afgetrokken."
       ]}
       crossSell={{
         heading: "Loonadministratie volledig laten regelen?",
         body:
-          "Hazenco automatiseert je salarisadministratie — loonstroken, aangiftes en koppeling met je boekhouding in één pakket.",
+          "Hazenco automatiseert je salarisadministratie, loonstroken, aangiftes en koppeling met je boekhouding in één pakket.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}
@@ -371,7 +371,7 @@ export function BrutoNettoClient() {
         <div className="brutonetto-disclaimer">
           <Info size={15} />
           <div>
-            <strong>Indicatief — geen belastingadvies</strong>
+            <strong>Indicatief, geen belastingadvies</strong>
             <p>
               Berekend op basis van Nederlandse loonbelasting <strong>{TARIEVEN_2025.jaar}</strong>.
               Werkelijk netto loon kan afwijken door 30%-regeling, pensioenpremie,

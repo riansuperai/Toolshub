@@ -21,7 +21,7 @@ type Options = {
 };
 
 /**
- * Cryptografisch random — gebruikt Web Crypto API. Geen Math.random
+ * Cryptografisch random, gebruikt Web Crypto API. Geen Math.random
  * want die is niet veilig voor wachtwoorden. We trekken uit een 32-bit
  * pool en mod-en op de charset-lengte (modulo bias is verwaarloosbaar
  * bij charset <= 100 en pool 2^32).
@@ -167,13 +167,13 @@ export function WachtwoordGeneratorClient() {
       privacyNote="Wachtwoorden worden cryptografisch in je browser gegenereerd. Wij zien of slaan niks op."
       howItWorks={[
         "Kies hoe lang het wachtwoord moet zijn (16+ tekens is aanbevolen).",
-        "Selecteer welke type karakters meedoen — hoofdletters, kleine letters, cijfers en symbolen. Optioneel: filter verwarrende tekens (0/O, 1/l/I).",
+        "Selecteer welke type karakters meedoen, hoofdletters, kleine letters, cijfers en symbolen. Optioneel: filter verwarrende tekens (0/O, 1/l/I).",
         "Kopieer het wachtwoord met één klik of genereer een nieuwe. Bewaar 'm in een wachtwoordmanager."
       ]}
       crossSell={{
         heading: "Wachtwoordbeheer team-breed regelen?",
         body:
-          "Hazenco adviseert MKB-bedrijven over security: van een gedeelde password-manager tot 2FA en SSO — passend bij je team-grootte.",
+          "Hazenco adviseert MKB-bedrijven over security: van een gedeelde password-manager tot 2FA en SSO, passend bij je team-grootte.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}
@@ -289,7 +289,7 @@ export function WachtwoordGeneratorClient() {
           <span>
             <strong>Tip:</strong> 16+ tekens met alle types is voor de meeste
             accounts ruim voldoende. Bewaar wachtwoorden nooit in een browser
-            of tekstbestand — gebruik een password-manager zoals Bitwarden of
+            of tekstbestand, gebruik een password-manager zoals Bitwarden of
             1Password.
           </span>
         </div>
