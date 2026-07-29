@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, MessageCircle, Rocket } from "lucide-react";
+import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 
 /** Hazenco WhatsApp — alleen cijfers, country code voorop. */
 const HAZENCO_WHATSAPP = "31643074303";
@@ -53,7 +53,7 @@ export function InfoSidebar() {
         <a
           className="info-help-cta"
           href={`https://wa.me/${HAZENCO_WHATSAPP}?text=${encodeURIComponent(
-            "Hallo Hazenco, ik heb een vraag over Toolshub."
+            "Hallo Hazenco, ik heb een vraag."
           )}`}
           target="_blank"
           rel="noreferrer"
@@ -63,10 +63,10 @@ export function InfoSidebar() {
       </div>
 
       <div className="info-creator-box">
-        <h3>Zelf bouwen?</h3>
-        <p>Word creator op Toolshub en bereik Nederlandse ondernemers met je tools en diensten.</p>
-        <Link className="info-creator-cta" href="/creators">
-          <Rocket size={15} /> Creator worden?
+        <h3>Wat kunnen we voor je bouwen?</h3>
+        <p>Van custom website tot AI-workflow tot procesautomatisering — plan een gesprek van 15 minuten.</p>
+        <Link className="info-creator-cta" href="/contact">
+          <Sparkles size={15} /> Plan een gesprek
         </Link>
       </div>
     </aside>

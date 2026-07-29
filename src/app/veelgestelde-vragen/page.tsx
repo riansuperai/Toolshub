@@ -6,7 +6,7 @@ import { InfoSidebar } from "@/components/info-sidebar";
 export const metadata: Metadata = {
   title: "Veelgestelde vragen",
   description:
-    "Antwoorden op de meest gestelde vragen over Hazenco Toolshub — kopen, demo's, support en creator worden."
+    "Antwoorden op de meest gestelde vragen over Hazenco — kopen, demo's, support en creator worden."
 };
 
 export default function FaqPage() {

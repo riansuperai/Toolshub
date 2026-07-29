@@ -7,7 +7,7 @@ import { InfoSidebar } from "@/components/info-sidebar";
 export const metadata: Metadata = {
   title: "Over ons",
   description:
-    "Wie zit er achter Hazenco Toolshub? Een team uit Nederland dat digitale tools en diensten bouwt voor het MKB."
+    "Wie zit er achter Hazenco? Een klein Nederlands team dat custom software, automatisering en AI-workflows bouwt voor het MKB."
 };
 
 export default function OverOnsPage() {
@@ -18,56 +18,52 @@ export default function OverOnsPage() {
           <div className="info-main">
             <h1>Over ons</h1>
             <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
-              Hazenco Toolshub is de marketplace waar Nederlandse ondernemers
-              kant-en-klare digitale tools en diensten vinden — zonder gedoe.
+              Hazenco is een klein Nederlands B2B-team dat custom software, workflow-automatisering en AI-workflows
+              bouwt voor het MKB.
             </p>
 
-        <section className="section-card">
-          <h2>Wat we doen</h2>
-          <p>
-            Wij bouwen en verzamelen automation-tools, AI agents, plugins,
-            extensies, themes en servicepakketten die ondernemers in het MKB
-            écht tijd besparen. Geen theoretische demo&apos;s — alles in onze
-            catalogus is gemaakt door bouwers die zelf met die problemen
-            werken.
-          </p>
-        </section>
+            <section className="section-card">
+              <h2>Wat we doen</h2>
+              <p>
+                Drie dingen — en niks anders. We bouwen websites op maat, we automatiseren processen die nu handmatig
+                lopen, en we zetten AI-workflows op waar je klanten dagelijks mee praten (telefoonbots, chatbots,
+                review-responders). Alles done-for-you: wij regelen installatie, integratie en onderhoud.
+              </p>
+            </section>
 
-        <section className="section-card">
-          <h2>Waarom Toolshub</h2>
-          <p>
-            Het web staat vol met tools, maar betrouwbare info, een werkende
-            demo en een vast aanspreekpunt vinden is moeilijk. Wij keuren elke
-            tool en service voordat ie live gaat, zodat jij niet maanden
-            verspilt aan iets dat uiteindelijk niet doet wat beloofd was.
-          </p>
-        </section>
+            <section className="section-card">
+              <h2>Waarom Hazenco</h2>
+              <p>
+                Wij bouwen wat we ook zelf gebruiken. Onze eigen webshop TechPanda draait op dezelfde stack, onze
+                gratis toolkit is ontstaan uit ons eigen dagelijkse werk, en deze site zelf is de showcase van wat
+                we voor jou kunnen leveren. Geen theoretische adviezen — als iets bij ons breekt, weten we het als
+                eerste.
+              </p>
+            </section>
 
-        <section className="section-card">
-          <h2>De maker</h2>
-          <p>
-            Toolshub is een initiatief van Hazenco — een Nederlands team dat
-            zich specialiseert in automation en webwerk voor het MKB. Meer
-            weten over onze diensten?{" "}
-            <a
-              className="footer-external-link"
-              href="https://hazenco.nl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              hazenco.nl <ExternalLink size={14} />
-            </a>
-          </p>
-        </section>
+            <section className="section-card">
+              <h2>Voor wie</h2>
+              <p>
+                MKB-ondernemers die tijd willen besparen (automatisering), online willen groeien (webdesign) of AI
+                willen inzetten zonder er zelf een developer voor te worden. Klein team, direct contact, geen
+                account-managers of tussenlagen.
+              </p>
+            </section>
 
-        <section className="section-card">
-          <h2>Contact</h2>
-          <p>
-            Vragen, feedback of wil je creator worden? Stuur een bericht via{" "}
-            <Link href="/contact">de contactpagina</Link> of bekijk hoe je{" "}
-            <Link href="/creators">creator wordt</Link>.
-          </p>
-        </section>
+            <section className="section-card">
+              <h2>Ook TechPanda</h2>
+              <p>
+                Naast Hazenco runnen we <a className="footer-external-link" href="https://techpanda.nl" target="_blank" rel="noopener noreferrer">TechPanda <ExternalLink size={14} /></a> — onze B2C-tak voor IT-webshop en computerhulp aan huis. Handig om te weten: als je in Hazenco investeert, krijg je een partij die zelf ook e-commerce en klantenservice draait.
+              </p>
+            </section>
+
+            <section className="section-card">
+              <h2>Contact</h2>
+              <p>
+                Vragen of wil je een gesprek plannen? Ga naar <Link href="/contact">de contactpagina</Link> voor
+                WhatsApp, mail of het formulier.
+              </p>
+            </section>
           </div>
           <InfoSidebar />
         </div>

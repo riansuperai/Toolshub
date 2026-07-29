@@ -19,27 +19,27 @@ const dmSerifDisplay = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://toolshub.hazenco.nl"),
+  metadataBase: new URL("https://hazenco.nl"),
   title: {
-    default: "Hazenco Toolshub",
-    template: "%s | Hazenco Toolshub"
+    default: "Hazenco — Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
+    template: "%s | Hazenco"
   },
   description:
-    "Hazenco's bibliotheek van werkende automation-tools: workflows, AI agents, plugins, extensies, skills en themes voor het Nederlandse MKB.",
+    "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows. Klein team, direct contact, done-for-you levering.",
   openGraph: {
     type: "website",
     locale: "nl_NL",
-    siteName: "Hazenco Toolshub",
-    url: "https://toolshub.hazenco.nl",
-    title: "Hazenco Toolshub",
+    siteName: "Hazenco",
+    url: "https://hazenco.nl",
+    title: "Hazenco — Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
     description:
-      "Door Hazenco gebouwde automation-tools voor het Nederlandse MKB."
+      "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows."
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hazenco Toolshub",
+    title: "Hazenco",
     description:
-      "Door Hazenco gebouwde automation-tools voor het Nederlandse MKB."
+      "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows."
   }
 };
 

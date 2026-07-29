@@ -1,5 +1,5 @@
 /**
- * Klein netwerk-symbool voor achter 'Toolshub' — centrale ring met
+ * Klein netwerk-symbool — centrale ring met
  * drie satelliet-knopen. Onderstreept het 'hub' concept. Kleur volgt
  * currentColor (erft van de omliggende .brand small = orange-600).
  */
@@ -32,14 +32,14 @@ export function HubGlyph({ size = 20 }: { size?: number }) {
 }
 
 /**
- * Hazenco Toolshub brand mark — 2×2 grid met vier gekleurde blokken
+ * Hazenco brand mark — 2×2 grid met vier gekleurde blokken
  * (peach + dark green, diagonaal alterneren). Verwijst naar de
  * toolshub als een raster van verzamelde tools. De blokken hebben
  * hardcoded brand-kleuren; de omliggende .brand-mark container geeft
  * de cream/white achtergrond.
  */
 export function BrandMark({ size = 38 }: { size?: number }) {
-  // Matched met var(--orange-600) — dezelfde tint als 'Toolshub' tekst
+  // Matched met var(--orange-600) — dezelfde tint als accent-kleur
   const orange = "#f26b1d";
   const darkGreen = "#1a3c2e";
   return (

@@ -59,8 +59,8 @@ const FAQ: { q: string; a: string }[] = [
     a: "Onregelmatig, gemiddeld 1-2 per maand. De toolkit is begonnen met een handvol en groeit op basis van wat bezoekers vragen of waar Hazenco zelf behoefte aan heeft. Volg ons op LinkedIn om updates te zien."
   },
   {
-    q: "Wie zit er achter Toolshub?",
-    a: "Toolshub is gebouwd door Hazenco — een Nederlands team dat zich richt op automation, webontwikkeling en MKB-tools. Meer over wie wij zijn vind je op hazenco.nl of via onze contactpagina."
+    q: "Wie zit er achter deze tools?",
+    a: "De toolkit is gebouwd door Hazenco — een Nederlands team dat zich richt op custom software, workflow-automatisering en AI-workflows voor het MKB. Meer over wie wij zijn vind je op de over-ons pagina of via contact."
   }
 ];
 

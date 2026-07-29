@@ -6,7 +6,7 @@ import { InfoSidebar } from "@/components/info-sidebar";
 export const metadata: Metadata = {
   title: "Algemene voorwaarden",
   description:
-    "De algemene voorwaarden waaronder Hazenco Toolshub diensten en producten worden aangeboden."
+    "De algemene voorwaarden waaronder Hazenco diensten en producten worden aangeboden."
 };
 
 export default function AlgemeneVoorwaardenPage() {
@@ -18,14 +18,14 @@ export default function AlgemeneVoorwaardenPage() {
             <h1>Algemene voorwaarden</h1>
             <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
               Hieronder staan de algemene voorwaarden voor het gebruik van
-              Hazenco Toolshub en de aankoop van tools en diensten via dit
+              Hazenco en de aankoop van tools en diensten via dit
               platform.
             </p>
 
         <section className="section-card">
           <h2>1. Wie zijn wij</h2>
           <p>
-            Hazenco Toolshub wordt aangeboden door Hazenco (KvK 94215316),
+            Hazenco wordt aangeboden door Hazenco (KvK 94215316),
             gevestigd in Nederland. Contact:{" "}
             <a href="mailto:info@hazenco.nl">info@hazenco.nl</a>.
           </p>
@@ -35,7 +35,7 @@ export default function AlgemeneVoorwaardenPage() {
           <h2>2. Toepasselijkheid</h2>
           <p>
             Deze voorwaarden gelden voor elke bezoeker, koper en creator van
-            Hazenco Toolshub. Door gebruik te maken van het platform ga je
+            Hazenco. Door gebruik te maken van het platform ga je
             akkoord met deze voorwaarden.
           </p>
         </section>
@@ -43,8 +43,9 @@ export default function AlgemeneVoorwaardenPage() {
         <section className="section-card">
           <h2>3. Aanbod en aankoop</h2>
           <p>
-            Het aanbod op Toolshub bevat tools, diensten en servicepakketten
-            van Hazenco zelf en van geverifieerde creators. Prijzen zijn
+            Het aanbod van Hazenco bevat maatwerk-diensten en productized
+            oplossingen op het gebied van webdesign, workflow-automatisering
+            en AI-workflows. Prijzen zijn
             exclusief btw tenzij anders aangegeven. Na aankoop ontvang je
             een factuur per e-mail.
           </p>
