@@ -98,7 +98,44 @@ docker compose logs -f web
 
 Test lokaal op VPS: `curl -s http://localhost:5056/ | head`
 
+### 6b. SSL — ✅ VOORAF UITGEGEVEN 2026-07-29
+
+Certificaat voor `hazenco.nl` + `www.hazenco.nl` is **vóór** de DNS-switch
+uitgegeven via een DNS-01 challenge, zodat bezoekers op het moment van de
+cutover nooit een certificaatwaarschuwing zien.
+
+- Uitgegeven: 2026-07-29, geldig tot **2026-10-27**
+- Pad: `/etc/letsencrypt/live/hazenco.nl/`
+- Geverifieerd: `ssl_verify_result=0` op zowel apex als www
+
+> 🔴 **VERPLICHTE STAP NA DE DNS-SWITCH — anders verloopt het certificaat stil**
+>
+> Het certificaat is uitgegeven met `authenticator = manual` en een auth-hook
+> die wacht op een handmatig TXT-record. Automatische verlenging over ~60 dagen
+> zou daardoor **vastlopen en falen**, zonder duidelijke melding.
+>
+> Zodra DNS naar de VPS wijst, moet de authenticator omgezet worden naar
+> HTTP-01 (die werkt wél onbewaakt):
+>
+> ```bash
+> sudo certbot certonly --nginx --cert-name hazenco.nl \
+>      -d hazenco.nl -d www.hazenco.nl --force-renewal
+> sudo certbot renew --cert-name hazenco.nl --dry-run   # moet slagen
+> sudo rm -rf /opt/acme-prep                             # hook opruimen
+> ```
+>
+> De dry-run moet zonder fouten doorlopen. Pas daarna is verlenging geregeld.
+
 ### 7. Nginx-vhost aanpassen naar hazenco.nl
+
+De vhost `/etc/nginx/sites-available/hazenco.nl` is **al aangemaakt en actief**
+(2026-07-29). Hij ontvangt nog geen verkeer zolang DNS naar WordPress wijst.
+
+- HTTP → HTTPS redirect
+- `www.hazenco.nl` → 301 naar apex (canoniek, matcht sitemap + metadataBase)
+- apex → proxy naar `127.0.0.1:5056`
+
+Getest met `--resolve` tegen de VPS: apex 200, www 301, http 301, SSL geldig.
 
 Op VPS:
 
