@@ -1,10 +1,15 @@
 # Cutover-runbook — hazenco.nl livegang
 
-> **Wanneer uitvoeren:** ná TechPanda-livegang (Qwerty + Mollie live).
-> Nu = alleen bouwen op branch `hazenco-b2b-rebuild`, nog geen cutover.
+> **Wanneer uitvoeren:** zodra Fase 1 acceptatie op staging (`toolshub.hazenco.nl`) is
+> afgerond. TechPanda-livegang is losgekoppeld van deze migratie.
 >
 > Deze runbook is de checklist voor de daadwerkelijke domein-switch van
 > WordPress hazenco.nl naar de nieuwe Next.js site.
+>
+> **Beslissingen (2026-07-29):**
+> - `toolshub.hazenco.nl` wordt **retired** — 301-redirect all-paths naar `hazenco.nl`
+> - Merge-flow: PR `hazenco-b2b-rebuild` → `main` → deploy vanaf `main`
+> - `toolshub.hazenco.nl` fungeert als **staging-preview** tot en met de dag van cutover
 
 ---
 
@@ -35,8 +40,8 @@ Loop deze acceptatie-lijst door op `hazenco-b2b-rebuild` branch:
 NEXT_PUBLIC_SITE_URL=https://hazenco.nl
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX     # bestaande GA4 property
 RESEND_API_KEY=re_xxxxxxxxx                     # nieuwe key voor hazenco.nl
-RESEND_FROM=Hazenco Contact <hallo@hazenco.nl>
-RESEND_TO=hallo@hazenco.nl
+RESEND_FROM=Hazenco Contact <info@hazenco.nl>
+RESEND_TO=info@hazenco.nl
 ```
 
 ### 3. WordPress-content backup
@@ -217,5 +222,5 @@ Rollback-verantwoordelijke: **Rian** (contact via WhatsApp of directe SSH-toegan
 - **VPS-toegang:** amiagung@149.210.203.88 (SSH key)
 - **DNS + hosting:** TransIP account
 - **Domein-eigenaar:** Rian
-- **Resend account:** hallo@hazenco.nl
-- **Google Search Console:** hallo@hazenco.nl
+- **Resend account:** info@hazenco.nl
+- **Google Search Console:** info@hazenco.nl
