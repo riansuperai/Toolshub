@@ -1,415 +1,96 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useMemo, useState } from "react";
-import {
-  ArrowRight,
-  BarChart3,
-  Boxes,
-  ClipboardCheck,
-  ClipboardList,
-  CreditCard,
-  Database,
-  Download,
-  ExternalLink,
-  FileUp,
-  Headphones,
-  Heart,
-  Mail,
-  Megaphone,
-  MessageSquare,
-  PackageCheck,
-  Search,
-  Share2,
-  ShieldCheck,
-  ShoppingCart,
-  Sparkles,
-  Star,
-  Store,
-  UserPlus,
-  Users,
-  Workflow,
-  Zap
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowRight, Globe, Workflow, Sparkles } from "lucide-react";
 import { Shell } from "@/components/shell";
-import { ProductCard } from "@/components/product-card";
-import { SkeletonCard } from "@/components/skeleton";
-import { SectionHeading } from "@/components/sections";
-import { brancheLabels, formatPrice, useCaseLabels } from "@/lib/marketplace-data";
-import { brancheIcons } from "@/lib/branche-icons";
-import { useMarketplace } from "@/lib/marketplace-store";
-import type { Branche, UseCase } from "@/lib/types";
 
-const useCaseIcons: Partial<Record<UseCase, LucideIcon>> = {
-  crm: Users,
-  chatbot: MessageSquare,
-  ecommerce: ShoppingCart,
-  marketing: Megaphone,
-  data_integration: Database,
-  project_management: ClipboardList,
-  email_marketing: Mail,
-  analytics: BarChart3,
-  lead_generation: UserPlus,
-  customer_support: Headphones,
-  workflow_automation: Workflow,
-  payment_processing: CreditCard,
-  social_media: Share2,
-  inventory: Boxes
+export const metadata: Metadata = {
+  title: "Hazenco — Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
+  description:
+    "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows. Klein team, direct contact, done-for-you levering."
 };
 
-const HIGHLIGHTED_USE_CASES: UseCase[] = [
-  "workflow_automation",
-  "crm",
-  "ecommerce",
-  "chatbot",
-  "marketing",
-  "analytics",
-  "customer_support",
-  "email_marketing"
-];
-
-const HIGHLIGHTED_BRANCHES: Branche[] = [
-  "retail",
-  "horeca",
-  "professional_services",
-  "marketing_media",
-  "ict",
-  "financial",
-  "healthcare"
-];
-
-
 export default function HomePage() {
-  const router = useRouter();
-  const { state, activeUser } = useMarketplace();
-  const [query, setQuery] = useState("");
-  const [mounted, setMounted] = useState(false);
-  const [finderTab, setFinderTab] = useState<"functie" | "branche">("functie");
-  useEffect(() => setMounted(true), []);
-  const published = state.listings.filter((listing) => listing.status === "published");
-
-  const topDownloaded = useMemo(
-    () => [...published].sort((a, b) => b.downloads - a.downloads).slice(0, 4),
-    [published]
-  );
-  const featured = useMemo(
-    () => published.filter((listing) => listing.featured).slice(0, 4),
-    [published]
-  );
-  const newest = useMemo(
-    () => [...published].sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)).slice(0, 6),
-    [published]
-  );
-
-  function submitSearch(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    router.push(`/catalogus${query ? `?q=${encodeURIComponent(query)}` : ""}`);
-  }
-
-  if (activeUser.role === "seller" || activeUser.role === "admin") {
-    return <RoleHome role={activeUser.role} />;
-  }
-
-  return (
-    <Shell>
-      <div className="page marketplace-home">
-        <section className="home-hero">
-          <div>
-            <span className="home-pill"><span className="dot" /> Hazenco Toolshub</span>
-            <h1>
-              Minder handmatig werk.<br />
-              <span className="accent">Meer tijd</span> voor wat telt.
-            </h1>
-            <p className="lead">
-              Workflows, AI agents, plugins, themes en templates van Europese makers.
-              Demo voor aankoop, directe download na betaling.
-            </p>
-            <form className="home-search" onSubmit={submitSearch}>
-              <div className="home-search-input">
-                <Search size={18} />
-                <input
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Zoek op tool, branche of platform (bv. n8n, facturen, horeca)"
-                />
-              </div>
-              <button className="button" type="submit">Zoeken</button>
-            </form>
-            <div className="home-hero-trust">
-              <span><ShieldCheck size={15} /> Maatwerk mogelijk</span>
-              <span><Zap size={15} /> Direct beschikbaar</span>
-              <span><Star size={15} fill="currentColor" /> Live demo per tool</span>
-            </div>
-          </div>
-          <div className="home-hero-figure">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/hero-creator.png"
-              alt="Hazenco gebruiker met laptop en duim omhoog"
-            />
-            {/* Network lines van de laptop naar elke badge — geeft 'real-time
-                activity feed' gevoel. SVG schaalt mee met de figure. */}
-            <svg
-              className="hero-figure-network"
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <line x1="40" y1="74" x2="22" y2="22" />
-              <line x1="40" y1="74" x2="14" y2="52" />
-              <line x1="40" y1="74" x2="72" y2="80" />
-              {/* Kleine cirkel als 'hub' op de laptop */}
-              <circle cx="40" cy="74" r="1.2" />
-            </svg>
-            <div className="hero-figure-badge badge-top">
-              <span className="hero-figure-badge-dot" />
-              <strong>Nieuwe prijzen</strong>
-              <span>bijgewerkt</span>
-            </div>
-            <div className="hero-figure-badge badge-middle">
-              <span className="hero-figure-badge-dot" />
-              <strong>Nieuwe blog</strong>
-              <span>is live</span>
-            </div>
-            <div className="hero-figure-badge badge-bottom">
-              <span className="hero-figure-badge-dot" />
-              <strong>Campagne</strong>
-              <span>verstuurd</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="home-section">
-          <div className="home-section-head">
-            <div>
-              <h2>Vind je tool</h2>
-              <p>Filter de catalogus op functie of jouw branche.</p>
-            </div>
-            <Link className="text-action" href="/catalogus">
-              Naar volledige catalogus <ArrowRight size={15} />
-            </Link>
-          </div>
-
-          <div className="home-finder-tabs" role="tablist" aria-label="Filter tools">
-            <button
-              type="button"
-              role="tab"
-              aria-selected={finderTab === "functie"}
-              className={finderTab === "functie" ? "active" : ""}
-              onClick={() => setFinderTab("functie")}
-            >
-              Op functie
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={finderTab === "branche"}
-              className={finderTab === "branche" ? "active" : ""}
-              onClick={() => setFinderTab("branche")}
-            >
-              Op branche
-            </button>
-          </div>
-
-          <div className="home-tiles">
-            {finderTab === "functie"
-              ? HIGHLIGHTED_USE_CASES.slice(0, 6).map((useCase) => {
-                  const Icon = useCaseIcons[useCase] ?? Workflow;
-                  const count = published.filter((listing) => (listing.useCases ?? []).includes(useCase)).length;
-                  return (
-                    <Link key={useCase} className="home-tile" href={`/catalogus?useCase=${useCase}`}>
-                      <span className="home-tile-icon"><Icon size={18} /></span>
-                      <div>
-                        <strong>{useCaseLabels[useCase]}</strong>
-                        <span>{count} {count === 1 ? "tool" : "tools"}</span>
-                      </div>
-                    </Link>
-                  );
-                })
-              : HIGHLIGHTED_BRANCHES.slice(0, 6).map((branche) => {
-                  const Icon = brancheIcons[branche];
-                  const count = published.filter((listing) => (listing.branches ?? []).includes(branche)).length;
-                  return (
-                    <Link key={branche} className="home-tile" href={`/catalogus?branche=${branche}`}>
-                      <span className="home-tile-icon"><Icon size={18} /></span>
-                      <div>
-                        <strong>{brancheLabels[branche]}</strong>
-                        <span>{count} {count === 1 ? "tool" : "tools"}</span>
-                      </div>
-                    </Link>
-                  );
-                })}
-          </div>
-        </section>
-
-        {!mounted ? (
-          <section className="home-section">
-            <SectionHeading eyebrow="Nieuw" title="Vers in de marketplace" actionHref="/catalogus?sort=newest" actionLabel="Bekijk nieuwste" />
-            <div className="product-grid">
-              {Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}
-            </div>
-          </section>
-        ) : null}
-
-        {mounted && newest.length > 0 ? (
-          <section className="home-section">
-            <SectionHeading
-              eyebrow="Nieuw"
-              title="Vers in de marketplace"
-              actionHref="/catalogus?sort=newest"
-              actionLabel="Bekijk nieuwste"
-            />
-            <div className="product-grid">
-              {newest.map((listing) => <ProductCard key={listing.id} listing={listing} />)}
-            </div>
-          </section>
-        ) : null}
-
-        {mounted && featured.length > 0 ? (
-          <section className="home-section">
-            <SectionHeading
-              eyebrow="Hazenco selectie"
-              title="Uitgelichte tools voor snelle impact"
-              actionHref="/catalogus"
-              actionLabel="Bekijk alle uitgelicht"
-            />
-            <div className="product-grid">
-              {featured.map((listing) => <ProductCard key={listing.id} listing={listing} />)}
-            </div>
-          </section>
-        ) : null}
-
-        {mounted && topDownloaded.length > 0 ? (
-          <section className="home-section">
-            <SectionHeading
-              eyebrow="Top downloads"
-              title="Wat ondernemers deze week kiezen"
-              actionHref="/catalogus?sort=downloads"
-              actionLabel="Meer top tools"
-            />
-            <div className="product-grid">
-              {topDownloaded.map((listing) => <ProductCard key={listing.id} listing={listing} />)}
-            </div>
-          </section>
-        ) : null}
-
-        <div className="home-trust">
-          <div className="home-trust-item">
-            <ShieldCheck size={24} style={{ color: "var(--orange-600)" }} />
-            <strong>Geverifieerd</strong>
-            <span>Creators en listings worden gecheckt voordat ze live gaan</span>
-          </div>
-          <div className="home-trust-item">
-            <PackageCheck size={24} style={{ color: "var(--orange-600)" }} />
-            <strong>Directe levering</strong>
-            <span>Bestanden, cloud-toegang of maatwerk service na betaling</span>
-          </div>
-          <div className="home-trust-item">
-            <Star size={24} style={{ color: "var(--orange-600)" }} />
-            <strong>Reviews met moderatie</strong>
-            <span>Eerlijke ervaringen van Nederlandse mkb-kopers</span>
-          </div>
-          <div className="home-trust-item">
-            <Sparkles size={24} style={{ color: "var(--orange-600)" }} />
-            <strong>Test demo voor aankoop</strong>
-            <span>Bekijk hoe een tool werkt voordat je 'm in je winkelwagen legt</span>
-          </div>
-        </div>
-
-        <section className="final-cta">
-          <div>
-            <span className="eyebrow">Klaar om te starten?</span>
-            <h2>Begin met de catalogus of laat onze wizard je gidsen.</h2>
-          </div>
-          <div className="hero-actions">
-            <Link className="button" href="/catalogus"><Sparkles size={17} /> Open catalogus</Link>
-            <Link className="button secondary" href="/account">
-              <Heart size={16} /> Mijn account
-            </Link>
-          </div>
-        </section>
-      </div>
-    </Shell>
-  );
-}
-
-function RoleHome({ role }: { role: "seller" | "admin" }) {
-  const { state, activeUser } = useMarketplace();
-  const seller = state.sellers.find((item) => item.id === activeUser.sellerId);
-  const sellerListings = state.listings.filter((listing) => listing.sellerId === seller?.id);
-  const sellerOrders = state.orders.flatMap((order) =>
-    order.items.filter((item) => item.sellerId === seller?.id).map((item) => ({ order, item }))
-  );
-  const pendingApplications = state.sellerApplications.filter((item) => item.status === "pending");
-  const pendingListings = state.listings.filter((listing) => listing.status === "pending");
-  const pendingReviews = state.reviews.filter((review) => !review.approved);
-
-  if (role === "seller") {
-    const earnings = sellerOrders
-      .filter(({ order }) => order.status === "paid")
-      .reduce((sum, { item }) => sum + item.priceCents * item.quantity + item.serviceAddOnPriceCents, 0);
-    return (
-      <Shell>
-        <div className="page">
-          <span className="eyebrow">Creator werkruimte</span>
-          <h1>Welkom terug, {activeUser.name.split(" ")[0]}</h1>
-          <p className="lead">Beheer je listings, orders en setup-aanvragen op één plek.</p>
-          <div className="account-kpis">
-            <div className="account-kpi">
-              <div className="account-kpi-icon"><FileUp size={20} /></div>
-              <div><span>Listings</span><strong>{sellerListings.length}</strong></div>
-            </div>
-            <div className="account-kpi">
-              <div className="account-kpi-icon"><BarChart3 size={20} /></div>
-              <div><span>Orderregels</span><strong>{sellerOrders.length}</strong></div>
-            </div>
-            <div className="account-kpi">
-              <div className="account-kpi-icon"><Download size={20} /></div>
-              <div><span>Downloads</span><strong>{sellerListings.reduce((sum, item) => sum + item.downloads, 0)}</strong></div>
-            </div>
-            <div className="account-kpi">
-              <div className="account-kpi-icon"><CreditCard size={20} /></div>
-              <div><span>Betaalde omzet</span><strong>{formatPrice(earnings)}</strong></div>
-            </div>
-          </div>
-          <div className="hero-actions" style={{ marginTop: 16 }}>
-            <Link className="button" href="/seller#new"><FileUp size={17} /> Nieuwe listing</Link>
-            <Link className="button secondary" href="/seller"><ExternalLink size={16} /> Naar werkruimte</Link>
-          </div>
-        </div>
-      </Shell>
-    );
-  }
-
   return (
     <Shell>
       <div className="page">
-        <span className="eyebrow">Admin werkruimte</span>
-        <h1>Welkom terug, {activeUser.name.split(" ")[0]}</h1>
-        <p className="lead">Bekijk de wachtrijen voor sellers, listings en reviews.</p>
-        <div className="account-kpis">
-          <div className="account-kpi">
-            <div className="account-kpi-icon"><ShieldCheck size={20} /></div>
-            <div><span>Aanvragen creators</span><strong>{pendingApplications.length}</strong></div>
+        <header className="section-hero" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
+          <p className="eyebrow">Hazenco</p>
+          <h1>Wij automatiseren en bouwen wat jouw bedrijf sneller maakt.</h1>
+          <p className="lead">
+            Custom software, workflow-automatisering en AI-workflows voor het Nederlandse MKB. Klein team, direct
+            contact, done-for-you levering.
+          </p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 24 }}>
+            <Link href="/contact" className="button">
+              Plan een gesprek <ArrowRight size={15} />
+            </Link>
+            <Link href="/diensten" className="button secondary">
+              Bekijk diensten
+            </Link>
           </div>
-          <div className="account-kpi">
-            <div className="account-kpi-icon"><ClipboardCheck size={20} /></div>
-            <div><span>Listings in afwachting</span><strong>{pendingListings.length}</strong></div>
-          </div>
-          <div className="account-kpi">
-            <div className="account-kpi-icon"><Star size={20} /></div>
-            <div><span>Reviews</span><strong>{pendingReviews.length}</strong></div>
-          </div>
-          <div className="account-kpi">
-            <div className="account-kpi-icon"><Store size={20} /></div>
-            <div><span>GMV demo</span><strong>{formatPrice(state.orders.filter((o) => o.status === "paid").reduce((s, o) => s + o.totalCents, 0))}</strong></div>
-          </div>
+        </header>
+
+        <div style={{ display: "grid", gap: 20, marginTop: 60, gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
+          {[
+            {
+              icon: Globe,
+              href: "/website-laten-maken",
+              title: "Webdesign",
+              text: "Snelle, conversie-gerichte websites op maat. Hosting + onderhoud inbegrepen."
+            },
+            {
+              icon: Workflow,
+              href: "/workflow-automatisering",
+              title: "Workflow-automatisering",
+              text: "Van handmatig Excel-werk naar systemen die vanzelf lopen."
+            },
+            {
+              icon: Sparkles,
+              href: "/ai-workflows",
+              title: "AI-workflows & integraties",
+              text: "Slimme agents die met jouw klanten praten. Telefoon, WhatsApp, reviews."
+            }
+          ].map(({ icon: Icon, href, title, text }) => (
+            <Link key={href} href={href} className="section-card" style={{ padding: 28, textDecoration: "none", color: "inherit" }}>
+              <div
+                style={{
+                  background: "var(--green-100)",
+                  color: "var(--green-800)",
+                  width: 44,
+                  height: 44,
+                  borderRadius: 10,
+                  display: "grid",
+                  placeItems: "center",
+                  marginBottom: 16
+                }}
+              >
+                <Icon size={22} />
+              </div>
+              <h2 style={{ margin: "0 0 8px", fontSize: 18 }}>{title}</h2>
+              <p style={{ margin: 0, color: "var(--green-700)" }}>{text}</p>
+              <p style={{ margin: "16px 0 0", color: "var(--orange-600)", fontWeight: 500, fontSize: 14 }}>
+                Meer weten <ArrowRight size={13} style={{ verticalAlign: "-2px" }} />
+              </p>
+            </Link>
+          ))}
         </div>
-        <div className="hero-actions" style={{ marginTop: 16 }}>
-          <Link className="button" href="/admin"><ShieldCheck size={17} /> Open admin</Link>
-        </div>
+
+        <section className="section-card" style={{ marginTop: 60, padding: 40, textAlign: "center" }}>
+          <p className="eyebrow">Homepage in aanbouw</p>
+          <h2>Volledige agency-homepage komt in de volgende sessie</h2>
+          <p style={{ color: "var(--green-700)", margin: "8px auto 20px", maxWidth: 560 }}>
+            Voor nu een minimale versie. In sessie 2 bouwen we hero + oplossingen-preview + toolkit-teaser + cases +
+            blog + waarom-Hazenco + contact-CTA.
+          </p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="/toolkit" className="button secondary">
+              Naar gratis toolkit
+            </Link>
+            <Link href="/contact" className="button">
+              Plan een gesprek <ArrowRight size={15} />
+            </Link>
+          </div>
+        </section>
       </div>
     </Shell>
   );

@@ -91,7 +91,78 @@ Eén Next.js-app op het hoofddomein die Hazenco als B2B-merk presenteert:
 - **Auth-afbakening:** publieke marketing + ingelogde app (seller/account) in één Next.js-app is prima; let op nette scheiding van routes/middleware.
 - **Onderhoud:** twee custom Next.js-sites (TechPanda + Hazenco). Acceptabel door de gedeelde stack; overweeg gedeelde componenten/patronen.
 
-## 7. Verwijzingen
+## 7. Fase 0 uitgewerkt: positionering & IA (services-led)
+
+**Beslissing (2026-07-28):** Hazenco wordt **dienstenbureau voorop** gepositioneerd. Toolshub (toolkit + marktplaats) is ondersteunend (lead magnet + showcase), niet het hoofdproduct. Gevolg: de marktplaats hoeft niet gevuld te zijn om te lanceren.
+
+### Positionering
+- **Wat:** een Nederlandse studio die ondernemers helpt slimmer en sneller te werken met **procesautomatisering, AI-workflows en webdesign**.
+- **Voor wie:** MKB/ondernemers die tijd willen besparen (automatisering), online willen groeien (webdesign) of AI willen inzetten.
+- **Onderscheid/bewijs:** "wij bouwen wat we prediken", Toolshub en TechPanda zijn eigen, live producten (dogfooding). De gratis toolkit levert direct waarde en vertrouwen.
+- **Rol Toolshub:** lead magnet (SEO + verkeer via gratis tools), showcase (bewijs van kunnen), en een groeiende marktplaats (secundair, gefaseerd).
+
+### Sitemap / IA
+```
+Home ................... services-led: belofte + twee paden (hulp nodig / gratis tools)
+Diensten (overzicht)
+ ├─ Webdesign / website laten maken   (URL /website-laten-maken behouden)
+ ├─ Procesautomatisering              (/workflow-automatisering behouden of 301 → nieuw pad)
+ └─ AI-workflows & integraties        (nieuw: chatbots, koppelingen)
+Cases / portfolio ...... (nieuw; TechPanda + Toolshub als eigen cases)
+Toolshub
+ ├─ Gratis toolkit ..... bestaand /toolkit (blijft prominent = lead magnet)
+ ├─ Marktplaats ........ bestaand /catalogus (secundair, "groeiend")
+ └─ Verkopen op Toolshub  seller-onboarding (later live)
+Over ons
+Blog
+Contact ............... Resend-formulier
+[app, ingelogd] ....... /account, /seller, /admin (uit de hoofdnav voor bezoekers)
+Footer ................ "TechPanda is onderdeel van Hazenco", KvK/BTW, etc.
+```
+
+### Homepage-opbouw (services-led)
+1. Hero: belofte + primaire CTA ("plan een gesprek") + secundaire ("bekijk diensten").
+2. Diensten-blok: 3 kaarten (webdesign, procesautomatisering, AI-workflows).
+3. Toolshub-teaser: "Probeer onze gratis tools" → link naar de toolkit.
+4. Waarom Hazenco / bewijs: dogfooding (TechPanda + Toolshub), cases.
+5. Social proof: cases / logo's / reviews (indien beschikbaar).
+6. Blog-teaser.
+7. Contact-CTA.
+
+### Scope-beslissing (Live 1)
+- **Live 1 = merk + diensten + gratis toolkit + blog/contact.** Marktplaats zichtbaar maar "groeiend"; seller-onboarding later.
+- De bestaande marktplaats/seller/account/admin-code **blijft in de repo**, maar gaat uit de hoofdnavigatie voor bezoekers. De marketing/diensten-laag wordt erbovenop gebouwd.
+
+### Gevolgen voor de ombouw
+- **Vervangen:** de huidige marktplaats-catalogus-homepage → nieuwe services-led homepage. Navigatie + branding naar Hazenco services-led.
+- **Nieuw bouwen:** `/diensten` + 3 detailpagina's, `/cases`, `/contact` (Resend), `/blog`, herwerkte `/over-ons`.
+- **Herbruikbaar (blijft):** `/toolkit`, `/catalogus` + `/seller` + `/account` + `/admin` (secundair), design-system, layout/componenten, Supabase-setup.
+
+### Fase 0 afgerond (2026-07-28) — bevestigde keuzes
+- **Diensten:** Webdesign / website laten maken · Procesautomatisering · AI-workflows & integraties. De Oplossingen-kaarten zijn concrete voorbeelden ónder deze diensten (met prijs + boek een gesprek).
+- **Tagline:** "Wij automatiseren en bouwen wat jouw bedrijf sneller maakt."
+- **URL procesautomatisering:** `/workflow-automatisering` behouden (SEO-veilig).
+- **Nog voor Fase 1:** concrete pakketten/prijzen per dienst en de definitieve homepage-copy.
+
+### Bijstelling (2026-07-28): geen marketplace, wel een oplossingen-showcase
+
+Belangrijke aanscherping op basis van de huidige toolshub.hazenco.nl:
+
+- **Homepage = officiële B2B-agency-homepage** (in de geest van de huidige hazenco.nl), NIET de marktplaats-catalogus. De marktplaats-homepage vervalt.
+- **De oplossing-kaarten blijven** (de "Dienst / Uitgelicht"-kaarten zoals Magento-popup, m²-calculator, online afsprakensysteem, price-tool, voorraadkoppeling), inclusief **layout, prijzen ("vanaf €X/mnd") en de "boek een gesprek"-CTA**. Maar ze worden een **showcase/portfolio van wat Hazenco bouwt**, geen koop-marktplaats.
+- **De marketplace/seller/koper/checkout-flow vervalt** als publiek concept. Die code kan blijven staan maar gaat uit de bezoekers-UX. Dit haalt het "lege marktplaats"-probleem en de seller-machinerie eruit.
+- **"Toolshub" als naam vervalt. De showcase-sectie heet "Oplossingen"** (besloten 2026-07-28).
+- **Gratis toolkit blijft** als lead magnet / SEO-instap (besloten 2026-07-28), als losse sectie, los van de Oplossingen-showcase.
+
+Netto sitemap-aanpassing t.o.v. sectie 7:
+```
+Toolshub-blok  →  vervangen door:
+Oplossingen ........... showcase van productized oplossingen (prijs + boek een gesprek)
+(Cases) ............... optioneel later: echte klantverhalen zonder prijs
+Gratis tools .......... /toolkit blijft als lead magnet (SEO-instap)
+```
+
+## 8. Verwijzingen
 
 - Redirect-map (WordPress → nieuw): `hazenco-shop/docs/hazenco-migratie-redirect-map.md`
 - Backend-migratie (localStorage → Supabase): [docs/backend-migration.md](backend-migration.md)
