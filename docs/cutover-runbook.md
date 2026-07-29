@@ -153,6 +153,28 @@ sudo systemctl reload nginx
 sudo certbot --nginx -d hazenco.nl -d www.hazenco.nl --non-interactive --redirect
 ```
 
+### ✅ CUTOVER UITGEVOERD — 2026-07-29
+
+hazenco.nl draait live op de VPS. Alles geverifieerd:
+
+- 16 publieke routes → 200, alle oplossing-details → 200
+- Alle WordPress-redirects werken (computerhulp → TechPanda, shop → catalogus, blog-archieven)
+- `toolshub.hazenco.nl` → 301 naar hazenco.nl met behoud van pad
+- SSL geldig (`ssl_verify_result=0`), verlenging via nginx-authenticator, dry-run geslaagd
+- MX-records onaangeroerd, mail blijft werken
+
+> ⚠️ **Valkuil die we tegenkwamen: het AAAA-record.**
+>
+> Na het omzetten van het A-record leek de site half stuk: nieuwe pagina's gaven
+> 404, oude gaven 200. Oorzaak was een achtergebleven **AAAA-record** dat nog naar
+> de WordPress-hosting wees. IPv6-bezoekers (in NL de meeste thuisaansluitingen)
+> kregen daardoor nog de oude site, IPv4-bezoekers de nieuwe.
+>
+> Bij een volgende domein-migratie: **controleer altijd A én AAAA.** Alle sites op
+> deze VPS draaien IPv4-only, dus het AAAA-record is verwijderd.
+>
+> Snelle check: `dig +short AAAA <domein> @ns0.transip.net` moet leeg zijn.
+
 ### 8. DNS-switch bij TransIP
 
 **A-records:**
