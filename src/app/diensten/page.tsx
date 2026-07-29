@@ -1,100 +1,124 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Globe, Workflow, Sparkles } from "lucide-react";
+import { ArrowRight, Globe, Workflow, Sparkles, Check } from "lucide-react";
 import { Shell } from "@/components/shell";
 
 export const metadata: Metadata = {
-  title: "Diensten — webdesign, procesautomatisering, AI-workflows",
+  title: "Diensten — webdesign, workflow-automatisering, AI-workflows",
   description:
-    "Hazenco bouwt websites, automatiseert bedrijfsprocessen en levert AI-workflows voor het Nederlandse MKB. Done-for-you: wij regelen het, jij plukt de vruchten."
+    "Hazenco bouwt websites op maat, automatiseert bedrijfsprocessen en levert AI-workflows voor het Nederlandse MKB. Done-for-you levering, klein team, direct contact."
 };
 
 const diensten = [
   {
     icon: Globe,
     slug: "/website-laten-maken",
-    title: "Webdesign",
-    lead:
-      "Snelle, conversie-gerichte websites op maat. Wij ontwerpen, bouwen, hosten en onderhouden — geen bouwers, geen plugin-drama.",
-    highlights: ["Vanaf 2 weken live", "Hosting + onderhoud inbegrepen", "Volledig op maat"]
+    label: "Webdesign",
+    tagline:
+      "Custom Next.js sites die snel laden en converteren. Wij bouwen, hosten en onderhouden.",
+    features: [
+      "Volledig op maat, geen builders of templates",
+      "Sub-100ms pagina-laden op mobiel én desktop",
+      "Hosting, SSL en onderhoud inbegrepen",
+      "SEO-fundament op orde vanaf dag 1"
+    ]
   },
   {
     icon: Workflow,
-    slug: "/procesautomatisering",
-    title: "Procesautomatisering",
-    lead:
-      "Van handmatig Excel-werk naar systemen die vanzelf lopen. Product Manager, cross-sell popups, calculators — wij bouwen wat jouw team dagelijks tijd bespaart.",
-    highlights: ["Meetbare tijdwinst", "Integreert met bestaande stack", "Onderhoud + ondersteuning"]
+    slug: "/workflow-automatisering",
+    label: "Workflow-automatisering",
+    tagline:
+      "Van handmatig Excel-werk naar systemen die vanzelf lopen — meetbare tijdwinst.",
+    features: [
+      "Analyse van je huidige processen",
+      "Custom tools (product-manager, sync, calculators)",
+      "Integreert met bestaande stack (Magento, WordPress, Google, etc)",
+      "Onderhoud + doorontwikkeling inbegrepen"
+    ]
   },
   {
     icon: Sparkles,
     slug: "/ai-workflows",
-    title: "AI-workflows",
-    lead:
-      "Slimme agents die met jouw klanten praten. Telefoonassistent, WhatsApp-chatbot, review-responder — in jouw tone-of-voice, 24/7 aan.",
-    highlights: ["Nederlandstalig", "Werkt met je bestaande nummer", "Escalatie naar mens waar nodig"]
+    label: "AI-workflows & integraties",
+    tagline:
+      "Slimme agents die met jouw klanten praten — telefoon, WhatsApp, reviews.",
+    features: [
+      "Nederlandstalig, in jouw toon-of-voice",
+      "24/7 aan, escalatie naar mens waar nodig",
+      "Werkt met bestaande nummer of Google-account",
+      "Volledig getraind op jouw shop/dienst"
+    ]
   }
 ];
 
 export default function DienstenPage() {
   return (
     <Shell>
-      <div className="page">
-        <header className="section-hero">
-          <p className="eyebrow">Diensten</p>
-          <h1>Wij bouwen wat je zelf niet aan toekomt.</h1>
-          <p className="lead">
-            Hazenco is een Nederlandse B2B-partner voor webdesign, procesautomatisering en AI-workflows. Klein team,
-            direct contact, done-for-you levering.
-          </p>
-        </header>
+      <section className="hazenco-hero">
+        <div className="page">
+          <div className="hazenco-hero-inner">
+            <p className="eyebrow">Diensten</p>
+            <h1>Drie manieren om je bedrijf sneller te laten lopen.</h1>
+            <p className="lead">
+              Custom software, procesautomatisering of AI-workflows. Elke dienst is done-for-you: wij regelen
+              installatie, integratie en onderhoud — jij plukt de vruchten.
+            </p>
+            <div className="hazenco-hero-cta">
+              <Link href="/contact" className="button">
+                Plan een gesprek <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <div className="diensten-grid" style={{ display: "grid", gap: 20, marginTop: 40 }}>
-          {diensten.map(({ icon: Icon, slug, title, lead, highlights }) => (
-            <article key={slug} className="section-card" style={{ padding: 32 }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 20 }}>
-                <div
-                  style={{
-                    background: "var(--green-100)",
-                    color: "var(--green-800)",
-                    width: 52,
-                    height: 52,
-                    borderRadius: 12,
-                    display: "grid",
-                    placeItems: "center",
-                    flexShrink: 0
-                  }}
-                >
-                  <Icon size={24} />
+      <div className="page">
+        <section className="hazenco-section">
+          <div className="diensten-detail-list">
+            {diensten.map(({ icon: Icon, slug, label, tagline, features }) => (
+              <article key={slug} className="dienst-detail-card">
+                <div className="dienst-detail-head">
+                  <div className="hazenco-dienst-icon">
+                    <Icon size={22} />
+                  </div>
+                  <div>
+                    <h2>{label}</h2>
+                    <p className="dienst-detail-tagline">{tagline}</p>
+                  </div>
                 </div>
-                <div style={{ flex: 1 }}>
-                  <h2 style={{ margin: "0 0 8px" }}>{title}</h2>
-                  <p style={{ margin: "0 0 14px", color: "var(--green-700)" }}>{lead}</p>
-                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 20px", display: "flex", flexWrap: "wrap", gap: 10 }}>
-                    {highlights.map((h) => (
-                      <li key={h} className="badge soft" style={{ fontSize: 12.5 }}>
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href={slug} className="button">
-                    Meer over {title.toLowerCase()} <ArrowRight size={15} />
+                <ul className="dienst-detail-features">
+                  {features.map((f) => (
+                    <li key={f}>
+                      <Check size={15} /> {f}
+                    </li>
+                  ))}
+                </ul>
+                <div className="dienst-detail-cta">
+                  <Link href={slug} className="button secondary">
+                    Meer over {label.toLowerCase()} <ArrowRight size={15} />
+                  </Link>
+                  <Link href="/contact" className="button">
+                    Plan gesprek
                   </Link>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-        <section className="section-card" style={{ marginTop: 40, textAlign: "center", padding: 40 }}>
-          <h2>Niet gevonden wat je zoekt?</h2>
-          <p style={{ color: "var(--green-700)", margin: "8px auto 20px", maxWidth: 560 }}>
-            Elke dienst is maatwerk. Plan een gesprek van 15 minuten — dan bespreken we jouw situatie en of we een fit
-            zijn.
-          </p>
-          <Link href="/contact" className="button">
-            Plan een gesprek <ArrowRight size={15} />
-          </Link>
+        <section className="hazenco-contact-band">
+          <div className="hazenco-contact-inner">
+            <h2>Niet gevonden wat je zoekt?</h2>
+            <p>
+              Elke dienst is uiteindelijk maatwerk. Vertel wat je zoekt in 15 minuten — dan hoor je of we een fit
+              zijn en wat het grofweg kost.
+            </p>
+            <div className="hazenco-contact-cta">
+              <Link href="/contact" className="button">
+                Plan een gesprek <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
         </section>
       </div>
     </Shell>

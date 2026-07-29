@@ -23110,3 +23110,77 @@ p {
 }
 [data-theme="dark"] .hazenco-toolkit-band { background: var(--green-100); }
 [data-theme="dark"] .hazenco-contact-band { background: var(--green-100); }
+
+/* Diensten detail-cards (hub-pagina) */
+.diensten-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.dienst-detail-card {
+  background: var(--bg-elevated, var(--surface));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px 36px;
+}
+
+.dienst-detail-head {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.dienst-detail-head h2 {
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 26px;
+  margin: 0 0 6px;
+  color: var(--green-900);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.dienst-detail-tagline {
+  color: var(--green-700);
+  font-size: 15px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dienst-detail-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 22px;
+}
+
+.dienst-detail-features li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--green-800);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.dienst-detail-features svg {
+  color: var(--orange-600);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.dienst-detail-cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .dienst-detail-card { padding: 24px 22px; }
+  .dienst-detail-features { grid-template-columns: 1fr; }
+}
