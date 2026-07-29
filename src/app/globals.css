@@ -323,10 +323,10 @@ button {
 .brand-mark {
   width: 44px;
   height: 44px;
-  border-radius: 11px;
+  border-radius: 8px;
   display: grid;
   place-items: center;
-  background: #f7f4ef;
+  background: transparent;
 }
 
 .brand strong,
