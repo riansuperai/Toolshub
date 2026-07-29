@@ -1,4 +1,30 @@
-# Voortgang — hazenco.nl rebuild (Fase 1)
+# Voortgang — hazenco.nl rebuild
+
+## 🚀 LIVE sinds 2026-07-29
+
+**hazenco.nl draait op de nieuwe Next.js-site.** De WordPress-site is vervangen.
+
+| Onderdeel | Status |
+|---|---|
+| DNS omgezet naar VPS `149.210.203.88` | ✅ |
+| SSL (geldig tot 2026-10-27, auto-renewal getest) | ✅ |
+| 16 publieke routes + alle oplossing-details | ✅ 200 |
+| WordPress-redirects (computerhulp → TechPanda, shop, blog) | ✅ |
+| `toolshub.hazenco.nl` → 301 naar hazenco.nl | ✅ |
+| MX-records onaangeroerd, mail werkt | ✅ |
+| Sitemap ingediend bij Search Console | ✅ |
+
+### Nog open
+
+- **Contactformulier werkt niet** — geen `RESEND_API_KEY` op de VPS. Belangrijkste openstaande post.
+- **WordPress-hosting opzeggen** — kan zodra Search Console ~2 weken schoon is (rollback tot dan: A-record terug naar `85.10.159.84`).
+- **`n8n.hazenco.nl` cert verlopen** — staat los van deze migratie.
+
+Zie [`cutover-runbook.md`](cutover-runbook.md), [`redirect-audit.md`](redirect-audit.md) en [`archief/`](archief/).
+
+---
+
+## Fase 1 (bouw)
 
 > Levend document. Bij elke sessie bijwerken zodat je kunt zien waar we staan
 > en waar we door moeten. Laatste update: **2026-07-29 (Sessie 8 — Supabase restored)**.
