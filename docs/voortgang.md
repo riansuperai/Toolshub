@@ -1,7 +1,17 @@
 # Voortgang — hazenco.nl rebuild (Fase 1)
 
 > Levend document. Bij elke sessie bijwerken zodat je kunt zien waar we staan
-> en waar we door moeten. Laatste update: **2026-07-29 (Fase 1 volledig afgerond)**.
+> en waar we door moeten. Laatste update: **2026-07-29 (Sessie 8 — Supabase restored)**.
+
+## Sessie 8 — Supabase-integratie hersteld op /oplossingen
+
+- `fetchPublishedListings()` + `fetchListingBySlug()` toegevoegd in `src/lib/supabase-queries.ts` — beide met graceful `null`-fallback wanneer Supabase niet reachable is.
+- `/oplossingen` en `/oplossingen/[slug]` proberen eerst Supabase; fallback op mock-data.
+- Whitelist van 12 Hazenco-slugs (5 eigen tools + 7 productized services) — filter op `sellerId` werkte niet omdat Supabase een UUID gebruikt en mock een string.
+- "Bekijk live demo"-knop op detail-pagina wanneer `listing.demo?.url` bestaat.
+- `next.config.ts`: `images.remotePatterns` voor `*.supabase.co` zodat next/image de Supabase-storage screenshots kan renderen.
+- Homepage + sitemap ook op Supabase-first pattern gezet.
+- Bevestigd via preview: 12 kaartjes zichtbaar, filter-chips tonen Alle 12 / Webdesign 1 / Workflow 3 / AI 5 / Tools 3.
 
 ## 🎉 Fase 1 klaar
 

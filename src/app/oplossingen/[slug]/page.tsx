@@ -2,20 +2,34 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Check, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, CheckCircle2, ExternalLink } from "lucide-react";
 import { Shell } from "@/components/shell";
-import { listings } from "@/lib/marketplace-data";
+import { listings as mockListings } from "@/lib/marketplace-data";
+import { fetchListingBySlug } from "@/lib/supabase-queries";
 import type { Listing, ServiceCase, ServiceIncludedItem } from "@/lib/types";
 
+export const revalidate = 300; // 5 min cache
+
+// Static params alleen op basis van mock (build-time). Dynamische slugs uit
+// Supabase worden on-demand server-rendered via SSG-fallback.
 export async function generateStaticParams() {
-  return listings
-    .filter((l) => l.listingKind === "service")
+  return mockListings
+    .filter((l) => l.status === "published")
     .map((l) => ({ slug: l.slug }));
+}
+
+async function getListing(slug: string): Promise<Listing | null> {
+  // Supabase eerst; als 'ie niet bereikbaar of niet gevonden → mock fallback.
+  const fromSupabase = await fetchListingBySlug(slug);
+  if (fromSupabase) return fromSupabase;
+  return (
+    mockListings.find((l) => l.slug === slug && l.status === "published") ?? null
+  );
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const listing = listings.find((l) => l.slug === slug && l.listingKind === "service");
+  const listing = await getListing(slug);
   if (!listing) return { title: "Oplossing niet gevonden" };
   return {
     title: `${listing.title} — Hazenco`,
@@ -146,7 +160,7 @@ function PricingBlock({ listing }: { listing: Listing }) {
 
 export default async function OplossingDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const listing = listings.find((l) => l.slug === slug && l.listingKind === "service");
+  const listing = await getListing(slug);
   if (!listing) notFound();
 
   return (
@@ -204,9 +218,20 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
                 <Link href="/contact" className="button">
                   Plan een gesprek <ArrowRight size={14} />
                 </Link>
-                <Link href="/contact" className="button secondary">
-                  Plan een demo
-                </Link>
+                {listing.demo?.url ? (
+                  <a
+                    href={listing.demo.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="button secondary"
+                  >
+                    Bekijk live demo <ExternalLink size={13} />
+                  </a>
+                ) : (
+                  <Link href="/contact" className="button secondary">
+                    Plan een demo
+                  </Link>
+                )}
               </div>
 
               {listing.serviceMeta ? (

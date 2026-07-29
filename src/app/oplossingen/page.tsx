@@ -1,68 +1,50 @@
-"use client";
-
-import { useMemo, useState } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Globe, Sparkles, Workflow, Filter } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Shell } from "@/components/shell";
-import { listings } from "@/lib/marketplace-data";
+import { listings as mockListings } from "@/lib/marketplace-data";
+import { fetchPublishedListings } from "@/lib/supabase-queries";
+import { OplossingenList } from "./oplossingen-list";
 
-type Dienst = "alle" | "webdesign" | "workflow" | "ai";
-
-const DIENST_MAP: Record<string, Exclude<Dienst, "alle">> = {
-  listing_website_laten_maken: "webdesign",
-  listing_ai_telefoonassistent: "ai",
-  listing_whatsapp_business_chatbot: "ai",
-  listing_google_reviews_ai_responder: "ai",
-  listing_online_afsprakensysteem: "workflow",
-  listing_magento_cart_popup: "workflow",
-  listing_magento_tile_calculator: "workflow"
+export const metadata: Metadata = {
+  title: "Oplossingen — wat we voor klanten hebben gebouwd",
+  description:
+    "Productized oplossingen en tools van Hazenco: webdesign-pakketten, workflow-automatisering, AI-workflows en eigen Hazenco-tools. Klaar om af te nemen of als startpunt voor iets op maat."
 };
 
-const DIENST_LABEL: Record<Exclude<Dienst, "alle">, string> = {
-  webdesign: "Webdesign",
-  workflow: "Workflow-automatisering",
-  ai: "AI-workflows"
-};
+export const revalidate = 300; // 5 min cache — content update relatively rarely
 
-const DIENST_ICON = {
-  webdesign: Globe,
-  workflow: Workflow,
-  ai: Sparkles
-} as const;
+// Whitelist van slugs die Hazenco zelf aanbiedt — 5 Hazenco-tools uit
+// Supabase + 7 productized services die we in eerdere sessies gemaakt hebben.
+// Filter op slug is robuuster dan op sellerId (Supabase gebruikt UUID, mock
+// gebruikt string; slug is in beide identiek).
+const HAZENCO_SLUGS = new Set([
+  // Hazenco eigen tools (uit Supabase)
+  "hazenco-price-tool",
+  "hazenco-voorraad-tool",
+  "hazenco-cep",
+  "hazenco-blog-tool",
+  "hazenco-product-manager",
+  // Productized services (7)
+  "website-laten-maken",
+  "ai-telefoonassistent",
+  "whatsapp-business-chatbot",
+  "google-reviews-ai-responder",
+  "online-afsprakensysteem",
+  "verzending-cross-sell-popup-magento",
+  "m2-calculator-tegels-vloeren-magento"
+]);
 
-function formatSubscriptionPrice(cents: number) {
-  return `vanaf € ${Math.round(cents / 100)}/mnd`;
-}
-
-export default function OplossingenPage() {
-  const [filter, setFilter] = useState<Dienst>("alle");
-
-  const solutions = useMemo(
-    () => listings.filter((l) => l.listingKind === "service"),
-    []
-  );
-
-  const filtered = useMemo(() => {
-    if (filter === "alle") return solutions;
-    return solutions.filter((l) => DIENST_MAP[l.id] === filter);
-  }, [solutions, filter]);
-
-  const counts = useMemo(() => {
-    const c: Record<Dienst, number> = { alle: solutions.length, webdesign: 0, workflow: 0, ai: 0 };
-    solutions.forEach((l) => {
-      const d = DIENST_MAP[l.id];
-      if (d) c[d]++;
-    });
-    return c;
-  }, [solutions]);
-
-  const tabs: { key: Dienst; label: string }[] = [
-    { key: "alle", label: "Alle" },
-    { key: "webdesign", label: "Webdesign" },
-    { key: "workflow", label: "Workflow-automatisering" },
-    { key: "ai", label: "AI-workflows" }
-  ];
+export default async function OplossingenPage() {
+  // Supabase eerst, fallback op mock data — zo tonen we ALLE productie-listings
+  // (Price Tool, Voorraad, CEP, etc.) als Supabase-connectie werkt, en de
+  // service_package-set als 'ie niet werkt (bijv. lokaal zonder env-vars).
+  const supabaseListings = await fetchPublishedListings();
+  const rawSolutions =
+    supabaseListings && supabaseListings.length > 0
+      ? supabaseListings
+      : mockListings.filter((l) => l.status === "published");
+  const solutions = rawSolutions.filter((l) => HAZENCO_SLUGS.has(l.slug));
 
   return (
     <Shell>
@@ -72,8 +54,8 @@ export default function OplossingenPage() {
             <p className="eyebrow">Oplossingen</p>
             <h1>Wat we voor klanten hebben gebouwd.</h1>
             <p className="lead">
-              Productized oplossingen op basis van onze drie diensten. Klaar om af te nemen — of als startpunt voor
-              iets op maat. Alle prijzen zijn indicatief en all-in.
+              Productized oplossingen en tools op basis van onze drie diensten. Klaar om af te nemen — of als
+              startpunt voor iets op maat. Alle prijzen zijn indicatief en all-in.
             </p>
             <div className="hazenco-hero-cta">
               <Link href="/contact" className="button">
@@ -89,73 +71,7 @@ export default function OplossingenPage() {
 
       <div className="page">
         <section className="hazenco-section" style={{ paddingTop: 40 }}>
-          <div className="oplossingen-filter" role="tablist" aria-label="Filter op dienst">
-            <span className="oplossingen-filter-label">
-              <Filter size={14} /> Filter:
-            </span>
-            {tabs.map((tab) => {
-              const isActive = filter === tab.key;
-              return (
-                <button
-                  key={tab.key}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  className={`oplossingen-filter-btn${isActive ? " active" : ""}`}
-                  onClick={() => setFilter(tab.key)}
-                >
-                  {tab.label}
-                  <span className="oplossingen-filter-count">{counts[tab.key]}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {filtered.length > 0 ? (
-            <div className="oplossingen-grid">
-              {filtered.map((l) => {
-                const dienst = DIENST_MAP[l.id];
-                const DienstIcon = dienst ? DIENST_ICON[dienst] : Sparkles;
-                const monthly = l.servicePricing?.subscription?.priceCentsPerMonth;
-                return (
-                  <Link key={l.id} href={`/oplossingen/${l.slug}`} className="oplossing-card">
-                    {l.screenshotUrls?.[0] ? (
-                      <div className="oplossing-card-media">
-                        <Image
-                          src={l.screenshotUrls[0]}
-                          alt={l.title}
-                          width={720}
-                          height={452}
-                          style={{ width: "100%", height: "auto", display: "block" }}
-                        />
-                      </div>
-                    ) : null}
-                    <div className="oplossing-card-body">
-                      <div className="oplossing-card-head">
-                        {dienst ? (
-                          <span className="oplossing-card-badge">
-                            <DienstIcon size={12} /> {DIENST_LABEL[dienst]}
-                          </span>
-                        ) : null}
-                      </div>
-                      <h3>{l.title}</h3>
-                      <p>{l.tagline}</p>
-                      <div className="oplossing-card-foot">
-                        {monthly ? <strong>{formatSubscriptionPrice(monthly)}</strong> : <span />}
-                        <span className="oplossing-card-cta">
-                          Meer weten <ArrowRight size={13} />
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="oplossingen-empty">
-              <p>Geen oplossingen in deze categorie.</p>
-            </div>
-          )}
+          <OplossingenList solutions={solutions} />
         </section>
 
         <section className="hazenco-contact-band">

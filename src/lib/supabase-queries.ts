@@ -197,3 +197,42 @@ export async function fetchCatalog(): Promise<Catalog | null> {
     categories: (categoriesRes.data ?? []).map(mapCategory)
   };
 }
+
+/**
+ * Alle published listings uit Supabase — voor /oplossingen index.
+ * Returns null als Supabase niet geconfigureerd/bereikbaar is; caller
+ * moet dan terugvallen op mock data.
+ */
+export async function fetchPublishedListings(): Promise<Listing[] | null> {
+  if (!supabase) return null;
+  const { data, error } = await supabase
+    .from("listings")
+    .select("*")
+    .eq("status", "published")
+    .order("created_at", { ascending: false });
+  if (error || !data) {
+    if (error) console.error("Supabase fetchPublishedListings error", error);
+    return null;
+  }
+  return data.map(mapListing);
+}
+
+/**
+ * Enkele listing bij slug — voor /oplossingen/[slug] detail.
+ * Returns null als niet gevonden of Supabase niet beschikbaar; caller
+ * moet dan terugvallen op mock data.
+ */
+export async function fetchListingBySlug(slug: string): Promise<Listing | null> {
+  if (!supabase) return null;
+  const { data, error } = await supabase
+    .from("listings")
+    .select("*")
+    .eq("slug", slug)
+    .eq("status", "published")
+    .maybeSingle();
+  if (error || !data) {
+    if (error) console.error("Supabase fetchListingBySlug error", error);
+    return null;
+  }
+  return mapListing(data);
+}

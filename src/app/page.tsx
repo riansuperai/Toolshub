@@ -19,7 +19,8 @@ import {
   ShoppingBag
 } from "lucide-react";
 import { Shell } from "@/components/shell";
-import { listings } from "@/lib/marketplace-data";
+import { listings as mockListings } from "@/lib/marketplace-data";
+import { fetchPublishedListings } from "@/lib/supabase-queries";
 
 export const metadata: Metadata = {
   title: "Hazenco — Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
@@ -78,10 +79,33 @@ function formatSubscriptionPrice(cents: number) {
   return `vanaf € ${Math.round(cents / 100)}/mnd`;
 }
 
-export default function HomePage() {
-  const oplossingen = OPLOSSINGEN_HIGHLIGHT
-    .map((id) => listings.find((l) => l.id === id))
-    .filter((l): l is NonNullable<typeof l> => Boolean(l));
+export const revalidate = 300;
+
+export default async function HomePage() {
+  const supabaseListings = await fetchPublishedListings();
+  const sourceListings =
+    supabaseListings && supabaseListings.length > 0
+      ? supabaseListings
+      : mockListings.filter((l) => l.status === "published");
+
+  // Uitgelicht: eerst uit onze highlight-lijst, aanvullen tot 3 met eerste
+  // beschikbare listings. Deduplicate op id.
+  const seen = new Set<string>();
+  const oplossingen: typeof sourceListings = [];
+  for (const id of OPLOSSINGEN_HIGHLIGHT) {
+    const l = sourceListings.find((x) => x.id === id);
+    if (l && !seen.has(l.id)) {
+      seen.add(l.id);
+      oplossingen.push(l);
+    }
+  }
+  for (const l of sourceListings) {
+    if (oplossingen.length >= 3) break;
+    if (!seen.has(l.id)) {
+      seen.add(l.id);
+      oplossingen.push(l);
+    }
+  }
 
   return (
     <Shell>
