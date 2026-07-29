@@ -137,19 +137,23 @@ export function OplossingenList({ solutions }: { solutions: Listing[] }) {
             const hasDemo = Boolean(l.demo?.url);
             return (
               <Link key={l.id} href={`/oplossingen/${l.slug}`} className="oplossing-card">
-                {l.screenshotUrls?.[0] ? (
-                  <div className="oplossing-card-media">
-                    <Image
-                      src={l.screenshotUrls[0]}
-                      alt={l.title}
-                      width={720}
-                      height={452}
-                      unoptimized
-                      style={{ width: "100%", height: "auto", display: "block" }}
-                    />
-                    {hasDemo ? <span className="oplossing-card-demo-badge">Live demo</span> : null}
-                  </div>
-                ) : null}
+                {(() => {
+                  const thumb = l.heroImageUrl ?? l.screenshotUrls?.[0];
+                  if (!thumb) return null;
+                  return (
+                    <div className="oplossing-card-media">
+                      <Image
+                        src={thumb}
+                        alt={l.title}
+                        width={720}
+                        height={452}
+                        unoptimized
+                        style={{ width: "100%", height: "auto", display: "block" }}
+                      />
+                      {hasDemo ? <span className="oplossing-card-demo-badge">Live demo</span> : null}
+                    </div>
+                  );
+                })()}
                 <div className="oplossing-card-body">
                   <div className="oplossing-card-head">
                     <span className="oplossing-card-badge">

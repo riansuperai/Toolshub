@@ -23915,10 +23915,17 @@ p {
   opacity: 0.7;
 }
 
-/* Sidebar */
+/* Sidebar — sticky met ruimte onder de sticky site-header */
 .oplossing-detail-sidebar {
   position: sticky;
-  top: 20px;
+  top: 84px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+.oplossing-detail-sidebar::-webkit-scrollbar { width: 6px; }
+.oplossing-detail-sidebar::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 3px;
 }
 
 .oplossing-detail-sidebar-inner {
