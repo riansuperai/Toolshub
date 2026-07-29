@@ -2,11 +2,23 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { remark } from "remark";
+import remarkHtml from "remark-html";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, ExternalLink } from "lucide-react";
 import { Shell } from "@/components/shell";
 import { listings as mockListings } from "@/lib/marketplace-data";
 import { fetchListingBySlug } from "@/lib/supabase-queries";
-import type { Listing, ServiceCase, ServiceIncludedItem } from "@/lib/types";
+import type { Listing, PricingPlan, ServiceCase, ServiceIncludedItem } from "@/lib/types";
+
+async function renderMarkdown(md: string): Promise<string> {
+  const file = await remark().use(remarkHtml).process(md);
+  return String(file);
+}
+
+function bestPlan(plans?: PricingPlan[]): PricingPlan | null {
+  if (!plans || plans.length === 0) return null;
+  return plans.find((p) => p.highlight) ?? plans[0];
+}
 
 export const revalidate = 300; // 5 min cache
 
@@ -93,26 +105,73 @@ function CasesSection({ items }: { items: ServiceCase[] }) {
 
 function ScreenshotsGallery({ screenshots, title }: { screenshots: string[]; title: string }) {
   if (screenshots.length === 0) return null;
+  const [hero, ...rest] = screenshots;
   return (
     <div className="oplossing-screenshots">
-      {screenshots.map((src, idx) => (
-        <div key={idx} className="oplossing-screenshot">
-          <Image
-            src={src}
-            alt={`${title} — screenshot ${idx + 1}`}
-            width={1440}
-            height={900}
-            style={{ width: "100%", height: "auto", display: "block" }}
-          />
+      <div className="oplossing-screenshot oplossing-screenshot-hero">
+        <Image
+          src={hero}
+          alt={`${title} — screenshot 1`}
+          width={1600}
+          height={1000}
+          style={{ width: "100%", height: "auto", display: "block" }}
+          priority
+        />
+      </div>
+      {rest.length > 0 ? (
+        <div className="oplossing-screenshot-grid">
+          {rest.map((src, idx) => (
+            <div key={idx} className="oplossing-screenshot">
+              <Image
+                src={src}
+                alt={`${title} — screenshot ${idx + 2}`}
+                width={1200}
+                height={800}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </div>
+          ))}
         </div>
-      ))}
+      ) : null}
     </div>
   );
 }
 
 function PricingBlock({ listing }: { listing: Listing }) {
   const sp = listing.servicePricing;
-  if (!sp) return null;
+  // Fallback voor Hazenco-tools uit Supabase (geen servicePricing, wel plans
+  // of losse priceCents). Toont één simpele prijs-kaart met "vanaf".
+  if (!sp) {
+    const plan = bestPlan(listing.plans);
+    const cents = plan?.priceCents ?? listing.priceCents;
+    if (!cents || cents <= 0) return null;
+    const isMonthly = plan?.cycle === "monthly" || plan?.cycle === "yearly";
+    return (
+      <div className="oplossing-pricing">
+        <div className="oplossing-pricing-card primary">
+          <p className="oplossing-pricing-label">{plan?.name ?? "Vanaf"}</p>
+          <div className="oplossing-pricing-price">
+            <strong>{formatEuro(cents)}</strong>
+            {isMonthly ? (
+              <span className="oplossing-pricing-cycle">
+                /{plan?.cycle === "yearly" ? "jaar" : "mnd"}
+              </span>
+            ) : null}
+          </div>
+          {plan?.tagline ? <p>{plan.tagline}</p> : null}
+        </div>
+        {plan?.features && plan.features.length > 0 ? (
+          <ul className="oplossing-pricing-usps">
+            {plan.features.slice(0, 4).map((f, idx) => (
+              <li key={idx}>
+                <CheckCircle2 size={14} /> {f}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    );
+  }
   return (
     <div className="oplossing-pricing">
       {sp.oneTime ? (
@@ -163,6 +222,8 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
   const listing = await getListing(slug);
   if (!listing) notFound();
 
+  const descriptionHtml = await renderMarkdown(listing.description ?? "");
+
   return (
     <Shell>
       <div className="page">
@@ -187,11 +248,10 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
 
             <section className="oplossing-detail-section">
               <h2>Wat doet deze oplossing?</h2>
-              <div className="oplossing-detail-prose">
-                {listing.description.split("\n\n").map((para, idx) => (
-                  <p key={idx}>{para.replace(/\*\*(.+?)\*\*/g, "$1")}</p>
-                ))}
-              </div>
+              <div
+                className="oplossing-detail-prose"
+                dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+              />
             </section>
 
             {listing.included && listing.included.length > 0 ? (
