@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Mail, MessageCircle, ArrowRight } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import { Shell } from "@/components/shell";
+import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
   title: "Contact — Hazenco",
   description:
-    "Neem contact op met Hazenco. Plan een gesprek van 15 minuten of stuur direct een WhatsApp / e-mail."
+    "Plan een gesprek van 15 minuten met Hazenco, of stuur direct een WhatsApp of e-mail. Meestal binnen 1 werkdag antwoord."
 };
 
 const HAZENCO_WHATSAPP = "31643074303";
@@ -16,61 +16,68 @@ export default function ContactPage() {
   return (
     <Shell>
       <div className="page">
-        <header className="section-hero">
+        <header className="section-hero" style={{ textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
           <p className="eyebrow">Contact</p>
           <h1>Kort gesprek, concrete inschatting.</h1>
           <p className="lead">
-            Vertel wat je zoekt — dan hoor je binnen 1 werkdag of we een fit zijn en wat het grofweg kost.
+            Vertel wat je zoekt — dan hoor je binnen 1 werkdag of we een fit zijn en wat het grofweg kost. Geen
+            verkoopgesprek, geen verplichtingen.
           </p>
         </header>
 
-        <div
-          style={{
-            display: "grid",
-            gap: 16,
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            marginTop: 40
-          }}
-        >
-          <a
-            href={`https://wa.me/${HAZENCO_WHATSAPP}?text=${encodeURIComponent(
-              "Hallo Hazenco, ik heb een vraag."
-            )}`}
-            target="_blank"
-            rel="noreferrer"
-            className="section-card"
-            style={{ padding: 28, textDecoration: "none", color: "inherit" }}
-          >
-            <MessageCircle size={26} style={{ color: "var(--green-700)" }} />
-            <h2 style={{ margin: "14px 0 6px" }}>WhatsApp</h2>
-            <p style={{ color: "var(--green-700)", margin: 0 }}>
-              Snelste route. Meestal binnen een uur antwoord tijdens werkdagen.
-            </p>
-          </a>
+        <div className="contact-layout">
+          <div className="contact-form-wrap">
+            <ContactForm />
+          </div>
 
-          <a
-            href={`mailto:${HAZENCO_EMAIL}`}
-            className="section-card"
-            style={{ padding: 28, textDecoration: "none", color: "inherit" }}
-          >
-            <Mail size={26} style={{ color: "var(--green-700)" }} />
-            <h2 style={{ margin: "14px 0 6px" }}>E-mail</h2>
-            <p style={{ color: "var(--green-700)", margin: 0 }}>
-              {HAZENCO_EMAIL} — voor uitgebreidere vragen of documenten.
-            </p>
-          </a>
+          <aside className="contact-aside">
+            <p className="contact-aside-eyebrow">Liever direct?</p>
+
+            <a
+              href={`https://wa.me/${HAZENCO_WHATSAPP}?text=${encodeURIComponent(
+                "Hallo Hazenco, ik heb een vraag."
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="contact-channel"
+            >
+              <div className="contact-channel-icon">
+                <MessageCircle size={20} />
+              </div>
+              <div>
+                <strong>WhatsApp</strong>
+                <span>Snelste route — meestal binnen een uur</span>
+              </div>
+            </a>
+
+            <a href={`mailto:${HAZENCO_EMAIL}`} className="contact-channel">
+              <div className="contact-channel-icon">
+                <Mail size={20} />
+              </div>
+              <div>
+                <strong>E-mail</strong>
+                <span>{HAZENCO_EMAIL}</span>
+              </div>
+            </a>
+
+            <a href="tel:+31643074303" className="contact-channel">
+              <div className="contact-channel-icon">
+                <Phone size={20} />
+              </div>
+              <div>
+                <strong>Telefoon</strong>
+                <span>+31 6 4307 4303 · ma–vr 09:00–17:00</span>
+              </div>
+            </a>
+
+            <div className="contact-aside-note">
+              <p>
+                We zijn een klein Nederlands team. Je spreekt altijd direct met iemand die weet waar 'ie het over
+                heeft — geen callcenter of tussenlaag.
+              </p>
+            </div>
+          </aside>
         </div>
-
-        <section className="section-card" style={{ marginTop: 24, padding: 40 }}>
-          <h2>Contactformulier komt binnenkort</h2>
-          <p style={{ color: "var(--green-700)", margin: "8px 0 20px" }}>
-            We werken aan een uitgebreid formulier waarin je je situatie kunt beschrijven. Tot dan: gebruik WhatsApp of
-            e-mail hierboven.
-          </p>
-          <Link href="/diensten" className="button">
-            Bekijk eerst onze diensten <ArrowRight size={15} />
-          </Link>
-        </section>
       </div>
     </Shell>
   );
