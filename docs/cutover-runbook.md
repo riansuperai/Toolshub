@@ -50,20 +50,17 @@ RESEND_TO=info@hazenco.nl
 - [ ] Screenshot alle bestaande B2B-pagina's voor referentie
 - [ ] Exporteer Google Search Console data (top-pages, top-queries) voor pre/post-migratie vergelijking
 
-### 4. Redirect-map dubbelchecken
+### 4. Redirect-map dubbelchecken — ✅ AFGEROND 2026-07-29
 
-Alle oude WordPress-URLs die verkeer trekken → nieuwe URLs. Zie
-`hazenco-shop/docs/hazenco-migratie-redirect-map.md` in de TechPanda-repo.
-Behouden URLs (SEO-critical):
+Volledige audit uitgevoerd op de WordPress-sitemap. Zie **`docs/redirect-audit.md`**
+voor de complete inventaris en verificatie-commando's.
 
-- `/website-laten-maken` → blijft (nieuwe pagina op zelfde URL)
-- `/workflow-automatisering` → blijft (nieuwe pagina op zelfde URL)
+Alle redirects staan in `next.config.ts` en zijn live geverifieerd op staging.
 
-Nieuwe redirects (al in `next.config.ts`):
-- `/tools/[slug]` → `/oplossingen/[slug]`
-- `/catalogus`, `/winkelwagen`, `/checkout`, `/creators/*` → doorleid naar relevante pagina
-
-Computerhulp → TechPanda (al gedaan via WordPress Redirection-plugin).
+> ⚠️ **Belangrijk om te weten:** de `/computerhulp/*` → TechPanda redirects draaiden
+> op de WordPress Redirection-plugin. Die verdwijnt bij de DNS-switch. De
+> plugin-config bleek bovendien incompleet (1 van ~35 URLs redirectte echt).
+> Alles is nu overgezet naar `next.config.ts` als wildcard.
 
 ---
 
