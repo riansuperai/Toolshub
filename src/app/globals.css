@@ -23679,42 +23679,49 @@ p {
   margin: 0 0 28px;
 }
 
-.oplossing-screenshots {
-  display: flex;
-  flex-direction: column;
+/* Hero afbeelding — het thumbnail-plaatje van de card, groot bovenaan */
+.oplossing-hero-image {
+  background: var(--green-50);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 4px 0 8px;
+}
+.oplossing-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Screenshots — grid, klikbaar, GEEN crop (natuurlijke verhouding) */
+.oplossing-screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 14px;
-  margin: 8px 0 36px;
 }
 .oplossing-screenshot {
   background: var(--green-50);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
+  display: block;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: zoom-in;
 }
-.oplossing-screenshot-hero {
-  aspect-ratio: 16 / 10;
+.oplossing-screenshot:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
-.oplossing-screenshot-hero img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-  object-position: top center;
+.oplossing-screenshot img {
+  width: 100%;
+  height: auto;
   display: block;
 }
-.oplossing-screenshot-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 14px;
-}
-.oplossing-screenshot-grid .oplossing-screenshot {
-  aspect-ratio: 4 / 3;
-}
-.oplossing-screenshot-grid .oplossing-screenshot img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
+
+.oplossing-section-hint {
+  color: var(--green-700);
+  font-size: 13px;
+  margin: -6px 0 14px;
 }
 
 .oplossing-detail-section {
@@ -23736,16 +23743,18 @@ p {
   line-height: 1.7;
   margin: 0 0 16px;
 }
+.oplossing-detail-prose h1,
 .oplossing-detail-prose h2,
 .oplossing-detail-prose h3 {
   font-family: var(--font-heading), Georgia, serif;
   color: var(--green-900);
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  margin: 28px 0 10px;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
 }
-.oplossing-detail-prose h2 { font-size: 22px; }
-.oplossing-detail-prose h3 { font-size: 18px; }
+.oplossing-detail-prose h1 { font-size: 30px; margin: 36px 0 14px; }
+.oplossing-detail-prose h2 { font-size: 26px; margin: 32px 0 12px; }
+.oplossing-detail-prose h3 { font-size: 20px; margin: 26px 0 10px; }
+.oplossing-detail-prose > *:first-child { margin-top: 0; }
 .oplossing-detail-prose h4 {
   font-family: var(--font-body);
   font-size: 15px;
@@ -24027,6 +24036,103 @@ p {
   flex-shrink: 0;
   margin-top: 2px;
 }
+
+/* --- Rich sidebar (price-head + usp-list + help card) --- */
+.oplossing-price-head {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line-soft);
+  margin-bottom: 16px;
+}
+.oplossing-price-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange-600);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 6px;
+}
+.oplossing-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.oplossing-price-value {
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--green-900);
+  letter-spacing: -0.02em;
+}
+.oplossing-price-cycle {
+  font-size: 15px;
+  color: var(--green-700);
+  font-weight: 600;
+}
+.oplossing-price-vat {
+  font-size: 12.5px;
+  color: var(--green-500);
+  margin-left: 4px;
+}
+.oplossing-price-tagline {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  color: var(--green-700);
+  line-height: 1.5;
+}
+
+.oplossing-usp-list {
+  list-style: none;
+  padding: 14px 0 0;
+  margin: 4px 0 0;
+  border-top: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.oplossing-usp-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  color: var(--green-800);
+  line-height: 1.4;
+}
+.oplossing-usp-list svg {
+  color: var(--orange-600);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.oplossing-sidebar-help {
+  margin-top: 14px;
+  background: var(--bg-elevated, var(--surface));
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.oplossing-sidebar-help strong {
+  display: block;
+  color: var(--green-900);
+  font-size: 14.5px;
+  margin-bottom: 4px;
+}
+.oplossing-sidebar-help p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--green-700);
+  line-height: 1.5;
+}
+.oplossing-sidebar-help-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--orange-700);
+  font-weight: 700;
+  font-size: 13.5px;
+  text-decoration: none;
+}
+.oplossing-sidebar-help-link:hover { text-decoration: underline; }
 
 .oplossing-cta-stack {
   display: flex;

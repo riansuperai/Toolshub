@@ -103,37 +103,48 @@ function CasesSection({ items }: { items: ServiceCase[] }) {
   );
 }
 
+function HeroImage({ src, title }: { src: string; title: string }) {
+  return (
+    <div className="oplossing-hero-image">
+      <Image
+        src={src}
+        alt={`${title} — hero`}
+        width={1600}
+        height={900}
+        style={{ width: "100%", height: "auto", display: "block" }}
+        priority
+      />
+    </div>
+  );
+}
+
 function ScreenshotsGallery({ screenshots, title }: { screenshots: string[]; title: string }) {
   if (screenshots.length === 0) return null;
-  const [hero, ...rest] = screenshots;
   return (
-    <div className="oplossing-screenshots">
-      <div className="oplossing-screenshot oplossing-screenshot-hero">
-        <Image
-          src={hero}
-          alt={`${title} — screenshot 1`}
-          width={1600}
-          height={1000}
-          style={{ width: "100%", height: "auto", display: "block" }}
-          priority
-        />
+    <section className="oplossing-detail-section">
+      <h2>Screenshots</h2>
+      <p className="oplossing-section-hint">Klik op een screenshot om te vergroten.</p>
+      <div className="oplossing-screenshot-grid">
+        {screenshots.map((src, idx) => (
+          <a
+            key={idx}
+            href={src}
+            target="_blank"
+            rel="noreferrer"
+            className="oplossing-screenshot"
+            aria-label={`Vergroot screenshot ${idx + 1}`}
+          >
+            <Image
+              src={src}
+              alt={`${title} — screenshot ${idx + 1}`}
+              width={1400}
+              height={900}
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          </a>
+        ))}
       </div>
-      {rest.length > 0 ? (
-        <div className="oplossing-screenshot-grid">
-          {rest.map((src, idx) => (
-            <div key={idx} className="oplossing-screenshot">
-              <Image
-                src={src}
-                alt={`${title} — screenshot ${idx + 2}`}
-                width={1200}
-                height={800}
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
-            </div>
-          ))}
-        </div>
-      ) : null}
-    </div>
+    </section>
   );
 }
 
@@ -148,21 +159,22 @@ function PricingBlock({ listing }: { listing: Listing }) {
     const isMonthly = plan?.cycle === "monthly" || plan?.cycle === "yearly";
     return (
       <div className="oplossing-pricing">
-        <div className="oplossing-pricing-card primary">
-          <p className="oplossing-pricing-label">{plan?.name ?? "Vanaf"}</p>
-          <div className="oplossing-pricing-price">
-            <strong>{formatEuro(cents)}</strong>
+        <div className="oplossing-price-head">
+          <p className="oplossing-price-eyebrow">{plan?.name ? plan.name : "Prijs"}</p>
+          <div className="oplossing-price-row">
+            <span className="oplossing-price-value">{formatEuro(cents)}</span>
             {isMonthly ? (
-              <span className="oplossing-pricing-cycle">
+              <span className="oplossing-price-cycle">
                 /{plan?.cycle === "yearly" ? "jaar" : "mnd"}
               </span>
             ) : null}
+            <span className="oplossing-price-vat">excl. btw</span>
           </div>
-          {plan?.tagline ? <p>{plan.tagline}</p> : null}
+          {plan?.tagline ? <p className="oplossing-price-tagline">{plan.tagline}</p> : null}
         </div>
         {plan?.features && plan.features.length > 0 ? (
           <ul className="oplossing-pricing-usps">
-            {plan.features.slice(0, 4).map((f, idx) => (
+            {plan.features.slice(0, 5).map((f, idx) => (
               <li key={idx}>
                 <CheckCircle2 size={14} /> {f}
               </li>
@@ -237,7 +249,9 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
             <h1>{listing.title}</h1>
             <p className="oplossing-detail-lead">{listing.tagline}</p>
 
-            <ScreenshotsGallery screenshots={listing.screenshotUrls ?? []} title={listing.title} />
+            {listing.heroImageUrl ? (
+              <HeroImage src={listing.heroImageUrl} title={listing.title} />
+            ) : null}
 
             {listing.forWho && listing.forWho.length > 0 ? (
               <section className="oplossing-detail-section">
@@ -253,6 +267,8 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
                 dangerouslySetInnerHTML={{ __html: descriptionHtml }}
               />
             </section>
+
+            <ScreenshotsGallery screenshots={listing.screenshotUrls ?? []} title={listing.title} />
 
             {listing.included && listing.included.length > 0 ? (
               <section className="oplossing-detail-section">
@@ -271,7 +287,6 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
 
           <aside className="oplossing-detail-sidebar">
             <div className="oplossing-detail-sidebar-inner">
-              <p className="oplossing-sidebar-eyebrow">Kies een pakket</p>
               <PricingBlock listing={listing} />
 
               <div className="oplossing-cta-stack">
@@ -293,6 +308,21 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
                   </Link>
                 )}
               </div>
+
+              <ul className="oplossing-usp-list">
+                <li>
+                  <CheckCircle2 size={15} /> Live demo zonder verplichtingen
+                </li>
+                <li>
+                  <CheckCircle2 size={15} /> Setup + onboarding inbegrepen
+                </li>
+                <li>
+                  <CheckCircle2 size={15} /> Nederlandstalige support
+                </li>
+                <li>
+                  <CheckCircle2 size={15} /> Maandelijks opzegbaar
+                </li>
+              </ul>
 
               {listing.serviceMeta ? (
                 <ul className="oplossing-meta-list">
@@ -316,6 +346,14 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
                   ) : null}
                 </ul>
               ) : null}
+            </div>
+
+            <div className="oplossing-sidebar-help">
+              <strong>Niet helemaal zeker?</strong>
+              <p>Of wil je maatwerk? Neem contact op — we helpen graag mee met de scope.</p>
+              <Link href="/contact" className="oplossing-sidebar-help-link">
+                Plan een gesprek <ArrowRight size={13} />
+              </Link>
             </div>
           </aside>
         </div>
