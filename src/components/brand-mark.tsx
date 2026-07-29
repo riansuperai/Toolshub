@@ -1,5 +1,5 @@
 /**
- * Klein netwerk-symbool — centrale ring met
+ * Klein netwerk-symbool, centrale ring met
  * drie satelliet-knopen. Onderstreept het 'hub' concept. Kleur volgt
  * currentColor (erft van de omliggende .brand small = orange-600).
  */
@@ -34,7 +34,7 @@ export function HubGlyph({ size = 20 }: { size?: number }) {
 import Image from "next/image";
 
 /**
- * Hazenco brand mark — hub-glyph PNG met transparante achtergrond.
+ * Hazenco brand mark, hub-glyph PNG met transparante achtergrond.
  * Twee gespiegelde node-clusters, teal met oranje accent-nodes.
  */
 export function BrandMark({ size = 38 }: { size?: number }) {

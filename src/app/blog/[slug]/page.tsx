@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <section className="hazenco-contact-band">
           <div className="hazenco-contact-inner">
             <h2>Vragen over dit onderwerp?</h2>
-            <p>Plan een kort gesprek — we bespreken hoe dit in jouw situatie zou werken.</p>
+            <p>Plan een kort gesprek, we bespreken hoe dit in jouw situatie zou werken.</p>
             <div className="hazenco-contact-cta">
               <Link href="/contact" className="button">
                 Plan een gesprek <ArrowRight size={15} />

@@ -47,9 +47,9 @@ export async function submitContact(_prev: ContactFormState, formData: FormData)
   const bericht = sanitize(formData.get("bericht"), 3000);
   const honeypot = sanitize(formData.get("honeypot"), 200);
 
-  // Honeypot: bots vullen 't in, mensen niet — hidden veld
+  // Honeypot: bots vullen 't in, mensen niet, hidden veld
   if (honeypot.length > 0) {
-    return { status: "success", message: "Bedankt — we nemen zo snel mogelijk contact op." };
+    return { status: "success", message: "Bedankt, we nemen zo snel mogelijk contact op." };
   }
 
   // Basis-validatie
@@ -58,7 +58,7 @@ export async function submitContact(_prev: ContactFormState, formData: FormData)
   }
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!emailValid) {
-    return { status: "error", message: "Dit e-mailadres lijkt niet te kloppen — check even?" };
+    return { status: "error", message: "Dit e-mailadres lijkt niet te kloppen, check even?" };
   }
 
   // Rate-limit per e-mail
@@ -74,12 +74,12 @@ export async function submitContact(_prev: ContactFormState, formData: FormData)
   const to = process.env.RESEND_TO ?? "hallo@hazenco.nl";
 
   if (!apiKey) {
-    console.warn("[contact] RESEND_API_KEY niet ingesteld — bericht niet verstuurd", {
+    console.warn("[contact] RESEND_API_KEY niet ingesteld, bericht niet verstuurd", {
       naam, email, onderwerp
     });
     return {
       status: "error",
-      message: "Contactformulier is nog niet volledig ingesteld. Stuur direct een WhatsApp of mail — die werken al wel."
+      message: "Contactformulier is nog niet volledig ingesteld. Stuur direct een WhatsApp of mail, die werken al wel."
     };
   }
 
@@ -91,7 +91,7 @@ export async function submitContact(_prev: ContactFormState, formData: FormData)
       from,
       to,
       replyTo: email,
-      subject: `[hazenco.nl] ${onderwerpLabel} — ${naam}`,
+      subject: `[hazenco.nl] ${onderwerpLabel}, ${naam}`,
       text: [
         `Nieuw bericht via hazenco.nl:`,
         ``,

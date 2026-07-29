@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const listing = await getListing(slug);
   if (!listing) return { title: "Oplossing niet gevonden" };
   return {
-    title: `${listing.title} — Hazenco`,
+    title: `${listing.title}, Hazenco`,
     description: listing.tagline
   };
 }
@@ -108,7 +108,7 @@ function HeroImage({ src, title }: { src: string; title: string }) {
     <div className="oplossing-hero-image">
       <Image
         src={src}
-        alt={`${title} — hero`}
+        alt={`${title}, hero`}
         width={1600}
         height={900}
         style={{ width: "100%", height: "auto", display: "block" }}
@@ -136,7 +136,7 @@ function ScreenshotsGallery({ screenshots, title }: { screenshots: string[]; tit
           >
             <Image
               src={src}
-              alt={`${title} — screenshot ${idx + 1}`}
+              alt={`${title}, screenshot ${idx + 1}`}
               width={1400}
               height={900}
               style={{ width: "100%", height: "auto", display: "block" }}
@@ -350,7 +350,7 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
 
             <div className="oplossing-sidebar-help">
               <strong>Niet helemaal zeker?</strong>
-              <p>Of wil je maatwerk? Neem contact op — we helpen graag mee met de scope.</p>
+              <p>Of wil je maatwerk? Neem contact op, we helpen graag mee met de scope.</p>
               <Link href="/contact" className="oplossing-sidebar-help-link">
                 Plan een gesprek <ArrowRight size={13} />
               </Link>

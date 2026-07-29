@@ -71,7 +71,7 @@ export type MiniToolPageProps = {
   /** Slug uit het registry. Wordt gebruikt om related tools te kiezen. */
   slug: string;
   eyebrow?: string;
-  /** Privacy reassurance onderaan de tool — bv. "Wij slaan niks op". */
+  /** Privacy reassurance onderaan de tool, bv. "Wij slaan niks op". */
   privacyNote?: string;
   /** Conversie-block naar relevante Hazenco-dienst. */
   crossSell?: CrossSell;
@@ -87,7 +87,7 @@ export type MiniToolPageProps = {
  *
  * Tool-specifieke UI gaat als children door (in een eigen client component).
  */
-/** Hazenco WhatsApp — alleen cijfers, country code voorop. */
+/** Hazenco WhatsApp, alleen cijfers, country code voorop. */
 const HAZENCO_WHATSAPP = "31643074303";
 
 export function MiniToolPage({
@@ -242,7 +242,7 @@ export function MiniToolPage({
             <p>
               We horen graag wat er mis ging in <strong>{toolLabel}</strong>{" "}
               of welke tool je graag zou willen zien. Stuur ons een
-              bericht — meestal binnen één werkdag antwoord.
+              bericht, meestal binnen één werkdag antwoord.
             </p>
             <div className="mini-tool-feedback-actions">
               <a

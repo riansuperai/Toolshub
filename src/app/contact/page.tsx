@@ -4,7 +4,7 @@ import { Shell } from "@/components/shell";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact — Hazenco",
+  title: "Contact, Hazenco",
   description:
     "Plan een gesprek van 15 minuten met Hazenco, of stuur direct een WhatsApp of e-mail. Meestal binnen 1 werkdag antwoord."
 };
@@ -20,7 +20,7 @@ export default function ContactPage() {
           <p className="eyebrow">Contact</p>
           <h1>Kort gesprek, concrete inschatting.</h1>
           <p className="lead">
-            Vertel wat je zoekt — dan hoor je binnen 1 werkdag of we een fit zijn en wat het grofweg kost. Geen
+            Vertel wat je zoekt, dan hoor je binnen 1 werkdag of we een fit zijn en wat het grofweg kost. Geen
             verkoopgesprek, geen verplichtingen.
           </p>
         </header>
@@ -46,7 +46,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <strong>WhatsApp</strong>
-                <span>Snelste route — meestal binnen een uur</span>
+                <span>Snelste route, meestal binnen een uur</span>
               </div>
             </a>
 
@@ -73,7 +73,7 @@ export default function ContactPage() {
             <div className="contact-aside-note">
               <p>
                 We zijn een klein Nederlands team. Je spreekt altijd direct met iemand die weet waar 'ie het over
-                heeft — geen callcenter of tussenlaag.
+                heeft, geen callcenter of tussenlaag.
               </p>
             </div>
           </aside>

@@ -3,7 +3,7 @@ import { Sparkles } from "lucide-react";
 import { ServicePage, type ServicePageData } from "@/components/service-page";
 
 export const metadata: Metadata = {
-  title: "AI-workflows & integraties — slimme agents voor je bedrijf | Hazenco",
+  title: "AI-workflows & integraties, slimme agents voor je bedrijf | Hazenco",
   description:
     "Nederlandse AI-agents die met je klanten praten. Telefoonbot, WhatsApp-chatbot, review-responder, online afsprakensysteem. In jouw toon-of-voice, 24/7 aan."
 };
@@ -12,9 +12,9 @@ const data: ServicePageData = {
   eyebrow: "AI-workflows & integraties",
   title: "AI-agents die écht werk voor je doen.",
   lead:
-    "Nederlandse AI-workflows die met jouw klanten praten — via telefoon, WhatsApp, e-mail of chat. In jouw toon-of-voice, 24/7 aan, escalatie naar mens waar nodig.",
+    "Nederlandse AI-workflows die met jouw klanten praten, via telefoon, WhatsApp, e-mail of chat. In jouw toon-of-voice, 24/7 aan, escalatie naar mens waar nodig.",
   intro:
-    "AI voor MKB is inmiddels volwassen. Een goed geconfigureerde telefoonbot beantwoordt 70% van de veel-voorkomende vragen zelfstandig. Een WhatsApp-chatbot met jouw kennisbank kan een groot deel van je klantenservice overnemen. Een reviews-responder houdt je Google-profiel actief zonder dat jij er dagelijks tijd in stopt. Wij zetten deze workflows op — inclusief training, integraties en het intelligent doorzetten naar een echte medewerker wanneer nodig.",
+    "AI voor MKB is inmiddels volwassen. Een goed geconfigureerde telefoonbot beantwoordt 70% van de veel-voorkomende vragen zelfstandig. Een WhatsApp-chatbot met jouw kennisbank kan een groot deel van je klantenservice overnemen. Een reviews-responder houdt je Google-profiel actief zonder dat jij er dagelijks tijd in stopt. Wij zetten deze workflows op, inclusief training, integraties en het intelligent doorzetten naar een echte medewerker wanneer nodig.",
   wat: {
     heading: "Wat we voor klanten hebben opgezet",
     items: [
@@ -36,7 +36,7 @@ const data: ServicePageData = {
       },
       {
         title: "AI-integraties op maat",
-        text: "OpenAI, Claude, Whisper, HuggingFace — we koppelen wat het beste past aan jouw stack."
+        text: "OpenAI, Claude, Whisper, HuggingFace, we koppelen wat het beste past aan jouw stack."
       },
       {
         title: "Onderhoud + fine-tuning",
@@ -71,7 +71,7 @@ const data: ServicePageData = {
   },
   prijs: {
     heading: "Vanaf een paar honderd euro per maand",
-    lead: "All-in modellen — setup, hosting, AI-credits, updates.",
+    lead: "All-in modellen, setup, hosting, AI-credits, updates.",
     packages: [
       {
         name: "Eén AI-workflow",
@@ -125,7 +125,7 @@ const data: ServicePageData = {
     },
     {
       q: "Kan de AI ook in het Engels?",
-      a: "Ja — meertalig (NL, EN, DE) is standaard. Sommige klanten draaien 'm ook in het Fries of dialect als de doelgroep dat spreekt."
+      a: "Ja, meertalig (NL, EN, DE) is standaard. Sommige klanten draaien 'm ook in het Fries of dialect als de doelgroep dat spreekt."
     }
   ]
 };

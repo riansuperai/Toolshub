@@ -233,12 +233,12 @@ export function PdfSplitsenClient() {
       howItWorks={[
         "Upload of sleep een PDF (.pdf, max 50 MB).",
         "Kies of je elke pagina als losse PDF wil (per-pagina), of een selectie pagina's in één PDF (bijv. 1-3, 5, 7-10).",
-        "Download het resultaat — als ZIP bij per-pagina, als losse PDF bij selectie."
+        "Download het resultaat, als ZIP bij per-pagina, als losse PDF bij selectie."
       ]}
       crossSell={{
         heading: "PDFs automatisch knippen op trigger?",
         body:
-          "Hazenco bouwt PDF-workflows die rapporten splitsen, contracten extraheren of facturen taggen — bij upload, op schema of vanaf je inbox.",
+          "Hazenco bouwt PDF-workflows die rapporten splitsen, contracten extraheren of facturen taggen, bij upload, op schema of vanaf je inbox.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}
@@ -268,7 +268,7 @@ export function PdfSplitsenClient() {
                 <Upload size={26} />
               </div>
               <strong>Sleep een PDF hierheen of klik om te uploaden</strong>
-              <p>PDF — max 50 MB</p>
+              <p>PDF, max 50 MB</p>
             </div>
           </label>
         ) : null}
@@ -393,7 +393,7 @@ export function PdfSplitsenClient() {
               </div>
               <div className="pdfsplit-result-info">
                 <strong>
-                  Klaar — {stage.pageCount} pagina
+                  Klaar, {stage.pageCount} pagina
                   {stage.pageCount === 1 ? "" : "'s"}
                 </strong>
                 <span>

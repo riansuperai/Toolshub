@@ -159,7 +159,7 @@ export function FactuurGeneratorClient() {
   function handleLogoUpload(file: File | null) {
     if (!file) return;
     if (file.size > 1_000_000) {
-      // 1MB cap — anders wordt localStorage te zwaar
+      // 1MB cap, anders wordt localStorage te zwaar
       alert("Logo te groot. Kies een bestand kleiner dan 1 MB.");
       return;
     }
@@ -220,7 +220,7 @@ export function FactuurGeneratorClient() {
     }
     setIsGenerating(true);
     try {
-      // jsPDF wordt dynamisch geladen — scheelt initial bundle size
+      // jsPDF wordt dynamisch geladen, scheelt initial bundle size
       const { jsPDF } = await import("jspdf");
       const doc = new jsPDF({ unit: "mm", format: "a4" });
 
@@ -437,12 +437,12 @@ export function FactuurGeneratorClient() {
       howItWorks={[
         "Vul je bedrijfsgegevens in (eenmalig). Klik op \"Onthoud in deze browser\" en je hoeft 't volgende keer niet opnieuw te typen.",
         "Voeg de klant toe en factuurregels (omschrijving, aantal, prijs, BTW-tarief). Totalen worden live berekend, incl. BTW per tarief.",
-        "Klik op \"Download factuur als PDF\" — je factuur komt direct in je downloads-map, klaar om te versturen."
+        "Klik op \"Download factuur als PDF\", je factuur komt direct in je downloads-map, klaar om te versturen."
       ]}
       crossSell={{
         heading: "Vaker dan eens per maand factureren?",
         body:
-          "Hazenco automatiseert je facturatie en koppelt het aan e-Boekhouden, Snelstart of Moneybird — geen kopiëren meer.",
+          "Hazenco automatiseert je facturatie en koppelt het aan e-Boekhouden, Snelstart of Moneybird, geen kopiëren meer.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}

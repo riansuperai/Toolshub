@@ -199,7 +199,7 @@ export async function fetchCatalog(): Promise<Catalog | null> {
 }
 
 /**
- * Alle published listings uit Supabase — voor /oplossingen index.
+ * Alle published listings uit Supabase, voor /oplossingen index.
  * Returns null als Supabase niet geconfigureerd/bereikbaar is; caller
  * moet dan terugvallen op mock data.
  */
@@ -218,7 +218,7 @@ export async function fetchPublishedListings(): Promise<Listing[] | null> {
 }
 
 /**
- * Enkele listing bij slug — voor /oplossingen/[slug] detail.
+ * Enkele listing bij slug, voor /oplossingen/[slug] detail.
  * Returns null als niet gevonden of Supabase niet beschikbaar; caller
  * moet dan terugvallen op mock data.
  */

@@ -78,7 +78,7 @@ export function AchtergrondVerwijderenClient() {
     if (file.size > MAX_INPUT_SIZE) {
       setStage({
         kind: "error",
-        message: "Afbeelding te groot — kies een bestand kleiner dan 8 MB."
+        message: "Afbeelding te groot, kies een bestand kleiner dan 8 MB."
       });
       return;
     }
@@ -99,7 +99,7 @@ export function AchtergrondVerwijderenClient() {
       const image = await RawImage.fromURL(originalUrl);
       const processed = await processor(image);
       // RMBG-1.4 verwacht input onder de key 'input'. Sommige builds geven
-      // pixel_values terug, anderen input_image — beide hieronder afgevangen.
+      // pixel_values terug, anderen input_image, beide hieronder afgevangen.
       const pixelValues =
         (processed as { pixel_values?: unknown; input_image?: unknown }).pixel_values ??
         (processed as { pixel_values?: unknown; input_image?: unknown }).input_image;
@@ -158,7 +158,7 @@ export function AchtergrondVerwijderenClient() {
     if (file) handleFile(file);
   }
 
-  // Plakken via Ctrl/Cmd+V — werkt vanaf screenshot-tools, browser-rechtsklik
+  // Plakken via Ctrl/Cmd+V, werkt vanaf screenshot-tools, browser-rechtsklik
   // 'kopieer afbeelding', en file-managers. Alleen actief in idle/error-state
   // zodat een geplakte URL of tekst in een ander gesprek hier niet stiekem een
   // verwerking triggert.
@@ -194,7 +194,7 @@ export function AchtergrondVerwijderenClient() {
       crossSell={{
         heading: "Productfoto's bulk verwerken?",
         body:
-          "Hazenco zet automation op voor je webshop — productfoto's worden bij upload automatisch geprocest, formaten aangepast en geoptimaliseerd.",
+          "Hazenco zet automation op voor je webshop, productfoto's worden bij upload automatisch geprocest, formaten aangepast en geoptimaliseerd.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}
@@ -224,7 +224,7 @@ export function AchtergrondVerwijderenClient() {
                 <Upload size={26} />
               </div>
               <strong>Sleep, klik of plak (Ctrl/⌘+V) een afbeelding</strong>
-              <p>JPG, PNG of WebP — max 8 MB</p>
+              <p>JPG, PNG of WebP, max 8 MB</p>
             </div>
           </label>
         ) : null}
@@ -236,7 +236,7 @@ export function AchtergrondVerwijderenClient() {
             </div>
             <strong>AI-model wordt geladen…</strong>
             <p>
-              Eerste keer dat je deze tool gebruikt — duurt ongeveer 10-30
+              Eerste keer dat je deze tool gebruikt, duurt ongeveer 10-30
               seconden. Volgende keer is dit niet meer nodig.
             </p>
             <div className="bgremove-progress">
@@ -309,7 +309,7 @@ export function AchtergrondVerwijderenClient() {
  * en levert een PNG-blob met transparante achtergrond.
  *
  * RMBG-1.4 geeft een Float32Array tensor met waarden 0..1 (1 = voorgrond).
- * Het masker is in de modelresolutie (meestal 1024x1024) — we schalen mee
+ * Het masker is in de modelresolutie (meestal 1024x1024), we schalen mee
  * door indices te interpoleren naar de target-resolutie via nearest-neighbor.
  */
 async function applyMask(

@@ -50,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7
   }));
 
-  // Supabase heeft alle productie-listings — fallback op mock als offline.
+  // Supabase heeft alle productie-listings, fallback op mock als offline.
   // Filter op seller_hazenco: alleen onze eigen oplossingen in de sitemap
   // (oude marketplace-seeds van andere sellers laten we buiten scope).
   const supabaseListings = await fetchPublishedListings();

@@ -74,7 +74,7 @@ function formatBytes(bytes: number): string {
 }
 
 /**
- * Cached pdfjs library — eenmaal laden, daarna hergebruiken. De worker
+ * Cached pdfjs library, eenmaal laden, daarna hergebruiken. De worker
  * komt via jsDelivr CDN zodat we geen extra build-config nodig hebben.
  */
 let pdfjsPromise: Promise<typeof import("pdfjs-dist")> | null = null;
@@ -167,7 +167,7 @@ export function PdfComprimerenClient() {
       }
 
       const newBytes = await newPdf.save({ useObjectStreams: true });
-      // Cast naar BlobPart — pdf-lib geeft Uint8Array<ArrayBufferLike>, wat
+      // Cast naar BlobPart, pdf-lib geeft Uint8Array<ArrayBufferLike>, wat
       // runtime een geldige BlobPart is maar in strict TS niet matched omdat
       // ArrayBufferLike breder is dan ArrayBuffer.
       const blob = new Blob([newBytes as BlobPart], { type: "application/pdf" });
@@ -224,7 +224,7 @@ export function PdfComprimerenClient() {
       crossSell={{
         heading: "Bulk PDF-verwerking nodig?",
         body:
-          "Hazenco bouwt automation voor je document-flow — facturen, contracten en rapporten verkleinen, taggen en archiveren in één pipeline.",
+          "Hazenco bouwt automation voor je document-flow, facturen, contracten en rapporten verkleinen, taggen en archiveren in één pipeline.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}
@@ -254,7 +254,7 @@ export function PdfComprimerenClient() {
                 <Upload size={26} />
               </div>
               <strong>Sleep een PDF hierheen of klik om te uploaden</strong>
-              <p>PDF — max 50 MB</p>
+              <p>PDF, max 50 MB</p>
             </div>
           </label>
         ) : null}

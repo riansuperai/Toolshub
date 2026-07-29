@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const principes = [
   {
     title: "Klein team, direct contact",
-    text: "Je spreekt altijd direct met iemand die weet waar 'ie het over heeft — geen account-managers of tussenlagen. Meestal binnen 1 werkdag antwoord."
+    text: "Je spreekt altijd direct met iemand die weet waar 'ie het over heeft, geen account-managers of tussenlagen. Meestal binnen 1 werkdag antwoord."
   },
   {
     title: "Done-for-you, niet DIY-consulting",
@@ -47,7 +47,7 @@ const eigenBouw = [
     icon: Workflow,
     href: "/toolkit",
     label: "Hazenco Toolkit",
-    text: "11 gratis mini-tools ontstaan uit ons eigen dagelijkse werk — factuur-generator, PDF-tools, achtergrond-verwijderaar.",
+    text: "11 gratis mini-tools ontstaan uit ons eigen dagelijkse werk, factuur-generator, PDF-tools, achtergrond-verwijderaar.",
     external: false
   }
 ];
@@ -73,7 +73,7 @@ export default function OverOnsPage() {
         <section className="hazenco-section">
           <header className="hazenco-section-head">
             <p className="eyebrow">Wat we doen</p>
-            <h2>Drie dingen — en niks anders</h2>
+            <h2>Drie dingen, en niks anders</h2>
             <p className="hazenco-section-sub">
               We bouwen websites op maat, we automatiseren processen die nu handmatig lopen, en we zetten AI-workflows
               op waar je klanten dagelijks mee praten. Alles done-for-you: wij regelen installatie, integratie en
@@ -155,7 +155,7 @@ export default function OverOnsPage() {
             <p className="eyebrow">Ook TechPanda</p>
             <h2>Onze B2C-tak</h2>
             <p className="hazenco-section-sub">
-              Naast Hazenco runnen we TechPanda — onze IT-webshop en computerhulp aan huis. Zelfde stack, ander merk,
+              Naast Hazenco runnen we TechPanda, onze IT-webshop en computerhulp aan huis. Zelfde stack, ander merk,
               andere doelgroep. Handig om te weten: als je in Hazenco investeert, krijg je een partij die zelf ook
               e-commerce en klantenservice draait. Wat we leren bij TechPanda, komt terug in wat we voor klanten
               bouwen.
@@ -172,7 +172,7 @@ export default function OverOnsPage() {
           <div className="hazenco-contact-inner">
             <h2>Zullen we eens praten?</h2>
             <p>
-              Vertel wat je zoekt — dan hoor je binnen 1 werkdag of we een fit zijn. Geen verkoopgesprek, geen
+              Vertel wat je zoekt, dan hoor je binnen 1 werkdag of we een fit zijn. Geen verkoopgesprek, geen
               verplichtingen.
             </p>
             <div className="hazenco-contact-cta">

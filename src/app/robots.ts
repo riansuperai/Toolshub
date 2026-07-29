@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const BASE_URL = "https://hazenco.nl";
 
 /**
- * Robots.txt — laat alle bots toe en wijst hen naar de sitemap.
+ * Robots.txt, laat alle bots toe en wijst hen naar de sitemap.
  * Bezoekbaar op /robots.txt zonder configuratie.
  */
 export default function robots(): MetadataRoute.Robots {

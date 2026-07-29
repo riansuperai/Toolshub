@@ -66,7 +66,7 @@ export function ContactForm() {
         />
       </label>
 
-      {/* Honeypot — verborgen veld dat bots wel invullen, mensen niet */}
+      {/* Honeypot, verborgen veld dat bots wel invullen, mensen niet */}
       <div style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }} aria-hidden="true">
         <label>
           Als je een mens bent, laat dit veld leeg

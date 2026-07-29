@@ -23,7 +23,7 @@
   --max: 1350px;
 }
 
-/* Dark mode — flip semantic tokens, brand-oranje blijft hetzelfde */
+/* Dark mode, flip semantic tokens, brand-oranje blijft hetzelfde */
 [data-theme="dark"] {
   --green-900: #e9f1ec;        /* text-primary inverts naar bijna-wit */
   --green-800: #d6e2da;
@@ -155,7 +155,7 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* "Always dark" branded zones — overschrijven van token-inversie.
+/* "Always dark" branded zones, overschrijven van token-inversie.
    Deze blokken zijn in beide modes donker bedoeld (branding), maar
    gebruiken green-900/--white tokens die in dark mode inverteren naar
    licht. Hier pinnen we ze terug naar de licht-mode look-and-feel. */
@@ -359,25 +359,171 @@ button {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 8px;
-  /* Geen flex:1 meer — nav neemt natuurlijke breedte. Search sits
-     in de tussenruimte naar de rechtergrouped actions (margin-left:auto). */
-  flex: 0 0 auto;
-  margin-left: 18px;
+  gap: 4px;
+  flex: 1 1 auto;
+  justify-content: center;
+  margin: 0 22px;
+  position: relative;
 }
 
-.main-nav a {
+.main-nav a,
+.main-nav .main-nav-trigger {
   padding: 10px 12px;
   border-radius: 8px;
   color: rgba(232, 240, 234, 0.72);
   font-size: 15px;
   font-weight: 650;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
 }
 
 .main-nav a:hover,
-.main-nav a.active {
+.main-nav a.active,
+.main-nav .main-nav-trigger:hover,
+.main-nav .main-nav-trigger.active,
+.main-nav .main-nav-item.is-open .main-nav-trigger {
   background: rgba(232, 240, 234, 0.08);
   color: var(--white);
+}
+
+.main-nav-item {
+  position: static;
+}
+
+.mega-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 45;
+  animation: megaFade 0.14s ease-out;
+}
+@keyframes megaFade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mega-panel-inner {
+  background: var(--bg-elevated, var(--surface));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 22px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.mega-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+.mega-group-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--green-700);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 10px;
+}
+.mega-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mega-group li a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--green-900);
+  text-decoration: none;
+  transition: background 0.12s ease;
+}
+.mega-group li a:hover {
+  background: var(--green-50);
+}
+.mega-link-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-900);
+  line-height: 1.3;
+}
+.mega-link-desc {
+  display: block;
+  font-size: 12.5px;
+  color: var(--green-700);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.mega-featured {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--orange-100);
+  border: 1px solid var(--orange-200, rgba(242, 107, 29, 0.25));
+  border-radius: 12px;
+  padding: 16px 18px;
+  color: var(--green-900);
+  text-decoration: none;
+  transition: transform 0.12s ease;
+}
+.mega-featured:hover { transform: translateY(-1px); }
+.mega-featured-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--orange-600);
+  color: white;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.mega-featured strong {
+  display: block;
+  font-size: 14.5px;
+  color: var(--green-900);
+  margin-bottom: 3px;
+}
+.mega-featured p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--green-700);
+  line-height: 1.45;
+}
+.mega-featured > svg:last-child {
+  color: var(--orange-700);
+  margin-left: auto;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.mobile-menu-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange-600);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 12px 0 4px;
+}
+.mobile-menu-sub {
+  padding-left: 12px !important;
+  font-size: 15px !important;
+}
+
+@media (max-width: 900px) {
+  .mega-panel { display: none; }
+  .mega-panel-inner { grid-template-columns: 1fr; }
 }
 
 .header-actions {
@@ -3716,7 +3862,7 @@ p {
   border: 1px solid rgba(232, 240, 234, 0.12);
 }
 
-/* "Vind je tool" finder — tab toggle tussen functie en branche */
+/* "Vind je tool" finder, tab toggle tussen functie en branche */
 .home-finder-tabs {
   display: inline-flex;
   gap: 4px;
@@ -3750,7 +3896,7 @@ p {
   box-shadow: 0 1px 3px rgba(16, 41, 31, 0.1);
 }
 
-/* Trust indicators rij — direct onder de hero-search. Vervangt
+/* Trust indicators rij, direct onder de hero-search. Vervangt
    de oude 'Populair: chip-row' voor een professionelere uitstraling.
    max-width 560px matcht .home-hero .home-search, space-between
    spreidt de 3 items netjes over die breedte. */
@@ -3777,7 +3923,7 @@ p {
   flex-shrink: 0;
 }
 
-/* Hero figure — vervangt het stats-blok met een persoon-foto.
+/* Hero figure, vervangt het stats-blok met een persoon-foto.
    Plakt onderaan de hero zodat de persoon op de bodem lijkt te staan. */
 .home-hero-figure {
   position: relative;
@@ -3793,7 +3939,7 @@ p {
   max-height: 460px;
 }
 
-/* Network lijntjes van laptop naar elke badge — geeft het gevoel
+/* Network lijntjes van laptop naar elke badge, geeft het gevoel
    dat de tools 'live data' uitzenden naar de notificaties.
    Animated dashes simuleren stromend signaal. */
 .hero-figure-network {
@@ -3835,7 +3981,7 @@ p {
   100% { stroke-dashoffset: -14; }
 }
 
-/* Floating badges over de persoon — live activity / social proof.
+/* Floating badges over de persoon, live activity / social proof.
    Tekst-kleuren hardcoded omdat de witte badge in beide modes wit
    blijft (token-inversie zou de tekst onzichtbaar maken in dark mode). */
 .hero-figure-badge {
@@ -4072,7 +4218,7 @@ p {
 }
 
 /* ============================================================
-   Mobile homepage tweaks — onder 720px
+   Mobile homepage tweaks, onder 720px
    ============================================================ */
 @media (max-width: 720px) {
   /* Section head: action-link naar nieuwe regel ipv ernaast */
@@ -6803,7 +6949,7 @@ p {
   }
 }
 
-/* KPI mini extras — centered delta pill + slim progress bar */
+/* KPI mini extras, centered delta pill + slim progress bar */
 .kpi-mini-pill {
   display: inline-flex;
   align-items: center;
@@ -8044,18 +8190,18 @@ p {
 }
 
 .footer-brand {
-  /* Hardcoded — footer staat altijd op donkergroen, in dark mode inverteert
+  /* Hardcoded, footer staat altijd op donkergroen, in dark mode inverteert
      var(--white) naar donker en zou de tekst onzichtbaar maken. */
   color: #ffffff;
 }
 
 .footer-brand .brand-mark {
-  background: var(--orange-600);
-  box-shadow: inset -10px -10px 0 rgba(255, 255, 255, 0.16);
+  background: transparent;
+  box-shadow: none;
 }
 
 .site-footer h3 {
-  /* Hardcoded — zie .footer-brand voor uitleg. */
+  /* Hardcoded, zie .footer-brand voor uitleg. */
   color: #ffffff;
   margin-bottom: 10px;
 }
@@ -8084,7 +8230,7 @@ p {
   margin-right: 6px;
 }
 
-/* Hamburger knop — alleen zichtbaar op mobile */
+/* Hamburger knop, alleen zichtbaar op mobile */
 .mobile-menu-toggle {
   display: none;
   width: 40px;
@@ -8142,7 +8288,7 @@ p {
 }
 
 .mobile-menu-search {
-  /* HeaderSearch zit hier — z'n eigen styling werkt */
+  /* HeaderSearch zit hier, z'n eigen styling werkt */
 }
 
 .mobile-menu-nav {
@@ -8186,7 +8332,7 @@ p {
     display: none;
   }
 
-  /* Hide things we don't want on mobile header — die zitten in drawer */
+  /* Hide things we don't want on mobile header, die zitten in drawer */
   .header-inner > .header-actions .header-creator-cta,
   .header-inner > .header-actions .notification-bell {
     display: none;
@@ -8517,7 +8663,7 @@ p {
 }
 
 /* ============================================================
-   Berichten — split layout (lijst + gesprek)
+   Berichten, split layout (lijst + gesprek)
    ============================================================ */
 .messages-split {
   display: grid;
@@ -16418,7 +16564,7 @@ p {
   flex-wrap: wrap;
 }
 
-/* Cookie consent banner — bottom-sticky tot bezoeker keuze maakt */
+/* Cookie consent banner, bottom-sticky tot bezoeker keuze maakt */
 .cookie-banner {
   position: fixed;
   left: 16px;
@@ -16558,7 +16704,7 @@ p {
 /* ====== Toolkit (mini-tools) ==========================================
    Gratis browser-tools van Hazenco. Index + per-tool template. */
 
-/* Toolkit hero — split layout zoals homepage, met stat-card rechts */
+/* Toolkit hero, split layout zoals homepage, met stat-card rechts */
 .toolkit-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -16776,7 +16922,7 @@ p {
   color: #e6f1ec;
 }
 
-/* Hoe het werkt — full-bleed sectie onder de tools-grid.
+/* Hoe het werkt, full-bleed sectie onder de tools-grid.
    Breekt uit de .page container met margin-inline negatief + width 100vw.
    Padding-x compenseert zodat inner content aligned blijft met de rest. */
 .toolkit-howto {
@@ -16922,7 +17068,7 @@ p {
   }
 }
 
-/* FAQ — accordion van native <details> elements */
+/* FAQ, accordion van native <details> elements */
 .toolkit-faq {
   margin-top: 64px;
   max-width: 760px;
@@ -18670,7 +18816,7 @@ p {
   gap: 16px;
 }
 
-/* Drop zone — upload via klik OF drag-drop */
+/* Drop zone, upload via klik OF drag-drop */
 .bgremove-dropzone {
   display: block;
   position: relative;
@@ -18822,7 +18968,7 @@ p {
   border-radius: 999px;
 }
 
-/* Compare-view — origineel naast resultaat */
+/* Compare-view, origineel naast resultaat */
 .bgremove-compare {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -21342,7 +21488,7 @@ p {
   color: rgba(230, 241, 236, 0.75);
 }
 
-/* Recente cases — portfolio-stijl met image + gekleurde band + body */
+/* Recente cases, portfolio-stijl met image + gekleurde band + body */
 .cases-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -21407,7 +21553,7 @@ p {
   margin-top: 2px;
 }
 
-/* Tone: dark — premium / corporate
+/* Tone: dark, premium / corporate
    Hardcoded #1a3c2e omdat var(--green-900) in dark mode inverteert naar
    lichter sage, en witte tekst dan onleesbaar wordt op het band. */
 .case-card.tone-dark .case-band {
@@ -21425,7 +21571,7 @@ p {
   color: #ffffff;
 }
 
-/* Tone: light — clean / startup */
+/* Tone: light, clean / startup */
 .case-card.tone-light .case-band {
   background: #d3e4d3;
   color: #1a3c2e;
@@ -21441,7 +21587,7 @@ p {
   color: #ffffff;
 }
 
-/* Tone: peach — warm / consumer */
+/* Tone: peach, warm / consumer */
 .case-card.tone-peach .case-band {
   background: #fbe5ce;
   color: #4a2812;
@@ -21941,7 +22087,7 @@ p {
 }
 
 /* ============================================================
-   Listing analytics — funnel
+   Listing analytics, funnel
    ============================================================ */
 .listing-funnel {
   margin-top: 22px;
@@ -22061,7 +22207,7 @@ p {
 }
 
 /* ============================================================
-   Screenshot gallery — tool detail page
+   Screenshot gallery, tool detail page
    Hero slider + thumbnail strip + fullscreen lightbox
    ============================================================ */
 
@@ -22071,7 +22217,7 @@ p {
   flex-wrap: wrap;
 }
 
-/* Standalone hero image — geen panel-frame, geen browser-chrome,
+/* Standalone hero image, geen panel-frame, geen browser-chrome,
    alleen de afbeelding. Vervangt de mock voor tools met hero_image_url. */
 .detail-hero-standalone-wrap {
   margin-top: 20px;
@@ -22088,7 +22234,7 @@ p {
   object-fit: cover;
 }
 
-/* Detail-sidebar — stack price-box + contact-box verticaal en blijf
+/* Detail-sidebar, stack price-box + contact-box verticaal en blijf
    samen aan de top plakken tijdens scrollen. Sticky verplaatst van
    .price-box naar deze wrapper zodat beide panels samen meeschuiven. */
 .detail-sidebar {
@@ -22100,7 +22246,7 @@ p {
   align-self: start;
 }
 
-/* Contact-box — subtieler dan price-box, secundaire CTA */
+/* Contact-box, subtieler dan price-box, secundaire CTA */
 .contact-box {
   background: var(--bg-elevated);
   border: 1px solid var(--line);
@@ -22163,7 +22309,7 @@ p {
   border-color: #25d366;
 }
 
-/* Actions row onder hero — altijd zichtbaar voor zowel image- als mock-modus */
+/* Actions row onder hero, altijd zichtbaar voor zowel image- als mock-modus */
 .detail-hero-actions {
   margin-top: 14px;
   display: flex;
@@ -22184,7 +22330,7 @@ p {
   cursor: not-allowed;
 }
 
-/* Vergelijkbare tools — 2 kolommen ipv standard 3, want detail-pagina
+/* Vergelijkbare tools, 2 kolommen ipv standard 3, want detail-pagina
    heeft een price-box sidebar die ruimte inneemt. */
 .related-grid {
   display: grid;
@@ -22198,7 +22344,7 @@ p {
   }
 }
 
-/* Markdown content (gerenderd door react-markdown) — gebruikt in
+/* Markdown content (gerenderd door react-markdown), gebruikt in
    ExpandableText voor product descriptions. Scoped op .markdown-content
    zodat het styling niet de hele app raakt. */
 .markdown-content > *:first-child {
@@ -22307,7 +22453,7 @@ p {
   border-top: 1px solid var(--line);
 }
 
-/* Expandable text — fade-out gradient + ronde center button */
+/* Expandable text, fade-out gradient + ronde center button */
 .expandable-text-wrap {
   position: relative;
 }
@@ -22328,7 +22474,7 @@ p {
 /* .expandable-text class niet meer in JSX; markdown rendert eigen elementen.
    Behoud blok als no-op zodat eventuele lingering CSS selectors niks breken. */
 
-/* Fade overlay onderaan — verdwijnt bij expanded */
+/* Fade overlay onderaan, verdwijnt bij expanded */
 .expandable-text-inner::after {
   content: "";
   position: absolute;
@@ -22635,7 +22781,7 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
-/* Dark mode polish — gallery is content, follows token inversion */
+/* Dark mode polish, gallery is content, follows token inversion */
 [data-theme="dark"] .screenshots-hero,
 [data-theme="dark"] .screenshots-thumb {
   background: var(--bg-elevated);
@@ -22659,7 +22805,7 @@ p {
 }
 
 /* ============================================================
-   HAZENCO B2B — Homepage components (Fase 1 sessie 2a)
+   HAZENCO B2B, Homepage components (Fase 1 sessie 2a)
    ============================================================ */
 
 .hazenco-hero {
@@ -23679,7 +23825,7 @@ p {
   margin: 0 0 28px;
 }
 
-/* Hero afbeelding — het thumbnail-plaatje van de card, groot bovenaan */
+/* Hero afbeelding, het thumbnail-plaatje van de card, groot bovenaan */
 .oplossing-hero-image {
   background: var(--green-50);
   border: 1px solid var(--line);
@@ -23693,7 +23839,7 @@ p {
   display: block;
 }
 
-/* Screenshots — grid, klikbaar, GEEN crop (natuurlijke verhouding) */
+/* Screenshots, grid, klikbaar, GEEN crop (natuurlijke verhouding) */
 .oplossing-screenshot-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -23915,7 +24061,7 @@ p {
   opacity: 0.7;
 }
 
-/* Sidebar — sticky met ruimte onder de sticky site-header */
+/* Sidebar, sticky met ruimte onder de sticky site-header */
 .oplossing-detail-sidebar {
   position: sticky;
   top: 84px;

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 
-/** Hazenco WhatsApp — alleen cijfers, country code voorop. */
+/** Hazenco WhatsApp, alleen cijfers, country code voorop. */
 const HAZENCO_WHATSAPP = "31643074303";
 
 type InfoLink = {
@@ -21,7 +21,7 @@ const INFO_LINKS: InfoLink[] = [
 
 /**
  * Sidebar voor info-pages (over-ons, FAQ, privacy, algemene voorwaarden).
- * Bevat een nav naar de andere info-pages plus twee CTA-boxes — geeft
+ * Bevat een nav naar de andere info-pages plus twee CTA-boxes, geeft
  * de pagina visueel gewicht en stuurt bezoekers door naar relevante
  * vervolgstappen in plaats van een dood einde.
  */
@@ -49,7 +49,7 @@ export function InfoSidebar() {
 
       <div className="info-help-box">
         <h3>Vragen?</h3>
-        <p>Stuur ons een WhatsApp — we reageren meestal binnen één werkdag.</p>
+        <p>Stuur ons een WhatsApp, we reageren meestal binnen één werkdag.</p>
         <a
           className="info-help-cta"
           href={`https://wa.me/${HAZENCO_WHATSAPP}?text=${encodeURIComponent(
@@ -64,7 +64,7 @@ export function InfoSidebar() {
 
       <div className="info-creator-box">
         <h3>Wat kunnen we voor je bouwen?</h3>
-        <p>Van custom website tot AI-workflow tot procesautomatisering — plan een gesprek van 15 minuten.</p>
+        <p>Van custom website tot AI-workflow tot procesautomatisering, plan een gesprek van 15 minuten.</p>
         <Link className="info-creator-cta" href="/contact">
           <Sparkles size={15} /> Plan een gesprek
         </Link>

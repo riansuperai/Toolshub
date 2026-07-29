@@ -3,24 +3,24 @@ import { Globe } from "lucide-react";
 import { ServicePage, type ServicePageData } from "@/components/service-page";
 
 export const metadata: Metadata = {
-  title: "Website laten maken — custom Next.js door Hazenco",
+  title: "Website laten maken, custom Next.js door Hazenco",
   description:
-    "Een custom Next.js-website die snel laadt, converteert en meegroeit. Wij bouwen, hosten en onderhouden — geen builders, geen plugin-drama."
+    "Een custom Next.js-website die snel laadt, converteert en meegroeit. Wij bouwen, hosten en onderhouden, geen builders, geen plugin-drama."
 };
 
 const data: ServicePageData = {
   eyebrow: "Webdesign",
   title: "Een website die je bedrijf serieus laat ogen.",
   lead:
-    "Custom Next.js-sites die snel laden, converteren en meegroeien. Wij bouwen, hosten en onderhouden — jij hoeft je niet druk te maken over builders, plugins of hosting.",
+    "Custom Next.js-sites die snel laden, converteren en meegroeien. Wij bouwen, hosten en onderhouden, jij hoeft je niet druk te maken over builders, plugins of hosting.",
   intro:
-    "De meeste MKB-websites zijn een compromis tussen wat een template kan en wat een ondernemer eigenlijk wil. Wij bouwen custom — dezelfde stack die grote SaaS-bedrijven gebruiken (Next.js, TypeScript, Vercel/eigen VPS). Dat is niet duurder dan een goede WordPress-build met alle plugins, en het levert een site op die daadwerkelijk snel is, veilig blijft en niet omvalt bij een update.",
+    "De meeste MKB-websites zijn een compromis tussen wat een template kan en wat een ondernemer eigenlijk wil. Wij bouwen custom, dezelfde stack die grote SaaS-bedrijven gebruiken (Next.js, TypeScript, Vercel/eigen VPS). Dat is niet duurder dan een goede WordPress-build met alle plugins, en het levert een site op die daadwerkelijk snel is, veilig blijft en niet omvalt bij een update.",
   wat: {
     heading: "Wat er onder de motorkap zit",
     items: [
       {
         title: "Volledig op maat",
-        text: "Geen builder, geen template. Elke pagina precies zoals jij 'm wilt — inclusief dark mode als je dat wilt."
+        text: "Geen builder, geen template. Elke pagina precies zoals jij 'm wilt, inclusief dark mode als je dat wilt."
       },
       {
         title: "Snel op elk apparaat",
@@ -28,7 +28,7 @@ const data: ServicePageData = {
       },
       {
         title: "SEO-fundament",
-        text: "Correcte meta-tags, sitemap.xml, robots.txt, Open Graph — geen los SEO-plugin nodig."
+        text: "Correcte meta-tags, sitemap.xml, robots.txt, Open Graph, geen los SEO-plugin nodig."
       },
       {
         title: "Hosting & SSL inbegrepen",
@@ -57,7 +57,7 @@ const data: ServicePageData = {
       },
       {
         title: "Design + build (week 2-3)",
-        text: "We bouwen direct in code — geen Figma-mock die daarna nog vertaald moet worden. Je krijgt een preview-link waar je continu op kunt reageren."
+        text: "We bouwen direct in code, geen Figma-mock die daarna nog vertaald moet worden. Je krijgt een preview-link waar je continu op kunt reageren."
       },
       {
         title: "Testen, launch en meten (week 3-4)",
@@ -67,7 +67,7 @@ const data: ServicePageData = {
   },
   prijs: {
     heading: "Twee manieren om het te doen",
-    lead: "Eenmalige investering of maandelijkse partnership — kies wat past bij je cashflow.",
+    lead: "Eenmalige investering of maandelijkse partnership, kies wat past bij je cashflow.",
     packages: [
       {
         name: "Eenmalig",
@@ -79,7 +79,7 @@ const data: ServicePageData = {
         name: "All-in maandelijks",
         price: "vanaf € 89",
         period: "/mnd",
-        text: "Setup, hosting, updates, backups, security en support — allemaal inbegrepen. Vanaf 24 maanden.",
+        text: "Setup, hosting, updates, backups, security en support, allemaal inbegrepen. Vanaf 24 maanden.",
         primary: true
       }
     ],
@@ -108,11 +108,11 @@ const data: ServicePageData = {
   faq: [
     {
       q: "Waarom custom en niet WordPress of Webflow?",
-      a: "WordPress is 20 jaar oud en heeft plugins nodig voor alles — die worden je grootste onderhoudsprobleem. Webflow is te beperkt zodra je iets custom wilt (integraties, formulieren met logica, meertalig). Custom Next.js kost nauwelijks meer bij oplevering, en veel minder in onderhoud."
+      a: "WordPress is 20 jaar oud en heeft plugins nodig voor alles, die worden je grootste onderhoudsprobleem. Webflow is te beperkt zodra je iets custom wilt (integraties, formulieren met logica, meertalig). Custom Next.js kost nauwelijks meer bij oplevering, en veel minder in onderhoud."
     },
     {
       q: "Kan ik zelf de content aanpassen?",
-      a: "Ja — we bouwen een lightweight admin-panel of gebruiken een CMS (Sanity of Contentful) als je regelmatig content wilt bijwerken. Voor sites die niet vaak veranderen, doen we tekstwijzigingen zelf binnen 1-2 werkdagen."
+      a: "Ja, we bouwen een lightweight admin-panel of gebruiken een CMS (Sanity of Contentful) als je regelmatig content wilt bijwerken. Voor sites die niet vaak veranderen, doen we tekstwijzigingen zelf binnen 1-2 werkdagen."
     },
     {
       q: "Hoe zit het met mijn bestaande SEO?",

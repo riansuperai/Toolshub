@@ -6,7 +6,7 @@ import { MiniToolPage } from "@/components/mini-tool-page";
 
 /**
  * Map van NL bank-codes (4 letters in IBAN) naar herkenbare namen.
- * Lijst klein gehouden — voor exotische codes valt 'ie terug op "Onbekende bank".
+ * Lijst klein gehouden, voor exotische codes valt 'ie terug op "Onbekende bank".
  */
 const NL_BANK_CODES: Record<string, string> = {
   ABNA: "ABN AMRO",
@@ -148,14 +148,14 @@ export function IbanCheckerClient() {
       slug="iban-checker"
       privacyNote="Validatie draait in je browser. Wij ontvangen geen rekeninggegevens."
       howItWorks={[
-        "Plak of typ een IBAN-nummer (Nederlands of internationaal — spaties en streepjes mogen).",
+        "Plak of typ een IBAN-nummer (Nederlands of internationaal, spaties en streepjes mogen).",
         "We checken de structuur en de wiskundige controle (mod-97) van het nummer.",
         "Bij Nederlandse IBANs zie je direct welke bank het is."
       ]}
       crossSell={{
         heading: "Klanten automatisch incasseren?",
         body:
-          "Hazenco zet SEPA incasso op via Mollie of Stripe — facturen worden automatisch geïnd, klanten houden controle.",
+          "Hazenco zet SEPA incasso op via Mollie of Stripe, facturen worden automatisch geïnd, klanten houden controle.",
         cta: "Plan een gesprek",
         href: "https://hazenco.nl/contact/"
       }}
@@ -201,7 +201,7 @@ export function IbanCheckerClient() {
             <XCircle size={18} />
             <div>
               <strong>Checksum klopt niet</strong>
-              <p>De wiskundige controle faalt — er staat waarschijnlijk een typefout in.</p>
+              <p>De wiskundige controle faalt, er staat waarschijnlijk een typefout in.</p>
             </div>
           </div>
         ) : null}

@@ -94,7 +94,7 @@ export function FileDropzone({ files, onChange, accept }: Props) {
                 type="button"
                 className={`file-dropzone-visibility${file.private ? " private" : " public"}`}
                 onClick={() => toggleVisibility(file.id)}
-                title={file.private ? "Privé — alleen kopers" : "Publiek — preview"}
+                title={file.private ? "Privé, alleen kopers" : "Publiek, preview"}
               >
                 {file.private ? "Privé" : "Preview"}
               </button>

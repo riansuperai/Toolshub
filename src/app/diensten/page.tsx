@@ -4,7 +4,7 @@ import { ArrowRight, Globe, Workflow, Sparkles, Check } from "lucide-react";
 import { Shell } from "@/components/shell";
 
 export const metadata: Metadata = {
-  title: "Diensten — webdesign, workflow-automatisering, AI-workflows",
+  title: "Diensten, webdesign, workflow-automatisering, AI-workflows",
   description:
     "Hazenco bouwt websites op maat, automatiseert bedrijfsprocessen en levert AI-workflows voor het Nederlandse MKB. Done-for-you levering, klein team, direct contact."
 };
@@ -28,7 +28,7 @@ const diensten = [
     slug: "/workflow-automatisering",
     label: "Workflow-automatisering",
     tagline:
-      "Van handmatig Excel-werk naar systemen die vanzelf lopen — meetbare tijdwinst.",
+      "Van handmatig Excel-werk naar systemen die vanzelf lopen, meetbare tijdwinst.",
     features: [
       "Analyse van je huidige processen",
       "Custom tools (product-manager, sync, calculators)",
@@ -41,7 +41,7 @@ const diensten = [
     slug: "/ai-workflows",
     label: "AI-workflows & integraties",
     tagline:
-      "Slimme agents die met jouw klanten praten — telefoon, WhatsApp, reviews.",
+      "Slimme agents die met jouw klanten praten, telefoon, WhatsApp, reviews.",
     features: [
       "Nederlandstalig, in jouw toon-of-voice",
       "24/7 aan, escalatie naar mens waar nodig",
@@ -61,7 +61,7 @@ export default function DienstenPage() {
             <h1>Drie manieren om je bedrijf sneller te laten lopen.</h1>
             <p className="lead">
               Custom software, procesautomatisering of AI-workflows. Elke dienst is done-for-you: wij regelen
-              installatie, integratie en onderhoud — jij plukt de vruchten.
+              installatie, integratie en onderhoud, jij plukt de vruchten.
             </p>
             <div className="hazenco-hero-cta">
               <Link href="/contact" className="button">
@@ -110,7 +110,7 @@ export default function DienstenPage() {
           <div className="hazenco-contact-inner">
             <h2>Niet gevonden wat je zoekt?</h2>
             <p>
-              Elke dienst is uiteindelijk maatwerk. Vertel wat je zoekt in 15 minuten — dan hoor je of we een fit
+              Elke dienst is uiteindelijk maatwerk. Vertel wat je zoekt in 15 minuten, dan hoor je of we een fit
               zijn en wat het grofweg kost.
             </p>
             <div className="hazenco-contact-cta">

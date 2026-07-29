@@ -16,7 +16,7 @@ export default function NotFound() {
           <span className="eyebrow"><Sparkles size={11} /> Oeps</span>
           <h1>Deze pagina is verdwaald</h1>
           <p>
-            De link werkt niet meer of de pagina is verplaatst. Geen zorgen — gebruik onderstaande snelkoppelingen om weer op pad te komen.
+            De link werkt niet meer of de pagina is verplaatst. Geen zorgen, gebruik onderstaande snelkoppelingen om weer op pad te komen.
           </p>
 
           <div className="not-found-actions">

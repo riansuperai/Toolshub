@@ -21,7 +21,7 @@ const dmSerifDisplay = DM_Serif_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://hazenco.nl"),
   title: {
-    default: "Hazenco — Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
+    default: "Hazenco, Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
     template: "%s | Hazenco"
   },
   description:
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     locale: "nl_NL",
     siteName: "Hazenco",
     url: "https://hazenco.nl",
-    title: "Hazenco — Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
+    title: "Hazenco, Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
     description:
       "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows."
   },

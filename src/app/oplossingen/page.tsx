@@ -7,14 +7,14 @@ import { fetchPublishedListings } from "@/lib/supabase-queries";
 import { OplossingenList } from "./oplossingen-list";
 
 export const metadata: Metadata = {
-  title: "Oplossingen — wat we voor klanten hebben gebouwd",
+  title: "Oplossingen, wat we voor klanten hebben gebouwd",
   description:
     "Productized oplossingen en tools van Hazenco: webdesign-pakketten, workflow-automatisering, AI-workflows en eigen Hazenco-tools. Klaar om af te nemen of als startpunt voor iets op maat."
 };
 
-export const revalidate = 300; // 5 min cache — content update relatively rarely
+export const revalidate = 300; // 5 min cache, content update relatively rarely
 
-// Whitelist van slugs die Hazenco zelf aanbiedt — 5 Hazenco-tools uit
+// Whitelist van slugs die Hazenco zelf aanbiedt, 5 Hazenco-tools uit
 // Supabase + 7 productized services die we in eerdere sessies gemaakt hebben.
 // Filter op slug is robuuster dan op sellerId (Supabase gebruikt UUID, mock
 // gebruikt string; slug is in beide identiek).
@@ -36,7 +36,7 @@ const HAZENCO_SLUGS = new Set([
 ]);
 
 export default async function OplossingenPage() {
-  // Supabase eerst, fallback op mock data — zo tonen we ALLE productie-listings
+  // Supabase eerst, fallback op mock data, zo tonen we ALLE productie-listings
   // (Price Tool, Voorraad, CEP, etc.) als Supabase-connectie werkt, en de
   // service_package-set als 'ie niet werkt (bijv. lokaal zonder env-vars).
   const supabaseListings = await fetchPublishedListings();
@@ -54,7 +54,7 @@ export default async function OplossingenPage() {
             <p className="eyebrow">Oplossingen</p>
             <h1>Wat we voor klanten hebben gebouwd.</h1>
             <p className="lead">
-              Productized oplossingen en tools op basis van onze drie diensten. Klaar om af te nemen — of als
+              Productized oplossingen en tools op basis van onze drie diensten. Klaar om af te nemen, of als
               startpunt voor iets op maat. Alle prijzen zijn indicatief en all-in.
             </p>
             <div className="hazenco-hero-cta">
@@ -78,7 +78,7 @@ export default async function OplossingenPage() {
           <div className="hazenco-contact-inner">
             <h2>Iets anders voor ogen?</h2>
             <p>
-              Alles wat je hier ziet is een startpunt — geen keurslijf. Vertel wat je zoekt en we bekijken samen of
+              Alles wat je hier ziet is een startpunt, geen keurslijf. Vertel wat je zoekt en we bekijken samen of
               een van deze oplossingen past, of dat we iets op maat bouwen.
             </p>
             <div className="hazenco-contact-cta">

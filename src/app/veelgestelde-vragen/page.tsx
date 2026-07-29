@@ -6,7 +6,7 @@ import { InfoSidebar } from "@/components/info-sidebar";
 export const metadata: Metadata = {
   title: "Veelgestelde vragen",
   description:
-    "Antwoorden op de meest gestelde vragen over Hazenco — kopen, demo's, support en creator worden."
+    "Antwoorden op de meest gestelde vragen over Hazenco, kopen, demo's, support en creator worden."
 };
 
 export default function FaqPage() {
@@ -17,7 +17,7 @@ export default function FaqPage() {
           <div className="info-main">
             <h1>Veelgestelde vragen</h1>
             <p className="lead-sm" style={{ color: "var(--green-700)", marginBottom: 24 }}>
-              Vind je vraag niet terug? Neem contact met ons op — we helpen graag.
+              Vind je vraag niet terug? Neem contact met ons op, we helpen graag.
             </p>
 
         <section className="section-card">
@@ -25,7 +25,7 @@ export default function FaqPage() {
           <p>
             Bij elke tool hoort een demo, screenshots en een uitgebreide
             beschrijving. Twijfel je? Vraag eerst een gesprek aan via
-            WhatsApp — we denken graag met je mee.
+            WhatsApp, we denken graag met je mee.
           </p>
         </section>
 
@@ -43,7 +43,7 @@ export default function FaqPage() {
           <p>
             Iedere creator biedt support tijdens de meegeleverde periode (zie
             het pakket). Als er een serieus probleem is, kan je contact
-            opnemen met Hazenco — we helpen bemiddelen of refunden waar
+            opnemen met Hazenco, we helpen bemiddelen of refunden waar
             redelijk.
           </p>
         </section>
@@ -70,7 +70,7 @@ export default function FaqPage() {
           <h2>Vraag niet beantwoord?</h2>
           <p>
             Stuur een bericht via WhatsApp (+31 6 4307403) of mail naar{" "}
-            <a href="mailto:info@hazenco.nl">info@hazenco.nl</a> — we
+            <a href="mailto:info@hazenco.nl">info@hazenco.nl</a>, we
             reageren meestal binnen één werkdag.
           </p>
         </section>

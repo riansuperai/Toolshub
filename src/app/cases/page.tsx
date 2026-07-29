@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Shell } from "@/components/shell";
 
 export const metadata: Metadata = {
-  title: "Cases — wat we voor klanten hebben gebouwd",
+  title: "Cases, wat we voor klanten hebben gebouwd",
   description:
     "Voorbeelden van websites, procesautomatisering en AI-workflows die Hazenco heeft geleverd. Van kapsalons tot webshops tot praktijken."
 };

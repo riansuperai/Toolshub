@@ -1,7 +1,7 @@
 ---
 title: "Wat levert workflow-automatisering realistisch op in het eerste jaar?"
 date: "2026-07-05"
-excerpt: "Concrete cijfers van drie klanten — tegel-webshop, kapsalon en autobedrijf. Plus de vaste valkuilen die iedereen ziet."
+excerpt: "Concrete cijfers van drie klanten, tegel-webshop, kapsalon en autobedrijf. Plus de vaste valkuilen die iedereen ziet."
 author: "Hazenco"
 tags: ["automatisering", "roi"]
 ---
@@ -63,6 +63,6 @@ Onafhankelijk van de use-case zien we deze drie fouten steeds terug:
 
 ## Kortom
 
-Realistische ROI in het eerste jaar zit meestal tussen **2x en 8x de investering**, afhankelijk van hoe veel de handmatige variant kostte. De projecten die binnen 3 maanden terugverdiend zijn, hebben vrijwel altijd één ding gemeen: een specifiek, meetbaar probleem — niet een vage "we willen efficiënter worden".
+Realistische ROI in het eerste jaar zit meestal tussen **2x en 8x de investering**, afhankelijk van hoe veel de handmatige variant kostte. De projecten die binnen 3 maanden terugverdiend zijn, hebben vrijwel altijd één ding gemeen: een specifiek, meetbaar probleem, niet een vage "we willen efficiënter worden".
 
-Weten waar bij jou het meeste zit? [Plan een gesprek](/contact) — dan bespreken we welke automatisering het snelst zichzelf terugbetaalt.
+Weten waar bij jou het meeste zit? [Plan een gesprek](/contact), dan bespreken we welke automatisering het snelst zichzelf terugbetaalt.

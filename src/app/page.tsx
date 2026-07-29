@@ -23,7 +23,7 @@ import { listings as mockListings } from "@/lib/marketplace-data";
 import { fetchPublishedListings } from "@/lib/supabase-queries";
 
 export const metadata: Metadata = {
-  title: "Hazenco — Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
+  title: "Hazenco, Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
   description:
     "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows. Klein team, direct contact, done-for-you levering."
 };
@@ -41,14 +41,14 @@ const diensten = [
     href: "/workflow-automatisering",
     title: "Workflow-automatisering",
     text:
-      "Van handmatig Excel-werk naar systemen die vanzelf lopen. Product-manager, cross-sell popups, calculators — meetbare tijdwinst."
+      "Van handmatig Excel-werk naar systemen die vanzelf lopen. Product-manager, cross-sell popups, calculators, meetbare tijdwinst."
   },
   {
     icon: Sparkles,
     href: "/ai-workflows",
     title: "AI-workflows & integraties",
     text:
-      "Slimme agents die met je klanten praten. Telefoonbot, WhatsApp-chatbot, reviews-responder — in jouw toon-of-voice, 24/7 aan."
+      "Slimme agents die met je klanten praten. Telefoonbot, WhatsApp-chatbot, reviews-responder, in jouw toon-of-voice, 24/7 aan."
   }
 ];
 
@@ -113,11 +113,11 @@ export default async function HomePage() {
       <section className="hazenco-hero">
         <div className="page">
           <div className="hazenco-hero-inner">
-            <p className="eyebrow">Hazenco — B2B partner</p>
+            <p className="eyebrow">Hazenco, B2B partner</p>
             <h1>Wij automatiseren en bouwen<br />wat jouw bedrijf sneller maakt.</h1>
             <p className="lead">
               Custom software, workflow-automatisering en AI-workflows voor het Nederlandse MKB. Klein team, direct
-              contact, done-for-you levering — zonder softwarebureau-prijzen.
+              contact, done-for-you levering, zonder softwarebureau-prijzen.
             </p>
             <div className="hazenco-hero-cta">
               <Link href="/contact" className="button">
@@ -165,7 +165,7 @@ export default async function HomePage() {
             <p className="eyebrow">Oplossingen</p>
             <h2>Voorbeelden van wat we hebben gebouwd</h2>
             <p className="hazenco-section-sub">
-              Productized oplossingen die je 1-op-1 kunt afnemen — of als startpunt voor iets op maat.
+              Productized oplossingen die je 1-op-1 kunt afnemen, of als startpunt voor iets op maat.
             </p>
           </header>
           <div className="hazenco-oplossingen-grid">
@@ -174,17 +174,21 @@ export default async function HomePage() {
               const monthly = l.servicePricing?.subscription?.priceCentsPerMonth;
               return (
                 <article key={l.id} className="hazenco-oplossing-card">
-                  {l.screenshotUrls?.[0] ? (
-                    <div className="hazenco-oplossing-media">
-                      <Image
-                        src={l.screenshotUrls[0]}
-                        alt={l.title}
-                        width={720}
-                        height={452}
-                        style={{ width: "100%", height: "auto", display: "block" }}
-                      />
-                    </div>
-                  ) : null}
+                  {(() => {
+                    const thumb = l.heroImageUrl ?? l.screenshotUrls?.[0];
+                    if (!thumb) return null;
+                    return (
+                      <div className="hazenco-oplossing-media">
+                        <Image
+                          src={thumb}
+                          alt={l.title}
+                          width={720}
+                          height={452}
+                          style={{ width: "100%", height: "auto", display: "block" }}
+                        />
+                      </div>
+                    );
+                  })()}
                   <div className="hazenco-oplossing-body">
                     <div className="hazenco-oplossing-head">
                       <div className="hazenco-oplossing-icon">
@@ -239,13 +243,13 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* WAAROM HAZENCO — DOGFOODING */}
+        {/* WAAROM HAZENCO, DOGFOODING */}
         <section className="hazenco-section">
           <header className="hazenco-section-head">
             <p className="eyebrow">Waarom Hazenco</p>
             <h2>Wij bouwen wat we ook zelf gebruiken</h2>
             <p className="hazenco-section-sub">
-              Geen theoretische adviezen — alles wat we voor klanten bouwen draait ook bij onszelf. Dat is de reden dat
+              Geen theoretische adviezen, alles wat we voor klanten bouwen draait ook bij onszelf. Dat is de reden dat
               we weten wat werkt en wat het écht kost om te onderhouden.
             </p>
           </header>
@@ -275,7 +279,7 @@ export default async function HomePage() {
               <h3>Onze toolkit gebruiken we intern</h3>
               <p>
                 De 11 gratis tools zijn ontstaan uit ons eigen dagelijkse werk. Factuur-generator, PDF-samenvoegen,
-                achtergrond-verwijderaar — allemaal getest op onze eigen taken voordat ze publiek gingen.
+                achtergrond-verwijderaar, allemaal getest op onze eigen taken voordat ze publiek gingen.
               </p>
               <Link href="/toolkit" className="hazenco-waarom-link">
                 Bekijk de toolkit <ArrowRight size={13} />
@@ -307,7 +311,7 @@ export default async function HomePage() {
           <div className="hazenco-contact-inner">
             <h2>Kort gesprek, concrete inschatting.</h2>
             <p>
-              Vertel wat je zoekt — dan hoor je binnen 1 werkdag of we een fit zijn en wat het grofweg kost. Geen
+              Vertel wat je zoekt, dan hoor je binnen 1 werkdag of we een fit zijn en wat het grofweg kost. Geen
               verkoopgesprek, geen verplichtingen.
             </p>
             <div className="hazenco-contact-cta">
