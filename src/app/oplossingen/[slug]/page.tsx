@@ -162,7 +162,7 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
             <h1>{listing.title}</h1>
             <p className="oplossing-detail-lead">{listing.tagline}</p>
 
-            <ScreenshotsGallery screenshots={listing.screenshotUrls} title={listing.title} />
+            <ScreenshotsGallery screenshots={listing.screenshotUrls ?? []} title={listing.title} />
 
             {listing.forWho && listing.forWho.length > 0 ? (
               <section className="oplossing-detail-section">

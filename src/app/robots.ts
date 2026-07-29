@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://toolshub.hazenco.nl";
+const BASE_URL = "https://hazenco.nl";
 
 /**
  * Robots.txt — laat alle bots toe en wijst hen naar de sitemap.
@@ -11,9 +11,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        // Auth-only routes uitsluiten van indexering wanneer die later komen
-        disallow: ["/account", "/seller", "/admin", "/checkout", "/winkelwagen"]
+        allow: "/"
       }
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,

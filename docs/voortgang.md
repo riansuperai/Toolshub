@@ -1,20 +1,18 @@
 # Voortgang — hazenco.nl rebuild (Fase 1)
 
 > Levend document. Bij elke sessie bijwerken zodat je kunt zien waar we staan
-> en waar we door moeten. Laatste update: **2026-07-29 (sessies 1 t/m 3d afgerond)**.
+> en waar we door moeten. Laatste update: **2026-07-29 (Fase 1 volledig afgerond)**.
 
-## Waar staan we
+## 🎉 Fase 1 klaar
 
-- Branch: **`hazenco-b2b-rebuild`** — alle rebuild-werk staat hier
-- `main` = huidige productie (Toolshub op toolshub.hazenco.nl), onaangeroerd
-- **7 van 12 sessies afgerond** — de agency-shell staat, homepage en alle 3 diensten-detailpagina's zijn live-klaar.
-- Volgende: sessie 4a (`/oplossingen` showcase)
+Alle 12 sessies afgerond in één sprint. Volledige agency-site staat live-klaar op branch
+**`hazenco-b2b-rebuild`** — wachtend op cutover ná TechPanda-livegang.
 
 ## Fase 1 taken
 
 | # | Sessie | Taak | Status |
 |---|---|------|--------|
-| 1 | — | Git-branch aanmaken: `hazenco-b2b-rebuild` | ✅ done |
+| 1 | — | Git-branch aanmaken | ✅ done |
 | 2 | — | Nieuwe navigatie-structuur | ✅ done |
 | 13 | 1 | Marketplace + app-routes volledig verwijderen | ✅ done |
 | 14 | 2a | Nieuwe services-led homepage | ✅ done |
@@ -23,50 +21,66 @@
 | 17 | 3b | `/website-laten-maken` detail-pagina | ✅ done |
 | 18 | 3c | `/workflow-automatisering` detail-pagina | ✅ done |
 | 19 | 3d | `/ai-workflows` detail-pagina | ✅ done |
-| 20 | 4a | `/oplossingen` index-pagina (showcase) | ⏳ next |
-| 21 | 4b | `/oplossingen/[slug]` detail + route-verhuizing | ⏳ open |
-| 22 | 5a | `/contact` met Resend-formulier | ⏳ open |
-| 23 | 5b | `/blog` infrastructure + 2-3 startposts | ⏳ open |
-| 24 | 6a | `/over-ons` volledig herschrijven (deels al gedaan) | ⏳ open |
-| 25 | 6b | SEO-metadata + sitemap update | ⏳ open |
-| 26 | 7 | Fase 1 launch-check + cutover-runbook | ⏳ open |
+| 20 | 4a | `/oplossingen` index-pagina | ✅ done |
+| 21 | 4b | `/oplossingen/[slug]` detail + 301-redirects | ✅ done |
+| 22 | 5a | `/contact` met Resend-formulier | ✅ done |
+| 23 | 5b | `/blog` infrastructure + 3 startposts | ✅ done |
+| 24 | 6a | `/over-ons` volledig herschrijven | ✅ done |
+| 25 | 6b | SEO-metadata + sitemap update | ✅ done |
+| 26 | 7 | Cutover-runbook | ✅ done |
 
 ## Wat er nu live is op de branch
 
-**Publieke routes (allemaal HTTP 200):**
-- `/` — volwaardige services-led homepage (hero + 3 diensten + 3 oplossingen + toolkit-band + waarom-hazenco + blog-teaser + contact-band)
-- `/diensten` — hub met 3 dienst-cards, features en dubbele CTA per card
-- `/website-laten-maken` — volledige detail-pagina (hero + intro + wat je krijgt + proces + prijs + cases + FAQ + CTA)
-- `/workflow-automatisering` — idem
-- `/ai-workflows` — idem
-- `/cases`, `/blog` — placeholder "in aanbouw"
-- `/contact` — WhatsApp + mail direct werkend
-- `/toolkit` + 11 sub-tools — behouden en werkend
-- `/over-ons`, `/privacy`, `/algemene-voorwaarden`, `/veelgestelde-vragen` — Toolshub-refs weg, Hazenco-toon in
+**35 URLs in sitemap.xml:**
+- 14 statische pages (home, diensten hub, 3 dienst-details, oplossingen, toolkit, cases, blog, contact, over-ons, privacy, AV, FAQ)
+- 11 toolkit-subpages
+- 7 oplossing-detail-pages
+- 3 blog-posts
 
-**Shell + branding:**
-- Brand: alleen "Hazenco." (geen Toolshub)
-- Nav: Home / Diensten / Cases / Toolkit / Blog / Contact
-- Header-CTA: "Plan een gesprek" (peach, prominent)
-- Footer: 4 kolommen agency-stijl + link naar TechPanda
-- Metadata: title/OG/twitter allemaal Hazenco (metadataBase = hazenco.nl)
+**Alle pages returnen HTTP 200 + typecheck clean.**
 
-**Weg (bevestigd verwijderd):**
-- Alle marketplace/checkout/seller/account/admin routes en componenten
-- Alle "Toolshub"-tekst uit UI (nog wel als product-code in commits/comments)
+### Publiek
+
+- `/` — volledige services-led homepage (7 secties)
+- `/diensten` — hub met 3 dienst-cards + features
+- `/website-laten-maken`, `/workflow-automatisering`, `/ai-workflows` — volledige detail-pages (hero + intro + wat + proces + prijs + cases + FAQ + CTA)
+- `/oplossingen` — showcase-index met filter-tabs
+- `/oplossingen/[slug]` — 7 detail-pages op basis van bestaande service_package listings
+- `/toolkit` + 11 sub-tools — behouden
+- `/blog`, `/blog/[slug]` — markdown-based blog met 3 startposts
+- `/contact` — werkend Resend-formulier + directe kanalen
+- `/over-ons` — uitgebreide Hazenco B2B verhaal (principes + dogfooding + TechPanda)
+- `/cases` — placeholder in Hazenco-toon
+- Static: `/privacy`, `/algemene-voorwaarden`, `/veelgestelde-vragen`
+
+### 301-redirects (SEO-safe)
+
+Alle oude marketplace URLs redirecten naar de nieuwe agency-structuur:
+- `/catalogus`, `/tools`, `/tools/:slug` → `/oplossingen(/:slug)`
+- `/winkelwagen`, `/checkout` → `/oplossingen`, `/contact`
+- `/creators`, `/creators/:handle` → `/over-ons`, `/oplossingen`
+- `/account/*`, `/seller/*`, `/admin/*`, `/onboarding` → `/contact`
+
+### Weg
+
+- Volledige marketplace/checkout/seller/account/admin code
+- Alle "Toolshub"-tekst uit UI (brand is nu alleen "Hazenco.")
+- ~17.500 regels code opgeruimd
 
 ## Nieuwe herbruikbare bouwstenen
 
-- `src/components/service-page.tsx` — shared template voor dienst-detail-pagina's. Elke pagina levert een `ServicePageData` object met hero + intro + wat/proces/prijs/cases/FAQ. Consistent uiterlijk over de 3 diensten.
-- `src/components/brand-mark.tsx` — Hazenco 4-blokken logo + HubGlyph (nog steeds bruikbaar in Toolkit-context)
-- Homepage CSS-klassen `.hazenco-*` — herbruikbaar voor andere landing-pages
+- `src/components/service-page.tsx` — shared template voor dienst-detail-pagina's
+- `src/lib/blog.ts` — markdown-loader met gray-matter + remark
+- `src/app/contact/actions.ts` — Resend-integratie met rate-limit + honeypot
 
-## Nog te doen in sessies 4a-4b (oplossingen showcase)
+## Environment-vars voor productie
 
-- `/oplossingen` index — hergebruik 6 `service_package`-cards uit `marketplace-data.ts`
-- `/oplossingen/[slug]` detail — herwerk bestaande service-detail-view
-- 301-redirects `/tools/[slug]` → `/oplossingen/[slug]` in next.config
-- Homepage CTA "Alle oplossingen" moet naar `/oplossingen` gaan (nu naar `/diensten`)
+```env
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+RESEND_API_KEY=re_xxxxxxxxx
+RESEND_FROM=Hazenco Contact <hallo@hazenco.nl>
+RESEND_TO=hallo@hazenco.nl
+```
 
 ## Thuis verder gaan
 
@@ -80,35 +94,44 @@ npm run dev
 # → http://localhost:3000
 ```
 
-## Volgende sessie: pak dit prompt
+## Volgende stappen (post-Fase 1)
 
-```
-Ik ga verder met sessie 4a (/oplossingen showcase-index) van de
-hazenco.nl rebuild op branch hazenco-b2b-rebuild.
+**Vóór cutover:**
+1. Fase 1 launch-check afwerken (checklist in [cutover-runbook.md](cutover-runbook.md))
+2. Content/copy reviewen — is de tone-of-voice goed? Prijsindicaties kloppen?
+3. Contact-formulier E2E testen met echte Resend-key
+4. Screenshots/OG-images per pagina waar nodig
+5. Wachten op TechPanda live
 
-Lees eerst docs/voortgang.md om te zien waar we staan.
+**Cutover-dag:**
+Volg [cutover-runbook.md](cutover-runbook.md) stap voor stap. Belangrijkste:
+- Merge branch → main
+- Deploy op VPS
+- Nginx vhost `toolshub` → `hazenco.nl`
+- DNS switch bij TransIP (MX-records ONAANGEROERD)
+- SSL via certbot voor hazenco.nl
+- WordPress uitfaseren
+- Nieuwe sitemap indienen in Search Console
 
-Bouw /oplossingen als index-pagina die de 6 service_package-listings
-uit src/lib/marketplace-data.ts hergebruikt. Elke card: titel + tagline
-+ hero-screenshot + 'vanaf €X/mnd' + 'plan een gesprek'-CTA. Optioneel
-filter op dienst-categorie (webdesign / workflow / AI).
+**Fase 2 (later):**
+- Real cases toevoegen (echte klantverhalen)
+- Blog uitbreiden (1-2 posts/maand)
+- Toolkit uitbreiden op basis van user-requests
+- SEO-content voor dienst-pages verder verdiepen
 
-Daarna sessie 4b: /oplossingen/[slug] detail-template + 301-redirects
-van /tools/[slug] in next.config.
-```
+## Belangrijke kaders
 
-## Belangrijke kaders (niet vergeten)
-
-- **Timing**: cutover pas ná TechPanda-livegang. Nu = alleen bouwen op branch.
-- **SEO**: oude WP-URLs behouden (`/website-laten-maken`, `/workflow-automatisering`).
-- **Deploy**: TransIP VPS `149.210.203.88`, user `amiagung`. Zie `docs/hosting-vps.md`.
-- **Resend voor contact-formulier**: sessie 5a — heeft RESEND_API_KEY nodig in .env
-- **Redirect-map**: staat in TechPanda-repo: `hazenco-shop/docs/hazenco-migratie-redirect-map.md`.
+- **Timing**: cutover pas ná TechPanda-livegang.
+- **SEO**: `/website-laten-maken` en `/workflow-automatisering` behouden hun oude WP-URLs.
+- **Deploy**: TransIP VPS `149.210.203.88`. Zie [hosting-vps.md](hosting-vps.md).
+- **Runbook**: [cutover-runbook.md](cutover-runbook.md) voor exacte livegang-stappen.
+- **Redirect-map** (buiten deze repo): `hazenco-shop/docs/hazenco-migratie-redirect-map.md` in TechPanda-repo.
 
 ## Verwijzingen
 
 - Strategisch plan: [hazenco-nl-migratie-plan.md](hazenco-nl-migratie-plan.md)
 - Start-prompt: [hazenco-nl-migratie-prompt.md](hazenco-nl-migratie-prompt.md)
+- **Cutover-runbook**: [cutover-runbook.md](cutover-runbook.md) ⭐ nieuw
 - Backend-migratie: [backend-migration.md](backend-migration.md)
 - Hosting: [hosting-vps.md](hosting-vps.md)
 - Design system: [design-system.md](design-system.md)

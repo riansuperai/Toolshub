@@ -24353,3 +24353,96 @@ p {
   color: var(--green-700);
   font-style: italic;
 }
+
+/* Over-ons */
+.over-ons-principes {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.over-ons-principe {
+  background: var(--bg-elevated, var(--surface));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px 24px;
+}
+
+.over-ons-principe-icon {
+  background: var(--orange-100);
+  color: var(--orange-700);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+}
+
+.over-ons-principe h3 {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--green-900);
+}
+
+.over-ons-principe p {
+  margin: 0;
+  color: var(--green-700);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.over-ons-bouw-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.over-ons-bouw-card {
+  background: var(--bg-elevated, var(--surface));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.over-ons-bouw-icon {
+  background: var(--green-100);
+  color: var(--green-800);
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 4px;
+}
+
+.over-ons-bouw-card h3 {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--green-900);
+}
+
+.over-ons-bouw-card p {
+  margin: 0;
+  color: var(--green-700);
+  font-size: 14px;
+  line-height: 1.55;
+  flex: 1;
+}
+
+.over-ons-bouw-link {
+  color: var(--orange-600);
+  font-weight: 600;
+  font-size: 13.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+}
