@@ -2,28 +2,73 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 import {
   ArrowRight,
+  BarChart3,
+  Bot,
+  Boxes,
   Building2,
+  Calendar,
+  CalendarClock,
   ChevronDown,
   Clock,
+  Cpu,
   ExternalLink,
   Globe,
+  HelpCircle,
   Mail,
   Menu,
+  MessageSquare,
+  Newspaper,
+  Package,
+  PencilLine,
   Phone,
+  Plug,
+  ShoppingCart,
   Sparkles,
+  Star,
+  Users,
   Workflow,
   X
 } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-type SimpleLink = { href: string; label: string; description?: string };
+type LucideIcon = ComponentType<{ size?: number }>;
+
+type MegaLink = {
+  href: string;
+  label: string;
+  description?: string;
+  icon: LucideIcon;
+  tone: "orange" | "green" | "sky" | "violet" | "amber";
+};
+
+type MegaGroup = {
+  title: string;
+  bullet: "orange" | "green" | "sky" | "violet" | "amber";
+  links: MegaLink[];
+};
+
+type FeaturedCard = {
+  href: string;
+  title: string;
+  description: string;
+  cta: string;
+  icon: LucideIcon;
+  tone: "orange" | "green" | "sky" | "violet";
+};
+
 type NavItem =
   | { type: "link"; href: string; label: string }
-  | { type: "mega"; label: string; href?: string; groups: { title: string; links: SimpleLink[] }[]; featured?: SimpleLink };
+  | {
+      type: "mega";
+      label: string;
+      href?: string;
+      groups: MegaGroup[];
+      featured: FeaturedCard[];
+    };
 
 const NAV: NavItem[] = [
   { type: "link", href: "/", label: "Home" },
@@ -34,14 +79,50 @@ const NAV: NavItem[] = [
     groups: [
       {
         title: "Onze drie diensten",
+        bullet: "orange",
         links: [
-          { href: "/website-laten-maken", label: "Webdesign", description: "Custom sites, klaar voor conversie en SEO" },
-          { href: "/workflow-automatisering", label: "Workflow-automatisering", description: "Handmatig werk uit je proces halen" },
-          { href: "/ai-workflows", label: "AI-workflows & integraties", description: "AI die echt werk uit handen neemt" }
+          {
+            href: "/website-laten-maken",
+            label: "Webdesign",
+            description: "Custom sites, klaar voor conversie en SEO",
+            icon: Globe,
+            tone: "sky"
+          },
+          {
+            href: "/workflow-automatisering",
+            label: "Workflow-automatisering",
+            description: "Handmatig werk uit je proces halen",
+            icon: Workflow,
+            tone: "green"
+          },
+          {
+            href: "/ai-workflows",
+            label: "AI-workflows & integraties",
+            description: "AI die echt werk uit handen neemt",
+            icon: Sparkles,
+            tone: "orange"
+          }
         ]
       }
     ],
-    featured: { href: "/diensten", label: "Alle diensten bekijken", description: "Overzicht met scope, doorlooptijd en prijs-indicatie" }
+    featured: [
+      {
+        href: "/diensten",
+        title: "Alle diensten bekijken",
+        description: "Overzicht met scope, doorlooptijd en prijs-indicatie",
+        cta: "Naar overzicht",
+        icon: Workflow,
+        tone: "orange"
+      },
+      {
+        href: "/contact",
+        title: "Plan een gesprek",
+        description: "15 minuten, vrijblijvend. We denken direct mee.",
+        cta: "Nu inplannen",
+        icon: CalendarClock,
+        tone: "green"
+      }
+    ]
   },
   {
     type: "mega",
@@ -50,26 +131,105 @@ const NAV: NavItem[] = [
     groups: [
       {
         title: "Hazenco tools",
+        bullet: "orange",
         links: [
-          { href: "/oplossingen/hazenco-price-tool", label: "Price Tool", description: "Dynamic pricing + concurrentie-scraping" },
-          { href: "/oplossingen/hazenco-voorraad-tool", label: "Voorraad Tool", description: "Voorraad-sync tussen leveranciers en shop" },
-          { href: "/oplossingen/hazenco-cep", label: "Customer Engagement Platform", description: "Mailchimp-alternatief voor MKB" },
-          { href: "/oplossingen/hazenco-blog-tool", label: "Blog Studio", description: "AI-blog van idee tot live" },
-          { href: "/oplossingen/hazenco-product-manager", label: "Product Manager", description: "PIM, sales en stock in één" }
+          {
+            href: "/oplossingen/hazenco-price-tool",
+            label: "Price Tool",
+            description: "Dynamic pricing + concurrentie-scraping",
+            icon: BarChart3,
+            tone: "orange"
+          },
+          {
+            href: "/oplossingen/hazenco-voorraad-tool",
+            label: "Voorraad Tool",
+            description: "Voorraad-sync tussen leveranciers en shop",
+            icon: Boxes,
+            tone: "sky"
+          },
+          {
+            href: "/oplossingen/hazenco-cep",
+            label: "Customer Engagement Platform",
+            description: "Mailchimp-alternatief voor MKB",
+            icon: Users,
+            tone: "violet"
+          },
+          {
+            href: "/oplossingen/hazenco-blog-tool",
+            label: "Blog Studio",
+            description: "AI-blog van idee tot live",
+            icon: PencilLine,
+            tone: "amber"
+          },
+          {
+            href: "/oplossingen/hazenco-product-manager",
+            label: "Product Manager",
+            description: "PIM, sales en stock in één",
+            icon: Package,
+            tone: "green"
+          }
         ]
       },
       {
         title: "Productized services",
+        bullet: "sky",
         links: [
-          { href: "/oplossingen/ai-telefoonassistent", label: "AI-telefoonassistent" },
-          { href: "/oplossingen/whatsapp-business-chatbot", label: "WhatsApp chatbot" },
-          { href: "/oplossingen/google-reviews-ai-responder", label: "Google Reviews AI-responder" },
-          { href: "/oplossingen/online-afsprakensysteem", label: "Online afsprakensysteem" },
-          { href: "/oplossingen/website-laten-maken", label: "Website laten maken" }
+          {
+            href: "/oplossingen/ai-telefoonassistent",
+            label: "AI-telefoonassistent",
+            description: "24/7 telefoon, altijd bereikbaar",
+            icon: Phone,
+            tone: "orange"
+          },
+          {
+            href: "/oplossingen/whatsapp-business-chatbot",
+            label: "WhatsApp chatbot",
+            description: "Antwoord binnen seconden op WhatsApp",
+            icon: MessageSquare,
+            tone: "green"
+          },
+          {
+            href: "/oplossingen/google-reviews-ai-responder",
+            label: "Google Reviews responder",
+            description: "AI reageert op elke review, in jouw toon",
+            icon: Star,
+            tone: "amber"
+          },
+          {
+            href: "/oplossingen/online-afsprakensysteem",
+            label: "Online afsprakensysteem",
+            description: "24/7 zelf boeken, jij houdt focus",
+            icon: Calendar,
+            tone: "sky"
+          },
+          {
+            href: "/oplossingen/website-laten-maken",
+            label: "Website laten maken",
+            description: "Custom, snel en SEO-first",
+            icon: Globe,
+            tone: "violet"
+          }
         ]
       }
     ],
-    featured: { href: "/oplossingen", label: "Alle oplossingen bekijken", description: "12 productized oplossingen, klaar om af te nemen" }
+    featured: [
+      {
+        href: "/oplossingen",
+        title: "Alle oplossingen",
+        description: "12 productized oplossingen, klaar om af te nemen",
+        cta: "Naar overzicht",
+        icon: Sparkles,
+        tone: "orange"
+      },
+      {
+        href: "/contact",
+        title: "Iets op maat?",
+        description: "We bouwen ook custom, vertel wat je zoekt.",
+        cta: "Plan een gesprek",
+        icon: Cpu,
+        tone: "sky"
+      }
+    ]
   },
   { type: "link", href: "/cases", label: "Cases" },
   { type: "link", href: "/toolkit", label: "Toolkit" },
@@ -80,23 +240,45 @@ const NAV: NavItem[] = [
     groups: [
       {
         title: "Hazenco",
+        bullet: "orange",
         links: [
-          { href: "/over-ons", label: "Over ons", description: "Wie we zijn en waar we in geloven" },
-          { href: "/blog", label: "Blog", description: "Praktijk-artikelen over software en automatisering" },
-          { href: "/veelgestelde-vragen", label: "Veelgestelde vragen", description: "Antwoord op de meest gestelde vragen" }
+          {
+            href: "/over-ons",
+            label: "Over ons",
+            description: "Wie we zijn en waar we in geloven",
+            icon: Users,
+            tone: "green"
+          },
+          {
+            href: "/blog",
+            label: "Blog",
+            description: "Praktijk-artikelen over software en automatisering",
+            icon: Newspaper,
+            tone: "orange"
+          },
+          {
+            href: "/veelgestelde-vragen",
+            label: "Veelgestelde vragen",
+            description: "Antwoord op de meest gestelde vragen",
+            icon: HelpCircle,
+            tone: "sky"
+          }
         ]
       }
     ],
-    featured: { href: "/contact", label: "Plan een gesprek", description: "15 minuten kennismaken, vrijblijvend" }
+    featured: [
+      {
+        href: "/contact",
+        title: "Plan een gesprek",
+        description: "15 minuten kennismaken, vrijblijvend",
+        cta: "Nu inplannen",
+        icon: CalendarClock,
+        tone: "green"
+      }
+    ]
   },
   { type: "link", href: "/contact", label: "Contact" }
 ];
-
-const MEGA_ICON: Record<string, typeof Globe> = {
-  Diensten: Workflow,
-  Oplossingen: Sparkles,
-  "Over ons": Globe
-};
 
 function activeFor(pathname: string, item: NavItem): boolean {
   if (item.type === "link") return pathname === item.href;
@@ -158,7 +340,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 );
               }
               const isOpen = openMega === item.label;
-              const Icon = MEGA_ICON[item.label] ?? Globe;
               return (
                 <div
                   key={item.label}
@@ -178,38 +359,58 @@ export function Shell({ children }: { children: React.ReactNode }) {
                     <div className="mega-panel" role="menu">
                       <div className="mega-panel-inner">
                         <div className="mega-groups">
-                          {item.groups.map((group) => (
-                            <div key={group.title} className="mega-group">
-                              <p className="mega-group-title">{group.title}</p>
+                          {item.groups.map((group, gi) => (
+                            <div
+                              key={group.title}
+                              className={`mega-group${gi > 0 ? " mega-group-divider" : ""}`}
+                            >
+                              <p className={`mega-group-title tone-${group.bullet}`}>
+                                <span className="mega-group-bullet" /> {group.title}
+                              </p>
                               <ul>
-                                {group.links.map((link) => (
-                                  <li key={link.href}>
-                                    <Link href={link.href} onClick={() => setOpenMega(null)}>
-                                      <span className="mega-link-title">{link.label}</span>
-                                      {link.description ? (
-                                        <span className="mega-link-desc">{link.description}</span>
-                                      ) : null}
-                                    </Link>
-                                  </li>
-                                ))}
+                                {group.links.map((link) => {
+                                  const Icon = link.icon;
+                                  return (
+                                    <li key={link.href}>
+                                      <Link href={link.href} onClick={() => setOpenMega(null)}>
+                                        <span className={`mega-link-icon tone-${link.tone}`}>
+                                          <Icon size={16} />
+                                        </span>
+                                        <span className="mega-link-text">
+                                          <span className="mega-link-title">{link.label}</span>
+                                          {link.description ? (
+                                            <span className="mega-link-desc">{link.description}</span>
+                                          ) : null}
+                                        </span>
+                                      </Link>
+                                    </li>
+                                  );
+                                })}
                               </ul>
                             </div>
                           ))}
                         </div>
-                        {item.featured ? (
-                          <Link
-                            href={item.featured.href}
-                            className="mega-featured"
-                            onClick={() => setOpenMega(null)}
-                          >
-                            <div className="mega-featured-icon"><Icon size={16} /></div>
-                            <div>
-                              <strong>{item.featured.label}</strong>
-                              {item.featured.description ? <p>{item.featured.description}</p> : null}
-                            </div>
-                            <ArrowRight size={16} />
-                          </Link>
-                        ) : null}
+                        <div className="mega-featured-col">
+                          {item.featured.map((f) => {
+                            const Icon = f.icon;
+                            return (
+                              <Link
+                                key={f.href + f.title}
+                                href={f.href}
+                                className={`mega-featured tone-${f.tone}`}
+                                onClick={() => setOpenMega(null)}
+                              >
+                                <span className="mega-featured-title">
+                                  <span className="mega-featured-dot" /> {f.title}
+                                </span>
+                                <span className="mega-featured-desc">{f.description}</span>
+                                <span className="mega-featured-cta">
+                                  {f.cta} <ArrowRight size={13} />
+                                </span>
+                              </Link>
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
                   ) : null}
