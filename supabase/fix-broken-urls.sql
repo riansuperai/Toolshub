@@ -52,6 +52,25 @@ WHERE demo_url IS NOT NULL
 
 
 -- ----------------------------------------------------------------------------
+-- OPEN PUNT: dode afbeeldingen in de cases-JSON van website-laten-maken
+--
+-- Drie cases[].imageUrl-waarden wijzen nog naar wp-content en geven dus 404:
+--   2026/03/Oppervlakten-768x358.webp
+--   2026/03/infrastructure-urbaine-genie-routier-768x768.jpg.webp
+--   2026/03/Screenshot-2026-03-21-190124-768x568.png.webp
+--
+-- Niet urgent: de detailpagina rendert van cases alleen tag, clientName,
+-- label, benefit en highlights. De imageUrl wordt nergens gebruikt, dus er is
+-- visueel niets stuk.
+--
+-- De originelen zijn vóór de cutover gered en staan in de repo onder
+-- public/listings/ als case-oppervlakten.webp, case-infrastructuur.webp en
+-- case-dashboard.webp. Zodra we cases mét afbeelding gaan tonen: uploaden naar
+-- de listing-screenshots bucket en de JSON hier bijwerken.
+-- ----------------------------------------------------------------------------
+
+
+-- ----------------------------------------------------------------------------
 -- 3. Controle: beide queries hieronder horen 0 rijen terug te geven
 -- ----------------------------------------------------------------------------
 
