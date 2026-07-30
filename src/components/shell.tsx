@@ -486,12 +486,16 @@ export function Shell({ children }: { children: React.ReactNode }) {
                     ) : (
                       <span key={item.label + "-head"} className="mobile-menu-section-title">{item.label}</span>
                     ),
+                    // De sectiekop linkt zelf al naar item.href, dus die
+                    // sublink overslaan (voorkomt "Over ons" twee keer).
                     ...item.groups.flatMap((g) =>
-                      g.links.map((l) => (
-                        <Link key={l.href} href={l.href} className={`mobile-menu-sub${pathname === l.href ? " active" : ""}`}>
-                          {l.label}
-                        </Link>
-                      ))
+                      g.links
+                        .filter((l) => l.href !== item.href)
+                        .map((l) => (
+                          <Link key={l.href} href={l.href} className={`mobile-menu-sub${pathname === l.href ? " active" : ""}`}>
+                            {l.label}
+                          </Link>
+                        ))
                     )
                   ];
                 })}

@@ -237,6 +237,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Niets mag de viewport horizontaal oprekken. Zonder dit duwt een enkel
+     te breed element (header-rij, tabel, brede kaart) de hele pagina uit
+     beeld op mobiel. */
+  overflow-x: hidden;
 }
 
 body {
@@ -245,6 +249,8 @@ body {
   color: var(--green-700);
   font-family: var(--font-body), "Segoe UI", Arial, sans-serif;
   letter-spacing: 0;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 h1 {
@@ -8483,52 +8489,36 @@ p {
     display: flex;
   }
 
-  /* Mobile header: 1 rij met 5 areas via display:contents trick.
-     Layout L->R: theme | burger | brand (center) | login | cart
-     display:contents op .header-actions zorgt dat z'n kinderen
-     direct grid-items van .header-inner worden. */
+  /* Mobile header (nieuwe agency-shell): simpele flex-rij.
+     Links: logo. Rechts: theme-toggle + hamburger.
+     De "Plan een gesprek" CTA en de nav zitten in de drawer. */
   .header-inner {
-    display: grid;
-    grid-template-columns: auto auto 1fr auto auto;
-    grid-template-areas: "theme burger brand login cart";
+    display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 9px 12px;
-  }
-
-  .header-inner > .header-actions {
-    display: contents;
-  }
-
-  .header-inner > .header-actions > .theme-toggle {
-    grid-area: theme;
-  }
-
-  .header-inner > .mobile-menu-toggle {
-    grid-area: burger;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 15px;
   }
 
   .header-inner > .brand {
-    grid-area: brand;
-    justify-self: center;
     min-width: 0;
+    flex: 0 1 auto;
   }
 
-  .header-inner > .header-actions > .header-account-link {
-    grid-area: login;
+  .header-inner > .header-actions {
+    margin-left: auto;
+    gap: 6px;
   }
 
-  .header-inner > .header-actions > .cart-button {
-    grid-area: cart;
+  /* CTA hoort in de drawer, niet in de compacte header-rij */
+  .header-inner > .header-actions .header-cta {
+    display: none;
   }
 
-  /* Brand mark kleiner op mobile zodat alles in 1 rij past op
-     375px viewport. Text labels verbergen onder 420px. */
+  /* Brand mark iets kleiner op mobile; hoogte leidend, breedte volgt. */
   .header-inner > .brand .brand-mark {
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-    border-radius: 9px;
+    width: auto;
+    height: 34px;
   }
 
   .role-context {
@@ -8652,15 +8642,6 @@ p {
 
   .header-inner {
     padding: 9px 15px 7px;
-  }
-
-  .brand {
-    width: 100%;
-  }
-
-  .header-actions {
-    width: 100%;
-    justify-content: space-between;
   }
 
   .profile-switch {
@@ -18350,8 +18331,21 @@ p {
     grid-column: auto;
   }
   .factuur-regel {
-    grid-template-columns: 1fr 1fr;
+    /* minmax(0, 1fr) i.p.v. 1fr: een kale 1fr krimpt niet onder de
+       intrinsieke breedte van een <input> (~177px), waardoor de grid
+       breder werd dan z'n container en velden buiten beeld vielen. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 8px;
+  }
+  .factuur-regel label,
+  .factuur-regel input,
+  .factuur-regel select {
+    min-width: 0;
+  }
+  .factuur-regel input,
+  .factuur-regel select {
+    width: 100%;
+    box-sizing: border-box;
   }
   .factuur-regel-omschrijving {
     grid-column: 1 / -1;
@@ -18359,6 +18353,14 @@ p {
   .factuur-regel-remove {
     grid-column: 1 / -1;
     width: 100%;
+  }
+  /* Geneste padding was op 375px samen 57px per kant (page 15 + body 24 +
+     section 18), waardoor er maar ~260px voor het formulier overbleef. */
+  .mini-tool-body {
+    padding: 18px 14px;
+  }
+  .factuur-section {
+    padding: 14px 12px;
   }
   .factuur-totalen-box {
     flex-direction: column;
@@ -24431,7 +24433,13 @@ p {
 
 @media (max-width: 900px) {
   .oplossing-detail-layout { grid-template-columns: 1fr; }
-  .oplossing-detail-sidebar { position: static; }
+  /* Niet sticky meer, dus ook de scroll-begrenzing eraf. Anders zit de
+     sidebar-inhoud opgesloten in een eigen scrollvakje van 100vh. */
+  .oplossing-detail-sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
 }
 
 /* Contact page */
