@@ -319,20 +319,30 @@ button {
 .announce-inner:hover .announce-cta { border-bottom-color: #fff; }
 
 @media (max-width: 780px) {
+  /* Op mobiel geen flex-rij maar één doorlopende, gecentreerde tekst met de
+     CTA inline erachter. Als flex-item zou de CTA een eigen regel pakken en
+     werd de balk 3 regels hoog; inline scheelt een regel en de link blijft
+     de visuele hint dat de balk klikbaar is. */
   .announce-inner {
-    padding: 7px 15px;
+    display: block;
+    text-align: center;
+    padding: 8px 15px;
     font-size: 12.5px;
-    gap: 7px;
   }
-  /* Op smalle schermen alleen de kern: CTA-tekst en icoon vallen weg, zodat
-     de boodschap de volle breedte krijgt en netjes gecentreerd staat. De
-     hele balk blijft klikbaar. */
-  .announce-cta,
   .announce-icon {
     display: none;
   }
-  .announce-text {
-    text-align: center;
+  .announce-text,
+  .announce-cta {
+    display: inline;
+  }
+  .announce-cta {
+    margin-left: 5px;
+    white-space: nowrap;
+  }
+  /* Het pijltje hoort optisch bij de link, niet los in de tekst. */
+  .announce-cta svg {
+    vertical-align: -2px;
   }
 }
 
