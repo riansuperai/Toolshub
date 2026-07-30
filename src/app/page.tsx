@@ -16,7 +16,12 @@ import {
   MessageSquare,
   Star,
   Calendar,
-  ShoppingBag
+  ShoppingBag,
+  BarChart3,
+  Boxes,
+  Users,
+  PencilLine,
+  Package
 } from "lucide-react";
 import { Shell } from "@/components/shell";
 import { listings as mockListings } from "@/lib/marketplace-data";
@@ -52,20 +57,27 @@ const diensten = [
   }
 ];
 
-// Oplossingen-teaser: 3 uitgelichte uit de bestaande service_package-listings
+// Oplossingen-teaser: onze eigen tools met een live demo. Selectie op slug,
+// niet op id: Supabase gebruikt UUID's en de mock strings, slug is in beide
+// gelijk.
 const OPLOSSINGEN_HIGHLIGHT = [
-  "listing_ai_telefoonassistent",
-  "listing_online_afsprakensysteem",
-  "listing_magento_tile_calculator"
+  "hazenco-price-tool",
+  "hazenco-cep",
+  "hazenco-voorraad-tool"
 ] as const;
 
 const OPLOSSING_ICONS: Record<string, typeof Phone> = {
-  listing_ai_telefoonassistent: Phone,
-  listing_whatsapp_business_chatbot: MessageSquare,
-  listing_google_reviews_ai_responder: Star,
-  listing_online_afsprakensysteem: Calendar,
-  listing_magento_cart_popup: ShoppingBag,
-  listing_magento_tile_calculator: Calculator
+  "hazenco-price-tool": BarChart3,
+  "hazenco-cep": Users,
+  "hazenco-voorraad-tool": Boxes,
+  "hazenco-blog-tool": PencilLine,
+  "hazenco-product-manager": Package,
+  "ai-telefoonassistent": Phone,
+  "whatsapp-business-chatbot": MessageSquare,
+  "google-reviews-ai-responder": Star,
+  "online-afsprakensysteem": Calendar,
+  "verzending-cross-sell-popup-magento": ShoppingBag,
+  "m2-calculator-tegels-vloeren-magento": Calculator
 };
 
 const toolkitHighlights = [
@@ -92,8 +104,8 @@ export default async function HomePage() {
   // beschikbare listings. Deduplicate op id.
   const seen = new Set<string>();
   const oplossingen: typeof sourceListings = [];
-  for (const id of OPLOSSINGEN_HIGHLIGHT) {
-    const l = sourceListings.find((x) => x.id === id);
+  for (const slug of OPLOSSINGEN_HIGHLIGHT) {
+    const l = sourceListings.find((x) => x.slug === slug);
     if (l && !seen.has(l.id)) {
       seen.add(l.id);
       oplossingen.push(l);
@@ -170,8 +182,14 @@ export default async function HomePage() {
           </header>
           <div className="hazenco-oplossingen-grid">
             {oplossingen.map((l) => {
-              const Icon = OPLOSSING_ICONS[l.id] ?? Sparkles;
+              const Icon = OPLOSSING_ICONS[l.slug] ?? Sparkles;
               const monthly = l.servicePricing?.subscription?.priceCentsPerMonth;
+              const priceLabel = monthly
+                ? formatSubscriptionPrice(monthly)
+                : l.priceCents > 0
+                ? `vanaf € ${Math.round(l.priceCents / 100)}`
+                : null;
+              const demoUrl = l.demo?.url?.trim();
               return (
                 <article key={l.id} className="hazenco-oplossing-card">
                   {(() => {
@@ -186,6 +204,7 @@ export default async function HomePage() {
                           height={452}
                           style={{ width: "100%", height: "auto", display: "block" }}
                         />
+                        {demoUrl ? <span className="hazenco-oplossing-demo-badge">Live demo</span> : null}
                       </div>
                     );
                   })()}
@@ -198,9 +217,9 @@ export default async function HomePage() {
                     </div>
                     <p>{l.tagline}</p>
                     <div className="hazenco-oplossing-meta">
-                      {monthly ? <span className="badge soft">{formatSubscriptionPrice(monthly)}</span> : null}
-                      <Link href="/contact" className="hazenco-oplossing-cta">
-                        Boek een gesprek <ArrowRight size={13} />
+                      {priceLabel ? <span className="badge soft">{priceLabel}</span> : null}
+                      <Link href={`/oplossingen/${l.slug}`} className="hazenco-oplossing-cta">
+                        Meer weten <ArrowRight size={13} />
                       </Link>
                     </div>
                   </div>

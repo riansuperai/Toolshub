@@ -25,8 +25,8 @@ export default function AlgemeneVoorwaardenPage() {
         <section className="section-card">
           <h2>1. Wie zijn wij</h2>
           <p>
-            Hazenco wordt aangeboden door Hazenco (KvK 94215316),
-            gevestigd in Nederland. Contact:{" "}
+            Hazenco wordt aangeboden door Hazenco, gevestigd in Nederland.
+            KvK-nummer: 42121114. BTW-nummer: NL869823206B01. Contact:{" "}
             <a href="mailto:info@hazenco.nl">info@hazenco.nl</a>.
           </p>
         </section>

@@ -86,6 +86,20 @@ type CategoryRow = {
   accent: string | null;
 };
 
+/**
+ * Maakt een URL uit de database bruikbaar als href. Een aantal demo_url-rijen
+ * heeft een voorloopspatie of mist het scheme ("demo.blogstudio.hazenco.nl"),
+ * waardoor de browser het als relatief pad zou behandelen en de link stuk is.
+ * Leeg blijft leeg, zodat de UI de demo-knop kan verbergen.
+ */
+function normalizeUrl(raw: string | null | undefined): string {
+  const url = (raw ?? "").trim();
+  if (!url) return "";
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith("/")) return url;
+  return `https://${url}`;
+}
+
 function mapListing(row: ListingRow): Listing {
   return {
     id: row.id,
@@ -109,7 +123,7 @@ function mapListing(row: ListingRow): Listing {
     deliveryModes: row.delivery_modes ?? [],
     files: [],
     demo: {
-      url: row.demo_url ?? "",
+      url: normalizeUrl(row.demo_url),
       screenshots: row.demo_screenshots ?? [],
       instructions: row.demo_instructions ?? "",
       credentials: row.demo_credentials ?? [],

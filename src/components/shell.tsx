@@ -25,6 +25,7 @@ import {
   PencilLine,
   Phone,
   Plug,
+  Receipt,
   ShoppingCart,
   Sparkles,
   Star,
@@ -69,6 +70,16 @@ type NavItem =
       groups: MegaGroup[];
       featured: FeaturedCard[];
     };
+
+/**
+ * Announcement bar boven de header. Zet op `null` om de balk te verbergen.
+ */
+const ANNOUNCEMENT: { label: string; text: string; cta: string; href: string } | null = {
+  label: "Nieuw:",
+  text: "5 Hazenco-tools met live demo, direct uitproberen zonder account.",
+  cta: "Bekijk de demo's",
+  href: "/oplossingen"
+};
 
 const NAV: NavItem[] = [
   { type: "link", href: "/", label: "Home" },
@@ -290,6 +301,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openMega, setOpenMega] = useState<string | null>(null);
+  // Welke groep in de mobiele drawer is uitgeklapt (accordeon: max één).
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
   // Korte vertraging op sluiten: vangt snelle diagonale muisbewegingen op
   // waarbij de cursor even buiten de nav valt onderweg naar het paneel.
@@ -314,6 +327,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setOpenAccordion(null);
     cancelClose();
     setOpenMega(null);
   }, [pathname]);
@@ -330,11 +344,23 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="app-shell">
-      <header className="site-header">
-        <div className="top-strip">
-          <span>Wij automatiseren en bouwen wat jouw bedrijf sneller maakt</span>
-          <span>Plan een gesprek van 15 minuten</span>
+      {/* Announcement bar, zichtbaar op mobiel en desktop. Pas ANNOUNCEMENT
+          bovenaan dit bestand aan om de promo te wijzigen. */}
+      {ANNOUNCEMENT ? (
+        <div className="announce-bar">
+          <Link href={ANNOUNCEMENT.href} className="announce-inner">
+            <Sparkles size={14} className="announce-icon" />
+            <span className="announce-text">
+              <strong>{ANNOUNCEMENT.label}</strong> {ANNOUNCEMENT.text}
+            </span>
+            <span className="announce-cta">
+              {ANNOUNCEMENT.cta} <ArrowRight size={13} />
+            </span>
+          </Link>
         </div>
+      ) : null}
+
+      <header className="site-header">
         <div className="header-inner">
           <Link className="brand" href="/" aria-label="Hazenco home">
             <span className="brand-mark"><BrandMark /></span>
@@ -470,40 +496,72 @@ export function Shell({ children }: { children: React.ReactNode }) {
             />
             <div id="mobile-menu-drawer" className="mobile-menu-drawer" role="dialog" aria-label="Menu">
               <nav className="mobile-menu-nav" aria-label="Hoofdnavigatie">
-                {NAV.flatMap((item) => {
+                {NAV.map((item) => {
                   if (item.type === "link") {
-                    return [
-                      <Link key={item.label} href={item.href} className={pathname === item.href ? "active" : ""}>
+                    return (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className={`m-nav-link${pathname === item.href ? " active" : ""}`}
+                      >
                         {item.label}
                       </Link>
-                    ];
+                    );
                   }
-                  return [
-                    item.href ? (
-                      <Link key={item.label + "-head"} href={item.href} className="mobile-menu-section-title">
-                        {item.label}
-                      </Link>
-                    ) : (
-                      <span key={item.label + "-head"} className="mobile-menu-section-title">{item.label}</span>
-                    ),
-                    // De sectiekop linkt zelf al naar item.href, dus die
-                    // sublink overslaan (voorkomt "Over ons" twee keer).
-                    ...item.groups.flatMap((g) =>
-                      g.links
-                        .filter((l) => l.href !== item.href)
-                        .map((l) => (
-                          <Link key={l.href} href={l.href} className={`mobile-menu-sub${pathname === l.href ? " active" : ""}`}>
-                            {l.label}
-                          </Link>
-                        ))
-                    )
-                  ];
+                  const isOpen = openAccordion === item.label;
+                  return (
+                    <div key={item.label} className={`m-nav-group${isOpen ? " is-open" : ""}`}>
+                      <button
+                        type="button"
+                        className="m-nav-group-toggle"
+                        aria-expanded={isOpen}
+                        onClick={() => setOpenAccordion(isOpen ? null : item.label)}
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown size={17} className="m-nav-chevron" />
+                      </button>
+                      {isOpen ? (
+                        <div className="m-nav-panel">
+                          {item.groups.map((group) => (
+                            <div key={group.title} className="m-nav-subgroup">
+                              <p className={`m-nav-subgroup-title tone-${group.bullet}`}>
+                                <span className="m-nav-bullet" /> {group.title}
+                              </p>
+                              {group.links.map((l) => {
+                                const Icon = l.icon;
+                                return (
+                                  <Link
+                                    key={l.href}
+                                    href={l.href}
+                                    className={`m-nav-sublink${pathname === l.href ? " active" : ""}`}
+                                  >
+                                    <span className={`m-nav-icon tone-${l.tone}`}>
+                                      <Icon size={15} />
+                                    </span>
+                                    {l.label}
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          ))}
+                          {item.href ? (
+                            <Link href={item.href} className="m-nav-overview">
+                              Alles over {item.label.toLowerCase()} <ArrowRight size={13} />
+                            </Link>
+                          ) : null}
+                        </div>
+                      ) : null}
+                    </div>
+                  );
                 })}
               </nav>
               <div className="mobile-menu-actions">
                 <Link className="header-cta" href="/contact">
                   Plan een gesprek <ArrowRight size={14} />
                 </Link>
+                <a className="m-nav-phone" href="tel:+31643074303">
+                  <Phone size={14} /> +31 6 4307 4303
+                </a>
               </div>
             </div>
           </>
@@ -563,6 +621,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
               <li>
                 <Building2 size={15} aria-hidden="true" />
                 <span>KvK-nummer: 42121114</span>
+              </li>
+              <li>
+                <Receipt size={15} aria-hidden="true" />
+                <span>BTW-nummer: NL869823206B01</span>
               </li>
               <li>
                 <Clock size={15} aria-hidden="true" />

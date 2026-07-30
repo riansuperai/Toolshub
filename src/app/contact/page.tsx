@@ -76,6 +76,17 @@ export default function ContactPage() {
                 heeft, geen callcenter of tussenlaag.
               </p>
             </div>
+
+            <dl className="contact-company-details">
+              <div>
+                <dt>KvK-nummer</dt>
+                <dd>42121114</dd>
+              </div>
+              <div>
+                <dt>BTW-nummer</dt>
+                <dd>NL869823206B01</dd>
+              </div>
+            </dl>
           </aside>
         </div>
       </div>
