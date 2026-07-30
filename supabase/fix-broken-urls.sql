@@ -18,7 +18,7 @@
 -- repo onder public/listings/. Een relatief pad is hier bewust: de afbeelding
 -- deployt mee met de app, dus geen externe afhankelijkheid meer.
 -- ----------------------------------------------------------------------------
-UPDATE listings
+UPDATE public.listings
 SET hero_image_url = '/listings/website-laten-maken.png'
 WHERE slug = 'website-laten-maken'
   AND hero_image_url LIKE '%wp-content%';
@@ -35,7 +35,7 @@ WHERE slug = 'website-laten-maken'
 -- Zonder scheme leest de browser de waarde als een pad op het eigen domein,
 -- dus die links waren stuk. De WHERE raakt alleen rijen die echt afwijken.
 -- ----------------------------------------------------------------------------
-UPDATE listings
+UPDATE public.listings
 SET demo_url = CASE
       WHEN btrim(demo_url, E' \t\r\n') ~* '^https?://'
         THEN btrim(demo_url, E' \t\r\n')
@@ -55,12 +55,12 @@ WHERE demo_url IS NOT NULL
 
 -- Resterende dode WordPress-verwijzingen
 SELECT slug, hero_image_url
-FROM listings
+FROM public.listings
 WHERE hero_image_url LIKE '%wp-content%';
 
 -- Resterende onbruikbare demo-URLs
 SELECT slug, demo_url
-FROM listings
+FROM public.listings
 WHERE demo_url IS NOT NULL
   AND btrim(demo_url, E' \t\r\n') <> ''
   AND (
