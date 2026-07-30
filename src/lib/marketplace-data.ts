@@ -293,7 +293,7 @@ export const listings: Listing[] = [
     type: "service_package",
     useCases: ["marketing", "lead_generation"],
     branches: ["general", "professional_services", "retail"],
-    heroImageUrl: "https://hazenco.nl/wp-content/uploads/2026/02/Website-laten-maken.png",
+    heroImageUrl: "/listings/website-laten-maken.png",
     screenshotUrls: [],
     priceCents: 142500,
     setupPriceCents: 0,
@@ -358,7 +358,7 @@ export const listings: Listing[] = [
           "Assortiment volledig zichtbaar op mobiel"
         ],
         tone: "dark",
-        imageUrl: "https://hazenco.nl/wp-content/uploads/2026/03/Oppervlakten-768x358.webp",
+        imageUrl: "/listings/case-oppervlakten.webp",
         url: "https://badkamerwandbekleding.nl"
       },
       {
@@ -372,7 +372,7 @@ export const listings: Listing[] = [
           "Portfolio direct vindbaar voor opdrachtgevers"
         ],
         tone: "light",
-        imageUrl: "https://hazenco.nl/wp-content/uploads/2026/03/infrastructure-urbaine-genie-routier-768x768.jpg.webp",
+        imageUrl: "/listings/case-infrastructuur.webp",
         url: "https://civitas-advies.nl"
       },
       {
@@ -386,7 +386,7 @@ export const listings: Listing[] = [
           "Volledig klaar voor zoekmachines, SEO-proof"
         ],
         tone: "peach",
-        imageUrl: "https://hazenco.nl/wp-content/uploads/2026/03/Screenshot-2026-03-21-190124-768x568.png.webp",
+        imageUrl: "/listings/case-dashboard.webp",
         url: "https://magdatwelonline.nl"
       }
     ],

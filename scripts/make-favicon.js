@@ -1,6 +1,6 @@
 const sharp = require("sharp");
 
-const IN = "public/brand/hazenco-hub.png";
+const IN = "public/brand/hazenco-brain.png";
 const OUT = "src/app/icon.png";
 const SIZE = 512;
 const PAD = 56;

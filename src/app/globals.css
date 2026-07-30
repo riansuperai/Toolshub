@@ -321,12 +321,14 @@ button {
 }
 
 .brand-mark {
-  width: 44px;
-  height: 44px;
+  /* Breedte volgt het logo (niet-vierkant); hoogte is de vaste maat. */
+  width: auto;
+  height: 38px;
   border-radius: 8px;
   display: grid;
   place-items: center;
   background: transparent;
+  flex-shrink: 0;
 }
 
 .brand strong,
@@ -422,7 +424,12 @@ button {
 
 .mega-panel {
   position: absolute;
-  top: calc(100% + 10px);
+  /* Sluit direct aan op de nav; de visuele tussenruimte komt uit padding-top,
+     zodat het paneel zelf de "gat" overbrugt. Met een echte gap (top: 100% + 10px)
+     hangt de muis onderweg boven niets, vuurt mouseleave op .main-nav en klapt
+     het menu dicht voordat je het kunt bereiken. */
+  top: 100%;
+  padding-top: 10px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 45;

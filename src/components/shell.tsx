@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, type ComponentType } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -291,8 +291,30 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openMega, setOpenMega] = useState<string | null>(null);
 
+  // Korte vertraging op sluiten: vangt snelle diagonale muisbewegingen op
+  // waarbij de cursor even buiten de nav valt onderweg naar het paneel.
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function cancelClose() {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }
+  function openMegaNow(label: string | null) {
+    cancelClose();
+    setOpenMega(label);
+  }
+  function scheduleClose() {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setOpenMega(null), 140);
+  }
+
+  useEffect(() => cancelClose, []);
+
   useEffect(() => {
     setMobileMenuOpen(false);
+    cancelClose();
     setOpenMega(null);
   }, [pathname]);
 
@@ -324,7 +346,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <nav
             className="main-nav"
             aria-label="Hoofdnavigatie"
-            onMouseLeave={() => setOpenMega(null)}
+            onMouseLeave={scheduleClose}
+            onMouseEnter={cancelClose}
           >
             {NAV.map((item) => {
               if (item.type === "link") {
@@ -333,7 +356,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
                     key={item.label}
                     href={item.href}
                     className={activeFor(pathname, item) ? "active" : ""}
-                    onMouseEnter={() => setOpenMega(null)}
+                    onMouseEnter={() => openMegaNow(null)}
                   >
                     {item.label}
                   </Link>
@@ -344,14 +367,14 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 <div
                   key={item.label}
                   className={`main-nav-item has-mega${isOpen ? " is-open" : ""}`}
-                  onMouseEnter={() => setOpenMega(item.label)}
+                  onMouseEnter={() => openMegaNow(item.label)}
                 >
                   <button
                     type="button"
                     className={`main-nav-trigger${activeFor(pathname, item) ? " active" : ""}`}
                     aria-expanded={isOpen}
                     aria-haspopup="true"
-                    onClick={() => setOpenMega(isOpen ? null : item.label)}
+                    onClick={() => openMegaNow(isOpen ? null : item.label)}
                   >
                     {item.label} <ChevronDown size={14} />
                   </button>
