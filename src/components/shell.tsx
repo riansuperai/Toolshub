@@ -76,7 +76,7 @@ type NavItem =
  */
 const ANNOUNCEMENT: { label: string; text: string; cta: string; href: string } | null = {
   label: "Nieuw:",
-  text: "5 Hazenco-tools met live demo, direct uitproberen zonder account.",
+  text: "Tools met live demo, direct uitproberen zonder account",
   cta: "Bekijk de demo's",
   href: "/oplossingen"
 };

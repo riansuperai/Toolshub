@@ -324,9 +324,16 @@ button {
     font-size: 12.5px;
     gap: 7px;
   }
-  /* Op smalle schermen alleen de kern; de losse CTA-tekst valt weg omdat
-     de hele balk al klikbaar is. */
-  .announce-cta { display: none; }
+  /* Op smalle schermen alleen de kern: CTA-tekst en icoon vallen weg, zodat
+     de boodschap de volle breedte krijgt en netjes gecentreerd staat. De
+     hele balk blijft klikbaar. */
+  .announce-cta,
+  .announce-icon {
+    display: none;
+  }
+  .announce-text {
+    text-align: center;
+  }
 }
 
 .site-header {
@@ -369,14 +376,28 @@ button {
 }
 
 .brand-mark {
-  /* Breedte volgt het logo (niet-vierkant); hoogte is de vaste maat. */
+  /* Breedte volgt het logo (niet-vierkant); hoogte is de vaste maat.
+     Flex i.p.v. grid: bij een grid met auto-rij valt `height: 100%` op het
+     kind terug op de intrinsieke afbeeldingshoogte (circulaire afhankelijk-
+     heid). In een flexbox met vaste hoogte resolveert het percentage wel. */
   width: auto;
   height: 38px;
   border-radius: 8px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   flex-shrink: 0;
+}
+
+/* De afbeelding vult de hoogte van .brand-mark, breedte volgt de aspect
+   ratio. Zo bepaalt één hoogte-waarde (ook per breakpoint) de logo-maat. */
+.brand-mark-img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .brand strong,
@@ -8699,13 +8720,15 @@ p {
     display: none;
   }
 
-  /* Logo/tekst in balans op mobiel: kleiner beeldmerk, ruimere woordmerk. */
+  /* Logo/tekst in balans op mobiel: het beeldmerk is een brede, massieve
+     vorm en leest daardoor zwaarder dan z'n hoogte suggereert. Vandaar
+     duidelijk kleiner dan de woordmerk-hoogte. */
   .header-inner > .brand .brand-mark {
     width: auto;
-    height: 26px;
+    height: 21px;
   }
   .header-inner > .brand {
-    gap: 9px;
+    gap: 8px;
   }
 
   .role-context {

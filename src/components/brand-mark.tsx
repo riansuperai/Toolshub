@@ -43,6 +43,9 @@ const ASPECT = 1118 / 881;
  */
 export function BrandMark({ size = 38 }: { size?: number }) {
   const width = Math.round(size * ASPECT);
+  // Geen inline width/height: die zouden de CSS overrulen, waardoor de
+  // afbeelding niet meekrimpt met de .brand-mark hoogte (bijv. op mobiel).
+  // De width/height props blijven nodig voor next/image optimalisatie.
   return (
     <Image
       src="/brand/hazenco-brain.png"
@@ -50,7 +53,7 @@ export function BrandMark({ size = 38 }: { size?: number }) {
       width={width}
       height={size}
       priority
-      style={{ width, height: size, objectFit: "contain", display: "block" }}
+      className="brand-mark-img"
     />
   );
 }
