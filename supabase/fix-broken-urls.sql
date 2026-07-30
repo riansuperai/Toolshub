@@ -12,16 +12,18 @@
 
 
 -- ----------------------------------------------------------------------------
--- 1. Dode WordPress-afbeelding vervangen door de lokale kopie
+-- 1. Dode WordPress-afbeelding vervangen
 --
--- Het origineel is vóór de cutover van de oude host gered en staat nu in de
--- repo onder public/listings/. Een relatief pad is hier bewust: de afbeelding
--- deployt mee met de app, dus geen externe afhankelijkheid meer.
+-- De afbeelding is opnieuw geupload naar de publieke Storage-bucket
+-- `listing-screenshots` (2026-07-29). Storage in plaats van een lokaal pad,
+-- zodat dit consistent is met de andere listings.
+--
+-- Er staat ook een geredde kopie in de repo onder public/listings/, die dient
+-- als hero voor de mock-fallback wanneer Supabase onbereikbaar is.
 -- ----------------------------------------------------------------------------
 UPDATE public.listings
-SET hero_image_url = '/listings/website-laten-maken.png'
-WHERE slug = 'website-laten-maken'
-  AND hero_image_url LIKE '%wp-content%';
+SET hero_image_url = 'https://itqanbhecghinccgyeyf.supabase.co/storage/v1/object/public/listing-screenshots/website-laten-maken.png'
+WHERE slug = 'website-laten-maken';
 
 
 -- ----------------------------------------------------------------------------
