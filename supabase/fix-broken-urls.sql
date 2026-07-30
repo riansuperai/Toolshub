@@ -27,6 +27,21 @@ WHERE slug = 'website-laten-maken';
 
 
 -- ----------------------------------------------------------------------------
+-- 1b. Ontbrekende hero voor de m2-calculator
+--
+-- hero_image_url was leeg, waardoor het kaartje terugviel op
+-- screenshot_urls[0] -> /demo-screenshots/magento-tile-calculator/...
+-- Dat lokale pad bestaat niet in de repo, dus er was helemaal geen thumbnail.
+--
+-- Bestandsnaam in de bucket bevat spaties (en een typo: "Calculatro"), dus
+-- %20-gecodeerd opslaan zodat de waarde veilig in een HTML-attribuut kan.
+-- ----------------------------------------------------------------------------
+UPDATE public.listings
+SET hero_image_url = 'https://itqanbhecghinccgyeyf.supabase.co/storage/v1/object/public/listing-screenshots/Calculatro%20voor%20tegels%20en%20vloeren%202.jpg'
+WHERE slug = 'm2-calculator-tegels-vloeren-magento';
+
+
+-- ----------------------------------------------------------------------------
 -- 2. Demo-URLs normaliseren: whitespace weg en scheme aanvullen
 --
 -- Betrof:
