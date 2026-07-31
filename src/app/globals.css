@@ -265,6 +265,22 @@ h6 {
   font-family: var(--font-body), "Segoe UI", Arial, sans-serif;
 }
 
+/* Voorkomt "weduwen": een kop die eindigt met één los woord op de laatste
+   regel. De browser verdeelt de regels van een kop even lang, bij elke
+   schermbreedte. Daarom staan er ook geen harde <br /> meer in koppen: die
+   dwingen een breuk af die op andere breedtes juist lelijk uitpakt.
+   Browsers zonder ondersteuning vallen terug op normaal afbreken. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.lead,
+.hazenco-section-sub {
+  text-wrap: balance;
+}
+
 /* DM Serif Display bestaat alleen in gewicht 400. Erft een kop een zwaarder
    gewicht (de browser-default voor h1-h6 is bold), dan maakt de browser er
    synthetisch vet van: de glyphs worden kunstmatig opgedikt en de dunne

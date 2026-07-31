@@ -126,7 +126,7 @@ export default async function HomePage() {
         <div className="page">
           <div className="hazenco-hero-inner">
             <p className="eyebrow">Hazenco, B2B partner</p>
-            <h1>Wij automatiseren en bouwen<br />wat jouw bedrijf sneller maakt.</h1>
+            <h1>Wij automatiseren en bouwen wat jouw bedrijf sneller maakt.</h1>
             <p className="lead">
               Custom software, workflow-automatisering en AI-workflows voor het Nederlandse MKB. Klein team, direct
               contact, done-for-you levering, zonder softwarebureau-prijzen.
@@ -239,7 +239,7 @@ export default async function HomePage() {
           <div className="hazenco-toolkit-inner">
             <div className="hazenco-toolkit-copy">
               <p className="eyebrow">Gratis toolkit</p>
-              <h2>Kleine tools die direct werken.<br />Zonder inloggen, in je browser.</h2>
+              <h2>Kleine tools die direct werken. Zonder inloggen, in je browser.</h2>
               <p>
                 Facturen maken, QR-codes, wachtwoorden, PDF's samenvoegen, achtergronden verwijderen. Elf hands-on
                 tools waar we zelf dagelijks mee werken.

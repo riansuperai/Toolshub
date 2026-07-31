@@ -77,9 +77,7 @@ export default function ToolkitIndexPage() {
           <div className="toolkit-hero-copy">
             <span className="eyebrow">Toolkit</span>
             <h1>
-              <span className="accent">Snelle tools</span>
-              <br />
-              voor het Nederlandse MKB.
+              <span className="accent">Snelle tools</span> voor het Nederlandse MKB.
             </h1>
             <p className="lead">
               Gratis, in je browser, geen gedoe. Door Hazenco gemaakt voor
