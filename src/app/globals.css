@@ -25298,6 +25298,12 @@ p {
 .marquee-helft {
   display: flex;
   flex-shrink: 0;
+  /* Vangnet voor ultrabrede schermen. Is een helft smaller dan het scherm, dan
+     is er op het moment van terugspringen niets meer om te tonen en zie je een
+     gat. Beide helften krijgen dezelfde min-width, dus ze blijven identiek en
+     de lus blijft naadloos. */
+  min-width: 100vw;
+  justify-content: space-evenly;
 }
 
 /* -50% = precies de breedte van een helft, dus de sprong terug is onzichtbaar. */

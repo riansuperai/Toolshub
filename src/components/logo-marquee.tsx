@@ -13,11 +13,17 @@ import type { Client } from "@/lib/supabase-queries";
  * genoeg is om een groot scherm te vullen, anders zie je een gat.
  */
 
-const MIN_LOGOS_PER_HELFT = 10;
+/**
+ * Eén helft moet minstens zo breed zijn als het scherm, anders valt er op het
+ * moment van terugspringen een gat: er is dan simpelweg niets meer om te tonen.
+ * Bij 190px per vak dekt 20 vakken (3800px) ook ruime monitoren af. De CSS zet
+ * er met min-width: 100vw nog een vangnet onder voor alles daarboven.
+ */
+const MIN_LOGOS_PER_HELFT = 20;
 
 export function LogoMarquee({
   clients,
-  titel = "Vertrouwd door"
+  titel = "Vertrouwd door vooruitstrevende bedrijven"
 }: {
   clients: Client[];
   titel?: string;
