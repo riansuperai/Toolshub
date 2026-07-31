@@ -265,6 +265,40 @@ h6 {
   font-family: var(--font-body), "Segoe UI", Arial, sans-serif;
 }
 
+/* DM Serif Display bestaat alleen in gewicht 400. Erft een kop een zwaarder
+   gewicht (de browser-default voor h1-h6 is bold), dan maakt de browser er
+   synthetisch vet van: de glyphs worden kunstmatig opgedikt en de dunne
+   haarlijnen slibben dicht. Daarom overal waar de serif staat expliciet 400.
+   Weglaten van deze regel = de koppen zien er weer te zwaar uit.
+
+   Deze lijst moet gelijk lopen met alle selectors die var(--font-heading)
+   zetten. Nieuwe serif-kop toegevoegd? Voeg 'm hier ook toe. */
+h1,
+.hazenco-hero-inner h1,
+.hazenco-section-head h2,
+.hazenco-contact-band h2,
+.hazenco-contact-inner h2,
+.hazenco-toolkit-copy h2,
+.dienst-detail-head h2,
+.toolkit-cta h2,
+.toolkit-faq-head h2,
+.toolkit-grid-heading,
+.blog-list-item h2,
+.blog-post-header h1,
+.blog-post-body h2,
+.case-title,
+.contact-form-success h3,
+.oplossing-detail-main h1,
+.oplossing-detail-section h2,
+.oplossing-detail-prose h1,
+.oplossing-detail-prose h2,
+.oplossing-detail-prose h3,
+.oplossing-price-value,
+.oplossing-pricing-price strong,
+.service-prijs-price strong {
+  font-weight: 400;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -23185,8 +23219,10 @@ p {
 .hazenco-hero-inner h1 {
   font-family: var(--font-heading), Georgia, serif;
   font-size: clamp(34px, 5vw, 52px);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  /* Was 1.08 / -0.02em: te samengeperst. Een display-serif op 52px heeft geen
+     negatieve tracking nodig, dat drukt de letters juist tegen elkaar. */
+  line-height: 1.16;
+  letter-spacing: 0;
   margin: 14px 0 22px;
   color: var(--green-900);
 }
@@ -23196,7 +23232,9 @@ p {
   color: var(--green-700);
   max-width: 620px;
   margin: 0 auto;
-  line-height: 1.55;
+  /* Iets ruimer dan 1.55 zodat de lead niet als blok tegen de kop aandrukt. */
+  line-height: 1.68;
+  letter-spacing: 0.005em;
 }
 
 .hazenco-hero-cta {
@@ -23247,16 +23285,17 @@ p {
 .hazenco-section-head h2 {
   font-family: var(--font-heading), Georgia, serif;
   font-size: clamp(26px, 3.4vw, 34px);
-  line-height: 1.15;
+  line-height: 1.22;
   color: var(--green-900);
   margin: 12px 0 12px;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .hazenco-section-sub {
   color: var(--green-700);
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
   margin: 8px 0 0;
 }
 
