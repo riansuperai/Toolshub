@@ -24,8 +24,9 @@ import {
   Package
 } from "lucide-react";
 import { Shell } from "@/components/shell";
+import { LogoMarquee } from "@/components/logo-marquee";
 import { listings as mockListings } from "@/lib/marketplace-data";
-import { fetchPublishedListings } from "@/lib/supabase-queries";
+import { fetchClients, fetchPublishedListings } from "@/lib/supabase-queries";
 
 export const metadata: Metadata = {
   title: "Hazenco, Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
@@ -94,7 +95,10 @@ function formatSubscriptionPrice(cents: number) {
 export const revalidate = 300;
 
 export default async function HomePage() {
-  const supabaseListings = await fetchPublishedListings();
+  const [supabaseListings, clients] = await Promise.all([
+    fetchPublishedListings(),
+    fetchClients()
+  ]);
   const sourceListings =
     supabaseListings && supabaseListings.length > 0
       ? supabaseListings
@@ -147,6 +151,10 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* KLANTLOGO'S, direct onder de hero. Toont niets zolang er geen
+          klanten in Supabase staan. */}
+      <LogoMarquee clients={clients} />
 
       <div className="page">
         {/* DIENSTEN-BLOK */}

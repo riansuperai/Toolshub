@@ -25251,3 +25251,140 @@ p {
   gap: 5px;
   text-decoration: none;
 }
+
+/* ============================================================================
+   Logo-slider "vertrouwd door" (src/components/logo-marquee.tsx)
+   ============================================================================ */
+
+.marquee {
+  padding: 30px 0 34px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.marquee-titel {
+  text-align: center;
+  margin: 0 0 22px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-500);
+}
+
+/* Vervaagt de logo's aan de randen, zodat ze het beeld in- en uitlopen in
+   plaats van hard af te kappen. */
+.marquee-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation-name: marqueeSchuif;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* Vangnet. Het component zet de duur inline op basis van het aantal logo's;
+     zonder deze regel is de default 0s en staat de slider stil zodra die
+     inline waarde om wat voor reden ook ontbreekt. */
+  animation-duration: 45s;
+}
+
+.marquee-helft {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* -50% = precies de breedte van een helft, dus de sprong terug is onzichtbaar. */
+@keyframes marqueeSchuif {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Pauzeren bij hover, zodat je een logo rustig kunt bekijken. */
+.marquee-viewport:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Vaste slotbreedte: elk logo krijgt evenveel ruimte, ongeacht z'n vorm. */
+  width: 190px;
+  height: 56px;
+  padding: 0 26px;
+  flex-shrink: 0;
+}
+
+/* Normaliseert logo's van elk formaat: dezelfde maximale hoogte en breedte,
+   verhouding blijft behouden, en alles in grijstinten zodat de reeks rustig
+   oogt. Kleur komt terug bij hover over de sectie. */
+.marquee-logo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.marquee-viewport:hover .marquee-logo {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* Op de donkere achtergrond zijn de meeste logo's donker; die maken we licht
+   zodat ze leesbaar blijven. */
+[data-theme="dark"] .marquee-logo {
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0.5;
+}
+[data-theme="dark"] .marquee-viewport:hover .marquee-logo {
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+/* Bewegende content is voor sommige mensen hinderlijk of misselijkmakend.
+   Respecteert de systeeminstelling: dan staat de rij stil. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    /* Zonder animatie zou de dubbele set naast elkaar staan; nu tonen we
+       alleen de eerste helft, netjes gecentreerd. */
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .marquee-helft[aria-hidden="true"] {
+    display: none;
+  }
+  .marquee-helft {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 620px) {
+  .marquee { padding: 22px 0 26px; }
+  .marquee-item {
+    width: 140px;
+    height: 44px;
+    padding: 0 18px;
+  }
+  .marquee-viewport {
+    -webkit-mask-image: linear-gradient(
+      to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%
+    );
+  }
+}

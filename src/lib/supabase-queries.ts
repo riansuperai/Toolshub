@@ -250,3 +250,39 @@ export async function fetchListingBySlug(slug: string): Promise<Listing | null> 
   }
   return mapListing(data);
 }
+
+/** Klantlogo voor de "vertrouwd door"-slider op de homepage. */
+export type Client = {
+  id: string;
+  naam: string;
+  logoUrl: string;
+  /** Optische schaalcorrectie, 1.0 = standaard. Zie supabase/clients-table.sql */
+  scale: number;
+};
+
+/**
+ * Actieve klantlogo's, gesorteerd op sort_order.
+ *
+ * Geeft een lege array terug als Supabase niet beschikbaar is of de tabel nog
+ * niet bestaat. Bewust geen mock-fallback: dit zijn echte klantnamen, die ver-
+ * zin je niet. Geen data betekent dat de slider gewoon niet getoond wordt.
+ */
+export async function fetchClients(): Promise<Client[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from("clients")
+    .select("id, naam, logo_url, scale")
+    .eq("active", true)
+    .order("sort_order", { ascending: true })
+    .order("naam", { ascending: true });
+  if (error || !data) {
+    if (error) console.error("Supabase fetchClients error", error.message);
+    return [];
+  }
+  return data.map((row) => ({
+    id: row.id,
+    naam: row.naam,
+    logoUrl: normalizeUrl(row.logo_url),
+    scale: Number(row.scale ?? 1) || 1
+  }));
+}
