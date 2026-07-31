@@ -23241,6 +23241,10 @@ p {
   letter-spacing: 0;
   margin: 14px 0 22px;
   color: var(--green-900);
+  /* Overschrijft de globale h1-regel (max-width: 700px) uit de oude
+     marketplace-CSS. Die kneep de kop smaller dan de hero zelf, waardoor 'ie
+     over drie regels brak in plaats van twee. */
+  max-width: 100%;
 }
 
 .hazenco-hero-inner .lead {
