@@ -9,7 +9,7 @@ import type { Listing } from "@/lib/types";
 type Dienst = "alle" | "webdesign" | "workflow" | "ai" | "tools";
 
 const DIENST_LABEL: Record<Exclude<Dienst, "alle">, string> = {
-  webdesign: "Webdesign",
+  webdesign: "Maatwerk weboplossingen",
   workflow: "Workflow-automatisering",
   ai: "AI-workflows",
   tools: "Tools"
@@ -92,7 +92,7 @@ export function OplossingenList({ solutions }: { solutions: Listing[] }) {
 
   const tabs: { key: Dienst; label: string }[] = [
     { key: "alle", label: "Alle" },
-    { key: "webdesign", label: "Webdesign" },
+    { key: "webdesign", label: "Maatwerk weboplossingen" },
     { key: "workflow", label: "Workflow-automatisering" },
     { key: "ai", label: "AI-workflows" },
     { key: "tools", label: "Tools" }

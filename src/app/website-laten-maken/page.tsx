@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const data: ServicePageData = {
-  eyebrow: "Webdesign",
+  eyebrow: "Maatwerk weboplossingen",
   title: "Een website die je bedrijf serieus laat ogen.",
   lead:
     "Custom Next.js-sites die snel laden, converteren en meegroeien. Wij bouwen, hosten en onderhouden, jij hoeft je niet druk te maken over builders, plugins of hosting.",

@@ -4,7 +4,7 @@ import { ArrowRight, Globe, Workflow, Sparkles, Check } from "lucide-react";
 import { Shell } from "@/components/shell";
 
 export const metadata: Metadata = {
-  title: "Diensten, webdesign, workflow-automatisering, AI-workflows",
+  title: "Diensten, maatwerk weboplossingen, workflow-automatisering, AI-workflows",
   description:
     "Hazenco bouwt websites op maat, automatiseert bedrijfsprocessen en levert AI-workflows voor het Nederlandse MKB. Done-for-you levering, klein team, direct contact."
 };
@@ -13,7 +13,7 @@ const diensten = [
   {
     icon: Globe,
     slug: "/website-laten-maken",
-    label: "Webdesign",
+    label: "Maatwerk weboplossingen",
     tagline:
       "Custom Next.js sites die snel laden en converteren. Wij bouwen, hosten en onderhouden.",
     features: [
@@ -58,7 +58,7 @@ export default function DienstenPage() {
         <div className="page">
           <div className="hazenco-hero-inner">
             <p className="eyebrow">Diensten</p>
-            <h1>Drie manieren om je bedrijf sneller te laten lopen.</h1>
+            <h1>Zo helpen we bedrijven groeien.</h1>
             <p className="lead">
               Custom software, procesautomatisering of AI-workflows. Elke dienst is done-for-you: wij regelen
               installatie, integratie en onderhoud, jij plukt de vruchten.

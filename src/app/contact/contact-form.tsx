@@ -48,7 +48,7 @@ export function ContactForm() {
       <label className="contact-field">
         <span>Waar gaat het over?</span>
         <select name="onderwerp" defaultValue="webdesign">
-          <option value="webdesign">Webdesign</option>
+          <option value="webdesign">Maatwerk weboplossingen</option>
           <option value="workflow">Workflow-automatisering</option>
           <option value="ai">AI-workflows &amp; integraties</option>
           <option value="toolkit">Vraag over de gratis toolkit</option>
@@ -85,7 +85,7 @@ export function ContactForm() {
           {pending ? "Versturen..." : <>Verstuur bericht <Send size={14} /></>}
         </button>
         <p className="contact-form-note">
-          <em>*</em> Verplicht. We reageren meestal binnen 1 werkdag.
+          <em>*</em> Verplicht. We reageren meestal binnen één werkdag.
         </p>
       </div>
     </form>

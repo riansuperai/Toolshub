@@ -7,7 +7,7 @@ import { listBlogPosts, formatDutchDate } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Blog, praktische artikelen voor MKB-ondernemers",
   description:
-    "Praktische artikelen over webdesign, automatisering en AI voor het Nederlandse MKB. Wat werkt, wat niet, en hoe je er zelf mee aan de slag kunt."
+    "Praktische artikelen over websites, automatisering en AI voor het Nederlandse MKB. Wat werkt, wat niet, en hoe je er zelf mee aan de slag kunt."
 };
 
 export default async function BlogIndexPage() {
@@ -21,7 +21,7 @@ export default async function BlogIndexPage() {
             <p className="eyebrow">Blog</p>
             <h1>Praktische artikelen voor MKB-ondernemers.</h1>
             <p className="lead">
-              Geen jargon, geen leadmagnet-trucs. Wat werkt in webdesign, automatisering en AI, en wat het
+              Geen jargon, geen leadmagnet-trucs. Wat werkt in websites, automatisering en AI, en wat het
               realistisch oplevert.
             </p>
           </div>

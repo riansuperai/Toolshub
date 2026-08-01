@@ -31,30 +31,30 @@ import { fetchClients, fetchPublishedListings } from "@/lib/supabase-queries";
 export const metadata: Metadata = {
   title: "Hazenco, Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
   description:
-    "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows. Klein team, direct contact, done-for-you levering."
+    "Nederlandse B2B-partner voor maatwerk weboplossingen, workflow-automatisering en AI-workflows. Klein team, direct contact, done-for-you levering."
 };
 
 const diensten = [
   {
     icon: Globe,
     href: "/website-laten-maken",
-    title: "Webdesign",
+    title: "Maatwerk weboplossingen",
     text:
-      "Snelle, conversie-gerichte websites op maat. Hosting, onderhoud en support inbegrepen. Geen bouwers, geen plugin-drama."
+      "Van bedrijfswebsite tot complete webshop. Snel, veilig en eenvoudig uit te breiden met maatwerkmodules en koppelingen."
   },
   {
     icon: Workflow,
     href: "/workflow-automatisering",
     title: "Workflow-automatisering",
     text:
-      "Van handmatig Excel-werk naar systemen die vanzelf lopen. Product-manager, cross-sell popups, calculators, meetbare tijdwinst."
+      "Automatiseer terugkerende taken en verbind systemen met slimme koppelingen. Minder handmatig werk, meer tijd voor je bedrijf."
   },
   {
     icon: Sparkles,
     href: "/ai-workflows",
     title: "AI-workflows & integraties",
     text:
-      "Slimme agents die met je klanten praten. Telefoonbot, WhatsApp-chatbot, reviews-responder, in jouw toon-of-voice, 24/7 aan."
+      "Slimme AI-oplossingen die klanten helpen, processen versnellen en repetitief werk uit handen nemen."
   }
 ];
 
@@ -132,8 +132,8 @@ export default async function HomePage() {
             <p className="eyebrow">Hazenco, B2B partner</p>
             <h1>Wij automatiseren en bouwen wat jouw bedrijf sneller maakt.</h1>
             <p className="lead">
-              Custom software, workflow-automatisering en AI-workflows voor het Nederlandse MKB. Klein team, direct
-              contact, done-for-you levering, zonder softwarebureau-prijzen.
+              Van maatwerk modules en API-koppelingen tot AI-workflows en automatiseringen. Klein team, direct contact
+              en snelle oplevering, zonder de tarieven van een groot softwarebureau.
             </p>
             <div className="hazenco-hero-cta">
               <Link href="/contact" className="button">
@@ -145,8 +145,8 @@ export default async function HomePage() {
             </div>
             <ul className="hazenco-hero-proof">
               <li>Klein team, direct contact</li>
-              <li>Meestal binnen 1 werkdag antwoord</li>
-              <li>Reactie op je vraag ≠ verkooppraatje</li>
+              <li>Meestal binnen één werkdag antwoord</li>
+              <li>We denken mee, zonder verkooppraatjes</li>
             </ul>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default async function HomePage() {
         <section className="hazenco-section">
           <header className="hazenco-section-head">
             <p className="eyebrow">Diensten</p>
-            <h2>Drie manieren om je bedrijf sneller te laten lopen</h2>
+            <h2>Zo helpen we bedrijven groeien</h2>
           </header>
           <div className="hazenco-diensten-grid">
             {diensten.map(({ icon: Icon, href, title, text }) => (
@@ -276,14 +276,14 @@ export default async function HomePage() {
             <p className="eyebrow">Waarom Hazenco</p>
             <h2>Wij bouwen wat we ook zelf gebruiken</h2>
             <p className="hazenco-section-sub">
-              Geen theoretische adviezen, alles wat we voor klanten bouwen draait ook bij onszelf. Dat is de reden dat
+              Geen theoretische adviezen. Alles wat we voor klanten bouwen, gebruiken we ook zelf. Dat is de reden dat
               we weten wat werkt en wat het écht kost om te onderhouden.
             </p>
           </header>
           <div className="hazenco-waarom-grid">
             <article className="hazenco-waarom-card">
               <div className="hazenco-waarom-icon"><Wrench size={22} /></div>
-              <h3>TechPanda draait op deze stack</h3>
+              <h3>TechPanda draait op onze technologie</h3>
               <p>
                 Onze eigen B2C IT-webshop is gebouwd met dezelfde Next.js + Supabase stack die we voor jou opzetten.
                 Als iets bij ons breekt, weten we het als eerste.
@@ -294,7 +294,7 @@ export default async function HomePage() {
             </article>
             <article className="hazenco-waarom-card">
               <div className="hazenco-waarom-icon"><Sparkles size={22} /></div>
-              <h3>Deze site is de showcase</h3>
+              <h3>Deze website is ons visitekaartje</h3>
               <p>
                 Custom Next.js, geen builder, geen template. Dark mode, mobiel-optimalisatie, sub-100ms pagina-laden.
                 Wat je hier ziet is wat je kunt krijgen.
@@ -338,7 +338,7 @@ export default async function HomePage() {
           <div className="hazenco-contact-inner">
             <h2>Kort gesprek, concrete inschatting.</h2>
             <p>
-              Vertel wat je zoekt, dan hoor je binnen 1 werkdag of we een fit zijn en wat het grofweg kost. Geen
+              Vertel wat je zoekt, dan hoor je binnen één werkdag of we een fit zijn en wat het grofweg kost. Geen
               verkoopgesprek, geen verplichtingen.
             </p>
             <div className="hazenco-contact-cta">

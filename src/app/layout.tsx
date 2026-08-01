@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Hazenco"
   },
   description:
-    "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows. Klein team, direct contact, done-for-you levering.",
+    "Nederlandse B2B-partner voor maatwerk weboplossingen, workflow-automatisering en AI-workflows. Klein team, direct contact, done-for-you levering.",
   openGraph: {
     type: "website",
     locale: "nl_NL",
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
     url: "https://hazenco.nl",
     title: "Hazenco, Wij automatiseren en bouwen wat jouw bedrijf sneller maakt",
     description:
-      "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows."
+      "Nederlandse B2B-partner voor maatwerk weboplossingen, workflow-automatisering en AI-workflows."
   },
   twitter: {
     card: "summary_large_image",
     title: "Hazenco",
     description:
-      "Nederlandse B2B-partner voor webdesign, workflow-automatisering en AI-workflows."
+      "Nederlandse B2B-partner voor maatwerk weboplossingen, workflow-automatisering en AI-workflows."
   }
 };
 

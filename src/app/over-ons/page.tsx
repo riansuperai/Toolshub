@@ -6,13 +6,13 @@ import { Shell } from "@/components/shell";
 export const metadata: Metadata = {
   title: "Over Hazenco",
   description:
-    "Wie zit er achter Hazenco? Een klein Nederlands B2B-team dat custom software, workflow-automatisering en AI-workflows bouwt voor het MKB."
+    "Wie zit er achter Hazenco? Drie oprichters met jarenlange ervaring in e-commerce, retail, civiele techniek en digitale oplossingen. Praktijk boven papier."
 };
 
 const principes = [
   {
     title: "Klein team, direct contact",
-    text: "Je spreekt altijd direct met iemand die weet waar 'ie het over heeft, geen account-managers of tussenlagen. Meestal binnen 1 werkdag antwoord."
+    text: "Je spreekt altijd direct met iemand die weet waar 'ie het over heeft, geen account-managers of tussenlagen. Meestal binnen één werkdag antwoord."
   },
   {
     title: "Done-for-you, niet DIY-consulting",
@@ -61,27 +61,16 @@ export default function OverOnsPage() {
             <p className="eyebrow">Over ons</p>
             <h1>We bouwen wat we ook zelf gebruiken.</h1>
             <p className="lead">
-              Hazenco is een klein Nederlands B2B-team dat custom software, workflow-automatisering en AI-workflows
-              bouwt voor het MKB. Klein team, direct contact, done-for-you levering.
+              Achter Hazenco staan drie oprichters die al jarenlang actief zijn in e-commerce, retail, civiele techniek
+              en digitale oplossingen. Die praktijkervaring nemen we mee in alles wat we bouwen. Daardoor weten we wat
+              werkt, wat schaalbaar is en wat op de lange termijn ook prettig blijft om mee te werken. Geen oplossingen
+              die alleen op papier werken, maar systemen die ook in de dagelijkse praktijk het verschil maken.
             </p>
           </div>
         </div>
       </section>
 
       <div className="page">
-        {/* WAT WE DOEN */}
-        <section className="hazenco-section">
-          <header className="hazenco-section-head">
-            <p className="eyebrow">Wat we doen</p>
-            <h2>Drie dingen, en niks anders</h2>
-            <p className="hazenco-section-sub">
-              We bouwen websites op maat, we automatiseren processen die nu handmatig lopen, en we zetten AI-workflows
-              op waar je klanten dagelijks mee praten. Alles done-for-you: wij regelen installatie, integratie en
-              onderhoud.
-            </p>
-          </header>
-        </section>
-
         {/* HOE WE WERKEN */}
         <section className="hazenco-section">
           <header className="hazenco-section-head">
@@ -143,7 +132,7 @@ export default function OverOnsPage() {
             <h2>MKB dat resultaat wil, geen powerpoint</h2>
             <p className="hazenco-section-sub">
               Onze klanten zijn MKB-ondernemers die tijd willen besparen (automatisering), online willen groeien
-              (webdesign) of AI willen inzetten zonder er zelf een developer voor te worden. Van ZZP'er met één
+              (maatwerk weboplossingen) of AI willen inzetten zonder er zelf een developer voor te worden. Van ZZP'er met één
               specifiek pijnpunt tot teams van 50 medewerkers met meerdere systemen.
             </p>
           </header>
@@ -172,7 +161,7 @@ export default function OverOnsPage() {
           <div className="hazenco-contact-inner">
             <h2>Zullen we eens praten?</h2>
             <p>
-              Vertel wat je zoekt, dan hoor je binnen 1 werkdag of we een fit zijn. Geen verkoopgesprek, geen
+              Vertel wat je zoekt, dan hoor je binnen één werkdag of we een fit zijn. Geen verkoopgesprek, geen
               verplichtingen.
             </p>
             <div className="hazenco-contact-cta">

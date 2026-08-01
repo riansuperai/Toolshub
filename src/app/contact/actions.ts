@@ -31,7 +31,7 @@ function checkRateLimit(key: string, maxPerHour = 3): boolean {
 }
 
 const ONDERWERP_LABELS: Record<string, string> = {
-  webdesign: "Webdesign",
+  webdesign: "Maatwerk weboplossingen",
   workflow: "Workflow-automatisering",
   ai: "AI-workflows & integraties",
   toolkit: "Vraag over de gratis toolkit",
@@ -115,6 +115,6 @@ export async function submitContact(_prev: ContactFormState, formData: FormData)
 
   return {
     status: "success",
-    message: "Bedankt! We hebben je bericht binnen. Meestal binnen 1 werkdag antwoord."
+    message: "Bedankt! We hebben je bericht binnen. Meestal binnen één werkdag antwoord."
   };
 }

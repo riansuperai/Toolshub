@@ -9,7 +9,7 @@ import { OplossingenList } from "./oplossingen-list";
 export const metadata: Metadata = {
   title: "Oplossingen, wat we voor klanten hebben gebouwd",
   description:
-    "Productized oplossingen en tools van Hazenco: webdesign-pakketten, workflow-automatisering, AI-workflows en eigen Hazenco-tools. Klaar om af te nemen of als startpunt voor iets op maat."
+    "Productized oplossingen en tools van Hazenco: maatwerk weboplossingen, workflow-automatisering, AI-workflows en eigen Hazenco-tools. Klaar om af te nemen of als startpunt voor iets op maat."
 };
 
 export const revalidate = 300; // 5 min cache, content update relatively rarely

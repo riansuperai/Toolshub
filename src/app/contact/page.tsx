@@ -6,7 +6,7 @@ import { ContactForm } from "./contact-form";
 export const metadata: Metadata = {
   title: "Contact, Hazenco",
   description:
-    "Plan een gesprek van 15 minuten met Hazenco, of stuur direct een WhatsApp of e-mail. Meestal binnen 1 werkdag antwoord."
+    "Plan een gesprek van 15 minuten met Hazenco, of stuur direct een WhatsApp of e-mail. Meestal binnen één werkdag antwoord."
 };
 
 const HAZENCO_WHATSAPP = "31643074303";
@@ -20,7 +20,7 @@ export default function ContactPage() {
           <p className="eyebrow">Contact</p>
           <h1>Kort gesprek, concrete inschatting.</h1>
           <p className="lead">
-            Vertel wat je zoekt, dan hoor je binnen 1 werkdag of we een fit zijn en wat het grofweg kost. Geen
+            Vertel wat je zoekt, dan hoor je binnen één werkdag of we een fit zijn en wat het grofweg kost. Geen
             verkoopgesprek, geen verplichtingen.
           </p>
         </header>

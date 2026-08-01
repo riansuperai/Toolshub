@@ -94,7 +94,7 @@ const NAV: NavItem[] = [
         links: [
           {
             href: "/website-laten-maken",
-            label: "Webdesign",
+            label: "Maatwerk weboplossingen",
             description: "Custom sites, klaar voor conversie en SEO",
             icon: Globe,
             tone: "sky"
@@ -588,7 +588,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <div className="footer-col">
             <h3>Diensten</h3>
             <ul className="footer-link-list">
-              <li><Link href="/website-laten-maken">Webdesign</Link></li>
+              <li><Link href="/website-laten-maken">Maatwerk weboplossingen</Link></li>
               <li><Link href="/workflow-automatisering">Workflow-automatisering</Link></li>
               <li><Link href="/ai-workflows">AI-workflows &amp; integraties</Link></li>
               <li><Link href="/oplossingen">Alle oplossingen</Link></li>
