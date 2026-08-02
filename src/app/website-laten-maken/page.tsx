@@ -83,7 +83,9 @@ const data: ServicePageData = {
         primary: true
       }
     ],
-    note: "Definitieve prijs hangt af van aantal pagina's, integraties en of je content zelf aanlevert."
+    note: "Definitieve prijs hangt af van aantal pagina's, integraties en of je content zelf aanlevert.",
+    ctaHref: "https://intake.weboplossingen.hazenco.nl/start",
+    ctaLabel: "Doe een korte intake"
   },
   cases: {
     heading: "Wat we voor anderen bouwden",

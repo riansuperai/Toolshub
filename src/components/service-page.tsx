@@ -21,6 +21,11 @@ export type ServicePageData = {
     lead: string;
     packages: { name: string; price: string; period?: string; text: string; primary?: boolean }[];
     note?: string;
+    /** Waar de knoppen op de prijskaarten heen gaan. Default: /contact.
+     *  Een absolute URL (http...) rendert als gewone <a>. */
+    ctaHref?: string;
+    /** Knoptekst op de prijskaarten. Default: "Plan een gesprek". */
+    ctaLabel?: string;
   };
   cases: {
     heading: string;
@@ -30,6 +35,9 @@ export type ServicePageData = {
 };
 
 export function ServicePage({ data, icon: Icon }: { data: ServicePageData; icon: LucideIcon }) {
+  const prijsCtaHref = data.prijs.ctaHref ?? "/contact";
+  const prijsCtaLabel = data.prijs.ctaLabel ?? "Plan een gesprek";
+
   return (
     <Shell>
       <section className="hazenco-hero">
@@ -116,9 +124,15 @@ export function ServicePage({ data, icon: Icon }: { data: ServicePageData; icon:
                   {p.period ? <span>{p.period}</span> : null}
                 </div>
                 <p>{p.text}</p>
-                <Link href="/contact" className={`button${p.primary ? "" : " secondary"}`}>
-                  Plan een gesprek <ArrowRight size={14} />
-                </Link>
+                {prijsCtaHref.startsWith("http") ? (
+                  <a href={prijsCtaHref} className={`button${p.primary ? "" : " secondary"}`}>
+                    {prijsCtaLabel} <ArrowRight size={14} />
+                  </a>
+                ) : (
+                  <Link href={prijsCtaHref} className={`button${p.primary ? "" : " secondary"}`}>
+                    {prijsCtaLabel} <ArrowRight size={14} />
+                  </Link>
+                )}
               </article>
             ))}
           </div>
