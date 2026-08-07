@@ -7,8 +7,10 @@ services:
         NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
     container_name: hazenco-toolshub
     restart: always
+    # Alleen op localhost binden: nginx proxiet ernaartoe, de poort hoort
+    # niet direct vanaf het internet bereikbaar te zijn.
     ports:
-      - "5056:5056"
+      - "127.0.0.1:5056:5056"
     env_file:
       - .env
     environment:

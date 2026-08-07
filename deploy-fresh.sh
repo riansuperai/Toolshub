@@ -2,7 +2,7 @@
 set -e
 
 echo "==================================="
-echo "Hazenco Toolshub - Fresh deployment"
+echo "hazenco.nl - Fresh deployment"
 echo "==================================="
 echo "Gebruik dit alleen als:"
 echo "  - normale 'bash deploy.sh' iets vreemds geeft"
@@ -42,5 +42,5 @@ sudo systemctl reload nginx
 
 echo "==================================="
 echo "Fresh deployment succesvol!"
-echo "https://toolshub.hazenco.nl"
+echo "https://hazenco.nl"
 echo "==================================="

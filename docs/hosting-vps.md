@@ -1,5 +1,14 @@
 # Hosting op TransIP VPS — toolshub.hazenco.nl
 
+> ⚠️ **VEROUDERD sinds 2026-08-07.** De site draait niet meer op deze VPS.
+> `hazenco.nl` is verhuisd naar de Hostinger-VPS `187.77.69.153` — zie
+> [hostinger-migratie.md](hostinger-migratie.md) voor de actuele situatie en
+> de deploy-flow.
+>
+> Dit document blijft staan als beschrijving van de oude opzet. De TransIP-VPS
+> draait nog wel: `toolshub.hazenco.nl`, `intake.weboplossingen.hazenco.nl` en
+> dertien andere containers staan daar nog steeds.
+
 Stappenplan om Hazenco Marktplaats live te zetten op `https://toolshub.hazenco.nl`.
 Volgt hetzelfde patroon als [hazenco-voorraad-tool](../../hazenco-voorraad-tool/).
 

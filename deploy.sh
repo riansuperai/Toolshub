@@ -2,7 +2,7 @@
 set -e
 
 echo "==================================="
-echo "Hazenco Toolshub - Deployment (cached)"
+echo "hazenco.nl - Deployment (cached)"
 echo "==================================="
 echo "Tip: dit script gebruikt Docker cache (~10-30 sec)."
 echo "Voor een volledige rebuild zonder cache: bash deploy-fresh.sh"
@@ -38,5 +38,5 @@ sudo systemctl reload nginx
 
 echo "==================================="
 echo "Deployment succesvol!"
-echo "https://toolshub.hazenco.nl"
+echo "https://hazenco.nl"
 echo "==================================="
