@@ -70,8 +70,8 @@ export async function submitContact(_prev: ContactFormState, formData: FormData)
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM ?? "Hazenco Contact <hallo@hazenco.nl>";
-  const to = process.env.RESEND_TO ?? "hallo@hazenco.nl";
+  const from = process.env.RESEND_FROM ?? "Hazenco Contact <info@hazenco.nl>";
+  const to = process.env.RESEND_TO ?? "info@hazenco.nl";
 
   if (!apiKey) {
     console.warn("[contact] RESEND_API_KEY niet ingesteld, bericht niet verstuurd", {

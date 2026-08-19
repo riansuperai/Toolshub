@@ -19,6 +19,15 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // ==================================================================
+      // 0. Oude dienstnamen. Deze URLs hebben nooit bestaan op de huidige
+      // site maar circuleren nog in bookmarks en backlinks; ze gaven 404.
+      // ==================================================================
+      { source: "/procesautomatisering", destination: "/workflow-automatisering", permanent: true },
+      { source: "/processautomatisering", destination: "/workflow-automatisering", permanent: true },
+      { source: "/proces-automatisering", destination: "/workflow-automatisering", permanent: true },
+      { source: "/ai", destination: "/ai-workflows", permanent: true },
+
+      // ==================================================================
       // 1. Marketplace-era URLs (oude Toolshub) → nieuwe agency-structuur
       // ==================================================================
       { source: "/tools", destination: "/oplossingen", permanent: true },

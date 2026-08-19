@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const HAZENCO_WHATSAPP = "31643074303";
-const HAZENCO_EMAIL = "hallo@hazenco.nl";
+const HAZENCO_EMAIL = "info@hazenco.nl";
 
 export default function ContactPage() {
   return (
