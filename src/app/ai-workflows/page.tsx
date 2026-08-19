@@ -14,7 +14,7 @@ const data: ServicePageData = {
   lead:
     "Nederlandse AI-workflows die met jouw klanten praten, via telefoon, WhatsApp, e-mail of chat. In jouw toon-of-voice, 24/7 aan, escalatie naar mens waar nodig.",
   intro:
-    "AI voor MKB is inmiddels volwassen. Een goed geconfigureerde telefoonbot beantwoordt 70% van de veel-voorkomende vragen zelfstandig. Een WhatsApp-chatbot met jouw kennisbank kan een groot deel van je klantenservice overnemen. Een reviews-responder houdt je Google-profiel actief zonder dat jij er dagelijks tijd in stopt. Wij zetten deze workflows op, inclusief training, integraties en het intelligent doorzetten naar een echte medewerker wanneer nodig.",
+    "AI voor MKB is inmiddels volwassen. Een goed geconfigureerde telefoonbot handelt het merendeel van de terugkerende vragen zelfstandig af. Een WhatsApp-chatbot met jouw kennisbank neemt een groot deel van je klantenservice over. Een reviews-responder houdt je Google-profiel actief zonder dat jij er dagelijks tijd in stopt. Wij zetten deze workflows op, inclusief training, integraties en het intelligent doorzetten naar een echte medewerker wanneer nodig. Hoeveel er precies blijft liggen hangt af van je vragen en je kennisbank, dat meten we in de schaduw-modus voordat je live gaat.",
   wat: {
     heading: "Wat we voor klanten hebben opgezet",
     items: [
@@ -91,22 +91,22 @@ const data: ServicePageData = {
     note: "Volume van gesprekken bepaalt de definitieve prijs. Bij hogere volumes gaat de prijs per gesprek omlaag."
   },
   cases: {
-    heading: "Actief bij klanten",
+    heading: "Drie scenario's, met een demo die je zelf kunt proberen",
     items: [
       {
-        result: "24/7 bereikbaar",
-        title: "AI Telefoonassistent Kapsalon",
-        text: "Neemt op wanneer de eigenaar bezig is met klanten. Kwalificeert nieuwe afspraken, plant direct in Google Calendar."
+        result: "Voorbeeld",
+        title: "Telefoonassistent voor een kapsalon",
+        text: "Neemt op wanneer de eigenaar bezig is met een klant. Kwalificeert de aanvraag en plant direct in Google Calendar. Uit te proberen via de live demo."
       },
       {
-        result: "80% afgehandeld",
-        title: "WhatsApp Chatbot webshop",
-        text: "80% van klantvragen wordt door de bot afgehandeld. Complexe vragen (retour, garantie) worden netjes doorgezet."
+        result: "Voorbeeld",
+        title: "WhatsApp-chatbot voor een webshop",
+        text: "Beantwoordt terugkerende vragen over levertijd, retour en garantie op basis van jouw kennisbank. Wat de bot niet zeker weet, gaat naar een medewerker."
       },
       {
-        result: "0 gemiste reviews",
-        title: "Reviews-responder Brasserie",
-        text: "Elke review krijgt binnen een uur een persoonlijke reactie. Negatieve reviews escaleren direct naar de eigenaar."
+        result: "Voorbeeld",
+        title: "Reviews-responder voor een horecazaak",
+        text: "Reageert op nieuwe Google-reviews in jouw toon-of-voice. Negatieve reviews gaan eerst langs de eigenaar voordat er iets de deur uit gaat."
       }
     ]
   },

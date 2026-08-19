@@ -86,22 +86,22 @@ const data: ServicePageData = {
     note: "We bespreken concreet in de intake wat het voor jouw situatie kost, geen ongepersonaliseerde prijslijsten."
   },
   cases: {
-    heading: "Voorbeelden van live projecten",
+    heading: "Wat we bouwden voor SanitairSuperShop",
     items: [
       {
-        result: "60% minder telefoontjes",
-        title: "m²-calculator voor tegelshop",
-        text: "SanitairSuperShop: klanten voeren m² in, systeem berekent dozen + prijs. Klantenservice kreeg 60% minder 'hoeveel dozen voor X?' telefoontjes."
+        result: "Minder telefoontjes",
+        title: "m²-calculator voor tegels en vloeren",
+        text: "Klanten voeren hun m² in, het systeem rekent dozen en prijs uit. Dat scheelde de klantenservice merkbaar in het aantal 'hoeveel dozen heb ik nodig?'-telefoontjes."
       },
       {
         result: "AOV +32%",
         title: "Cross-sell popup voor Magento",
-        text: "AOV steeg van €167 naar €221 in 6 weken. €25k extra maandelijkse omzet uit dezelfde bezoekers."
+        text: "Gemiddelde orderwaarde ging van €167 naar €221 in de zes weken na livegang, gemeten over dezelfde bezoekersaantallen."
       },
       {
-        result: "Uren bespaard/week",
+        result: "Uren per week",
         title: "Product Management back-office",
-        text: "Complete admin voor productbeheer, orderverwerking en sales. Team bespaart dagelijks uren aan Excel + copy-paste werk."
+        text: "Eén omgeving voor productbeheer, orderverwerking en sales. Scheelt dagelijks handwerk in Excel en kopiëren en plakken tussen systemen."
       }
     ]
   },
