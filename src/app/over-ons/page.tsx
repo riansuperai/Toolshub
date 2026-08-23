@@ -40,7 +40,7 @@ const eigenBouw = [
     icon: Sparkles,
     href: "/",
     label: "Deze site (hazenco.nl)",
-    text: "Custom Next.js 16, dark mode, mobiel-first, sub-100ms pagina-laden. Wat je hier ziet is wat je kunt krijgen.",
+    text: "Custom Next.js 16, dark mode, mobiel-first, statisch gegenereerd. Wat je hier ziet is wat je kunt krijgen.",
     external: false
   },
   {

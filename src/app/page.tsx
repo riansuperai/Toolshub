@@ -296,7 +296,7 @@ export default async function HomePage() {
               <div className="hazenco-waarom-icon"><Sparkles size={22} /></div>
               <h3>Deze website is ons visitekaartje</h3>
               <p>
-                Custom Next.js, geen builder, geen template. Dark mode, mobiel-optimalisatie, sub-100ms pagina-laden.
+                Custom Next.js, geen builder, geen template. Dark mode, mobiel-optimalisatie, statisch gegenereerd.
                 Wat je hier ziet is wat je kunt krijgen.
               </p>
               <span className="hazenco-waarom-link muted">Je kijkt er nu naar</span>

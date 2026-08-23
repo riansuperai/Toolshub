@@ -18,7 +18,7 @@ const diensten = [
       "Custom Next.js sites die snel laden en converteren. Wij bouwen, hosten en onderhouden.",
     features: [
       "Volledig op maat, geen builders of templates",
-      "Sub-100ms pagina-laden op mobiel én desktop",
+      "Statisch gegenereerde pagina's, snel op mobiel én desktop",
       "Hosting, SSL en onderhoud inbegrepen",
       "SEO-fundament op orde vanaf dag 1"
     ]

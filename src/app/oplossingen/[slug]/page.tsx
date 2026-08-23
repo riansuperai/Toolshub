@@ -320,7 +320,7 @@ export default async function OplossingDetailPage({ params }: { params: Promise<
                   <CheckCircle2 size={15} /> Nederlandstalige support
                 </li>
                 <li>
-                  <CheckCircle2 size={15} /> Maandelijks opzegbaar
+                  <CheckCircle2 size={15} /> Minimaal 12 maanden, daarna maandelijks opzegbaar
                 </li>
               </ul>
 

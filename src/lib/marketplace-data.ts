@@ -288,7 +288,7 @@ export const listings: Listing[] = [
     slug: "website-laten-maken",
     tagline: "Professionele website binnen weken, zonder gedoe en zonder verborgen kosten.",
     description:
-      "Een professionele website is in 2026 geen luxe meer, het is de basis van je vindbaarheid, je geloofwaardigheid en je conversie. Toch blijft het voor veel ondernemers een terugkerend hoofdpijndossier. Welke builder kies je? Wie verzorgt de hosting? Wat als de site op een vrijdagmiddag offline gaat? En wie houdt de plugins up-to-date?\n\nDaar komen wij in beeld. **Hazenco ontzorgt je volledig van A tot Z**, zodat jij je tijd en aandacht kan steken in waar je écht goed in bent: ondernemen.\n\n**Een website die je bedrijf laat opvallen**\n\nWe ontwerpen en bouwen websites die niet alleen mooi zijn, maar ook werken. Conversie-gericht, mobiel-vriendelijk, snel ladend en klaar voor zoekmachines. Geen standaard template-werk dat je tien keer eerder hebt gezien, maar een ontwerp dat past bij jouw merk, jouw doelgroep en jouw doelen. Of je nu een ZZP'er bent die professioneel wil ogen, een MKB-ondernemer met een verouderde site die niet meer presteert, of een starter die geloofwaardig live wil, wij maken het mogelijk.\n\n**Twee manieren om met ons aan de slag te gaan**\n\nBij Hazenco geloven we in transparantie. Daarom hebben we geen ingewikkelde offertes, geen verborgen kosten en geen kleine lettertjes. Je kiest tussen twee duidelijke pakketten.\n\nHet *Eenmalig*-pakket is voor ondernemers die liever in één keer afrekenen. Voor €1.425 krijg je een complete website opgeleverd binnen enkele weken, inclusief professioneel ontwerp, conversie-gerichte structuur, basis-SEO en een korte training zodat je zelf inhoud kunt aanpassen. Hosting en onderhoud regel je zelf of nemen we apart van je over.\n\nHet *All-in abonnement* is voor wie écht ontzorgd wil worden. Voor €89 per maand (vanaf 24 maanden) regelen wij álles: ontwerp, bouw, premium hosting, dagelijkse backups, SSL-certificaat, plugin- en core-updates, security monitoring en directe support. Geen onverwachte rekeningen, geen technische verrassingen, geen midnight-paniek over een gehackte site. Eén vast bedrag per maand en wij houden de zaak draaiend.\n\n**Wat ons anders maakt**\n\nWe zijn geen anonieme webbouwer met een ticketsysteem waar je vraag in de wachtrij verdwijnt. Bij Hazenco krijg je één vast aanspreekpunt, iemand die jou en je bedrijf kent. Een WhatsApp-bericht, een belletje of een mailtje: je hoort dezelfde dag iets terug, niet pas over twee weken.\n\nWe werken iteratief en betrekken je actief bij het proces. Je krijgt drie ontwerprondes om de site precies zo te krijgen als je voor je ziet. We praten in gewone taal, niet in jargon. En we leveren binnen weken, niet binnen maanden.\n\n**Snel, veilig en altijd up-to-date**\n\nEen website is geen statisch ding dat je eenmalig oplevert en vergeet. Plugins krijgen updates, security-patches komen uit, technologie verandert. Met het abonnement nemen we dat continu voor je over. Dagelijkse backups betekenen dat zelfs als er iets misgaat, we binnen minuten weer live zijn. Premium hosting betekent dat je site snel laadt, belangrijk voor zowel je bezoekers als Google.\n\n**Klaar om te starten?**\n\nOf je nu vandaag begint met je eerste website, of jouw bestaande site een tweede leven wil geven, we denken graag met je mee. Geen agressieve verkoop, geen lange verkoopgesprekken en geen verplichtingen vooraf. Je vertelt ons wat je nodig hebt, wij leggen uit wat past, jij kiest.\n\nEen professionele online aanwezigheid hoeft geen hoofdpijn te zijn. Met Hazenco regel je het in één keer goed, en hou je je hoofd vrij voor je echte werk.",
+      "Een professionele website is in 2026 geen luxe meer, het is de basis van je vindbaarheid, je geloofwaardigheid en je conversie. Toch blijft het voor veel ondernemers een terugkerend hoofdpijndossier. Welke builder kies je? Wie verzorgt de hosting? Wat als de site op een vrijdagmiddag offline gaat? En wie houdt de plugins up-to-date?\n\nDaar komen wij in beeld. **Hazenco ontzorgt je volledig van A tot Z**, zodat jij je tijd en aandacht kan steken in waar je écht goed in bent: ondernemen.\n\n**Een website die je bedrijf laat opvallen**\n\nWe ontwerpen en bouwen websites die niet alleen mooi zijn, maar ook werken. Conversie-gericht, mobiel-vriendelijk, snel ladend en klaar voor zoekmachines. Geen standaard template-werk dat je tien keer eerder hebt gezien, maar een ontwerp dat past bij jouw merk, jouw doelgroep en jouw doelen. Of je nu een ZZP'er bent die professioneel wil ogen, een MKB-ondernemer met een verouderde site die niet meer presteert, of een starter die geloofwaardig live wil, wij maken het mogelijk.\n\n**Twee manieren om met ons aan de slag te gaan**\n\nBij Hazenco geloven we in transparantie. Daarom hebben we geen ingewikkelde offertes, geen verborgen kosten en geen kleine lettertjes. Je kiest tussen twee duidelijke pakketten.\n\nHet *Eenmalig*-pakket is voor ondernemers die liever in één keer afrekenen. Voor €1.425 krijg je een complete website opgeleverd binnen enkele weken, inclusief professioneel ontwerp, conversie-gerichte structuur, basis-SEO en een korte training zodat je zelf inhoud kunt aanpassen. Hosting en onderhoud regel je zelf of nemen we apart van je over.\n\nHet *All-in abonnement* is voor wie écht ontzorgd wil worden. Voor €89 per maand (minimaal 12 maanden, daarna maandelijks opzegbaar) regelen wij álles: ontwerp, bouw, premium hosting, dagelijkse backups, SSL-certificaat, plugin- en core-updates, security monitoring en directe support. Geen onverwachte rekeningen, geen technische verrassingen, geen midnight-paniek over een gehackte site. Eén vast bedrag per maand en wij houden de zaak draaiend.\n\n**Wat ons anders maakt**\n\nWe zijn geen anonieme webbouwer met een ticketsysteem waar je vraag in de wachtrij verdwijnt. Bij Hazenco krijg je één vast aanspreekpunt, iemand die jou en je bedrijf kent. Een WhatsApp-bericht, een belletje of een mailtje: je hoort dezelfde dag iets terug, niet pas over twee weken.\n\nWe werken iteratief en betrekken je actief bij het proces. Je krijgt drie ontwerprondes om de site precies zo te krijgen als je voor je ziet. We praten in gewone taal, niet in jargon. En we leveren binnen weken, niet binnen maanden.\n\n**Snel, veilig en altijd up-to-date**\n\nEen website is geen statisch ding dat je eenmalig oplevert en vergeet. Plugins krijgen updates, security-patches komen uit, technologie verandert. Met het abonnement nemen we dat continu voor je over. Dagelijkse backups betekenen dat zelfs als er iets misgaat, we binnen minuten weer live zijn. Premium hosting betekent dat je site snel laadt, belangrijk voor zowel je bezoekers als Google.\n\n**Klaar om te starten?**\n\nOf je nu vandaag begint met je eerste website, of jouw bestaande site een tweede leven wil geven, we denken graag met je mee. Geen agressieve verkoop, geen lange verkoopgesprekken en geen verplichtingen vooraf. Je vertelt ons wat je nodig hebt, wij leggen uit wat past, jij kiest.\n\nEen professionele online aanwezigheid hoeft geen hoofdpijn te zijn. Met Hazenco regel je het in één keer goed, en hou je je hoofd vrij voor je echte werk.",
     categoryId: "cat_services",
     type: "service_package",
     useCases: ["marketing", "lead_generation"],
@@ -497,7 +497,7 @@ export const listings: Listing[] = [
     ],
     cases: [
       {
-        clientName: "Kapsalon Knip & Co",
+        clientName: "Voorbeeld: kapsalon",
         label: "Beauty & Wellness",
         tag: "MKB · Service",
         tone: "dark",
@@ -509,7 +509,7 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Garage Westerveld",
+        clientName: "Voorbeeld: autogarage",
         label: "Automotive",
         tag: "MKB · Service",
         tone: "light",
@@ -521,7 +521,7 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Tandartspraktijk DentaalNL",
+        clientName: "Voorbeeld: tandartspraktijk",
         label: "Healthcare",
         tag: "Praktijk · Service",
         tone: "peach",
@@ -552,7 +552,7 @@ export const listings: Listing[] = [
       usps: [
         "Live binnen 5-7 werkdagen",
         "Geen technische kennis nodig",
-        "Maandelijks opzegbaar na minimumperiode",
+        "Minimaal 12 maanden, daarna maandelijks opzegbaar",
         "Eerlijk: AI noemt zich digitale assistent"
       ]
     },
@@ -637,7 +637,7 @@ export const listings: Listing[] = [
     ],
     cases: [
       {
-        clientName: "TuinThuis",
+        clientName: "Voorbeeld: webshop tuinmeubels",
         label: "Webshop · Tuinmeubels",
         tag: "MKB · E-commerce",
         tone: "dark",
@@ -650,7 +650,7 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Klusbedrijf De Vakman",
+        clientName: "Voorbeeld: klusbedrijf",
         label: "Dienstverlening · Bouw",
         tag: "MKB · Service",
         tone: "light",
@@ -662,7 +662,7 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Makelaardij Vermeer",
+        clientName: "Voorbeeld: makelaardij",
         label: "Vastgoed · Service",
         tag: "Makelaar · Service",
         tone: "peach",
@@ -694,7 +694,7 @@ export const listings: Listing[] = [
         "Live binnen 7-10 werkdagen",
         "Officiële WhatsApp Business API",
         "Op je bestaande nummer",
-        "Maandelijks opzegbaar na minimumperiode"
+        "Minimaal 12 maanden, daarna maandelijks opzegbaar"
       ]
     },
     serviceMeta: {
@@ -778,8 +778,8 @@ export const listings: Listing[] = [
     ],
     cases: [
       {
-        clientName: "Brasserie 't Kompas",
-        label: "Restaurant · Amsterdam",
+        clientName: "Voorbeeld: restaurant",
+        label: "Restaurant",
         tag: "Horeca · Service",
         tone: "dark",
         benefit:
@@ -791,8 +791,8 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Schoonheidssalon Belle",
-        label: "Beauty · Den Haag",
+        clientName: "Voorbeeld: schoonheidssalon",
+        label: "Beauty",
         tag: "MKB · Service",
         tone: "light",
         benefit:
@@ -803,8 +803,8 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Autobedrijf Vermeer",
-        label: "Automotive · Utrecht",
+        clientName: "Voorbeeld: autobedrijf",
+        label: "Automotive",
         tag: "MKB · Service",
         tone: "peach",
         benefit:
@@ -919,8 +919,8 @@ export const listings: Listing[] = [
     ],
     cases: [
       {
-        clientName: "Fysio Vital",
-        label: "Fysiotherapie · Utrecht",
+        clientName: "Voorbeeld: fysiotherapiepraktijk",
+        label: "Fysiotherapie",
         tag: "Healthcare · Service",
         tone: "dark",
         benefit:
@@ -932,8 +932,8 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Kapsalon Lumière",
-        label: "Beauty · Amsterdam",
+        clientName: "Voorbeeld: kapsalon",
+        label: "Beauty",
         tag: "MKB · Service",
         tone: "light",
         benefit:
@@ -944,8 +944,8 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Sport-coach Vincent Hooft",
-        label: "Coaching · Eindhoven",
+        clientName: "Voorbeeld: zzp-coach",
+        label: "Coaching",
         tag: "ZZP · Service",
         tone: "peach",
         benefit:
@@ -976,7 +976,7 @@ export const listings: Listing[] = [
         "Live binnen 5 werkdagen",
         "Onbeperkt boekingen",
         "Werkt met Mollie, iDEAL, Stripe",
-        "Maandelijks opzegbaar na minimumperiode"
+        "Minimaal 12 maanden, daarna maandelijks opzegbaar"
       ]
     },
     serviceMeta: {
@@ -993,7 +993,7 @@ export const listings: Listing[] = [
     tagline:
       "Verhoog je gemiddelde orderwaarde bij elke bestelling. Slimme add-to-cart popup voor Magento 2 / Hyvä.",
     description:
-      "Elk product dat je klant in de winkelwagen legt is een kans. Een kans om te laten zien dat er nog €40 tot gratis verzending zit, en dat 68% van de klanten daarna nog iets extra's bijboekt. Een kans om te tonen welke montage-schroeven, accessoires of consumables passen bij wat ze net kochten.\n\nDe meeste Magento webshops laten die kans letterlijk uit hun handen glippen: klant klikt \"in winkelwagen\" → refresh naar de cart-pagina → klant is uit de flow → checkout begint. Elke tussen-stap = kans op afhaak.\n\nDe **Verzending & Cross-sell Popup** vangt dat op. Zodra je klant een product toevoegt, opent er een popup met:\n\n1. **Gratis-verzending voortgangsbalk**, \"Nog €162,60 tot gratis verzending\" met een visueel vrachtwagentje dat naar rechts loopt. Zet ontzettende drempel-druk. Gemiddelde AOV-stijging bij onze klanten: +18 tot +34%.\n2. **Cross-sell producten** met directe \"+\"-knoppen, Magento native \"toebehoren\" (up-sells / related products) worden getoond met levertijd, prijs en 1-klik toevoegen. Geen doorklikken, geen nieuwe pagina.\n3. **Verder winkelen / Naar winkelwagen**, klant behoudt regie.\n\n**Voor wie werkt dit echt**\n\nElke Magento 2 / Hyvä webshop met €50+ AOV en producten die logische cross-sells hebben (sanitair + accessoires, electronica + kabels, meubels + verzorging, tuin + montage). Werkt vooral goed als je al \"toebehoren\" of \"related products\" hebt ingesteld in Magento, dan pakt de popup dat automatisch op.\n\n**Volledig customizable, geen dev-team nodig**\n\nDe vormgeving beheer je in onze **Product Manager Cart Popup Builder**: kleuren (accent, voortgangsbalk, tekst, prijzen), teksten (titel, verzendtekst, cross-sell titel, knop-labels), aantal cross-sells, layout (gecentreerd / hoek). Live preview terwijl je aanpast. Klik \"Naar Magento pushen\" en de popup is binnen 30 seconden live op je shop.\n\n**Technisch schoon**\n\n- Native Magento 2 module (installatie via Composer)\n- **Hyvä Tailwind-compatible**, geen fallback op oude Luma-styling\n- Storefront leest config lokaal, geen runtime API-calls, geen performance-hit\n- Werkt met bestaande Magento cart / checkout, geen aanpassingen daaraan\n- GDPR-safe (geen tracking, geen third party)\n\n**Wat Hazenco doet**\n\n- Module installatie op jouw Magento shop (Composer + Hyvä Tailwind build)\n- Koppeling met Product Manager Cart Popup Builder\n- Initial styling passend bij jouw shop-huisstijl\n- Cross-sell strategie advies (welke producten koppelen aan welke?)\n- Doorlopend onderhoud + updates\n\n**Setup**\n\nWithin 3-5 werkdagen live. Dag 1: module installatie + Hyvä build. Dag 2: styling instellen samen met jou (kleuren + teksten). Dag 3-4: cross-sell mapping voor top 100 producten. Dag 5: A/B testen tegen huidige flow om conversion-effect te meten.\n\n**Wat het je oplevert (echte cijfers)**\n\nBij een sanitair-webshop met €95k/mnd omzet: AOV steeg van €167 naar €221 in 6 weken (+32%). Dat is €25k extra omzet per maand uit dezelfde bezoekers. Terugverdientijd van de eenmalige investering: **binnen 2 weken**.\n\n**Klaar om te starten?**\n\nPlan een gesprek van 15 minuten. Wij tonen je een demo op een test-Magento shop, laten je de Cart Popup Builder zien, en geven een eerlijke schatting voor jouw shop.",
+      "Elk product dat je klant in de winkelwagen legt is een kans. Een kans om te laten zien dat er nog €40 tot gratis verzending zit, en dat 68% van de klanten daarna nog iets extra's bijboekt. Een kans om te tonen welke montage-schroeven, accessoires of consumables passen bij wat ze net kochten.\n\nDe meeste Magento webshops laten die kans letterlijk uit hun handen glippen: klant klikt \"in winkelwagen\" → refresh naar de cart-pagina → klant is uit de flow → checkout begint. Elke tussen-stap = kans op afhaak.\n\nDe **Verzending & Cross-sell Popup** vangt dat op. Zodra je klant een product toevoegt, opent er een popup met:\n\n1. **Gratis-verzending voortgangsbalk**, \"Nog €162,60 tot gratis verzending\" met een visueel vrachtwagentje dat naar rechts loopt. Zet ontzettende drempel-druk. Gemiddelde AOV-stijging bij onze klanten: +18 tot +34%.\n2. **Cross-sell producten** met directe \"+\"-knoppen, Magento native \"toebehoren\" (up-sells / related products) worden getoond met levertijd, prijs en 1-klik toevoegen. Geen doorklikken, geen nieuwe pagina.\n3. **Verder winkelen / Naar winkelwagen**, klant behoudt regie.\n\n**Voor wie werkt dit echt**\n\nElke Magento 2 / Hyvä webshop met €50+ AOV en producten die logische cross-sells hebben (sanitair + accessoires, electronica + kabels, meubels + verzorging, tuin + montage). Werkt vooral goed als je al \"toebehoren\" of \"related products\" hebt ingesteld in Magento, dan pakt de popup dat automatisch op.\n\n**Volledig customizable, geen dev-team nodig**\n\nDe vormgeving beheer je in onze **Product Manager Cart Popup Builder**: kleuren (accent, voortgangsbalk, tekst, prijzen), teksten (titel, verzendtekst, cross-sell titel, knop-labels), aantal cross-sells, layout (gecentreerd / hoek). Live preview terwijl je aanpast. Klik \"Naar Magento pushen\" en de popup is binnen 30 seconden live op je shop.\n\n**Technisch schoon**\n\n- Native Magento 2 module (installatie via Composer)\n- **Hyvä Tailwind-compatible**, geen fallback op oude Luma-styling\n- Storefront leest config lokaal, ontworpen zonder runtime API-calls\n- Werkt met bestaande Magento cart / checkout, geen aanpassingen daaraan\n- Geen tracking en geen third-party scripts\n\n**Wat Hazenco doet**\n\n- Module installatie op jouw Magento shop (Composer + Hyvä Tailwind build)\n- Koppeling met Product Manager Cart Popup Builder\n- Initial styling passend bij jouw shop-huisstijl\n- Cross-sell strategie advies (welke producten koppelen aan welke?)\n- Doorlopend onderhoud + updates\n\n**Setup**\n\nWithin 3-5 werkdagen live. Dag 1: module installatie + Hyvä build. Dag 2: styling instellen samen met jou (kleuren + teksten). Dag 3-4: cross-sell mapping voor top 100 producten. Dag 5: A/B testen tegen huidige flow om conversion-effect te meten.\n\n**Wat het je oplevert (echte cijfers)**\n\nBij een sanitair-webshop met €95k/mnd omzet: AOV steeg van €167 naar €221 in 6 weken (+32%). Dat is €25k extra omzet per maand uit dezelfde bezoekers. Terugverdientijd van de eenmalige investering: **binnen 2 weken**.\n\n**Klaar om te starten?**\n\nPlan een gesprek van 15 minuten. Wij tonen je een demo op een test-Magento shop, laten je de Cart Popup Builder zien, en geven een eerlijke schatting voor jouw shop.",
     categoryId: "cat_services",
     type: "service_package",
     useCases: ["ecommerce", "workflow_automation"],
@@ -1070,7 +1070,7 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Elektro Van der Berg",
+        clientName: "Voorbeeld: elektro-webshop",
         label: "Elektro · Webshop",
         tag: "E-commerce · Magento 2",
         tone: "light",
@@ -1082,7 +1082,7 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Tuin & Meer",
+        clientName: "Voorbeeld: tuinwebshop",
         label: "Tuinbenodigdheden · Webshop",
         tag: "E-commerce · Magento 2 / Hyvä",
         tone: "peach",
@@ -1131,7 +1131,7 @@ export const listings: Listing[] = [
     tagline:
       "Klanten voeren m² in, jij verkoopt dozen. Automatische berekening + juiste hoeveelheid direct in de winkelwagen.",
     description:
-      "Wie een badkamer of woonkamer betegelt, denkt in **vierkante meters**. Wie een tegel-webshop runt, verkoopt in **dozen**. Dat verschil is de #1 reden dat tegel-shoppers afhaken tijdens het kopen: ze weten niet hoeveel dozen ze moeten bestellen voor hun 12,5m² badkamer, laten hun laptop dicht, en zijn de deal kwijt.\n\nOf erger: ze bestellen te weinig, moeten navorderen (nieuwe verzendkosten, kleurverschil tussen productie-batches, project stopt), en laten een 2-sterren review achter.\n\nDe **m² Calculator** lost dat op. Op elke tegelpagina zien klanten een simpele input: \"hoeveel m² heb je nodig?\", plus een dropdown voor snijverlies (5% / 10%). Direct wordt getoond: **aantal dozen, werkelijk m², prijs per m², totaalprijs.** \"In winkelwagen\" legt automatisch het juiste aantal dozen erin. Geen afhaakmoment, geen verkeerde bestellingen.\n\n**Voor wie werkt dit echt**\n\nElke Magento 2 / Hyvä webshop die **producten per doos verkoopt maar klanten per m² denken**:\n- Tegels (keramisch, natuursteen, mozaïek)\n- Laminaat, PVC, vinyl\n- Houten vloeren, parket\n- Behang (per rol, klant denkt per m²)\n- Gipsplaten, isolatie, dakbedekking\n\nWerkt vanaf 20 tegel/vloer-SKU's; wordt lucratief vanaf 100+.\n\n**Alleen zichtbaar waar het moet**\n\nDe calculator verschijnt **alleen** op producten met het attribuut `sss_tegels_m2` (m² per doos). Op alle andere producten in je shop rendert 'ie niets, geen dubbele knoppen, geen verwarring. De native \"in winkelwagen\" wordt op tegelproducten netjes verstopt en vervangen door de calculator, alles via één JS-observer die op elke Hyvä-theme werkt.\n\n**Extras die er standaard bij zitten**\n\n- **Doorgestreepte adviesprijs** (kortinglook), laat kortingen visueel zien, exact als de native Magento buy-box\n- **Voorraad-fallback**, \"Tijdelijk niet op voorraad\" i.p.v. de calculator als product uitverkocht is\n- **GA4 tracking**, automatisch `add_to_cart`-event met correcte quantities (in dozen én m²) naar je dataLayer\n- **Optionele levertijd-display**, standaard uit zodat 'ie niet dubbel toont naast je bestaande PDP-levertijd\n- **Dynamische kleuren**, accent, tekst, prijs, allemaal via CSS-variabelen, past bij jouw huisstijl\n\n**Technisch schoon**\n\nNative Magento 2 module. Hyvä Tailwind-compatible (Tailwind-registratie via observer op `hyva_config_generate_before` event, zelfde patroon als onze Cart Popup module). Alle data server-side uit het product gelezen, geen GraphQL, geen extra API-calls, geen performance-hit. De berekening zelf draait client-side in Alpine.js.\n\n**Wat Hazenco doet**\n\n- Module installatie op jouw Magento shop (Composer + Hyvä Tailwind build)\n- Product-attribuut `sss_tegels_m2` toevoegen aan je catalogus\n- Bulk-vullen van dit attribuut voor je bestaande SKU's (m² per doos per product)\n- Styling passend bij jouw shop-huisstijl (accentkleuren, teksten, labels)\n- GA4-tracking configureren + verificatie in je Tag Manager\n- Doorlopend onderhoud + updates\n\n**Setup**\n\nBinnen 5-7 werkdagen live. Dag 1-2: module installatie + Hyvä Tailwind build + attribuut aanmaken. Dag 3-4: bulk-vullen `sss_tegels_m2` voor je top 200 SKU's (of alle als je catalogus kleiner is). Dag 5: styling + tekst-configuratie in Product Manager. Dag 6-7: GA4-integratie + A/B testen tegen huidige flow.\n\n**Wat het je oplevert (echte cijfers)**\n\nBij een tegel-webshop met 850 tegel-SKU's: **conversion-rate op tegelpagina's steeg van 1,8% naar 4,2%** (+133%) binnen 8 weken. Reden: klanten die eerst afhaakten om zelf te rekenen, kopen nu direct. Return-rate wegens verkeerde hoeveelheid daalde van 12% naar 3%, grote besparing op retour-verwerking en klantcontact.\n\n**Klaar om te starten?**\n\nPlan een gesprek van 15 minuten. Wij tonen je een live demo op een test-Magento shop met echte tegelproducten, laten zien hoe klanten het gebruiken, en geven een eerlijke schatting voor jouw shop.",
+      "Wie een badkamer of woonkamer betegelt, denkt in **vierkante meters**. Wie een tegel-webshop runt, verkoopt in **dozen**. Dat verschil is de #1 reden dat tegel-shoppers afhaken tijdens het kopen: ze weten niet hoeveel dozen ze moeten bestellen voor hun 12,5m² badkamer, laten hun laptop dicht, en zijn de deal kwijt.\n\nOf erger: ze bestellen te weinig, moeten navorderen (nieuwe verzendkosten, kleurverschil tussen productie-batches, project stopt), en laten een 2-sterren review achter.\n\nDe **m² Calculator** lost dat op. Op elke tegelpagina zien klanten een simpele input: \"hoeveel m² heb je nodig?\", plus een dropdown voor snijverlies (5% / 10%). Direct wordt getoond: **aantal dozen, werkelijk m², prijs per m², totaalprijs.** \"In winkelwagen\" legt automatisch het juiste aantal dozen erin. Geen afhaakmoment, geen verkeerde bestellingen.\n\n**Voor wie werkt dit echt**\n\nElke Magento 2 / Hyvä webshop die **producten per doos verkoopt maar klanten per m² denken**:\n- Tegels (keramisch, natuursteen, mozaïek)\n- Laminaat, PVC, vinyl\n- Houten vloeren, parket\n- Behang (per rol, klant denkt per m²)\n- Gipsplaten, isolatie, dakbedekking\n\nWerkt vanaf 20 tegel/vloer-SKU's; wordt lucratief vanaf 100+.\n\n**Alleen zichtbaar waar het moet**\n\nDe calculator verschijnt **alleen** op producten met het attribuut `sss_tegels_m2` (m² per doos). Op alle andere producten in je shop rendert 'ie niets, geen dubbele knoppen, geen verwarring. De native \"in winkelwagen\" wordt op tegelproducten netjes verstopt en vervangen door de calculator, alles via één JS-observer die op elke Hyvä-theme werkt.\n\n**Extras die er standaard bij zitten**\n\n- **Doorgestreepte adviesprijs** (kortinglook), laat kortingen visueel zien, exact als de native Magento buy-box\n- **Voorraad-fallback**, \"Tijdelijk niet op voorraad\" i.p.v. de calculator als product uitverkocht is\n- **GA4 tracking**, automatisch `add_to_cart`-event met correcte quantities (in dozen én m²) naar je dataLayer\n- **Optionele levertijd-display**, standaard uit zodat 'ie niet dubbel toont naast je bestaande PDP-levertijd\n- **Dynamische kleuren**, accent, tekst, prijs, allemaal via CSS-variabelen, past bij jouw huisstijl\n\n**Technisch schoon**\n\nNative Magento 2 module. Hyvä Tailwind-compatible (Tailwind-registratie via observer op `hyva_config_generate_before` event, zelfde patroon als onze Cart Popup module). Alle data server-side uit het product gelezen, geen GraphQL, geen extra API-calls. De berekening zelf draait client-side in Alpine.js.\n\n**Wat Hazenco doet**\n\n- Module installatie op jouw Magento shop (Composer + Hyvä Tailwind build)\n- Product-attribuut `sss_tegels_m2` toevoegen aan je catalogus\n- Bulk-vullen van dit attribuut voor je bestaande SKU's (m² per doos per product)\n- Styling passend bij jouw shop-huisstijl (accentkleuren, teksten, labels)\n- GA4-tracking configureren + verificatie in je Tag Manager\n- Doorlopend onderhoud + updates\n\n**Setup**\n\nBinnen 5-7 werkdagen live. Dag 1-2: module installatie + Hyvä Tailwind build + attribuut aanmaken. Dag 3-4: bulk-vullen `sss_tegels_m2` voor je top 200 SKU's (of alle als je catalogus kleiner is). Dag 5: styling + tekst-configuratie in Product Manager. Dag 6-7: GA4-integratie + A/B testen tegen huidige flow.\n\n**Wat het je oplevert (echte cijfers)**\n\nBij een tegel-webshop met 850 tegel-SKU's: **conversion-rate op tegelpagina's steeg van 1,8% naar 4,2%** (+133%) binnen 8 weken. Reden: klanten die eerst afhaakten om zelf te rekenen, kopen nu direct. Return-rate wegens verkeerde hoeveelheid daalde van 12% naar 3%, grote besparing op retour-verwerking en klantcontact.\n\n**Klaar om te starten?**\n\nPlan een gesprek van 15 minuten. Wij tonen je een live demo op een test-Magento shop met echte tegelproducten, laten zien hoe klanten het gebruiken, en geven een eerlijke schatting voor jouw shop.",
     categoryId: "cat_services",
     type: "service_package",
     useCases: ["ecommerce", "workflow_automation"],
@@ -1209,7 +1209,7 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Vloerenboer.nl",
+        clientName: "Voorbeeld: vloerenwebshop",
         label: "Laminaat & PVC · Webshop",
         tag: "E-commerce · Magento 2 / Hyvä",
         tone: "light",
@@ -1221,7 +1221,7 @@ export const listings: Listing[] = [
         ]
       },
       {
-        clientName: "Behangshop Klassiek",
+        clientName: "Voorbeeld: behangwebshop",
         label: "Behang · Webshop",
         tag: "E-commerce · Magento 2",
         tone: "peach",

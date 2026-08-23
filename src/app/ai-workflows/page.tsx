@@ -77,7 +77,7 @@ const data: ServicePageData = {
         name: "Eén AI-workflow",
         price: "vanaf € 149",
         period: "/mnd",
-        text: "Bijvoorbeeld alleen een telefoonassistent of alleen een WhatsApp-chatbot. Setup inbegrepen, minimum 12 maanden.",
+        text: "Bijvoorbeeld alleen een telefoonassistent of alleen een WhatsApp-chatbot. Setup inbegrepen. Minimaal 12 maanden, daarna maandelijks opzegbaar.",
         primary: false
       },
       {

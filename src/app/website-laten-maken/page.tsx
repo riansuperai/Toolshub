@@ -24,7 +24,7 @@ const data: ServicePageData = {
       },
       {
         title: "Snel op elk apparaat",
-        text: "Sub-100ms page-load op mobiel én desktop. Google's Core Web Vitals in het groen vanaf dag 1."
+        text: "Statisch gegenereerde pagina's die snel laden op mobiel én desktop. We leveren op met Core Web Vitals in het groen, gemeten in PageSpeed Insights."
       },
       {
         title: "SEO-fundament",
@@ -79,7 +79,7 @@ const data: ServicePageData = {
         name: "All-in maandelijks",
         price: "vanaf € 89",
         period: "/mnd",
-        text: "Setup, hosting, updates, backups, security en support, allemaal inbegrepen. Vanaf 24 maanden.",
+        text: "Setup, hosting, updates, backups, security en support, allemaal inbegrepen. Minimaal 12 maanden, daarna maandelijks opzegbaar.",
         primary: true
       }
     ],
@@ -91,7 +91,7 @@ const data: ServicePageData = {
     heading: "Wat we voor anderen bouwden",
     items: [
       {
-        result: "Sub-100ms pageload",
+        result: "Custom Next.js, geen builder",
         title: "Deze site zelf",
         text: "Custom Next.js 16, dark mode, mobiel-first, SEO-clean. Wat je hier ziet is wat je kunt krijgen."
       },
