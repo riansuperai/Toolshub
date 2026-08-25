@@ -1,7 +1,8 @@
 # Migratie hazenco.nl — TransIP VPS → Hostinger VPS
 
 Verplaatst **alleen de website** `hazenco.nl` (+ `www`) naar de Hostinger-VPS.
-Domeinregistratie, DNS-beheer, e-mail en alle andere subdomeinen blijven bij TransIP.
+Domeinregistratie, e-mail en alle andere subdomeinen blijven bij TransIP.
+Het DNS-beheer is inmiddels óók naar Hostinger verhuisd, zie de waarschuwing hieronder.
 
 **Status:** ✅ **uitgevoerd op 2026-08-07.** `hazenco.nl` draait op Hostinger.
 Alleen het opruimen op TransIP (stap 8) staat nog open — bewust, als rollback-vangnet.
@@ -23,9 +24,16 @@ Alleen het opruimen op TransIP (stap 8) staat nog open — bewust, als rollback-
 
 **Verhuist:** `hazenco.nl` en `www.hazenco.nl` (container `hazenco-toolshub`).
 
+> ⚠️ **Achterhaald sinds ~2026-08-13: het DNS-beheer is óók naar Hostinger
+> verhuisd.** De nameservers zijn nu `atlas.dns-parking.com` en
+> `hyperion.dns-parking.com`. DNS-records aanpassen doe je dus in het
+> Hostinger hPanel, niet in het TransIP-paneel. Geverifieerd met
+> `dig +short NS hazenco.nl @8.8.8.8`.
+
 **Blijft op TransIP:**
-- Domeinregistratie en DNS-beheer (nameservers `ns0.transip.net` e.a.)
-- E-mail — MX wijst naar `mx.transip.email`, **niet aanraken**
+- Domeinregistratie
+- E-mail — MX op `@` wijst naar `mx.transip.email`, **niet aanraken**. De
+  mailbox draait dus nog bij TransIP terwijl de DNS bij Hostinger staat.
 - `toolshub.hazenco.nl`, `intake.weboplossingen.hazenco.nl`, en alle overige subdomeinen
 - De 13 andere containers (pricetool, voorraad, blog-tool, fellows, cep, ...)
 
