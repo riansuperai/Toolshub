@@ -40,6 +40,12 @@ export const metadata: Metadata = {
     title: "Hazenco",
     description:
       "Nederlandse B2B-partner voor maatwerk weboplossingen, workflow-automatisering en AI-workflows."
+  },
+  // Verifieert de URL-property in Google Search Console. Staat hier naast de
+  // DNS-TXT van de domein-property: bij een DNS-verhuizing sneuvelt dat record
+  // makkelijk (gebeurd bij de overstap TransIP -> Hostinger), deze tag niet.
+  verification: {
+    google: "XZ52x0RzV0AbAmJa0v1Pxa9fsjTR2QviVhGr23Y2w5w"
   }
 };
 
